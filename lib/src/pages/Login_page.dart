@@ -23,19 +23,23 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       // Barra principal de navegación "AppBar"
       appBar: AppBar(
-        backgroundColor: CustomColors.colorAppBar, // Color del AppBar por medio de la clase "CustomColors"
+        backgroundColor: CustomColors
+            .colorAppBar, // Color del AppBar por medio de la clase "CustomColors"
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(20), // Separación entre todos los widgets y el borde del celular
-          child: Column( // Se acomoda el contenido en columna
+          padding: EdgeInsets.all(
+              20), // Separación entre todos los widgets y el borde del celular
+          child: Column(
+            // Se acomoda el contenido en columna
 
             mainAxisAlignment:
                 MainAxisAlignment.center, // Define la posición de los widgets
 
-            children: <Widget>[ /* Se usa el widget "children" que son 
+            children: <Widget>[
+              /* Se usa el widget "children" que son 
                                 los hijos o cadenas de widget que se van 
                                 a unir */
 
@@ -51,7 +55,10 @@ class _LoginPageState extends State<LoginPage> {
               Align(
                 //alignment: Alignment(-1.0, 0.0),
                 alignment: Alignment.centerLeft,
-                child: Text("Correo*", style: _estiloTexto,),
+                child: Text(
+                  "Correo*",
+                  style: _estiloTexto,
+                ),
               ),
 
               // ---- Llamado Widget para un campo de texto para ingresar correo ----
@@ -66,11 +73,14 @@ class _LoginPageState extends State<LoginPage> {
               Align(
                 //alignment: Alignment(-1.0, 0.0),
                 alignment: Alignment.centerLeft,
-                child: Text("Contraseña*", style: _estiloTexto,),
+                child: Text(
+                  "Contraseña*",
+                  style: _estiloTexto,
+                ),
               ),
 
               // ---- Campo de texto para ingresar contrasenia ----
-              inputPassword("************"),
+              //inputPassword("************"),
 
               // ---- Agregar un espacio ----
               SizedBox(
@@ -98,19 +108,22 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Linea de separación con "Divider" ----
-              Row(
-                  children: <Widget>[
-                      Expanded(
-                          child: Divider(color: Colors.black, thickness: 1,)
-                      ),       
-
-                      Container( child: Text("O"), margin: EdgeInsets.symmetric(horizontal: 15),),       
-
-                      Expanded(
-                          child: Divider(color: Colors.black, thickness: 1,)
-                      ),
-                  ]
-              ),
+              Row(children: <Widget>[
+                Expanded(
+                    child: Divider(
+                  color: Colors.black,
+                  thickness: 1,
+                )),
+                Container(
+                  child: Text("O"),
+                  margin: EdgeInsets.symmetric(horizontal: 15),
+                ),
+                Expanded(
+                    child: Divider(
+                  color: Colors.black,
+                  thickness: 1,
+                )),
+              ]),
               // ---------------------------------------------
 
               // ---- Agregar un espacio ----
@@ -123,9 +136,6 @@ class _LoginPageState extends State<LoginPage> {
                 alignment: Alignment.center,
                 child: _buttonLink("¿No tienes cuenta?, pinche aqui"),
               ),
-
-              
-              
             ],
           ),
         ),
@@ -142,25 +152,25 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => RegisterPage()),
-          ); 
+          );
         } else {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => PasswordPage()),
           );
         }
-      }, 
+      },
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Colors.transparent) // Define el fondo transparente
-      ),
+          backgroundColor: MaterialStateProperty.all(
+              Colors.transparent) // Define el fondo transparente
+          ),
       child: Text(
         textoLink, // Agrega el texto
-        style: TextStyle( 
+        style: TextStyle(
           fontSize: 18, // Tamaño del texto
           color: CustomColors.colorLink, // Color del texto
         ),
       ),
     );
   }
-  
 }
