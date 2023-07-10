@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../colors/colors.dart';
+import 'Password_page.dart';
+import 'Registrar_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -51,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Llamado Widget para un campo de texto para ingresar correo ----
-              _textFieldEmail(),
+              _textFieldEmail("example@hotmail.com"),
 
               // ---- Agregar un espacio ----
               SizedBox(
@@ -66,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Campo de texto para ingresar contrasenia ----
-              _textFieldPassword(),
+              _textFieldPassword("************"),
 
               // ---- Agregar un espacio ----
               SizedBox(
@@ -77,12 +79,7 @@ class _LoginPageState extends State<LoginPage> {
               Align(
                 //alignment: Alignment(-1.0, 0.0),
                 alignment: Alignment.center,
-                child: Text("¿Olvidaste tu Contraseña?, pinche aqui",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Color.fromRGBO(34, 126, 166, 1),
-                  ),
-                ),
+                child: _buttonLink("¿Olvidaste tu Contraseña?, pinche aqui"),
               ),
 
               // ---- Agregar un espacio ----
@@ -91,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Boton "Iniciar de sesión" ----
-              _buttonSesion(),
+              _buttonSesion("Iniciar sesión"),
 
               // ---- Agregar un espacio ----
               SizedBox(
@@ -122,14 +119,11 @@ class _LoginPageState extends State<LoginPage> {
               // ---- Texto para un link si no tienes cuenta----
               Align(
                 alignment: Alignment.center,
-                child: Text(
-                  "¿No tienes cuenta?, pinche aqui",
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Color.fromRGBO(34, 126, 166, 1),
-                  ),
-                ),
+                child: _buttonLink("¿No tienes cuenta?, pinche aqui"),
               ),
+
+              
+              
             ],
           ),
         ),
@@ -138,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   // ---- Widget para el campo de texto "Correo" ----
-  Widget _textFieldEmail() {
+  Widget _textFieldEmail(String textoCorreo) {
     return Container(
       // Permite definir el diseño de la caja de texto "BoxDecoration"
       decoration: BoxDecoration(
@@ -158,7 +152,7 @@ class _LoginPageState extends State<LoginPage> {
             style: TextStyle(fontSize: 25), // Tamanio del texto
             decoration: InputDecoration.collapsed( /* Quita la linea que viene por 
                                                   defecto en el input "InputDecoration.collapsed" */
-              hintText: "example@hotmail.com", // Place holder en el input
+              hintText: textoCorreo, // Place holder en el input
             )
           ),
       /*
@@ -170,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   // ---- Widget para el campo de texto "Contrasenia" ----
-  Widget _textFieldPassword() {
+  Widget _textFieldPassword(String textoContrasenia) {
     return Container(
       decoration: BoxDecoration(
         color: Color.fromRGBO(217, 217, 217, 1),
@@ -187,9 +181,8 @@ class _LoginPageState extends State<LoginPage> {
         obscureText: passenable, // Oculta el contenido si es "true" y lo muestra si es "false"
         style: TextStyle(fontSize: 25),
         decoration: InputDecoration(
-          hintText: "************",
-          border: InputBorder
-              .none, // Quita la línea que viene por defecto en el TextField
+          hintText: textoContrasenia,
+          border: InputBorder.none, // Quita la línea que viene por defecto en el TextField
 
           suffix: IconButton(
 
@@ -215,19 +208,53 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   // ---- Widget para el boton de inicio de sesion ----
-  Widget _buttonSesion() {
+  Widget _buttonSesion( String textoBoton) {
     return MaterialButton(
+      /*
       minWidth: 161, // Ancho del boton
-      height: 60, // Altp del boton
+      height: 60, // Largo del boton
+      */
       onPressed: () {}, // Animación al presionar
       color: CustomColors.colorButton, // Color del boton por medio de la clase "CustomColors" 
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
 
       // Agregar texto dentro del boton
       child: Text(
-        'Iniciar sesión',
+        textoBoton,
         style: TextStyle( color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold,
         ),
       ),
     );
   }
+
+  // ---- Widget para un boton transparente para los links ----
+  Widget _buttonLink(String textoLink) {
+    return TextButton(
+      onPressed: () {
+        if (textoLink == "¿No tienes cuenta?, pinche aqui") {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => RegisterPage()),
+          ); 
+        } else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PasswordPage()),
+          );
+        }
+        
+      }, 
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(Colors.transparent) // Define el fondo transparente
+      ),
+      child: Text(
+        textoLink, // Agrega el texto
+        style: TextStyle( 
+          fontSize: 18, // Tamaño del texto
+          color: CustomColors.colorLink, // Color del texto
+        ),
+      ),
+    );
+  }
+  
 }
