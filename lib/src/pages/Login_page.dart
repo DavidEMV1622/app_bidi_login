@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
 
               // ---- Agregar un espacio entre los dos widgets (Text, Align)----
               SizedBox(
-                height: 15.0,
+                height: 45.0,
               ),
 
               // ---- Texto "Correo*" ----
@@ -53,6 +53,11 @@ class _LoginPageState extends State<LoginPage> {
               // ---- Llamado Widget para un campo de texto para ingresar correo ----
               _textFieldEmail(),
 
+              // ---- Agregar un espacio ----
+              SizedBox(
+                height: 15.0,
+              ),
+
               // ---- Texto "Contrasenia*" ----
               Align(
                 //alignment: Alignment(-1.0, 0.0),
@@ -62,6 +67,11 @@ class _LoginPageState extends State<LoginPage> {
 
               // ---- Campo de texto para ingresar contrasenia ----
               _textFieldPassword(),
+
+              // ---- Agregar un espacio ----
+              SizedBox(
+                height: 25.0,
+              ),
 
               // ---- Texto para un link si se le olvido la contrasenia ----
               Align(
@@ -75,8 +85,18 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
+              // ---- Agregar un espacio ----
+              SizedBox(
+                height: 25.0,
+              ),
+
               // ---- Boton "Iniciar de sesión" ----
               _buttonSesion(),
+
+              // ---- Agregar un espacio ----
+              SizedBox(
+                height: 25.0,
+              ),
 
               // ---- Linea de separación con "Divider" ----
               Row(
@@ -93,6 +113,11 @@ class _LoginPageState extends State<LoginPage> {
                   ]
               ),
               // ---------------------------------------------
+
+              // ---- Agregar un espacio ----
+              SizedBox(
+                height: 25.0,
+              ),
 
               // ---- Texto para un link si no tienes cuenta----
               Align(
