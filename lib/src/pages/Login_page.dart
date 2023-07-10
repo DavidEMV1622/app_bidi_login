@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../colors/colors.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   createState() => _LoginPageState();
@@ -8,7 +10,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   // Variable para el estilo del texto
   final TextStyle _estiloTexto = new TextStyle(fontSize: 25);
-  // Variable de tipo boolean para icono de mostrar o no contrasenia
+  // Variable de tipo boolean para icono de si o no mostrar contrasenia
   bool passenable = true;
 
   @override
@@ -17,21 +19,19 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       // Barra principal de navegación "AppBar"
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(124, 194, 209, 100), // Color de fondo
+        backgroundColor: CustomColors.colorAppBar, // Color del AppBar por medio de la clase "CustomColors"
       ),
 
-      // Cuerpo o contenido de la aplicación "body"
+      // ---- Cuerpo o contenido de la aplicación "body" ----
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(20),
-          child: Column(
-            // Se acomoda el contenido como una columna
+          padding: EdgeInsets.all(20), // Separación entre todos los widgets y el borde del celular
+          child: Column( // Se acomoda el contenido en columna
 
             mainAxisAlignment:
                 MainAxisAlignment.center, // Define la posición de los widgets
 
-            children: <Widget>[
-              /* Se usa el widget "children" que son 
+            children: <Widget>[ /* Se usa el widget "children" que son 
                                 los hijos o cadenas de widget que se van 
                                 a unir */
 
@@ -47,10 +47,7 @@ class _LoginPageState extends State<LoginPage> {
               Align(
                 //alignment: Alignment(-1.0, 0.0),
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  "Correo*",
-                  style: _estiloTexto,
-                ),
+                child: Text("Correo*", style: _estiloTexto,),
               ),
 
               // ---- Llamado Widget para un campo de texto para ingresar correo ----
@@ -60,10 +57,7 @@ class _LoginPageState extends State<LoginPage> {
               Align(
                 //alignment: Alignment(-1.0, 0.0),
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  "Contraseña*",
-                  style: _estiloTexto,
-                ),
+                child: Text("Contraseña*", style: _estiloTexto,),
               ),
 
               // ---- Campo de texto para ingresar contrasenia ----
@@ -73,8 +67,7 @@ class _LoginPageState extends State<LoginPage> {
               Align(
                 //alignment: Alignment(-1.0, 0.0),
                 alignment: Alignment.center,
-                child: Text(
-                  "¿Olvidaste tu Contraseña?, pinche aqui",
+                child: Text("¿Olvidaste tu Contraseña?, pinche aqui",
                   style: TextStyle(
                     fontSize: 18,
                     color: Color.fromRGBO(34, 126, 166, 1),
@@ -82,8 +75,24 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
-              // ---- Boton de Inicio de sesión ----
+              // ---- Boton "Iniciar de sesión" ----
               _buttonSesion(),
+
+              // ---- Linea de separación con "Divider" ----
+              Row(
+                  children: <Widget>[
+                      Expanded(
+                          child: Divider(color: Colors.black, thickness: 1,)
+                      ),       
+
+                      Container( child: Text("O"), margin: EdgeInsets.symmetric(horizontal: 15),),       
+
+                      Expanded(
+                          child: Divider(color: Colors.black, thickness: 1,)
+                      ),
+                  ]
+              ),
+              // ---------------------------------------------
 
               // ---- Texto para un link si no tienes cuenta----
               Align(
@@ -106,30 +115,27 @@ class _LoginPageState extends State<LoginPage> {
   // ---- Widget para el campo de texto "Correo" ----
   Widget _textFieldEmail() {
     return Container(
+      // Permite definir el diseño de la caja de texto "BoxDecoration"
       decoration: BoxDecoration(
-        // Permite definir el diseño de la caja de texto
         color: Color.fromRGBO(217, 217, 217, 1), // Color del input
-        borderRadius: // Define los bordes redondeados
-            BorderRadius.circular(10.0),
-        border: Border.all(
-          // Define el grosor y color de borde
+        borderRadius: BorderRadius.circular(10.0), // Define los bordes redondeados
+        border: Border.all( // Define el grosor y color de borde
           color: Colors.black,
           width: 1.0,
         ),
       ),
-      padding: EdgeInsets.symmetric(
-          // Espaciado entre el borde y el contenido
-          horizontal: 10.0,
-          vertical: 15.0),
-      // margin: EdgeInsets.symmetric(horizontal: 10.0),
+      // Espaciado entre el borde y el contenido
+      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+      //margin: EdgeInsets.symmetric(horizontal: 10.0),
 
       // Uso de un input (Campo de texto)
       child: TextField(
-          style: TextStyle(fontSize: 25), // Tamanio del texto
-          decoration: InputDecoration.collapsed(
-            // Quita la linea que viene por defecto en el input
-            hintText: "example@hotmail.com", // Place holder en el input
-          )),
+            style: TextStyle(fontSize: 25), // Tamanio del texto
+            decoration: InputDecoration.collapsed( /* Quita la linea que viene por 
+                                                  defecto en el input "InputDecoration.collapsed" */
+              hintText: "example@hotmail.com", // Place holder en el input
+            )
+          ),
       /*
           height: 40.0,
           width: 1000.0,
@@ -153,32 +159,32 @@ class _LoginPageState extends State<LoginPage> {
 
       // Uso de un input (Campo de texto)
       child: TextField(
-        obscureText:
-            passenable, // Oculta el contenido si es "true" y lo muestra si es "false"
+        obscureText: passenable, // Oculta el contenido si es "true" y lo muestra si es "false"
         style: TextStyle(fontSize: 25),
         decoration: InputDecoration(
-            hintText: "************",
-            border: InputBorder
-                .none, // Quita la línea que viene por defecto en el TextField
+          hintText: "************",
+          border: InputBorder
+              .none, // Quita la línea que viene por defecto en el TextField
 
-            suffix: IconButton(
+          suffix: IconButton(
 
-                /* Agrega una animación al presionar el boton y permite realizar una accion 
-              agregandolo entre las {} */
-                onPressed: () {
-                  // Permite redibujar el widget para que se muestre los cambios en la aplicación
-                  setState(() {
+              /* Agrega una animación al presionar el boton y permite realizar una accion 
+            agregandolo entre las {} */
+              onPressed: () {
+                // Permite redibujar el widget para que se muestre los cambios en la aplicación
+                setState(() {
                     if (passenable) {
                       passenable = false;
                     } else {
                       passenable = true;
                     }
-                  });
-                },
-                // Agrega un icono para mostrar y otro para no mostrar contrasenia
-                icon: new Icon(passenable == true
-                    ? Icons.visibility_off
-                    : Icons.visibility))),
+                  }
+                );
+              },
+            // Agrega un icono para mostrar y otro para no mostrar contrasenia
+            icon: new Icon(passenable == true ? Icons.visibility_off : Icons.visibility)
+          )
+        ),
       ),
     );
   }
@@ -189,15 +195,12 @@ class _LoginPageState extends State<LoginPage> {
       minWidth: 161, // Ancho del boton
       height: 60, // Altp del boton
       onPressed: () {}, // Animación al presionar
-      color: Color.fromRGBO(3, 134, 208, 1), // Color al boton
+      color: CustomColors.colorButton, // Color del boton por medio de la clase "CustomColors" 
 
       // Agregar texto dentro del boton
       child: Text(
         'Iniciar sesión',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
+        style: TextStyle( color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold,
         ),
       ),
     );
