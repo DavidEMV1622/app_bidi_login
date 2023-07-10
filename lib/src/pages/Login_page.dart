@@ -231,6 +231,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget _buttonLink(String textoLink) {
     return TextButton(
       onPressed: () {
+        // Condición para manejar los cambios de pantalla
         if (textoLink == "¿No tienes cuenta?, pinche aqui") {
           Navigator.push(
             context,
@@ -242,7 +243,6 @@ class _LoginPageState extends State<LoginPage> {
             MaterialPageRoute(builder: (context) => PasswordPage()),
           );
         }
-        
       }, 
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Colors.transparent) // Define el fondo transparente
