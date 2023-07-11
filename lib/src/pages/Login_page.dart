@@ -22,19 +22,23 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       // Barra principal de navegación "AppBar"
       appBar: AppBar(
-        backgroundColor: CustomColors.colorAppBar, // Color del AppBar por medio de la clase "CustomColors"
+        backgroundColor: CustomColors
+            .colorAppBar, // Color del AppBar por medio de la clase "CustomColors"
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(20), // Separación entre todos los widgets y el borde del celular
-          child: Column( // Se acomoda el contenido en columna
+          padding: EdgeInsets.all(
+              20), // Separación entre todos los widgets y el borde del celular
+          child: Column(
+            // Se acomoda el contenido en columna
 
             mainAxisAlignment:
                 MainAxisAlignment.center, // Define la posición de los widgets
 
-            children: <Widget>[ /* Se usa el widget "children" que son 
+            children: <Widget>[
+              /* Se usa el widget "children" que son 
                                 los hijos o cadenas de widget que se van 
                                 a unir */
 
@@ -50,7 +54,10 @@ class _LoginPageState extends State<LoginPage> {
               Align(
                 //alignment: Alignment(-1.0, 0.0),
                 alignment: Alignment.centerLeft,
-                child: Text("Correo*", style: _estiloTexto,),
+                child: Text(
+                  "Correo*",
+                  style: _estiloTexto,
+                ),
               ),
 
               // ---- Llamado Widget para un campo de texto para ingresar correo ----
@@ -65,7 +72,10 @@ class _LoginPageState extends State<LoginPage> {
               Align(
                 //alignment: Alignment(-1.0, 0.0),
                 alignment: Alignment.centerLeft,
-                child: Text("Contraseña*", style: _estiloTexto,),
+                child: Text(
+                  "Contraseña*",
+                  style: _estiloTexto,
+                ),
               ),
 
               // ---- Campo de texto para ingresar contrasenia ----
@@ -97,19 +107,22 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Linea de separación con "Divider" ----
-              Row(
-                  children: <Widget>[
-                      Expanded(
-                          child: Divider(color: Colors.black, thickness: 1,)
-                      ),       
-
-                      Container( child: Text("O"), margin: EdgeInsets.symmetric(horizontal: 15),),       
-
-                      Expanded(
-                          child: Divider(color: Colors.black, thickness: 1,)
-                      ),
-                  ]
-              ),
+              Row(children: <Widget>[
+                Expanded(
+                    child: Divider(
+                  color: Colors.black,
+                  thickness: 1,
+                )),
+                Container(
+                  child: Text("O"),
+                  margin: EdgeInsets.symmetric(horizontal: 15),
+                ),
+                Expanded(
+                    child: Divider(
+                  color: Colors.black,
+                  thickness: 1,
+                )),
+              ]),
               // ---------------------------------------------
 
               // ---- Agregar un espacio ----
@@ -124,6 +137,103 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  // ---- Widget para el campo de texto "Correo" ----
+  Widget _textFieldEmail(String textoCorreo) {
+    return Container(
+      // Permite definir el diseño de la caja de texto "BoxDecoration"
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(217, 217, 217, 1), // Color del input
+        borderRadius: BorderRadius.circular(10.0), // Define los bordes redondeados
+        border: Border.all( // Define el grosor y color de borde
+          color: Colors.black,
+          width: 1.0,
+        ),
+      ),
+      // Espaciado entre el borde y el contenido
+      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+      //margin: EdgeInsets.symmetric(horizontal: 10.0),
+
+      // Uso de un input (Campo de texto)
+      child: TextField(
+            style: TextStyle(fontSize: 25), // Tamanio del texto
+            decoration: InputDecoration.collapsed( /* Quita la linea que viene por 
+                                                  defecto en el input "InputDecoration.collapsed" */
+              hintText: textoCorreo, // Place holder en el input
+            )
+          ),
+      /*
+          height: 40.0,
+          width: 1000.0,
+          margin: EdgeInsets.symmetric(horizontal: 10.0),
+          */
+    );
+  }
+
+  // ---- Widget para el campo de texto "Contrasenia" ----
+  Widget _inputPassword(String textoContrasenia) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(217, 217, 217, 1),
+        borderRadius: BorderRadius.circular(10.0),
+        border: Border.all(
+          color: Colors.black,
+          width: 1.0,
+        ),
+      ),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+
+      // Uso de un input (Campo de texto)
+      child: TextField(
+        obscureText:
+            passenable, // Oculta el contenido si es "true" y lo muestra si es "false"
+        style: TextStyle(fontSize: 25),
+        decoration: InputDecoration(
+            hintText: textoContrasenia,
+            border: InputBorder
+                .none, // Quita la línea que viene por defecto en el TextField
+
+            suffix: IconButton(
+
+                /* Agrega una animación al presionar el boton y permite realizar una accion 
+            agregandolo entre las {} */
+                onPressed: () {
+                  // Permite redibujar el widget para que se muestre los cambios en la aplicación
+                  setState(() {
+                    if (passenable) {
+                      passenable = false;
+                    } else {
+                      passenable = true;
+                    }
+                  });
+                },
+                // Agrega un icono para mostrar y otro para no mostrar contrasenia
+                icon: new Icon(passenable == true
+                    ? Icons.visibility_off
+                    : Icons.visibility))),
+      ),
+    );
+  }
+
+  // ---- Widget para el boton de inicio de sesion ----
+  Widget _buttonSesion( String textoBoton) {
+    return MaterialButton(
+      /*
+      minWidth: 161, // Ancho del boton
+      height: 60, // Largo del boton
+      */
+      onPressed: () {}, // Animación al presionar
+      color: CustomColors.colorButton, // Color del boton por medio de la clase "CustomColors" 
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+
+      // Agregar texto dentro del boton
+      child: Text(
+        textoBoton,
+        style: TextStyle( color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold,
         ),
       ),
     );
@@ -158,48 +268,5 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-
-  // ---- Widget para el campo de texto "Contrasenia" ----
-  Widget _inputPassword(String textoContrasenia) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(217, 217, 217, 1),
-        borderRadius: BorderRadius.circular(10.0),
-        border: Border.all(
-          color: Colors.black,
-          width: 1.0,
-        ),
-      ),
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-
-      // Uso de un input (Campo de texto)
-      child: TextField(
-        obscureText: passenable, // Oculta el contenido si es "true" y lo muestra si es "false"
-        style: TextStyle(fontSize: 25),
-        decoration: InputDecoration(
-          hintText: textoContrasenia,
-          border: InputBorder.none, // Quita la línea que viene por defecto en el TextField
-
-          suffix: IconButton(
-
-              /* Agrega una animación al presionar el boton y permite realizar una accion 
-            agregandolo entre las {} */
-              onPressed: () {
-                // Permite redibujar el widget para que se muestre los cambios en la aplicación
-                setState(() {
-                    if (passenable) {
-                      passenable = false;
-                    } else {
-                      passenable = true;
-                    }
-                  }
-                );
-              },
-            // Agrega un icono para mostrar y otro para no mostrar contrasenia
-            icon: new Icon(passenable == true ? Icons.visibility_off : Icons.visibility)
-          )
-        ),
-      ),
-    );
-  }
+  
 }
