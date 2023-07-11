@@ -1,6 +1,7 @@
 import 'package:app_credibanco_login/src/assets/buttons.dart';
 import 'package:app_credibanco_login/src/assets/input.dart';
 import 'package:app_credibanco_login/src/assets/titulo.dart';
+import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:flutter/material.dart';
 import 'Password_page.dart';
 
@@ -81,10 +82,10 @@ class _RegisterPageState extends State<RegisterPage> {
     return TextButton(
       onPressed: () {
         // Condición para manejar los cambios de pantalla
-        if (textoLink == "¿No tienes cuenta?, pinche aqui") {
+        if (textoLink == "¿Ya tienes cuenta?, click aqui") {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => RegisterPage()),
+            MaterialPageRoute(builder: (context) => LoginPage()),
           );
         } else {
           Navigator.push(
