@@ -1,3 +1,4 @@
+import 'package:app_credibanco_login/src/assets/titulo.dart';
 import 'package:flutter/material.dart';
 import '../assets/buttons.dart';
 import '../assets/input.dart';
@@ -13,6 +14,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   // Variable para el estilo del texto
   final TextStyle _estiloTexto = new TextStyle(fontSize: 25);
+  final String imageUrl =
+      "https://elempleo.blob.core.windows.net/empresasprd/1379.gif";
   // Variable de tipo boolean para icono de si o no mostrar contrasenia
   bool passenable = true;
 
@@ -22,15 +25,15 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       // Barra principal de navegación "AppBar"
       appBar: AppBar(
-        backgroundColor: CustomColors
-            .colorAppBar, // Color del AppBar por medio de la clase "CustomColors"
+        backgroundColor: Color.fromARGB(255, 255, 255,
+            255), // Color del AppBar por medio de la clase "CustomColors"
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
       body: Center(
         child: Padding(
           padding: EdgeInsets.all(
-              20), // Separación entre todos los widgets y el borde del celular
+              15), // Separación entre todos los widgets y el borde del celular
           child: Column(
             // Se acomoda el contenido en columna
 
@@ -43,43 +46,47 @@ class _LoginPageState extends State<LoginPage> {
                                 a unir */
 
               // ---- Titulo de "LOGIN" ----
-              Text("LOGIN", style: new TextStyle(fontSize: 80)),
+
+              Image.network(
+                imageUrl,
+              ),
+
+              SizedBox(
+                height: 45.0,
+              ),
+
+              Text("Inicion sesión", style: new TextStyle(fontSize: 60)),
 
               // ---- Agregar un espacio entre los dos widgets (Text, Align)----
               SizedBox(
                 height: 45.0,
               ),
 
-              // ---- Texto "Correo*" ----
-              Align(
-                //alignment: Alignment(-1.0, 0.0),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Correo*",
-                  style: _estiloTexto,
-                ),
-              ),
-
               // ---- Llamado Widget para un campo de texto para ingresar correo ----
-              inputText("example@hotmail.com"),
+              inputText("Correo electronico"),
 
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 15.0,
               ),
 
-              // ---- Texto "Contrasenia*" ----
-              Align(
-                //alignment: Alignment(-1.0, 0.0),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Contraseña*",
-                  style: _estiloTexto,
-                ),
+              // ---- Campo de texto para ingresar contrasenia ----
+              _inputPassword("Contraseña"),
+
+              // ---- Agregar un espacio ----
+              SizedBox(
+                height: 25.0,
               ),
 
-              // ---- Campo de texto para ingresar contrasenia ----
-              _inputPassword("************"),
+              // ---- Boton "Iniciar de sesión" ----
+              boton("Iniciar sesión", Color.fromRGBO(255, 182, 0, 1)),
+
+              SizedBox(
+                height: 25.0,
+              ),
+
+              // ------Boton "REGISTRATE"----------
+              boton("Registrate ", Color.fromRGBO(255, 255, 255, 1)),
 
               // ---- Agregar un espacio ----
               SizedBox(
@@ -90,40 +97,8 @@ class _LoginPageState extends State<LoginPage> {
               Align(
                 //alignment: Alignment(-1.0, 0.0),
                 alignment: Alignment.center,
-                child: _buttonLink("¿Olvidaste tu Contraseña?, pinche aqui"),
+                child: _buttonLink("Olvide mi contraseña"),
               ),
-
-              // ---- Agregar un espacio ----
-              SizedBox(
-                height: 25.0,
-              ),
-
-              // ---- Boton "Iniciar de sesión" ----
-              boton("Iniciar sesión"),
-
-              // ---- Agregar un espacio ----
-              SizedBox(
-                height: 25.0,
-              ),
-
-              // ---- Linea de separación con "Divider" ----
-              Row(children: <Widget>[
-                Expanded(
-                    child: Divider(
-                  color: Colors.black,
-                  thickness: 1,
-                )),
-                Container(
-                  child: Text("O"),
-                  margin: EdgeInsets.symmetric(horizontal: 15),
-                ),
-                Expanded(
-                    child: Divider(
-                  color: Colors.black,
-                  thickness: 1,
-                )),
-              ]),
-              // ---------------------------------------------
 
               // ---- Agregar un espacio ----
               SizedBox(
@@ -133,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
               // ---- Texto para un link si no tienes cuenta----
               Align(
                 alignment: Alignment.center,
-                child: _buttonLink("¿No tienes cuenta?, pinche aqui"),
+                child: _buttonLink("Olvide mi correo electronico"),
               ),
             ],
           ),
@@ -148,8 +123,10 @@ class _LoginPageState extends State<LoginPage> {
       // Permite definir el diseño de la caja de texto "BoxDecoration"
       decoration: BoxDecoration(
         color: Color.fromRGBO(217, 217, 217, 1), // Color del input
-        borderRadius: BorderRadius.circular(10.0), // Define los bordes redondeados
-        border: Border.all( // Define el grosor y color de borde
+        borderRadius:
+            BorderRadius.circular(10.0), // Define los bordes redondeados
+        border: Border.all(
+          // Define el grosor y color de borde
           color: Colors.black,
           width: 1.0,
         ),
@@ -160,12 +137,12 @@ class _LoginPageState extends State<LoginPage> {
 
       // Uso de un input (Campo de texto)
       child: TextField(
-            style: TextStyle(fontSize: 25), // Tamanio del texto
-            decoration: InputDecoration.collapsed( /* Quita la linea que viene por 
+          style: TextStyle(fontSize: 25), // Tamanio del texto
+          decoration: InputDecoration.collapsed(
+            /* Quita la linea que viene por 
                                                   defecto en el input "InputDecoration.collapsed" */
-              hintText: textoCorreo, // Place holder en el input
-            )
-          ),
+            hintText: textoCorreo, // Place holder en el input
+          )),
       /*
           height: 40.0,
           width: 1000.0,
@@ -178,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget _inputPassword(String textoContrasenia) {
     return Container(
       decoration: BoxDecoration(
-        color: Color.fromRGBO(217, 217, 217, 1),
+        color: Color.fromRGBO(255, 254, 254, 1),
         borderRadius: BorderRadius.circular(10.0),
         border: Border.all(
           color: Colors.black,
