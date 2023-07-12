@@ -46,7 +46,7 @@ class _RegisterPageState extends State<RegisterPage> {
               SizedBox(
                 height: 25.0,
               ),
-              boton("Enviar Codigo.", Color.fromRGBO(255, 182, 0, 1))
+              boton_orange("Enviar Codigo.", Color.fromRGBO(255, 182, 0, 1))
             ]),
             SizedBox(
               height: 25.0,

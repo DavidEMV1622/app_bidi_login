@@ -14,8 +14,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   // Variable para el estilo del texto
   final TextStyle _estiloTexto = new TextStyle(fontSize: 25);
-  final String imageUrl =
-      "https://elempleo.blob.core.windows.net/empresasprd/1379.gif";
+  //final String imageUrl ="https://elempleo.blob.core.windows.net/empresasprd/1379.gif";
   // Variable de tipo boolean para icono de si o no mostrar contrasenia
   bool passenable = true;
 
@@ -23,12 +22,6 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     // Plantilla principal "Scaffold"
     return Scaffold(
-      // Barra principal de navegación "AppBar"
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255,
-            255), // Color del AppBar por medio de la clase "CustomColors"
-      ),
-
       // ---- Cuerpo o contenido de la aplicación "body" ----
       body: Center(
         child: Padding(
@@ -45,15 +38,15 @@ class _LoginPageState extends State<LoginPage> {
                                 los hijos o cadenas de widget que se van 
                                 a unir */
 
-              // ---- Titulo de "LOGIN" ----
-
-              Image.network(
+              /*Image.network(
                 imageUrl,
-              ),
+              ),*/
 
               SizedBox(
                 height: 45.0,
               ),
+
+              // ---- Titulo de "LOGIN" ----
 
               Text("Inicion sesión", style: new TextStyle(fontSize: 60)),
 
@@ -79,14 +72,14 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Boton "Iniciar de sesión" ----
-              boton("Iniciar sesión", Color.fromRGBO(255, 182, 0, 1)),
+              boton_orange("Iniciar sesión", Color.fromRGBO(255, 182, 0, 1)),
 
               SizedBox(
                 height: 25.0,
               ),
 
               // ------Boton "REGISTRATE"----------
-              boton("Registrate ", Color.fromRGBO(255, 255, 255, 1)),
+              boton_White("Registrate ", Color.fromRGBO(255, 255, 255, 1), 2),
 
               // ---- Agregar un espacio ----
               SizedBox(
@@ -222,6 +215,7 @@ class _LoginPageState extends State<LoginPage> {
         style: TextStyle(
           fontSize: 18, // Tamaño del texto
           color: CustomColors.colorLink, // Color del texto
+          decoration: TextDecoration.underline,
         ),
       ),
     );
