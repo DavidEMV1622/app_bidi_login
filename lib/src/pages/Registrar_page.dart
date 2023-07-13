@@ -32,7 +32,7 @@ class _RegisterPageState extends State<RegisterPage> {
       body: ListView(
           padding: EdgeInsets.symmetric(
             horizontal: 30.0,
-            vertical: 40.0,
+            vertical: 25.0,
           ),
           children: <Widget>[
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -46,7 +46,12 @@ class _RegisterPageState extends State<RegisterPage> {
               SizedBox(
                 height: 25.0,
               ),
-              boton_orange("Enviar Codigo.", Color.fromRGBO(255, 182, 0, 1))
+              BtnPrimaery(
+                textButton: "Enviar codigo",
+                colorBox: Color.fromRGBO(255, 182, 0, 1),
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RegisterPage())),
+              ),
             ]),
             SizedBox(
               height: 25.0,

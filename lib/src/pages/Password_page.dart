@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../assets/buttons.dart';
+import '../assets/input.dart';
 import '../assets/titulo.dart';
 import '../colors/colors.dart';
+import 'Registrar_page.dart';
 
 class PasswordPage extends StatefulWidget {
   @override
@@ -15,6 +17,7 @@ class _PasswordPageState extends State<PasswordPage> {
   // Variable para el estilo del texto
   final TextStyle _estiloTexto = new TextStyle(fontSize: 25);
 
+  // Controlar y manipular el texto dentro de un widget de entrada de texto
   final focusControllerOne = TextEditingController();
   final focusControllerTwo = TextEditingController();
   final focusControllerThree = TextEditingController();
@@ -22,7 +25,7 @@ class _PasswordPageState extends State<PasswordPage> {
   final focusControllerFive = TextEditingController();
   final focusControllerSix = TextEditingController();
   
-  // Instanciación de cada uno de los campos "FocusNode" (Cambiar de campo automaticamente)
+  // Instanciación de cada uno de los campos "FocusNode"
   late FocusNode focusNode1;
   late FocusNode focusNode2;
   late FocusNode focusNode3;
@@ -30,6 +33,7 @@ class _PasswordPageState extends State<PasswordPage> {
   late FocusNode focusNode5;
   late FocusNode focusNode6;
 
+  // Cerrar cada focus para no consumir recursos del equipo
   @override
   void dispose() {
     super.dispose();
@@ -117,13 +121,13 @@ class _PasswordPageState extends State<PasswordPage> {
                 MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                _inputCode("*", focusNode1, focusControllerOne, focusNode2),
-                _inputCode("*", focusNode2, focusControllerTwo, focusNode3),
-                _inputCode("*", focusNode3, focusControllerThree, focusNode4),
-                _inputCode("*", focusNode4, focusControllerFour, focusNode5),
-                _inputCode("*", focusNode5, focusControllerFive, focusNode6),
-                _inputCode("*", focusNode6, focusControllerSix, focusNode6),
-              ],
+                  inputCode("*", focusNode1, focusControllerOne, focusNode2, context),
+                  inputCode("*", focusNode2, focusControllerTwo, focusNode3, context),
+                  inputCode("*", focusNode3, focusControllerThree, focusNode4, context),
+                  inputCode("*", focusNode4, focusControllerFour, focusNode5, context),
+                  inputCode("*", focusNode5, focusControllerFive, focusNode6, context),
+                  inputCode("*", focusNode6, focusControllerSix, focusNode6, context),
+                ],
               ),
 
               // ---- Agregar un espacio ----
@@ -135,7 +139,7 @@ class _PasswordPageState extends State<PasswordPage> {
               Align(
                 //alignment: Alignment(-1.0, 0.0),
                 alignment: Alignment.center,
-                child: _buttonLink("Click aquí, para reenviar codigo"),
+                child: buttonLink("Click aquí, para reenviar codigo", context),
               ),
 
               // ---- Agregar un espacio ----
@@ -144,7 +148,12 @@ class _PasswordPageState extends State<PasswordPage> {
               ),
 
               // ---- Boton "Comprobar" ----
-              boton_orange("Comprobar", Color.fromRGBO(255, 182, 0, 1)),              
+              BtnPrimaery(
+                textButton: "Iniciar secion",
+                colorBox: Color.fromRGBO(255, 182, 0, 1),
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RegisterPage())),
+              ),
 
             ],
           ),
@@ -155,94 +164,5 @@ class _PasswordPageState extends State<PasswordPage> {
 
   void requestFocus(BuildContext context, FocusNode focusNode) {
     FocusScope.of(context).requestFocus(focusNode);
-  }
-
-  // ---- Widget para un boton transparente para los links ----
-  Widget _buttonLink(String textoLink) {
-    return TextButton(
-      onPressed: () {
-          /*
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => NULL),
-          );
-          */
-      },
-      style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
-              Colors.transparent) // Define el fondo transparente
-          ),
-      child: Text(
-        textoLink, // Agrega el texto
-        style: TextStyle(
-          fontSize: 18, // Tamaño del texto
-          color: CustomColors.colorLink, // Color del texto
-          decoration: TextDecoration.underline,
-        ),
-      ),
-    );
-  }
-
-  // ---- Widget para el campos de texto de los codigos de confirmacion  ----
-  Widget _inputCode(String texto, FocusNode nombreFocus, final nombreController, FocusNode cambiarFocus) {
-    return Container(
-      // Permite definir el diseño de la caja de texto "BoxDecoration"
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(217, 217, 217, 1), // Color del input
-        borderRadius:
-            BorderRadius.circular(10.0), // Define los bordes redondeados
-        border: Border.all(
-          // Define el grosor y color de borde
-          color: Colors.black,
-          width: 1.0,
-        ),
-      ),
-      // Espaciado entre el borde y el contenido
-      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 17.0),
-      //margin: EdgeInsets.symmetric(horizontal: 10.0),
-
-      // Uso de un input (Campo de texto)
-      
-      child: ListView(
-        children: <Widget> [
-          TextFormField(
-
-            keyboardType: TextInputType.number, // Tipo de dato del campo
-
-            controller: nombreController,
-        
-            //inputFormatters: [LengthLimitingTextInputFormatter(1),], // Limitar cantidad caracteres
-            style: TextStyle(fontSize: 25,), // Tamanio del texto
-
-            // https://stackoverflow.com/questions/63499959/how-can-i-make-textfield-with-hyphen-at-certain-places-of-input-number-in-flutte
-
-            decoration: InputDecoration.collapsed(/* Quita la linea que viene por 
-                                                  defecto en el input "InputDecoration.collapsed" */
-              hintText: texto, // Place holder en el input
-
-            ),
-
-            focusNode: nombreFocus, // Uso de cada Focus
-            onChanged: (String cantidadCaracteres) {
-              if (cantidadCaracteres.length == 1) {
-                nombreFocus.unfocus();
-                FocusScope.of(context).requestFocus(cambiarFocus);
-              }
-            },
-            
-          ),
-        ],
-        
-      ),
-
-        // Definir largo y alto de los campos
-        height: 60,
-        width: 50,
-            
-      margin: EdgeInsets.symmetric(
-        horizontal: 4,
-        vertical: 5,
-      ),
-    );
   }
 }

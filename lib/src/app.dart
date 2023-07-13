@@ -1,5 +1,6 @@
 import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:app_credibanco_login/src/pages/Password_page.dart';
+import 'package:app_credibanco_login/src/pages/SendCodePassword.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // widget principal
       home: Center(
-        child: LoginPage(),
+        child: SendCodePassword(),
       ),
     );
   }
