@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // widget principal
       home: Center(
-        child: PasswordPage(),
+        child: LoginPage(),
       ),
     );
   }
