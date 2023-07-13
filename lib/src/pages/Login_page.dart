@@ -15,9 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   // Variable para el estilo del texto
   final TextStyle _estiloTexto = new TextStyle(fontSize: 25);
   //final String imageUrl ="https://elempleo.blob.core.windows.net/empresasprd/1379.gif";
-  // Variable de tipo boolean para icono de si o no mostrar contrasenia
-  bool passenable = true;
-
+  
   @override
   Widget build(BuildContext context) {
     // Plantilla principal "Scaffold"
@@ -48,7 +46,9 @@ class _LoginPageState extends State<LoginPage> {
 
               // ---- Titulo de "LOGIN" ----
 
-              Text("Inicion sesión", style: new TextStyle(fontSize: 60)),
+              Text(
+                "Iniciar sesión", 
+                textAlign: TextAlign.center,style: new TextStyle(fontSize: 60)),
 
               // ---- Agregar un espacio entre los dos widgets (Text, Align)----
               SizedBox(
@@ -64,7 +64,10 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Campo de texto para ingresar contrasenia ----
-              _inputPassword("Contraseña"),
+              //inputPassword("Contraseña"),
+              PasswordInput(
+                hintText: 'Contraseña',
+              ),
 
               // ---- Agregar un espacio ----
               SizedBox(
@@ -78,8 +81,13 @@ class _LoginPageState extends State<LoginPage> {
                 height: 25.0,
               ),
 
-              // ------Boton "REGISTRATE"----------
-              boton_White("Registrate ", Color.fromRGBO(255, 255, 255, 1), 2),
+              /* ------Boton "REGISTRATE"----------
+              Obtiene como parametro los siguientes puntos:
+              1) Texto que tiene el boton
+              2) Color del boton
+              3) Grosor del borde
+              4) "context" proporciona informacion del widget en el que estamos ubicado */
+              boton_White("Registrate", Color.fromRGBO(255, 255, 255, 1), 2, context),
 
               // ---- Agregar un espacio ----
               SizedBox(
@@ -90,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
               Align(
                 //alignment: Alignment(-1.0, 0.0),
                 alignment: Alignment.center,
-                child: _buttonLink("Olvide mi contraseña"),
+                child: buttonLink("Olvide mi contraseña", context),
               ),
 
               // ---- Agregar un espacio ----
@@ -101,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
               // ---- Texto para un link si no tienes cuenta----
               Align(
                 alignment: Alignment.center,
-                child: _buttonLink("Olvide mi correo electronico"),
+                child: buttonLink("Olvide mi correo electronico", context),
               ),
             ],
           ),
@@ -109,7 +117,8 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-
+  
+  /*
   // ---- Widget para el campo de texto "Correo" ----
   Widget _textFieldEmail(String textoCorreo) {
     return Container(
@@ -142,134 +151,5 @@ class _LoginPageState extends State<LoginPage> {
           margin: EdgeInsets.symmetric(horizontal: 10.0),
           */
     );
-  }
-
-  // ---- Widget para el campo de texto "Contrasenia" ----
-  Widget _inputPassword(String textoContrasenia) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(255, 254, 254, 1),
-        borderRadius: BorderRadius.circular(10.0),
-        border: Border.all(
-          color: Colors.black,
-          width: 1.0,
-        ),
-      ),
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 7.0),
-
-      // Uso de un input (Campo de texto)
-      child: TextField(
-        obscureText:
-            passenable, // Oculta el contenido si es "true" y lo muestra si es "false"
-        style: TextStyle(fontSize: 25),
-        decoration: InputDecoration(
-          hintText: textoContrasenia,
-          border: InputBorder
-              .none, // Quita la línea que viene por defecto en el TextField
-
-          suffixIcon: IconButton(
-
-            // Agrega un icono para mostrar y otro para no mostrar contrasenia
-            icon: new Icon(passenable == true
-                ? Icons.visibility_off
-                : Icons.visibility),
-
-            /* Agrega una animación al presionar el boton y permite realizar una accion 
-            agregandolo entre las {} */
-            onPressed: () {
-              // Permite redibujar el widget para que se muestre los cambios en la aplicación
-              setState(() {
-                if (passenable) {
-                  passenable = false;
-                } else {
-                  passenable = true;
-                }
-              });
-            },
-          ),
-        )
-      )
-    );
-  }
-/*
-    // ---- Widget para el campo de texto "Contrasenia" ----
-  Widget _inputPassword(String textoContrasenia) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(217, 217, 217, 1),
-        borderRadius: BorderRadius.circular(10.0),
-        border: Border.all(
-          color: Colors.black,
-          width: 1.0,
-        ),
-      ),
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-
-      // Uso de un input (Campo de texto)
-      child: TextField(
-        obscureText:
-            passenable, // Oculta el contenido si es "true" y lo muestra si es "false"
-        style: TextStyle(fontSize: 25),
-        decoration: InputDecoration(
-            hintText: textoContrasenia,
-            border: InputBorder
-                .none, // Quita la línea que viene por defecto en el TextField
-
-            suffixIcon: IconButton(
-
-              // Agrega un icono para mostrar y otro para no mostrar contrasenia
-                icon: new Icon(passenable == true
-                    ? Icons.visibility_off
-                    : Icons.visibility),
-
-                /* Agrega una animación al presionar el boton y permite realizar una accion 
-            agregandolo entre las {} */
-                onPressed: () {
-                  // Permite redibujar el widget para que se muestre los cambios en la aplicación
-                  setState(() {
-                    if (passenable) {
-                      passenable = false;
-                    } else {
-                      passenable = true;
-                    }
-                  });
-                },
-                
-                )),
-      ),
-    );
-  }
-*/
-
-  // ---- Widget para un boton transparente para los links ----
-  Widget _buttonLink(String textoLink) {
-    return TextButton(
-      onPressed: () {
-        // Condición para manejar los cambios de pantalla
-        if (textoLink == "¿No tienes cuenta?, pinche aqui") {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => RegisterPage()),
-          );
-        } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => PasswordPage()),
-          );
-        }
-      },
-      style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
-              Colors.transparent) // Define el fondo transparente
-          ),
-      child: Text(
-        textoLink, // Agrega el texto
-        style: TextStyle(
-          fontSize: 18, // Tamaño del texto
-          color: CustomColors.colorLink, // Color del texto
-          decoration: TextDecoration.underline,
-        ),
-      ),
-    );
-  }
+  } */
 }

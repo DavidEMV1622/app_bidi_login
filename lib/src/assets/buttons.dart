@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 
 import '../colors/colors.dart';
+import '../pages/Password_page.dart';
+import '../pages/Registrar_page.dart';
 
 // ---- Widget para el boton de inicio de sesion ----
 Widget boton_orange(String textoBoton, Color Variable) {
@@ -35,18 +37,23 @@ Widget boton_orange(String textoBoton, Color Variable) {
   );
 }
 
-Widget boton_White(String textoBoton, Color Variable, double variable) {
+Widget boton_White(String textoBoton, Color colorBox, double widthBorder, context) {
   return Container(
     decoration: BoxDecoration(
-      color: Variable, // Color del input
-      border: Border.all(width: variable),
+      color: colorBox, // Color del input
+      border: Border.all(width: widthBorder),
       borderRadius: BorderRadius.circular(10),
     ),
     child: MaterialButton(
       minWidth: double.infinity, // Ancho del boton
       height: 60, // Largo del botoncircular(10.0)
 
-      onPressed: () {}, // Animación al presionar
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => RegisterPage()),
+        );
+      }, // Animación al presionar
 
       //color: Color.fromRGBO(255, 182, 0,
       //  1), // Color del boton por medio de la clase "CustomColors"
@@ -64,3 +71,41 @@ Widget boton_White(String textoBoton, Color Variable, double variable) {
     ),
   );
 }
+
+// ---- Widget para un boton transparente para los links ----
+  Widget buttonLink(String textoLink, context) {
+    return TextButton(
+      onPressed: () {
+        /*
+        // Condición para manejar los cambios de pantalla
+        if (textoLink == "Olvide mi contraseña") {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PasswordPage()),
+          );
+        } else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => RegisterPage()),
+          );
+        }
+        */
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => PasswordPage()),
+        );
+      },
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(
+              Colors.transparent) // Define el fondo transparente
+          ),
+      child: Text(
+        textoLink, // Agrega el texto
+        style: TextStyle(
+          fontSize: 18, // Tamaño del texto
+          color: CustomColors.colorLink, // Color del texto
+          decoration: TextDecoration.underline,
+        ),
+      ),
+    );
+  }
