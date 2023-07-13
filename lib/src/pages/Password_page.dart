@@ -8,8 +8,6 @@ class PasswordPage extends StatefulWidget {
 }
 
 class _PasswordPageState extends State<PasswordPage> {
-  // Variable para el estilo del texto
-  final TextStyle _estiloTexto = new TextStyle(fontSize: 25);
   // Variable de tipo boolean para icono de si o no mostrar contrasenia
   bool passenable = true;
 
@@ -19,23 +17,23 @@ class _PasswordPageState extends State<PasswordPage> {
     return Scaffold(
       // Barra principal de navegación "AppBar"
       appBar: AppBar(
-        backgroundColor: CustomColors.colorAppBar, // Color del AppBar por medio de la clase "CustomColors"
-        
+        backgroundColor: CustomColors
+            .colorAppBar, // Color del AppBar por medio de la clase "CustomColors"
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(20), // Separación entre todos los widgets y el borde del celular
-          child: Column( // Se acomoda el contenido en columna
+          padding: EdgeInsets.all(
+              20), // Separación entre todos los widgets y el borde del celular
+          child: Column(
+            // Se acomoda el contenido en columna
 
             mainAxisAlignment:
                 MainAxisAlignment.center, // Define la posición de los widgets
 
-            children: <Widget>[ 
-
-              Text("RECUPERAR CONTRASEÑA", style: new TextStyle(fontSize: 80)),
-
+            children: <Widget>[
+              Text("RECUPERAR CONTRASEÑA", style: new TextStyle(fontSize: 48)),
             ],
           ),
         ),

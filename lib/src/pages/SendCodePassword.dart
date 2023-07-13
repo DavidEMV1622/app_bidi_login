@@ -14,8 +14,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   // Variable para el estilo del texto
   final TextStyle _estiloTexto = new TextStyle(fontSize: 25);
-  final String imageUrl =
-      "https://elempleo.blob.core.windows.net/empresasprd/1379.gif";
+  //final String imageUrl ="https://elempleo.blob.core.windows.net/empresasprd/1379.gif";
   // Variable de tipo boolean para icono de si o no mostrar contrasenia
   bool passenable = true;
 
@@ -39,9 +38,9 @@ class _LoginPageState extends State<LoginPage> {
                                 los hijos o cadenas de widget que se van 
                                 a unir */
 
-              Image.network(
+              /*Image.network(
                 imageUrl,
-              ),
+              ),*/
 
               SizedBox(
                 height: 45.0,
@@ -49,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
 
               // ---- Titulo de "LOGIN" ----
 
-              Text("Iniciar sesión", style: new TextStyle(fontSize: 60)),
+              Text("Inicion sesión", style: new TextStyle(fontSize: 60)),
 
               // ---- Agregar un espacio entre los dos widgets (Text, Align)----
               SizedBox(
