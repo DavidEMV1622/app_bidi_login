@@ -10,10 +10,8 @@ class PasswordPage extends StatefulWidget {
 }
 
 class _PasswordPageState extends State<PasswordPage> {
-<<<<<<< HEAD
   // Variable de tipo boolean para icono de si o no mostrar contrasenia
   bool passenable = true;
-=======
   // Variable para el estilo del texto
   final TextStyle _estiloTexto = new TextStyle(fontSize: 25);
 
@@ -62,7 +60,6 @@ class _PasswordPageState extends State<PasswordPage> {
     focusNode5 = FocusNode();
     focusNode6 = FocusNode();
   }
->>>>>>> a9d3fa9344071b6205eb4227c300e510cd7ea1c6
 
   @override
   Widget build(BuildContext context) {
@@ -84,11 +81,6 @@ class _PasswordPageState extends State<PasswordPage> {
 
             mainAxisAlignment:
                 MainAxisAlignment.center, // Define la posición de los widgets
-<<<<<<< HEAD
-
-            children: <Widget>[
-              Text("RECUPERAR CONTRASEÑA", style: new TextStyle(fontSize: 48)),
-=======
             
             children: <Widget>[ 
 
@@ -154,7 +146,6 @@ class _PasswordPageState extends State<PasswordPage> {
               // ---- Boton "Comprobar" ----
               boton_orange("Comprobar", Color.fromRGBO(255, 182, 0, 1)),              
 
->>>>>>> a9d3fa9344071b6205eb4227c300e510cd7ea1c6
             ],
           ),
         ),
