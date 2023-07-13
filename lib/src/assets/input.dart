@@ -108,6 +108,7 @@ class _PasswordInputState extends State<PasswordInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       decoration: BoxDecoration(
         color: CustomColors.colorInput,
         borderRadius: BorderRadius.circular(10.0),
@@ -116,17 +117,22 @@ class _PasswordInputState extends State<PasswordInput> {
           width: 1.0,
         ),
       ),
+
       padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 7.0),
+
       child: TextField(
         obscureText: passEnable,
         style: TextStyle(fontSize: 25),
+
         decoration: InputDecoration(
           hintText: widget.hintText,
           border: InputBorder.none,
+
           suffixIcon: IconButton(
             icon: Icon(
               passEnable ? Icons.visibility_off : Icons.visibility,
             ),
+            
             onPressed: () {
               setState(() {
                 passEnable = !passEnable;
