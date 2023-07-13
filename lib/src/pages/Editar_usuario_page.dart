@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../assets/fuentesText/fuentes.dart';
 import '../assets/input.dart';
 import '../assets/titulo.dart';
 import '../colors/colors.dart';
@@ -16,7 +17,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
       // Barra principal de navegación "AppBar"
       appBar: AppBar(
         backgroundColor: CustomColors
-            .colorAppBar, // Color del AppBar por medio de la clase "CustomColors"
+            .colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
@@ -29,7 +30,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                titulo("Editar Usuario."),
+                tituloEncabezadoUno("Editar Usuario"),
                 inputText("Nombre:"),
                 inputText("Apellido:"),
                 inputText("Correo:"),

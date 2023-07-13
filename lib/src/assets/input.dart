@@ -9,12 +9,12 @@ Widget inputText(String textoCorreo) {
   return Container(
     // Permite definir el diseño de la caja de texto "BoxDecoration"
     decoration: BoxDecoration(
-      color: CustomColors.colorInput, // Color del input
+      color: CustomColors.colorBlanco, // Color del input
       borderRadius:
-          BorderRadius.circular(10.0), // Define los bordes redondeados
+          BorderRadius.circular(4.0), // Define los bordes redondeados
       border: Border.all(
         // Define el grosor y color de borde
-        color: Colors.black,
+        color: CustomColors.colorNegro,
         width: 1.0,
       ),
     ),
@@ -24,16 +24,16 @@ Widget inputText(String textoCorreo) {
 
     // Uso de un input (Campo de texto)
     child: TextField(
-        style: TextStyle(fontSize: 25), // Tamanio del texto
+        style: TextStyle(fontSize: 14.0), // Tamanio del texto
         decoration: InputDecoration.collapsed(
           /* Quita la linea que viene por 
                                                   defecto en el input "InputDecoration.collapsed" */
           hintText: textoCorreo, // Place holder en el input
         )),
-    /*
-          height: 40.0,
-          width: 1000.0,
-          */
+    
+          //height: 35,
+          //width: 1000.0,
+          
     margin: EdgeInsets.symmetric(
       horizontal: 0,
       vertical: 5,
@@ -91,12 +91,12 @@ Widget inputPassword(String textoContrasenia, context) {
   }
 */
 
-/* Clase para manejar el inputPassword, ya que el setState necesita un build para poder 
+/* Clase para manejar el inputPassword, ya que el setState necesita un build (context) para poder 
 actualizar el estado del mismo */
 class PasswordInput extends StatefulWidget {
-  final String hintText;
+  final String textoContrasenia;
 
-  PasswordInput({required this.hintText});
+  PasswordInput({required this.textoContrasenia});
 
   @override
   _PasswordInputState createState() => _PasswordInputState();
@@ -110,32 +110,37 @@ class _PasswordInputState extends State<PasswordInput> {
     return Container(
 
       decoration: BoxDecoration(
-        color: CustomColors.colorInput,
-        borderRadius: BorderRadius.circular(10.0),
+        color: CustomColors.colorBlanco,
+        borderRadius: BorderRadius.circular(4.0),
         border: Border.all(
-          color: Colors.black,
+          color: CustomColors.colorNegro,
           width: 1.0,
         ),
       ),
 
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 7.0),
+      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
 
       child: TextField(
         obscureText: passEnable,
-        style: TextStyle(fontSize: 25),
+        style: TextStyle(fontSize: 14),
 
         decoration: InputDecoration(
-          hintText: widget.hintText,
+          hintText: widget.textoContrasenia,
           border: InputBorder.none,
 
           suffixIcon: IconButton(
+            iconSize: 20,
             icon: Icon(
               passEnable ? Icons.visibility_off : Icons.visibility,
             ),
             
             onPressed: () {
               setState(() {
-                passEnable = !passEnable;
+                if (passEnable) {
+                  passEnable = false;
+                } else {
+                  passEnable = true;
+                }
               });
             },
           ),
@@ -144,17 +149,85 @@ class _PasswordInputState extends State<PasswordInput> {
     );
   }
 }
+/*
+// Clase para manejar el inputCode,
+class InputCo extends StatefulWidget {
+  String texto; 
+  FocusNode nombreFocus; 
+  final nombreController; 
+  FocusNode cambiarFocus;
 
-// ---- Widget para el campos de texto de los codigos de confirmacion  ----
-  Widget inputCode(String texto, FocusNode nombreFocus, final nombreController, FocusNode cambiarFocus, context) {
+  InputCo({
+    required this.texto, 
+    required this.nombreFocus, 
+    required this.nombreController, 
+    required this.cambiarFocus}
+  );
+
+  @override
+  _InputCoState createState() => _InputCoState();
+}
+
+class _InputCoState extends State<InputCo> {
+  /*
+  // Controlar y manipular el texto dentro de un widget de entrada de texto
+  final focusControllerOne = TextEditingController();
+  final focusControllerTwo = TextEditingController();
+  final focusControllerThree = TextEditingController();
+  final focusControllerFour = TextEditingController();
+  final focusControllerFive = TextEditingController();
+  final focusControllerSix = TextEditingController();
+  
+  // Instanciación de cada uno de los campos "FocusNode"
+  late FocusNode focusNode1;
+  late FocusNode focusNode2;
+  late FocusNode focusNode3;
+  late FocusNode focusNode4;
+  late FocusNode focusNode5;
+  late FocusNode focusNode6;
+
+  // Cerrar cada focus para no consumir recursos del equipo
+  @override
+  void dispose() {
+    super.dispose();
+    focusControllerOne.dispose();
+    focusControllerTwo.dispose();
+    focusControllerThree.dispose();
+    focusControllerFour.dispose();
+    focusControllerFive.dispose();
+    focusControllerSix.dispose();
+
+    focusNode1.dispose();
+    focusNode2.dispose();
+    focusNode3.dispose();
+    focusNode4.dispose();
+    focusNode5.dispose();
+    focusNode6.dispose();
+  }
+
+  // Creación de los Focus
+  @override
+  void initState() {
+    super.initState();
+
+    focusNode1 = FocusNode();
+    focusNode2 = FocusNode();
+    focusNode3 = FocusNode();
+    focusNode4 = FocusNode();
+    focusNode5 = FocusNode();
+    focusNode6 = FocusNode();
+  }
+  */
+  @override
+  Widget build(BuildContext context) {
     return Container(
       // Permite definir el diseño de la caja de texto "BoxDecoration"
       decoration: BoxDecoration(
-        color: CustomColors.colorInput, // Color del input
+        color: CustomColors.colorBlanco, // Color del input
         borderRadius: BorderRadius.circular(10.0), // Define los bordes redondeados
         // Define el grosor y color del borde
         border: Border.all(
-          color: Colors.black,
+          color: CustomColors.colorNegro,
           width: 1.0,
         ),
       ),
@@ -199,7 +272,70 @@ class _PasswordInputState extends State<PasswordInput> {
       // Margen de separacion entre cada campo
       margin: EdgeInsets.symmetric(
         horizontal: 4,
-        vertical: 5,
+        //vertical: 5,
+      ),
+    );
+  }
+  void requestFocus(BuildContext context, FocusNode focusNode) {
+    FocusScope.of(context).requestFocus(focusNode);
+  }
+}
+*/
+// ---- Widget para el campos de texto de los codigos de confirmacion  ----
+  Widget inputCode(String texto, FocusNode nombreFocus, final nombreController, FocusNode cambiarFocus, context) {
+    return Container(
+      // Permite definir el diseño de la caja de texto "BoxDecoration"
+      decoration: BoxDecoration(
+        color: CustomColors.colorBlanco, // Color del input
+        borderRadius: BorderRadius.circular(10.0), // Define los bordes redondeados
+        // Define el grosor y color del borde
+        border: Border.all(
+          color: CustomColors.colorNegro,
+          width: 1.0,
+        ),
+      ),
+
+      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 17.0), // Espaciado entre el contenido y el borde
+      //margin: EdgeInsets.symmetric(horizontal: 10.0),
+
+      child: ListView(
+        children: <Widget> [
+
+          // Uso de un input (Campo de texto)
+          // Input que permite guardar, reiniciar o validar operaciones (TextFormField)
+          TextFormField(
+            keyboardType: TextInputType.number, // Tipo de dato del campo
+
+            controller: nombreController,
+        
+            //inputFormatters: [LengthLimitingTextInputFormatter(1),], // Limitar cantidad caracteres
+            style: TextStyle(fontSize: 25,), // Tamanio del texto
+            decoration: InputDecoration.collapsed(/* Quita la linea que viene por 
+                                                  defecto en el input "InputDecoration.collapsed" */
+              hintText: texto, // Place holder en el input
+
+            ),
+
+            focusNode: nombreFocus, // Uso de cada Focus
+            onChanged: (String cantidadCaracteres) { // Aplicar un evento para cambiar de input
+              // Condicion para cambiar de input
+              if (cantidadCaracteres.length == 1) {
+                nombreFocus.unfocus(); // No acepta texto adicional en el input
+                FocusScope.of(context).requestFocus(cambiarFocus); // Cambia de input
+              }
+            },
+          ),
+        ],
+      ),
+
+        // Definir largo y alto de los campos
+        height: 60,
+        width: 50,
+      
+      // Margen de separacion entre cada campo
+      margin: EdgeInsets.symmetric(
+        horizontal: 4,
+        //vertical: 5,
       ),
     );
   }

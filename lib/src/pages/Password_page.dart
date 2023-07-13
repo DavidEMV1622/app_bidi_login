@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../assets/buttons.dart';
+import '../assets/fuentesText/fuentes.dart';
 import '../assets/input.dart';
 import '../assets/titulo.dart';
 import '../colors/colors.dart';
@@ -68,7 +69,7 @@ class _PasswordPageState extends State<PasswordPage> {
     return Scaffold(
       // Barra principal de navegación "AppBar"
       appBar: AppBar(
-        backgroundColor: CustomColors.colorAppBar, // Color del AppBar por medio de la clase "CustomColors"
+        backgroundColor: CustomColors.colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
         
       ),
 
@@ -81,26 +82,18 @@ class _PasswordPageState extends State<PasswordPage> {
             mainAxisAlignment:
                 MainAxisAlignment.center, // Define la posición de los widgets
             
-            children: <Widget>[ 
-
-              titulo("Cambiar Contraseña"),
+            children: <Widget>[
+              
+              tituloEncabezadoUno("Cambiar Contraseña"),
 
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
               ),
 
-              // ---- Texto 1 ----
-              Align(
-                //alignment: Alignment(-1.0, 0.0),
-                alignment: Alignment.center,
-                child: Text(
-                  "Ingresé el codigo que fue enviado a su correo",
-                  style: _estiloTexto,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-
+              // ---- Subtitulo ----
+              subtituloUno("Ingresé el codigo que fue enviado a su correo"),
+              
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
@@ -131,19 +124,15 @@ class _PasswordPageState extends State<PasswordPage> {
               ),
 
               // ---- Texto para un link si se le olvido la contrasenia ----
-              Align(
-                //alignment: Alignment(-1.0, 0.0),
-                alignment: Alignment.center,
-                child: buttonLink("Click aquí, para reenviar codigo", context),
-              ),
-
+              BotonCambio(textoLink: "Click aquí, para reenviar codigo", textoColor: CustomColors.colorVerdePantano),
+              
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
               ),
 
               // ---- Boton "Comprobar" ----
-              boton_orange("Comprobar", Color.fromRGBO(255, 182, 0, 1)),              
+              boton_orange("Comprobar", CustomColors.colorAmarilloMostaza),              
 
             ],
           ),

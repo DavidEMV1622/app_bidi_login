@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 // Clase "CustomColors" para definir cada color
-class CustomColors {
-  static const Color colorAppBar =
-      Color.fromRGBO(124, 194, 209, 100); // Color del AppBar
-  static const Color colorButton =
-      Color.fromRGBO(3, 134, 208, 1); // Color de Botones
-  static const Color colorLink =
-      Color.fromRGBO(152, 223, 220, 1); // Color para links
-  static const Color colorInput = 
+class CustomColors { 
+  static const Color colorVerdePantano =
+      Color.fromRGBO(0, 175, 170, 1);
+  static const Color colorAmarilloMostaza =
+      Color.fromRGBO(255, 182, 0, 1);
+  static const Color colorVerdeOscuro = 
+      Color.fromRGBO(18, 71, 52, 1);
+  static const Color colorNegro = 
+      Color.fromRGBO(0, 0, 0, 1);
+   static const Color colorBlanco =
       Color.fromRGBO(255, 255, 255, 1);
 }

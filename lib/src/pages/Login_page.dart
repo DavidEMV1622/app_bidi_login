@@ -1,6 +1,7 @@
 import 'package:app_credibanco_login/src/assets/titulo.dart';
 import 'package:flutter/material.dart';
 import '../assets/buttons.dart';
+import '../assets/fuentesText/fuentes.dart';
 import '../assets/input.dart';
 import '../colors/colors.dart';
 import 'Password_page.dart';
@@ -45,10 +46,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Titulo de "LOGIN" ----
-
-              Text(
-                "Iniciar sesión", 
-                textAlign: TextAlign.center,style: new TextStyle(fontSize: 60)),
+              tituloEncabezadoUno("Iniciar Sesión"),
 
               // ---- Agregar un espacio entre los dos widgets (Text, Align)----
               SizedBox(
@@ -66,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
               // ---- Campo de texto para ingresar contrasenia ----
               //inputPassword("Contraseña"),
               PasswordInput(
-                hintText: 'Contraseña',
+                textoContrasenia: 'Contraseña',
               ),
 
               // ---- Agregar un espacio ----
@@ -75,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Boton "Iniciar de sesión" ----
-              boton_orange("Iniciar sesión", Color.fromRGBO(255, 182, 0, 1)),
+              boton_orange("Iniciar sesión", CustomColors.colorAmarilloMostaza),
 
               SizedBox(
                 height: 25.0,
@@ -87,7 +85,9 @@ class _LoginPageState extends State<LoginPage> {
               2) Color del boton
               3) Grosor del borde
               4) "context" proporciona informacion del widget en el que estamos ubicado */
-              boton_White("Registrate", Color.fromRGBO(255, 255, 255, 1), 2, context),
+              boton_White("Registrate", CustomColors.colorBlanco, 2, context),
+
+              
 
               // ---- Agregar un espacio ----
               SizedBox(
@@ -95,22 +95,22 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Texto para un link si se le olvido la contrasenia ----
-              Align(
-                //alignment: Alignment(-1.0, 0.0),
-                alignment: Alignment.center,
-                child: buttonLink("Olvide mi contraseña", context),
-              ),
-
+              BotonCambio(textoLink: "Olvide mi contraseña", textoColor: CustomColors.colorVerdePantano),
+              
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
               ),
 
               // ---- Texto para un link si no tienes cuenta----
+              /*
               Align(
                 alignment: Alignment.center,
                 child: buttonLink("Olvide mi correo electronico", context),
               ),
+              */
+              BotonCambio(textoLink: "Olvide mi correo electronico", textoColor: CustomColors.colorVerdePantano),
+              
             ],
           ),
         ),

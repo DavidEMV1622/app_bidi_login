@@ -103,9 +103,57 @@ Widget boton_White(String textoBoton, Color colorBox, double widthBorder, contex
         textoLink, // Agrega el texto
         style: TextStyle(
           fontSize: 18, // Tamaño del texto
-          color: CustomColors.colorLink, // Color del texto
+          color: CustomColors.colorVerdePantano, // Color del texto
           decoration: TextDecoration.underline,
         ),
       ),
     );
   }
+
+class BotonCambio  extends StatelessWidget {
+  
+  // Definir los parametros a utilizar
+  final String textoLink;
+  final Color textoColor;
+
+  // Agregar los parametros
+  const BotonCambio ({super.key, required this.textoLink, required this.textoColor,});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {
+        /*
+        // Condición para manejar los cambios de pantalla
+        if (textoLink == "Olvide mi contraseña") {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PasswordPage()),
+          );
+        } else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => RegisterPage()),
+          );
+        }
+        */
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => PasswordPage()),
+        );
+      },
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(
+              Colors.transparent) // Define el fondo transparente
+          ),
+      child: Text(
+        textoLink, // Agrega el texto
+        style: TextStyle(
+          fontSize: 18, // Tamaño del texto
+          color: textoColor, // Color del texto
+          decoration: TextDecoration.underline,
+        ),
+      ),
+    );
+  }
+}
