@@ -5,7 +5,8 @@ Widget titulo(String texto_Titulo) {
     padding: EdgeInsets.symmetric(vertical: 10),
     child: Text(
       texto_Titulo,
-      style: TextStyle(fontSize: 80.0),
+      style: TextStyle(fontSize: 80.0, ),
+      textAlign: TextAlign.center,
     ),
   );
 }
