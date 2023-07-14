@@ -149,7 +149,7 @@ class _PasswordPageState extends State<PasswordPage> {
               ),
 
               // ---- Boton "Comprobar" ----
-BtnPrimaery(
+              BtnPrimaery(
                 textButton: "Iniciar secion",
                 colorBox: Color.fromRGBO(255, 182, 0, 1),
                 onPressed: () => Navigator.push(context,

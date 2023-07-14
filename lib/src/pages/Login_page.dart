@@ -7,6 +7,7 @@ import '../assets/input.dart';
 import '../colors/colors.dart';
 import 'Password_page.dart';
 import 'Registrar_page.dart';
+import 'SendCodePassword.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -95,6 +96,13 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 25.0,
               ),
+
+              /* ------Boton "REGISTRATE"----------
+              Obtiene como parametro los siguientes puntos:
+              1) Texto que tiene el boton
+              2) Color del boton
+              3) Grosor del borde
+              4) evento para navegar entre pantallas */
               BtnPrimaery(
                 textButton: "Registrate",
                 colorBox: Colors.white,
@@ -103,13 +111,6 @@ class _LoginPageState extends State<LoginPage> {
                     MaterialPageRoute(builder: (context) => RegisterPage())),
               ),
 
-              /* ------Boton "REGISTRATE"----------
-              Obtiene como parametro los siguientes puntos:
-              1) Texto que tiene el boton
-              2) Color del boton
-              3) Grosor del borde
-              4) "context" proporciona informacion del widget en el que estamos ubicado */
-
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
@@ -117,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
 
               // ---- Texto para un link si se le olvido la contrasenia ----
               BotonLink(textoLink: "Olvide mi contraseña", onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PasswordPage())),),
+                    MaterialPageRoute(builder: (context) => SendCodePassword())),),
               
               // ---- Agregar un espacio ----
               SizedBox(
