@@ -3,6 +3,7 @@ import 'package:app_credibanco_login/src/assets/input.dart';
 import 'package:app_credibanco_login/src/assets/titulo.dart';
 import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:flutter/material.dart';
+import '../assets/fuentesText/fuentes.dart';
 import 'Password_page.dart';
 
 import '../colors/colors.dart';
@@ -25,7 +26,7 @@ class _RegisterPageState extends State<RegisterPage> {
       // Barra principal de navegación "AppBar"
       appBar: AppBar(
         backgroundColor: CustomColors
-            .colorAppBar, // Color del AppBar por medio de la clase "CustomColors"
+            .colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
@@ -36,13 +37,21 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           children: <Widget>[
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              titulo("Registro."),
-              inputText("Nombre:"),
-              inputText("Apellido:"),
-              inputText("Correo:"),
-              inputText("Telefono:"),
-              inputText("Contraseña:"),
-              inputText("Confirmar contraseña:"),
+              tituloEncabezadoUno("Registrate"),
+                InputText(textoInput: "Nombre",
+                  inputType: TextInputType.name,
+                ),
+                InputText(textoInput: "Apellido",
+                  inputType: TextInputType.name,
+                ),
+                InputText(textoInput: "Correo",
+                  inputType: TextInputType.emailAddress,
+                ),
+                InputText(textoInput: "Telefono",
+                  inputType: TextInputType.number,
+                ),
+                PasswordInput(textoContrasenia: "Contraseña:"),
+                PasswordInput(textoContrasenia: "Confirmar contraseña:"),
               SizedBox(
                 height: 25.0,
               ),
@@ -59,7 +68,7 @@ class _RegisterPageState extends State<RegisterPage> {
             Row(children: <Widget>[
               Expanded(
                   child: Divider(
-                color: Colors.black,
+                color: CustomColors.colorNegro,
                 thickness: 1,
               )),
               Container(
@@ -68,17 +77,15 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               Expanded(
                   child: Divider(
-                color: Colors.black,
+                color: CustomColors.colorNegro,
                 thickness: 1,
               )),
             ]),
             SizedBox(
               height: 15.0,
             ),
-            Align(
-              alignment: Alignment.center,
-              child: _buttonLink("¿Ya tienes cuenta?, click aqui"),
-            ),
+            
+            BotonLink(textoLink: "¿Ya tienes cuenta?, click aquí", onPressed: () => Navigator.pop(context)),
           ]),
     );
   }
@@ -107,7 +114,7 @@ class _RegisterPageState extends State<RegisterPage> {
         textoLink, // Agrega el texto
         style: TextStyle(
           fontSize: 18, // Tamaño del texto
-          color: CustomColors.colorLink, // Color del texto
+          color: CustomColors.colorVerdePantano, // Color del texto
         ),
       ),
     );

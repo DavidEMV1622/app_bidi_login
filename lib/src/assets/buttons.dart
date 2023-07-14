@@ -51,11 +51,41 @@ class BtnPrimaery extends StatelessWidget {
   }
 }
 
+class BotonLink extends StatelessWidget {
+  //CREACION DE PARAMETROS / VARIABLES
+  final String textoLink;
+  final void Function()? onPressed;
+  const BotonLink(
+      {super.key,
+      required this.textoLink,
+      this.onPressed});
+
+  //IMPLEMENTACION DE VARIABLES
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(
+              Colors.transparent) // Define el fondo transparente
+          ),
+      child: Text(
+        textoLink, // Agrega el texto
+        style: TextStyle(
+          fontSize: 18, // Tamaño del texto
+          color: CustomColors.colorVerdePantano, // Color del texto
+          decoration: TextDecoration.underline,
+        ),
+      ),
+    );
+  }
+}
+
 // ---- Widget para un boton transparente para los links ----
-Widget buttonLink(String textoLink, context) {
-  return TextButton(
-    onPressed: () {
-      /*
+ /* Widget buttonLink(String textoLink, context) {
+    return TextButton(
+      onPressed: () {
+        
         // Condición para manejar los cambios de pantalla
         if (textoLink == "Olvide mi contraseña") {
           Navigator.push(
@@ -68,23 +98,23 @@ Widget buttonLink(String textoLink, context) {
             MaterialPageRoute(builder: (context) => RegisterPage()),
           );
         }
-        */
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => PasswordPage()),
-      );
-    },
-    style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(
-            Colors.transparent) // Define el fondo transparente
+        
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => PasswordPage()),
+        );
+      },
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(
+              Colors.transparent) // Define el fondo transparente
+          ),
+      child: Text(
+        textoLink, // Agrega el texto
+        style: TextStyle(
+          fontSize: 18, // Tamaño del texto
+          color: CustomColors.colorLink, // Color del texto
+          decoration: TextDecoration.underline,
         ),
-    child: Text(
-      textoLink, // Agrega el texto
-      style: TextStyle(
-        fontSize: 18, // Tamaño del texto
-        color: CustomColors.colorLink, // Color del texto
-        decoration: TextDecoration.underline,
       ),
-    ),
-  );
-}
+    );
+  }*/

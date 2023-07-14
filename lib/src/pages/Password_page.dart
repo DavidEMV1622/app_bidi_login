@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../assets/buttons.dart';
+import '../assets/fuentesText/fuentes.dart';
 import '../assets/input.dart';
 import '../assets/titulo.dart';
 import '../colors/colors.dart';
@@ -71,8 +72,8 @@ class _PasswordPageState extends State<PasswordPage> {
     return Scaffold(
       // Barra principal de navegación "AppBar"
       appBar: AppBar(
-        backgroundColor: CustomColors
-            .colorAppBar, // Color del AppBar por medio de la clase "CustomColors"
+        backgroundColor: CustomColors.colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
+        
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
@@ -86,26 +87,18 @@ class _PasswordPageState extends State<PasswordPage> {
             mainAxisAlignment:
                 MainAxisAlignment.center, // Define la posición de los widgets
             
-            children: <Widget>[ 
-
-              titulo("Cambiar Contraseña"),
+            children: <Widget>[
+              
+              tituloEncabezadoUno("Cambiar Contraseña"),
 
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
               ),
 
-              // ---- Texto 1 ----
-              Align(
-                //alignment: Alignment(-1.0, 0.0),
-                alignment: Alignment.center,
-                child: Text(
-                  "Ingresé el codigo que fue enviado a su correo",
-                  style: _estiloTexto,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-
+              // ---- Subtitulo ----
+              subtituloUno("Ingresé el codigo que fue enviado a su correo"),
+              
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
@@ -121,12 +114,24 @@ class _PasswordPageState extends State<PasswordPage> {
                 MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  inputCode("*", focusNode1, focusControllerOne, focusNode2, context),
-                  inputCode("*", focusNode2, focusControllerTwo, focusNode3, context),
-                  inputCode("*", focusNode3, focusControllerThree, focusNode4, context),
-                  inputCode("*", focusNode4, focusControllerFour, focusNode5, context),
-                  inputCode("*", focusNode5, focusControllerFive, focusNode6, context),
-                  inputCode("*", focusNode6, focusControllerSix, focusNode6, context),
+                  InputCode(texto: "*", nombreFocus: focusNode1, 
+                    nombreController: focusControllerOne, cambiarFocus: focusNode2
+                  ),
+                  InputCode(texto: "*", nombreFocus: focusNode2, 
+                    nombreController: focusControllerTwo, cambiarFocus: focusNode3
+                  ),
+                  InputCode(texto: "*", nombreFocus: focusNode3, 
+                    nombreController: focusControllerThree, cambiarFocus: focusNode4
+                  ),
+                  InputCode(texto: "*", nombreFocus: focusNode4, 
+                    nombreController: focusControllerFour, cambiarFocus: focusNode5
+                  ),
+                  InputCode(texto: "*", nombreFocus: focusNode5, 
+                    nombreController: focusControllerFive, cambiarFocus: focusNode6
+                  ),
+                  InputCode(texto: "*", nombreFocus: focusNode6, 
+                    nombreController: focusControllerSix, cambiarFocus: focusNode6
+                  ),
                 ],
               ),
 
@@ -136,19 +141,15 @@ class _PasswordPageState extends State<PasswordPage> {
               ),
 
               // ---- Texto para un link si se le olvido la contrasenia ----
-              Align(
-                //alignment: Alignment(-1.0, 0.0),
-                alignment: Alignment.center,
-                child: buttonLink("Click aquí, para reenviar codigo", context),
-              ),
-
+              BotonLink(textoLink: "Click aquí, para reenviar codigo"),
+              
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
               ),
 
               // ---- Boton "Comprobar" ----
-              BtnPrimaery(
+BtnPrimaery(
                 textButton: "Iniciar secion",
                 colorBox: Color.fromRGBO(255, 182, 0, 1),
                 onPressed: () => Navigator.push(context,

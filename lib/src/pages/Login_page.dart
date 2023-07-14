@@ -2,6 +2,7 @@ import 'package:app_credibanco_login/src/assets/pruebas.dart';
 import 'package:app_credibanco_login/src/assets/titulo.dart';
 import 'package:flutter/material.dart';
 import '../assets/buttons.dart';
+import '../assets/fuentesText/fuentes.dart';
 import '../assets/input.dart';
 import '../colors/colors.dart';
 import 'Password_page.dart';
@@ -21,6 +22,12 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     // Plantilla principal "Scaffold"
     return Scaffold(
+      // Barra principal de navegación "AppBar"
+      appBar: AppBar(
+        backgroundColor: CustomColors
+            .colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
+      ),
+
       // ---- Cuerpo o contenido de la aplicación "body" ----
       body: Center(
         child: Padding(
@@ -32,8 +39,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment:
                 MainAxisAlignment.center, // Define la posición de los widgets
 
-            children: <Widget>[
-              /* Se usa el widget "children" que son 
+            children: <Widget>[/* Se usa el widget "children" que son 
                                 los hijos o cadenas de widget que se van 
                                 a unir */
 
@@ -47,9 +53,7 @@ class _LoginPageState extends State<LoginPage> {
 
               // ---- Titulo de "LOGIN" ----
 
-              Text("Iniciar sesión",
-                  textAlign: TextAlign.center,
-                  style: new TextStyle(fontSize: 60)),
+              tituloEncabezadoUno("Iniciar Sesión"),
 
               // ---- Agregar un espacio entre los dos widgets (Text, Align)----
               SizedBox(
@@ -57,7 +61,10 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Llamado Widget para un campo de texto para ingresar correo ----
-              inputText("Correo electronico"),
+              InputText(
+                textoInput: "Correo electronico",
+                inputType: TextInputType.emailAddress,
+              ),
 
               // ---- Agregar un espacio ----
               SizedBox(
@@ -67,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
               // ---- Campo de texto para ingresar contrasenia ----
               //inputPassword("Contraseña"),
               PasswordInput(
-                hintText: 'Contraseña',
+                textoContrasenia: 'Contraseña',
               ),
 
               // ---- Agregar un espacio ----
@@ -76,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Boton "Iniciar de sesión" ----
-              //boton_orange("Iniciar sesión", Color.fromRGBO(255, 182, 0, 1)),
+             // boton_orange("Iniciar sesión", Color.fromRGBO(255, 182, 0, 1)),
 
               BtnPrimaery(
                 textButton: "Iniciar secion",
@@ -109,29 +116,31 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Texto para un link si se le olvido la contrasenia ----
-              Align(
-                //alignment: Alignment(-1.0, 0.0),
-                alignment: Alignment.center,
-                child: buttonLink("Olvide mi contraseña", context),
-              ),
-
+              BotonLink(textoLink: "Olvide mi contraseña", onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PasswordPage())),),
+              
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
               ),
 
               // ---- Texto para un link si no tienes cuenta----
+              /*
               Align(
                 alignment: Alignment.center,
                 child: buttonLink("Olvide mi correo electronico", context),
               ),
+              */
+              BotonLink(textoLink: "Olvide mi correo electronico", onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RegisterPage())),),
+              
             ],
           ),
         ),
       ),
     );
   }
-
+  
   /*
   // ---- Widget para el campo de texto "Correo" ----
   Widget _textFieldEmail(String textoCorreo) {
