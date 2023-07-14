@@ -9,8 +9,9 @@ Widget tituloEncabezadoUno(String texto_Titulo) {
       style: TextStyle(
         fontSize: 48, 
         fontWeight: FontWeight.bold,
-        /*fontFamily: ,*/),
-      textAlign: TextAlign.center,
+        /*fontFamily: ,*/
+      ),
+      textAlign: TextAlign.center, // Centrar un texto
     ),
   );
 }
