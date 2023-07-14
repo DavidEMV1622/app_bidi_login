@@ -79,10 +79,8 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(
               height: 15.0,
             ),
-            Align(
-              alignment: Alignment.center,
-              child: _buttonLink("¿Ya tienes cuenta?, click aqui"),
-            ),
+            
+            BotonLink(textoLink: "¿Ya tienes cuenta?, click aquí", onPressed: () => Navigator.pop(context)),
           ]),
     );
   }

@@ -21,6 +21,12 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     // Plantilla principal "Scaffold"
     return Scaffold(
+      // Barra principal de navegación "AppBar"
+      appBar: AppBar(
+        backgroundColor: CustomColors
+            .colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
+      ),
+
       // ---- Cuerpo o contenido de la aplicación "body" ----
       body: Center(
         child: Padding(
