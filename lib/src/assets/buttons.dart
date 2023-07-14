@@ -72,8 +72,38 @@ Widget boton_White(String textoBoton, Color colorBox, double widthBorder, contex
   );
 }
 
+class BotonLink extends StatelessWidget {
+  //CREACION DE PARAMETROS / VARIABLES
+  final String textoLink;
+  final void Function()? onPressed;
+  const BotonLink(
+      {super.key,
+      required this.textoLink,
+      this.onPressed});
+
+  //IMPLEMENTACION DE VARIABLES
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(
+              Colors.transparent) // Define el fondo transparente
+          ),
+      child: Text(
+        textoLink, // Agrega el texto
+        style: TextStyle(
+          fontSize: 18, // Tamaño del texto
+          color: CustomColors.colorVerdePantano, // Color del texto
+          decoration: TextDecoration.underline,
+        ),
+      ),
+    );
+  }
+}
+
 // ---- Widget para un boton transparente para los links ----
-  Widget buttonLink(String textoLink, context) {
+/*Widget buttonLink(String textoLink, context) {
     return TextButton(
       onPressed: () {
         /*
@@ -109,6 +139,7 @@ Widget boton_White(String textoBoton, Color colorBox, double widthBorder, contex
       ),
     );
   }
+*/
 
 class BotonCambio  extends StatelessWidget {
   

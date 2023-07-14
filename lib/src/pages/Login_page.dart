@@ -32,8 +32,7 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment:
                 MainAxisAlignment.center, // Define la posición de los widgets
 
-            children: <Widget>[
-              /* Se usa el widget "children" que son 
+            children: <Widget>[/* Se usa el widget "children" que son 
                                 los hijos o cadenas de widget que se van 
                                 a unir */
 
@@ -54,7 +53,9 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Llamado Widget para un campo de texto para ingresar correo ----
-              inputText("Correo electronico"),
+              InputText(
+                textoInput: "Correo electronico",
+              ),
 
               // ---- Agregar un espacio ----
               SizedBox(
@@ -87,15 +88,14 @@ class _LoginPageState extends State<LoginPage> {
               4) "context" proporciona informacion del widget en el que estamos ubicado */
               boton_White("Registrate", CustomColors.colorBlanco, 2, context),
 
-              
-
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
               ),
 
               // ---- Texto para un link si se le olvido la contrasenia ----
-              BotonCambio(textoLink: "Olvide mi contraseña", textoColor: CustomColors.colorVerdePantano),
+              BotonLink(textoLink: "Olvide mi contraseña", onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PasswordPage())),),
               
               // ---- Agregar un espacio ----
               SizedBox(
@@ -109,7 +109,8 @@ class _LoginPageState extends State<LoginPage> {
                 child: buttonLink("Olvide mi correo electronico", context),
               ),
               */
-              BotonCambio(textoLink: "Olvide mi correo electronico", textoColor: CustomColors.colorVerdePantano),
+              BotonLink(textoLink: "Olvide mi correo electronico", onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RegisterPage())),),
               
             ],
           ),
@@ -117,7 +118,6 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-  
   /*
   // ---- Widget para el campo de texto "Correo" ----
   Widget _textFieldEmail(String textoCorreo) {

@@ -31,12 +31,12 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 tituloEncabezadoUno("Editar Usuario"),
-                inputText("Nombre:"),
-                inputText("Apellido:"),
-                inputText("Correo:"),
-                inputText("Telefono:"),
-                inputText("Contraseña:"),
-                inputText("Confirmar contraseña:"),
+                InputText(textoInput: "Nombre",),
+                InputText(textoInput: "Apellido",),
+                InputText(textoInput: "Correo",),
+                InputText(textoInput: "Telefono",),
+                PasswordInput(textoContrasenia: "Contraseña:"),
+                PasswordInput(textoContrasenia: "Confirmar contraseña:"),
               ],
             )
           ]),

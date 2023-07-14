@@ -38,12 +38,12 @@ class _RegisterPageState extends State<RegisterPage> {
           children: <Widget>[
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               tituloEncabezadoUno("Registrate"),
-              inputText("Nombre:"),
-              inputText("Apellido:"),
-              inputText("Correo:"),
-              inputText("Telefono:"),
-              inputText("Contraseña:"),
-              inputText("Confirmar contraseña:"),
+              InputText(textoInput: "Nombre",),
+                InputText(textoInput: "Apellido",),
+                InputText(textoInput: "Correo",),
+                InputText(textoInput: "Telefono",),
+                PasswordInput(textoContrasenia: "Contraseña:"),
+                PasswordInput(textoContrasenia: "Confirmar contraseña:"),
               SizedBox(
                 height: 25.0,
               ),

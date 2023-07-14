@@ -109,12 +109,24 @@ class _PasswordPageState extends State<PasswordPage> {
                 MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  inputCode("*", focusNode1, focusControllerOne, focusNode2, context),
-                  inputCode("*", focusNode2, focusControllerTwo, focusNode3, context),
-                  inputCode("*", focusNode3, focusControllerThree, focusNode4, context),
-                  inputCode("*", focusNode4, focusControllerFour, focusNode5, context),
-                  inputCode("*", focusNode5, focusControllerFive, focusNode6, context),
-                  inputCode("*", focusNode6, focusControllerSix, focusNode6, context),
+                  InputCode(texto: "*", nombreFocus: focusNode1, 
+                    nombreController: focusControllerOne, cambiarFocus: focusNode2
+                  ),
+                  InputCode(texto: "*", nombreFocus: focusNode2, 
+                    nombreController: focusControllerTwo, cambiarFocus: focusNode3
+                  ),
+                  InputCode(texto: "*", nombreFocus: focusNode3, 
+                    nombreController: focusControllerThree, cambiarFocus: focusNode4
+                  ),
+                  InputCode(texto: "*", nombreFocus: focusNode4, 
+                    nombreController: focusControllerFour, cambiarFocus: focusNode5
+                  ),
+                  InputCode(texto: "*", nombreFocus: focusNode5, 
+                    nombreController: focusControllerFive, cambiarFocus: focusNode6
+                  ),
+                  InputCode(texto: "*", nombreFocus: focusNode6, 
+                    nombreController: focusControllerSix, cambiarFocus: focusNode6
+                  ),
                 ],
               ),
 
@@ -124,7 +136,7 @@ class _PasswordPageState extends State<PasswordPage> {
               ),
 
               // ---- Texto para un link si se le olvido la contrasenia ----
-              BotonCambio(textoLink: "Click aquí, para reenviar codigo", textoColor: CustomColors.colorVerdePantano),
+              BotonLink(textoLink: "Click aquí, para reenviar codigo"),
               
               // ---- Agregar un espacio ----
               SizedBox(
