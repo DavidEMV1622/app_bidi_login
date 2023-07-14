@@ -55,6 +55,7 @@ class _LoginPageState extends State<LoginPage> {
               // ---- Llamado Widget para un campo de texto para ingresar correo ----
               InputText(
                 textoInput: "Correo electronico",
+                inputType: TextInputType.emailAddress,
               ),
 
               // ---- Agregar un espacio ----

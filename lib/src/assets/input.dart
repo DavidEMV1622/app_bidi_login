@@ -46,7 +46,9 @@ class InputText extends StatefulWidget {
 
   final String textoInput;
 
-  InputText({required this.textoInput});
+  final inputType;
+
+  InputText({required this.textoInput, required this.inputType});
 
   @override
   _InputTextState createState() => _InputTextState();
@@ -74,6 +76,7 @@ class _InputTextState extends State<InputText> {
 
     // Uso de un input (Campo de texto)
     child: TextField(
+        keyboardType: widget.inputType,
         style: TextStyle(fontSize: 14.0), // Tamanio del texto
         decoration: InputDecoration.collapsed(
           /* Quita la linea que viene por 
@@ -300,7 +303,7 @@ class _InputCodeState extends State<InputCode> {
           // Uso de un input (Campo de texto)
           // Input que permite guardar, reiniciar o validar operaciones (TextFormField)
           TextFormField(
-            keyboardType: TextInputType.number, // Tipo de dato del campo
+            keyboardType: TextInputType.number, // Aparece un teclado númerico
 
             controller: widget.nombreController,
         
