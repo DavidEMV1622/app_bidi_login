@@ -34,20 +34,21 @@ class _SendCodePasswordState extends State<SendCodePassword> {
                   ),
                   titulo("ENVIO DE CODIGO"),
                   SizedBox(
-                    height: 35,
+                    height: 45,
                   ),
                   Text(
-                    "Ingrese el correo para enviar uncodigo",
+                    "Ingrese el correo para enviar un codigo",
                     style: TextStyle(fontSize: 32),
+                    textAlign: TextAlign.center,
                   ),
                   SizedBox(
-                    height: 35,
+                    height: 45,
                   ),
                   inputText(
                     "ejemplo@ejemplo.com",
                   ),
                   SizedBox(
-                    height: 25,
+                    height: 45,
                   ),
                   BtnPrimaery(
                     textButton: "Verificar",
@@ -55,7 +56,7 @@ class _SendCodePasswordState extends State<SendCodePassword> {
                     onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => RegisterPage())),
+                            builder: (context) => PasswordPage())),
                   ),
                 ],
               )
