@@ -19,7 +19,7 @@ class _SendCodePasswordState extends State<SendCodePassword> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: CustomColors.colorAppBar,
+          backgroundColor: CustomColors.colorBlanco,
         ),
         body: Container(
           child: ListView(
@@ -44,8 +44,10 @@ class _SendCodePasswordState extends State<SendCodePassword> {
                   SizedBox(
                     height: 45,
                   ),
-                  inputText(
-                    "ejemplo@ejemplo.com",
+                  
+                  InputText(
+                    textoInput: "ejemplo@ejemplo.com",
+                    inputType: TextInputType.emailAddress,
                   ),
                   SizedBox(
                     height: 45,

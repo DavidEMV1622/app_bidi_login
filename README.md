@@ -13,22 +13,23 @@ A few resources to get you started if this is your first Flutter project:
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+sampls, guidance on mobile development, and a full API reference.
 
 
 historias de Usuario.
 
 ----------------------------------------H--E--C--H--A--S---------------------------------------------
 
-ACA-01 => Creacion de login
-ACA-02 => Creacion de Register
-ACA-03 => Creacion de Editar Usuario
-
+BM-1601 => Creacion de login
+BM-1602 => Creacion de Register
+BM-1603 => Creacion de Editar Usuario
+BM-1604 => ENVIO DE CORREO 
+BM-1605 => ESCRIBIR UTP
 
 --------------------------------------POR--HACER--------------------------------------------
 
 
 
 ------------------------------En--- P--R--O..D--U--C--C--I--O--N-----------------------------
-ACA-04 => ENVIO DE CORREO 
-ACA-05 => ESCRIBIR UTP
+BM 1606 => validaciones en input con cambio de colores respectivamente.
+BM 1607 => mostrar datos del usuario
