@@ -3,8 +3,7 @@ import '../colors/colors.dart';
 import '../pages/Password_page.dart';
 import '../pages/Registrar_page.dart';
 
-// ---- Widget para el boton de inicio de sesion ----
-
+// ---- Clase para el boton general principal ----
 class BtnPrimaery extends StatelessWidget {
   //CREACION DE PARAMETROS / VARIABLES
   final String textButton;
@@ -23,18 +22,15 @@ class BtnPrimaery extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: colorBox, // Color del input
-        border: border,
-        borderRadius: BorderRadius.circular(10),
+        color: colorBox, // Color del campo del propio input
+        border: border, // Define si va a tener un borde o no dependiendo si se le agrega como parametro
+        borderRadius: BorderRadius.circular(10), // Borde del campo
       ),
       child: MaterialButton(
-        minWidth: double.infinity, // Ancho del boton
-        height: 60, // Largo del botoncircular(10.0)
+        minWidth: double.infinity, // largo del botonque abarque toda la pantalla
+        height: 60, // Ancho del boton
 
-        onPressed: onPressed, // Animación al presionar
-
-        //color: Color.fromRGBO(255, 182, 0,
-        //  1), // Color del boton por medio de la clase "CustomColors"
+        onPressed: onPressed, // Evento al presionar el boton
 
         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
 
@@ -51,6 +47,7 @@ class BtnPrimaery extends StatelessWidget {
   }
 }
 
+// ---- Clase para un boton estilo link ----
 class BotonLink extends StatelessWidget {
   //CREACION DE PARAMETROS / VARIABLES
   final String textoLink;
@@ -64,17 +61,18 @@ class BotonLink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: onPressed,
+      onPressed: onPressed, // Evento al presionar el boton
       style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
-              Colors.transparent) // Define el fondo transparente
+          backgroundColor: MaterialStateProperty.all( Colors.transparent) // Define el fondo del boton transparente (sin color)
           ),
+
+      // ---- Manejo del texto ----
       child: Text(
-        textoLink, // Agrega el texto
+        textoLink,
         style: TextStyle(
           fontSize: 18, // Tamaño del texto
-          color: CustomColors.colorVerdePantano, // Color del texto
-          decoration: TextDecoration.underline,
+          color: CustomColors.colorVerdePantano, // color del texto
+          decoration: TextDecoration.underline, // Dejar el texto subrayado
         ),
       ),
     );

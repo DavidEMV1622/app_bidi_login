@@ -84,8 +84,10 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Boton "Iniciar de sesión" ----
-             // boton_orange("Iniciar sesión", Color.fromRGBO(255, 182, 0, 1)),
-
+              /* Obtiene como parametro los siguientes puntos:
+              1) Texto que tiene el boton
+              2) Color del boton
+              3) evento para navegar entre pantallas */
               BtnPrimaery(
                 textButton: "Iniciar secion",
                 colorBox: Color.fromRGBO(255, 182, 0, 1),
