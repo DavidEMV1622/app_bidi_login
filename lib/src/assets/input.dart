@@ -452,10 +452,11 @@ class _InputTextValidationsState extends State<InputTextValidations> {
                                                   defecto en el input "InputDecoration.collapsed" */
               hintText: widget.text, // Place holder en el input
             ),
-          controller: widget.controller,
-          inputFormatters: [validateinputFormatters()],
-          validator: (String? value) {
-            return validateStructure(value);
+          controller: widget.controller, // maneja cada input a utilizar
+          inputFormatters: [validateinputFormatters()], // Tipo de dato del input
+          validator: (String? value) { /* Valida si la estructura del input es
+                                         correcta */
+            return validateStructure(value); // retorna si la estructura esta bien escrita
           },
         ),
       
