@@ -146,6 +146,7 @@ class _InputTextState extends State<InputText> {
 
 /* Clase para manejar el inputPassword, ya que el setState necesita un build (context) para poder 
 actualizar el estado del mismo */
+
 class PasswordInput extends StatefulWidget {
 
   final String textoContrasenia;

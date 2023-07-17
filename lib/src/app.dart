@@ -1,3 +1,4 @@
+import 'package:app_credibanco_login/src/pages/Change_password.dart';
 import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:app_credibanco_login/src/pages/Password_page.dart';
 import 'package:app_credibanco_login/src/pages/SendCodePassword.dart';

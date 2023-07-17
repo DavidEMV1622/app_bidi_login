@@ -2,6 +2,7 @@ import 'package:app_credibanco_login/src/assets/buttons.dart';
 import 'package:app_credibanco_login/src/assets/input.dart';
 import 'package:app_credibanco_login/src/assets/titulo.dart';
 import 'package:app_credibanco_login/src/pages/Login_page.dart';
+import 'package:app_credibanco_login/src/pages/SendCodePassword.dart';
 import 'package:flutter/material.dart';
 import '../assets/fuentesText/fuentes.dart';
 import 'Password_page.dart';
@@ -38,28 +39,34 @@ class _RegisterPageState extends State<RegisterPage> {
           children: <Widget>[
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               tituloEncabezadoUno("Registrate"),
-                InputText(textoInput: "Nombre",
-                  inputType: TextInputType.name,
-                ),
-                InputText(textoInput: "Apellido",
-                  inputType: TextInputType.name,
-                ),
-                InputText(textoInput: "Correo",
-                  inputType: TextInputType.emailAddress,
-                ),
-                InputText(textoInput: "Telefono",
-                  inputType: TextInputType.number,
-                ),
-                PasswordInput(textoContrasenia: "Contraseña:"),
-                PasswordInput(textoContrasenia: "Confirmar contraseña:"),
+              InputText(
+                textoInput: "Nombre",
+                inputType: TextInputType.name,
+              ),
+              InputText(
+                textoInput: "Apellido",
+                inputType: TextInputType.name,
+              ),
+              InputText(
+                textoInput: "Correo",
+                inputType: TextInputType.emailAddress,
+              ),
+              InputText(
+                textoInput: "Telefono",
+                inputType: TextInputType.number,
+              ),
+              PasswordInput(textoContrasenia: "Contraseña:"),
+              PasswordInput(textoContrasenia: "Confirmar contraseña:"),
               SizedBox(
                 height: 25.0,
               ),
               BtnPrimaery(
                 textButton: "Enviar codigo",
                 colorBox: Color.fromRGBO(255, 182, 0, 1),
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RegisterPage())),
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SendCodePassword())),
               ),
             ]),
             SizedBox(
@@ -84,8 +91,9 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(
               height: 15.0,
             ),
-            
-            BotonLink(textoLink: "¿Ya tienes cuenta?, click aquí", onPressed: () => Navigator.pop(context)),
+            BotonLink(
+                textoLink: "¿Ya tienes cuenta?, click aquí",
+                onPressed: () => Navigator.pop(context)),
           ]),
     );
   }

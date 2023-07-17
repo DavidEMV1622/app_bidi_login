@@ -29,10 +29,10 @@ BM-1605 => ESCRIBIR UTP / DAVID
 
 
 --------------------------------------POR--HACER--------------------------------------------
-BM 1608 => Pagina de aterrisaje
-BM 1609 => Menu lateral 
-BM 1610 => Opcion de envio de otp 
-BM 1611 => Cambio de contraseña
+BM 1607 => Pagina de aterrisaje
+BM 1608 => Menu lateral 
+BM 1609 => Opcion de envio de otp 
+BM 1610 => Cambio de contraseña
 
 
 ------------------------------En--- P--R--O..D--U--C--C--I--O--N-----------------------------

@@ -1,3 +1,4 @@
+import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:flutter/material.dart';
 
 import '../assets/buttons.dart';
@@ -25,7 +26,7 @@ class _PasswordPageState extends State<PasswordPage> {
   final focusControllerFour = TextEditingController();
   final focusControllerFive = TextEditingController();
   final focusControllerSix = TextEditingController();
-  
+
   // Instanciación de cada uno de los campos "FocusNode"
   late FocusNode focusNode1;
   late FocusNode focusNode2;
@@ -72,8 +73,8 @@ class _PasswordPageState extends State<PasswordPage> {
     return Scaffold(
       // Barra principal de navegación "AppBar"
       appBar: AppBar(
-        backgroundColor: CustomColors.colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
-        
+        backgroundColor: CustomColors
+            .colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
@@ -86,9 +87,8 @@ class _PasswordPageState extends State<PasswordPage> {
 
             mainAxisAlignment:
                 MainAxisAlignment.center, // Define la posición de los widgets
-            
+
             children: <Widget>[
-              
               tituloEncabezadoUno("Cambiar Contraseña"),
 
               // ---- Agregar un espacio ----
@@ -98,7 +98,7 @@ class _PasswordPageState extends State<PasswordPage> {
 
               // ---- Subtitulo ----
               subtituloUno("Ingresé el codigo que fue enviado a su correo"),
-              
+
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
@@ -110,28 +110,40 @@ class _PasswordPageState extends State<PasswordPage> {
               // 2: nombre del focus
               // 3: nombre del controlador del propio focus
               // 4: nombre del focus que va a cambiar
-              Row( mainAxisAlignment:
-                MainAxisAlignment.center,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  InputCode(texto: "*", nombreFocus: focusNode1, 
-                    nombreController: focusControllerOne, cambiarFocus: focusNode2
-                  ),
-                  InputCode(texto: "*", nombreFocus: focusNode2, 
-                    nombreController: focusControllerTwo, cambiarFocus: focusNode3
-                  ),
-                  InputCode(texto: "*", nombreFocus: focusNode3, 
-                    nombreController: focusControllerThree, cambiarFocus: focusNode4
-                  ),
-                  InputCode(texto: "*", nombreFocus: focusNode4, 
-                    nombreController: focusControllerFour, cambiarFocus: focusNode5
-                  ),
-                  InputCode(texto: "*", nombreFocus: focusNode5, 
-                    nombreController: focusControllerFive, cambiarFocus: focusNode6
-                  ),
-                  InputCode(texto: "*", nombreFocus: focusNode6, 
-                    nombreController: focusControllerSix, cambiarFocus: focusNode6
-                  ),
+                  InputCode(
+                      texto: "*",
+                      nombreFocus: focusNode1,
+                      nombreController: focusControllerOne,
+                      cambiarFocus: focusNode2),
+                  InputCode(
+                      texto: "*",
+                      nombreFocus: focusNode2,
+                      nombreController: focusControllerTwo,
+                      cambiarFocus: focusNode3),
+                  InputCode(
+                      texto: "*",
+                      nombreFocus: focusNode3,
+                      nombreController: focusControllerThree,
+                      cambiarFocus: focusNode4),
+                  InputCode(
+                      texto: "*",
+                      nombreFocus: focusNode4,
+                      nombreController: focusControllerFour,
+                      cambiarFocus: focusNode5),
+                  InputCode(
+                      texto: "*",
+                      nombreFocus: focusNode5,
+                      nombreController: focusControllerFive,
+                      cambiarFocus: focusNode6),
+                  InputCode(
+                      texto: "*",
+                      nombreFocus: focusNode6,
+                      nombreController: focusControllerSix,
+                      cambiarFocus: focusNode6),
                 ],
               ),
 
@@ -142,20 +154,19 @@ class _PasswordPageState extends State<PasswordPage> {
 
               // ---- Texto para un link si se le olvido la contrasenia ----
               BotonLink(textoLink: "Click aquí, para reenviar codigo"),
-              
+
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
               ),
 
               // ---- Boton "Comprobar" ----
-BtnPrimaery(
+              BtnPrimaery(
                 textButton: "Iniciar secion",
                 colorBox: Color.fromRGBO(255, 182, 0, 1),
                 onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RegisterPage())),
+                    MaterialPageRoute(builder: (context) => LoginPage())),
               ),
-
             ],
           ),
         ),

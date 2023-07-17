@@ -1,5 +1,6 @@
 import 'package:app_credibanco_login/src/assets/pruebas.dart';
 import 'package:app_credibanco_login/src/assets/titulo.dart';
+import 'package:app_credibanco_login/src/pages/SendCodePassword.dart';
 import 'package:flutter/material.dart';
 import '../assets/buttons.dart';
 import '../assets/fuentesText/fuentes.dart';
@@ -39,7 +40,8 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment:
                 MainAxisAlignment.center, // Define la posición de los widgets
 
-            children: <Widget>[/* Se usa el widget "children" que son 
+            children: <Widget>[
+              /* Se usa el widget "children" que son 
                                 los hijos o cadenas de widget que se van 
                                 a unir */
 
@@ -83,10 +85,10 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Boton "Iniciar de sesión" ----
-             // boton_orange("Iniciar sesión", Color.fromRGBO(255, 182, 0, 1)),
+              // boton_orange("Iniciar sesión", Color.fromRGBO(255, 182, 0, 1)),
 
               BtnPrimaery(
-                textButton: "Iniciar secion",
+                textButton: "Iniciar sesion",
                 colorBox: Color.fromRGBO(255, 182, 0, 1),
                 onPressed: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => RegisterPage())),
@@ -116,9 +118,14 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Texto para un link si se le olvido la contrasenia ----
-              BotonLink(textoLink: "Olvide mi contraseña", onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PasswordPage())),),
-              
+              BotonLink(
+                textoLink: "Olvide mi contraseña",
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SendCodePassword())),
+              ),
+
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
@@ -131,16 +138,18 @@ class _LoginPageState extends State<LoginPage> {
                 child: buttonLink("Olvide mi correo electronico", context),
               ),
               */
-              BotonLink(textoLink: "Olvide mi correo electronico", onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RegisterPage())),),
-              
+              BotonLink(
+                textoLink: "Olvide mi correo electronico",
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RegisterPage())),
+              ),
             ],
           ),
         ),
       ),
     );
   }
-  
+
   /*
   // ---- Widget para el campo de texto "Correo" ----
   Widget _textFieldEmail(String textoCorreo) {
