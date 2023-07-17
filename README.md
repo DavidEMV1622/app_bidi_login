@@ -20,16 +20,21 @@ historias de Usuario.
 
 ----------------------------------------H--E--C--H--A--S---------------------------------------------
 
-BM-1601 => Creacion de login
-BM-1602 => Creacion de Register
-BM-1603 => Creacion de Editar Usuario
-BM-1604 => ENVIO DE CORREO 
-BM-1605 => ESCRIBIR UTP
+BM-1601 => Creacion de login / DAVID (Refactor colors = jesus)
+BM-1602 => Creacion de Register / JESUS
+BM-1603 => Creacion de Editar Usuario / JESUS
+BM-1604 => ENVIO DE CORREO / JESUS
+BM-1605 => ESCRIBIR UTP / DAVID 
+
+
 
 --------------------------------------POR--HACER--------------------------------------------
-
+BM 1608 => Pagina de aterrisaje
+BM 1609 => Menu lateral 
+BM 1610 => Opcion de envio de otp 
+BM 1611 => Cambio de contraseña
 
 
 ------------------------------En--- P--R--O..D--U--C--C--I--O--N-----------------------------
-BM 1606 => validaciones en input con cambio de colores respectivamente.
-BM 1607 => mostrar datos del usuario
+BM 1606 => mostrar datos del usuario / DAVID
+BM 1606 => validaciones en input con cambio de colores respectivamente Register.
