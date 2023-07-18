@@ -55,10 +55,7 @@ class BotonLink extends StatelessWidget {
   //CREACION DE PARAMETROS / VARIABLES
   final String textoLink;
   final void Function()? onPressed;
-  const BotonLink(
-      {super.key,
-      required this.textoLink,
-      this.onPressed});
+  const BotonLink({super.key, required this.textoLink, this.onPressed});
 
   //IMPLEMENTACION DE VARIABLES
   @override
@@ -70,11 +67,20 @@ class BotonLink extends StatelessWidget {
               Colors.transparent) // Define el fondo transparente
           ),
       child: Text(
-        textoLink, // Agrega el texto
+        textoLink, // Agrega el texto,
         style: TextStyle(
-          fontSize: 18, // Tamaño del texto
-          color: CustomColors.colorVerdePantano, // Color del texto
+          color: Colors.transparent, // Color del texto
+          fontSize: 12,
+
+          shadows: [
+            const Shadow(
+                offset: Offset(0, -2), color: CustomColors.colorVerdePantano)
+          ], // Tamaño del texto
+
           decoration: TextDecoration.underline,
+          decorationStyle: TextDecorationStyle.solid,
+          decorationColor: CustomColors.colorVerdePantano,
+          decorationThickness: 1,
         ),
       ),
     );

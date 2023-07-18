@@ -25,16 +25,16 @@ BM-1602 => Creacion de Register / JESUS
 BM-1603 => Creacion de Editar Usuario / JESUS
 BM-1604 => ENVIO DE CORREO / JESUS
 BM-1605 => ESCRIBIR UTP / DAVID 
-
+BM 1610 => Cambio de contraseña (falta validacion)
 
 
 --------------------------------------POR--HACER--------------------------------------------
-BM 1607 => Pagina de aterrisaje
+BM 1606 => Pagina de aterrisaje
 BM 1608 => Menu lateral 
 BM 1609 => Opcion de envio de otp 
-BM 1610 => Cambio de contraseña
+
 
 
 ------------------------------En--- P--R--O..D--U--C--C--I--O--N-----------------------------
-BM 1606 => mostrar datos del usuario / DAVID
-BM 1606 => validaciones en input con cambio de colores respectivamente Register.
+BM 1607 => mostrar datos del usuario / DAVID
+BM 1607=> validaciones en input con cambio de colores respectivamente Register.
