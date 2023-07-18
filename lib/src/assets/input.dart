@@ -411,23 +411,22 @@ Widget inputCode(String texto, FocusNode nombreFocus, final nombreController, Fo
 // ---- Clase para un input general con validación ----
 class InputTextValidations extends StatefulWidget {
 
-  final String textoInput;
+  final String textoInput; // // texto del input
 
-  final inputType;
+  final inputType; // tipo de teclado a mostrar
 
-  String text; // texto del input
   TextEditingController controller; // controlar cada input
   ValidateText? validateText; // Tipo de validacion a utilizar
-  bool? isEmptyInput; // Esta vacio el input o no
 
-
-  InputTextValidations({required this.textoInput, required this.inputType, required this.text, required this.controller, this.validateText, this.isEmptyInput=false});
+  InputTextValidations({required this.textoInput, required this.inputType, required this.controller, this.validateText});
 
   @override
   _InputTextValidationsState createState() => _InputTextValidationsState();
 }
 
 class _InputTextValidationsState extends State<InputTextValidations> {
+  bool hasError = false; // Variable de estado para indicar si hay un error en el formulario
+
 
   @override
   Widget build(BuildContext context) {
@@ -438,7 +437,8 @@ class _InputTextValidationsState extends State<InputTextValidations> {
         borderRadius: BorderRadius.circular(4.0), // Define los bordes redondeados
         // Define el grosor y color de borde
         border: Border.all(
-          color: CustomColors.colorNegro,
+          // Cambiar color del borde a rojo si es true
+          color: hasError ? Colors.red : CustomColors.colorNegro,
           width: 1.0,
         ),
       ),
@@ -449,16 +449,16 @@ class _InputTextValidationsState extends State<InputTextValidations> {
       // Uso de un input (Campo de texto)
       child: TextFormField(
         decoration: InputDecoration.collapsed(/* Quita la linea que viene por 
-                                                  defecto en el input "InputDecoration.collapsed" */
-              hintText: widget.text, // Place holder en el input
-            ),
-          controller: widget.controller, // maneja cada input a utilizar
-          inputFormatters: [validateinputFormatters()], // Tipo de dato del input
-          validator: (String? value) { /* Valida si la estructura del input es
-                                         correcta */
-            return validateStructure(value); // retorna si la estructura esta bien escrita
-          },
+                                                defecto en el input "InputDecoration.collapsed" */
+          hintText: widget.textoInput, // Place holder en el input
         ),
+        controller: widget.controller, // maneja cada input a utilizar
+        inputFormatters: [validateinputFormatters()], // Tipo de dato del input
+        validator: (String? value) { /* Valida si la estructura del input es
+                                        correcta */
+          return validateStructure(value!); // retorna si la estructura esta bien escrita
+        },
+      ),
       
             //height: 35,
             //width: 1000.0,
@@ -514,26 +514,40 @@ class _InputTextValidationsState extends State<InputTextValidations> {
   // Funcion para manejar la estructura del contenido del input
   validateStructure(String? value) {
     // Condicion si el campo es o no requerido 
-    if(widget.isEmptyInput! && value!.isEmpty) {
-      return "El campo $widget.text es requerido";
+    //if(widget.isEmptyInput! && value!.isEmpty) {
+    if(value!.length == 0) {
+      setState(() {
+        hasError = true; // Establecer hasError en true si el campo está vacío
+      });
+      return "El campo es requerido llenarlo";
     } else {
       // Uso de un switch
       switch(widget.validateText){
         case ValidateText.rfc:
-          return validateRFC(value!)? null : message("RFC");
+          return validateRFC(value)? null : message("RFC");
         
         case ValidateText.phoneNumber:
-          return validatePhoneNumber(value!)? null : message("número de telefono");
+          return validatePhoneNumber(value)? null : setState(() {
+            message("número de telefono");
+        hasError = true; // Establecer hasError en true si el campo está vacío
+      });
         
         case ValidateText.email:
-          return validateEmail(value!)? null : message("email");
+          return validateEmail(value)? 
+          setState(() {
+            hasError = false; // Establecer hasError en false si el campo está aprobado
+          }) : 
+          message("email");
+          // ignore: dead_code
+          setState(() {
+            hasError = true; // Establecer hasError en true si el campo no cumple con la estructura
+          });
         
         case ValidateText.zipCode:
-          return validateZipCode(value!)? null : message("codigo postal");
+          return validateZipCode(value)? null : message("codigo postal");
 
-        default: // si no se da ninguno de los casos, no se muestra un mensaje
+        default: // si no se da ninguno de los casos, no se muestra mensaje
           return null;
-      
       }
     }
   }
