@@ -12,7 +12,7 @@ class InputValidatePage extends StatelessWidget {
   TextEditingController ctrlEmail = TextEditingController(); // Controlador del emaail
   TextEditingController ctrlZipCode = TextEditingController(); // Controlador del emaail
 
-  GlobalKey<FormState> keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y controlar
+  GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y controlar
                                                           el estado o validacion de un formulario  */
 
   @override
@@ -36,7 +36,7 @@ class InputValidatePage extends StatelessWidget {
           padding: EdgeInsets.all(15), // Separación entre todos los widgets y el borde del celular
           
           child: Form( // "Form" se va a trabajar con formularios
-            key: keyForm, // Define un formulario con una llave para controlarlo
+            key: _keyForm, // Define un formulario con una llave para controlarlo
             child: Column(
               // Se acomoda el contenido en columna
 
@@ -45,16 +45,15 @@ class InputValidatePage extends StatelessWidget {
               
               children: <Widget>[
                 
-                // input de RFC
+                // input de email
                 InputTextValidations(
                   textoInput: "Correo electronico",
-                  inputType: TextInputType.emailAddress, 
-                  text: "RFC", 
-                  controller: ctrlRFC, 
-                  validateText: ValidateText.rfc,
+                  inputType: TextInputType.emailAddress,
+                  controller: ctrlEmail, 
+                  validateText: ValidateText.email,
                 ),
                 // input del correo
-                TextFieldBase("Email", ctrlEmail, validateText: ValidateText.email,),
+                //TextFieldBase("Email", ctrlEmail, validateText: ValidateText.email,),
                 // input del numero de telefono
                 TextFieldBase("Número de telefono", ctrlPhoneNumber, validateText: ValidateText.phoneNumber,),
                 // input del numero de telefono
@@ -72,7 +71,7 @@ class InputValidatePage extends StatelessWidget {
 
   // funcion para saber si los inputs tienen correcto su contenido
   save() {
-    if(keyForm.currentState!.validate()){ // si esta correcto el contenido de cada input
+    if(_keyForm.currentState!.validate()){ // si esta correcto el contenido de cada input
 
     }
   }
