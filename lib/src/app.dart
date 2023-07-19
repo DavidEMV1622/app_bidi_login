@@ -11,8 +11,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // widget principal
       home: Center(
-        //child: LoginPage(),
-        child: InputValidatePage(),
+        child: LoginPage(),
+        //child: InputValidatePage(),
         //child: ViewUserDataPage(),
       ),
     );

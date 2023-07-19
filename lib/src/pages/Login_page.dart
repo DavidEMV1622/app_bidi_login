@@ -24,14 +24,15 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     // Plantilla principal "Scaffold"
     return Scaffold(
-      // Barra principal de navegación "AppBar"
-      appBar: AppBar(
+        // Barra principal de navegación "AppBar"
+        /*appBar: AppBar(
         backgroundColor: CustomColors
             .colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
-      ),
+      ),*/
 
-      // ---- Cuerpo o contenido de la aplicación "body" ----
-      body: Center(
+        // ---- Cuerpo o contenido de la aplicación "body" ----
+        body: SingleChildScrollView(
+      child: Center(
         child: Padding(
           padding: EdgeInsets.all(
               15), // Separación entre todos los widgets y el borde del celular
@@ -45,13 +46,14 @@ class _LoginPageState extends State<LoginPage> {
               /* Se usa el widget "children" que son 
                                 los hijos o cadenas de widget que se van 
                                 a unir */
-
-              /*Image.network(
-                imageUrl,
-              ),*/
+              Image.network(
+                'https://www.credibanco.com/wp-content/uploads/2022/11/logo-web-principal-credibanco.png.webp',
+                width: 800,
+                height: null,
+              ),
 
               SizedBox(
-                height: 45.0,
+                height: 35.0,
               ),
 
               // ---- Titulo de "LOGIN" ----
@@ -86,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Boton "Iniciar de sesión" ----
-             // boton_orange("Iniciar sesión", Color.fromRGBO(255, 182, 0, 1)),
+              // boton_orange("Iniciar sesión", Color.fromRGBO(255, 182, 0, 1)),
 
               BtnPrimaery(
                 textButton: "Iniciar sesion",
@@ -119,9 +121,12 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Texto para un link si se le olvido la contrasenia ----
-              BotonLink(textoLink: "Olvide mi contraseña", onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PasswordPage())),),
-              
+              BotonLink(
+                textoLink: "Olvide mi contraseña",
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PasswordPage())),
+              ),
+
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
@@ -143,6 +148,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-    );
+    ));
   }
 }
