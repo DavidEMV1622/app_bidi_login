@@ -33,6 +33,7 @@ BM 1610 => Cambio de contraseña (falta validacion)
 BM 1606 => Pagina de aterrisaje
 BM 1608 => Menu lateral 
 BM 1609 => Opcion de envio de otp 
+BM 1612 => drop bar.
 
 
 
