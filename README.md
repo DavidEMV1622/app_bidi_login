@@ -27,13 +27,15 @@ BM-1604 => ENVIO DE CORREO / JESUS (falta validacion)
 BM-1605 => ESCRIBIR UTP / DAVID (falta validacion)
 BM 1607 => mostrar datos del usuario / DAVID (falta validacion)
 BM 1610 => Cambio de contraseña (falta validacion)
-
+BM 1613 => integracion de imagenes
 .
 --------------------------------------POR--HACER--------------------------------------------
 BM 1606 => Pagina de aterrisaje
 BM 1608 => Menu lateral 
 BM 1609 => Opcion de envio de otp 
 BM 1612 => drop bar.
+BM 1614 => integracion de nuevos input (REGISTER/EDITAR)
+
 
 
 
@@ -42,7 +44,7 @@ BM 1612 => drop bar.
 
 BM-1611=> validaciones en formularios.
 
-BM 1613 => integracion de imagenes
+
 
 -------------------------------------- VALIDACIONES A TENER EN CUENTA --------------------------------------------
 1) Correo: validar que tenga el arroba y dependiendo de la nacionalidad puede finalizar como .com, .co, .edu.co, entre otros.
