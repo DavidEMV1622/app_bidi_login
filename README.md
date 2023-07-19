@@ -37,11 +37,12 @@ BM 1612 => drop bar.
 
 
 
+
 ------------------------------En--- P--R--O..D--U--C--C--I--O--N-----------------------------
 
 BM-1611=> validaciones en formularios.
 
-
+BM 1613 => integracion de imagenes
 
 -------------------------------------- VALIDACIONES A TENER EN CUENTA --------------------------------------------
 1) Correo: validar que tenga el arroba y dependiendo de la nacionalidad puede finalizar como .com, .co, .edu.co, entre otros.
