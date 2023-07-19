@@ -2,6 +2,9 @@ import 'package:app_credibanco_login/src/common/inputValidate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import '../colors/colors.dart';
 import '../common/enumValidate.dart';
 import '../utils/TextFormatter.dart';
 
@@ -132,3 +135,4 @@ class TextFieldBase extends StatelessWidget {
   // Funcion para mostrar el mismo mensaje de error
   message(String textMessage) => "La estructura del $textMessage es inccorrecta";
 }
+

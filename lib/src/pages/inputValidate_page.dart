@@ -8,10 +8,15 @@ import '../colors/colors.dart';
 class InputValidatePage extends StatelessWidget {
 
   TextEditingController ctrlRFC = TextEditingController(); // Controlador del rfc
-  TextEditingController ctrlPhoneNumber = TextEditingController(); // Controlador del numero de telefono
-  TextEditingController ctrlEmail = TextEditingController(); // Controlador del emaail
   TextEditingController ctrlZipCode = TextEditingController(); // Controlador del emaail
 
+  // Controladores que se manejan en cada formulario
+  TextEditingController ctrlName = TextEditingController();
+  TextEditingController ctrlApellido = TextEditingController();
+  TextEditingController ctrlPhoneNumber = TextEditingController();
+  TextEditingController ctrlEmail = TextEditingController();
+  TextEditingController ctrlPassword = TextEditingController();
+  
   GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y controlar
                                                           el estado o validacion de un formulario  */
 
@@ -45,6 +50,22 @@ class InputValidatePage extends StatelessWidget {
               
               children: <Widget>[
                 
+                // input de nombre
+                InputTextValidations(
+                  textoInput: "Nombre",
+                  inputType: TextInputType.name,
+                  controller: ctrlName, 
+                  validateText: ValidateText.name,
+                ),
+
+                // input de apellido
+                InputTextValidations(
+                  textoInput: "Apellido",
+                  inputType: TextInputType.name,
+                  controller: ctrlApellido, 
+                  validateText: ValidateText.lastname,
+                ),
+
                 // input de email
                 InputTextValidations(
                   textoInput: "Correo electronico",
@@ -52,15 +73,34 @@ class InputValidatePage extends StatelessWidget {
                   controller: ctrlEmail, 
                   validateText: ValidateText.email,
                 ),
+
+                // input de numero de telefono
+                InputTextValidations(
+                  textoInput: "Número de telefono",
+                  inputType: TextInputType.phone,
+                  controller: ctrlPhoneNumber, 
+                  validateText: ValidateText.phoneNumber,
+                ),
+
+                // input de numero de telefono
+                InputPasswordValidations(
+                  textoInput: "Password",
+                  inputType: TextInputType.text,
+                  controller: ctrlPassword, 
+                  validateText: ValidateText.password,
+                ),
+
+                /*
                 // input del correo
-                //TextFieldBase("Email", ctrlEmail, validateText: ValidateText.email,),
+                TextFieldBase("Email", ctrlEmail, validateText: ValidateText.email,),
                 // input del numero de telefono
                 TextFieldBase("Número de telefono", ctrlPhoneNumber, validateText: ValidateText.phoneNumber,),
                 // input del numero de telefono
                 TextFieldBase("Codigo postal", ctrlZipCode, validateText: ValidateText.zipCode, isEmptyInput: true),
-                
+                */
                 // boton para saber si se escribio correctamente el contenido de cada input
                 TextButton(onPressed: save, child: Text("Guardar")),
+                
               ],
             ),
           ),
