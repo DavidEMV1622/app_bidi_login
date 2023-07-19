@@ -47,9 +47,9 @@ BM-1611=> validaciones en formularios.
     Y hacer que se valide si el correo existe o no (CONSUMIR API).
 2) Contraseña: validar que la contraseña tiene que tener como minimo un caracter especial, valores númericos, una letra en mayuscula y en minuscula,
 
-3) Nombre y Apellido: validar que tenga permitido escribir solo letras (no numeros y no caracteres especiales).
+3) Nombre y Apellido: validar que tenga permitido escribir solo letras (no numeros y no caracteres especiales ni espacios).
 4) Telefono: validar que se pueda escribir valores númericos y un limite de 10 digitos.
 
-5) Contraseña y Confirmar Contraseña: va hacer lo mismo que la validacion de Contraseña, solo que hay que crear una validacion para poder comparar si son iguales.
+5) Contraseña y Confirmar Contraseña: va hacer lo mismo que la validacion de Contraseña, solo que hay que crear una validacion para poder comparar si son iguales (hacer solo la comparacion).
 
 6) OTP: Validar si el codigo de 6 digitos es invalido o codigo expirado.
