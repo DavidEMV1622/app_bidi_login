@@ -28,7 +28,7 @@ BM-1605 => ESCRIBIR UTP / DAVID (falta validacion)
 BM 1607 => mostrar datos del usuario / DAVID (falta validacion)
 BM 1610 => Cambio de contraseña (falta validacion)
 
-
+.
 --------------------------------------POR--HACER--------------------------------------------
 BM 1606 => Pagina de aterrisaje
 BM 1608 => Menu lateral 
