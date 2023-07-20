@@ -43,6 +43,7 @@ BM 1614 => integracion de nuevos input (REGISTER/EDITAR)
 ------------------------------En--- P--R--O..D--U--C--C--I--O--N-----------------------------
 
 BM-1611=> validaciones en formularios.
+BM-1615=> Creaci´´on de pop-ups.
 
 
 
