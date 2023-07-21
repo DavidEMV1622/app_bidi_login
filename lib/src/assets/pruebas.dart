@@ -113,18 +113,19 @@ class TextFieldBase extends StatelessWidget {
     } else {
       // Uso de un switch
       switch(validateText){
+        /*
         case ValidateText.rfc:
           return validateRFC(value!)? null : message("RFC");
-        
+        */
         case ValidateText.phoneNumber:
           return validatePhoneNumber(value!)? null : message("número de telefono");
         
         case ValidateText.email:
           return validateEmail(value!)? null : message("email");
-        
+        /*
         case ValidateText.zipCode:
           return validateZipCode(value!)? null : message("codigo postal");
-
+*/
         default: // si no se da ninguno de los casos, no se muestra un mensaje
           return null;
       

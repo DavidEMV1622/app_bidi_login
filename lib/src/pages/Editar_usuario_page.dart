@@ -31,6 +31,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 tituloEncabezadoUno("Editar Usuario"),
+                /*
                 InputText(textoInput: "Nombre",
                   inputType: TextInputType.name,
                 ),
@@ -45,6 +46,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 ),
                 PasswordInput(textoContrasenia: "Contraseña:"),
                 PasswordInput(textoContrasenia: "Confirmar contraseña:"),
+                */
               ],
             )
           ]),

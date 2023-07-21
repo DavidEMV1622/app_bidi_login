@@ -6,10 +6,6 @@ import '../assets/input.dart';
 import '../colors/colors.dart';
 
 class InputValidatePage extends StatelessWidget {
-  TextEditingController ctrlRFC =
-      TextEditingController(); // Controlador del rfc
-  TextEditingController ctrlZipCode =
-      TextEditingController(); // Controlador del emaail
 
   // Controladores que se manejan en cada formulario
   TextEditingController ctrlName = TextEditingController();
@@ -18,9 +14,8 @@ class InputValidatePage extends StatelessWidget {
   TextEditingController ctrlEmail = TextEditingController();
   TextEditingController ctrlPassword = TextEditingController();
 
-  GlobalKey<FormState> _keyForm = GlobalKey<
-      FormState>(); /* Clave que se utiliza para identificar y controlar
-                                                          el estado o validacion de un formulario  */
+  GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
+                                                    controlar el estado o validacion de un formulario  */
 
   @override
   Widget build(BuildContext context) {
@@ -38,18 +33,13 @@ class InputValidatePage extends StatelessWidget {
         // ---- Cuerpo o contenido de la aplicación "body" ----
         body: Center(
           child: Padding(
-            padding: EdgeInsets.all(
-                15), // Separación entre todos los widgets y el borde del celular
+            padding: EdgeInsets.all(15), // Separación entre todos los widgets y el borde del celular
 
-            child: Form(
-              // "Form" se va a trabajar con formularios
-              key:
-                  _keyForm, // Define un formulario con una llave para controlarlo
-              child: Column(
-                // Se acomoda el contenido en columna
+            child: Form(// "Form" se va a trabajar con formularios
+              key: _keyForm, // Define un formulario con una llave para controlarlo
+              child: Column(// Se acomoda el contenido en columna
 
-                mainAxisAlignment: MainAxisAlignment
-                    .center, // Define la posición de los widgets
+                mainAxisAlignment: MainAxisAlignment.center, // Define la posición de los widgets
 
                 children: <Widget>[
                   // input de nombre
@@ -92,14 +82,6 @@ class InputValidatePage extends StatelessWidget {
                     validateText: ValidateText.password,
                   ),
 
-                  /*
-                // input del correo
-                TextFieldBase("Email", ctrlEmail, validateText: ValidateText.email,),
-                // input del numero de telefono
-                TextFieldBase("Número de telefono", ctrlPhoneNumber, validateText: ValidateText.phoneNumber,),
-                // input del numero de telefono
-                TextFieldBase("Codigo postal", ctrlZipCode, validateText: ValidateText.zipCode, isEmptyInput: true),
-                */
                   // boton para saber si se escribio correctamente el contenido de cada input
                   TextButton(onPressed: save, child: Text("Guardar")),
                 ],
@@ -111,8 +93,7 @@ class InputValidatePage extends StatelessWidget {
 
   // funcion para saber si los inputs tienen correcto su contenido
   save() {
-    if (_keyForm.currentState!.validate()) {
-      // si esta correcto el contenido de cada input
+    if (_keyForm.currentState!.validate()) {// si esta correcto el contenido de cada input
     }
   }
 }

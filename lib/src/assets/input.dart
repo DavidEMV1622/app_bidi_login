@@ -5,279 +5,27 @@ import '../common/enumValidate.dart';
 import '../common/inputValidate.dart';
 import '../utils/TextFormatter.dart';
 
-// ---- Clase para un input general ----
-class InputText extends StatefulWidget {
-
-  final String textoInput;
-
-  final inputType;
-
-  InputText({required this.textoInput, required this.inputType});
-
-  @override
-  _InputTextState createState() => _InputTextState();
-}
-
-class _InputTextState extends State<InputText> {
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-    // Definir el diseño de la caja de texto "BoxDecoration"
-    decoration: BoxDecoration(
-      color: CustomColors.colorBlanco, // Color del input
-      borderRadius: BorderRadius.circular(4.0), // Define los bordes redondeados
-      // Define el grosor y color de borde
-      border: Border.all(
-        color: CustomColors.colorNegro,
-        width: 1.0,
-      ),
-    ),
-    // Espaciado entre el borde y el contenido
-    padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-    //margin: EdgeInsets.symmetric(horizontal: 10.0),
-
-    // Uso de un input (Campo de texto)
-    child: TextField(
-        keyboardType: widget.inputType, // tipo de teclado que aparecera en el dispositivo movil
-        style: TextStyle(fontSize: 14.0), // Tamanio del texto
-        decoration: InputDecoration.collapsed( /* Quita la linea que viene por 
-                                              defecto en el input "InputDecoration.collapsed" */
-          hintText: widget.textoInput, // Place holder en el input
-        )),
-    
-          //height: 35,
-          //width: 1000.0,
-          
-    margin: EdgeInsets.symmetric(
-      horizontal: 0,
-      vertical: 5,
-    ),
-  );
-  }
-}
-
-/* Clase para manejar el inputPassword, ya que el setState necesita un build (context) para poder 
-actualizar el estado del mismo */
-
-class PasswordInput extends StatefulWidget {
-
-  final String textoContrasenia;
-
-  PasswordInput({required this.textoContrasenia});
-
-  @override
-  _PasswordInputState createState() => _PasswordInputState();
-}
-
-class _PasswordInputState extends State<PasswordInput> {
-  // Variable de tipo boolean para icono de si o no mostrar contrasenia
-  bool passenable = true;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      // ---- Diseño de la caja del input ----
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(255, 254, 254, 1), // Color del campo
-        borderRadius: BorderRadius.circular(4.0), // Borde de las esquinas
-        // Color y grosor de los bordes
-        border: Border.all(
-          color: Colors.black,
-          width: 1.0,
-        ),
-      ),
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 3.0),
-
-      // Uso de un input (Campo de texto)
-      child: TextFormField(
-        obscureText: passenable, // Oculta el contenido si es "true" y lo muestra si es "false"
-        style: TextStyle(fontSize: 14),
-        decoration: InputDecoration(
-          hintText: widget.textoContrasenia, // place holder
-          border: InputBorder.none, // Quita la línea que viene por defecto en el TextField
-
-          // Manejar un icono dentro del input
-          suffixIcon: IconButton(
-            // Agrega un icono para mostrar y otro para no mostrar contrasenia
-            icon: new Icon(passenable == true ? Icons.visibility_off : Icons.visibility),
-
-            /* Agrega una animación al presionar el boton y permite realizar una accion 
-            agregandolo entre las {} */
-            onPressed: () {
-              // Permite redibujar el widget para que se muestre los cambios del icono
-              setState(() {
-                if (passenable) {
-                  passenable = false;
-                } else {
-                  passenable = true;
-                }
-              });
-            },
-          ),
-        )
-      ),
-      margin: EdgeInsets.symmetric(
-        horizontal: 0,
-        vertical: 5,
-      ),
-    );
-  }
-}
-
-// Clase para manejar el inputCode
-class InputCode extends StatefulWidget {
-
-  // Parametros a manejar
-  String texto; 
-  FocusNode nombreFocus; 
-  final nombreController; 
-  FocusNode cambiarFocus;
-
-  // Utilizar los parametros como constructores
-  InputCode({
-    required this.texto, 
-    required this.nombreFocus, 
-    required this.nombreController, 
-    required this.cambiarFocus}
-  );
-
-  @override
-  _InputCodeState createState() => _InputCodeState();
-}
-
-class _InputCodeState extends State<InputCode> {
-  
-  // Controlar y manipular el texto dentro de un widget de entrada de texto
-  final focusControllerOne = TextEditingController();
-  final focusControllerTwo = TextEditingController();
-  final focusControllerThree = TextEditingController();
-  final focusControllerFour = TextEditingController();
-  final focusControllerFive = TextEditingController();
-  final focusControllerSix = TextEditingController();
-  
-  // Instanciación de cada uno de los campos "FocusNode"
-  late FocusNode focusNode1;
-  late FocusNode focusNode2;
-  late FocusNode focusNode3;
-  late FocusNode focusNode4;
-  late FocusNode focusNode5;
-  late FocusNode focusNode6;
-
-  // Cerrar cada focus para no consumir recursos del equipo
-  @override
-  void dispose() {
-    super.dispose();
-    focusControllerOne.dispose();
-    focusControllerTwo.dispose();
-    focusControllerThree.dispose();
-    focusControllerFour.dispose();
-    focusControllerFive.dispose();
-    focusControllerSix.dispose();
-
-    focusNode1.dispose();
-    focusNode2.dispose();
-    focusNode3.dispose();
-    focusNode4.dispose();
-    focusNode5.dispose();
-    focusNode6.dispose();
-  }
-
-  // Creación de los Focus
-  @override
-  void initState() {
-    super.initState();
-
-    focusNode1 = FocusNode();
-    focusNode2 = FocusNode();
-    focusNode3 = FocusNode();
-    focusNode4 = FocusNode();
-    focusNode5 = FocusNode();
-    focusNode6 = FocusNode();
-  }
-  
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      // Permite definir el diseño de la caja de texto "BoxDecoration"
-      decoration: BoxDecoration(
-        color: CustomColors.colorBlanco, // Color del input
-        borderRadius: BorderRadius.circular(10.0), // Define los bordes redondeados
-        // Define el grosor y color del borde
-        border: Border.all(
-          color: CustomColors.colorNegro,
-          width: 1.0,
-        ),
-      ),
-
-      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 17.0), // Espaciado entre el contenido y el borde
-      //margin: EdgeInsets.symmetric(horizontal: 10.0),
-
-      child: ListView(
-        children: <Widget> [
-
-          // Input que permite guardar, reiniciar o validar operaciones (TextFormField)
-          TextFormField(
-            keyboardType: TextInputType.number, // Aparece un teclado númerico en el dispositivo movil
-
-            controller: widget.nombreController, /* Define el controlador de cada input para 
-                                                  poder manejarlos con el focusNode*/
-        
-            inputFormatters: [LengthLimitingTextInputFormatter(1),], // Limitar cantidad caracteres
-            style: TextStyle(fontSize: 25,), // Tamanio del texto
-            decoration: InputDecoration.collapsed(/* Quita la linea que viene por 
-                                                  defecto en el input "InputDecoration.collapsed" */
-              hintText: widget.texto, // Place holder en el input
-            ),
-
-            // ---- Manejo primordial del focusNode para pasar de input ----
-            focusNode: widget.nombreFocus, // Uso de cada Focus
-            onChanged: (String cantidadCaracteres) { // Aplicar un evento para cambiar de input
-              // Condicion para cambiar de input
-              if (cantidadCaracteres.length == 1) {
-                widget.nombreFocus.unfocus(); // No acepta texto adicional en el input
-                FocusScope.of(context).requestFocus(widget.cambiarFocus); // Cambia de input
-              }
-            },
-          ),
-        ],
-      ),
-
-    // Definir largo y alto de los campos
-    height: 60,
-    width: 50,
-    
-    // Margen de separacion entre cada campo
-    margin: EdgeInsets.symmetric(
-      horizontal: 4,
-      //vertical: 5,
-    ),
-    );
-  }
-  // Metodo aparte para ir cambiando de input
-  void requestFocus(BuildContext context, FocusNode focusNode) {
-    FocusScope.of(context).requestFocus(focusNode);
-  }
-}
-
 // ---- Clase para un input general con validación ----
 class InputTextValidations extends StatefulWidget {
-
   final String textoInput; // // texto del input
-
   final inputType; // tipo de teclado a mostrar
-
   TextEditingController controller; // controlar cada input
   ValidateText? validateText; // Tipo de validacion a utilizar
 
-  InputTextValidations({required this.textoInput, required this.inputType, required this.controller, this.validateText});
+  // Uso de cada parametro asignado
+  InputTextValidations(
+      {required this.textoInput,
+      required this.inputType,
+      required this.controller,
+      this.validateText});
 
   @override
   _InputTextValidationsState createState() => _InputTextValidationsState();
 }
 
 class _InputTextValidationsState extends State<InputTextValidations> {
-  String hasError = "Base"; // Variable de estado para indicar si hay un error en el formulario
+  String hasError =
+      "Base"; // Variable de estado para indicar si hay un error en el formulario
 
   @override
   Widget build(BuildContext context) {
@@ -285,13 +33,16 @@ class _InputTextValidationsState extends State<InputTextValidations> {
       // Definir el diseño de la caja de texto "BoxDecoration"
       decoration: BoxDecoration(
         color: CustomColors.colorBlanco, // Color del input
-        borderRadius: BorderRadius.circular(4.0), // Define los bordes redondeados
+        borderRadius:
+            BorderRadius.circular(4.0), // Define los bordes redondeados
         // Define el grosor y color de borde
         border: Border.all(
           // Cambiar color del borde a rojo si es true
           //color: hasError ? Colors.red : CustomColors.colorNegro,
-          color: _miColor(hasError), // Llamada de la funcion para cambiar el color
-          width: _miBorde(hasError), // Llamada de la funcion para cambiar el borde
+          color:
+              _miColor(hasError), // Llamada de la funcion para cambiar el color
+          width:
+              _miBorde(hasError), // Llamada de la funcion para cambiar el borde
         ),
       ),
       // Espaciado entre el borde y el contenido
@@ -302,24 +53,30 @@ class _InputTextValidationsState extends State<InputTextValidations> {
       child: TextFormField(
         keyboardType: widget.inputType, // tipo de teclado a mostrar en el movil
 
+        // Contenido del TextFormField
         decoration: InputDecoration(
           hintText: widget.textoInput, // Place holder en el input
-          border: InputBorder.none, // Quita la línea que viene por defecto en el TextField
-          counterText: "", // Oculta el contador de caracteres de la propiedad "maxLength"
+          border: InputBorder
+              .none, // Quita la línea que viene por defecto en el TextField
+          counterText:
+              "", // Oculta el contador de caracteres de la propiedad "maxLength"
         ),
 
         controller: widget.controller, // maneja cada input a utilizar
-        maxLength: validateMaxLength(), // Cantidad de caracteres que tiene el input
+        maxLength:
+            validateMaxLength(), // Cantidad de caracteres que tiene el input
         inputFormatters: [validateinputFormatters()], // Tipo de dato del input
-        validator: (String? value) { /* Valida si la estructura del input es
-                                        correcta */
-          return validateStructure(value!); // retorna si la estructura esta bien escrita
+
+        /* Valida si la estructura del formulario es correcta */
+        validator: (String? value) {
+          return validateStructure(
+              value!); // retorna si la estructura esta bien escrita
         },
       ),
-      
+
       //height: 35,
       //width: 1000.0,
-            
+
       margin: EdgeInsets.symmetric(
         horizontal: 0,
         vertical: 5,
@@ -330,38 +87,38 @@ class _InputTextValidationsState extends State<InputTextValidations> {
   // Funcion para manejar la cantidad de caracteres del input
   validateMaxLength() {
     // Uso de un switch
-    switch(widget.validateText){
+    switch (widget.validateText) {
       case ValidateText.rfc:
         return 13;
-      
+
       case ValidateText.phoneNumber:
         return 10;
-      
+
       case ValidateText.email:
         return 65;
-      
+
       case ValidateText.zipCode:
         return 5;
 
       default: // si no se da ninguno de los casos, no se manda una longitud
         return null;
-    
     }
   }
 
   // Funcion para manejar el tipo de caracter del input
   validateinputFormatters() {
     // Uso de un switch
-    switch(widget.validateText){
+    switch (widget.validateText) {
       case ValidateText.name:
-        return FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z]+')); // maneja solo letras mayusculas y minusculas
+        return FilteringTextInputFormatter.allow(
+            RegExp(r'[a-zA-Z]+')); // maneja solo letras mayusculas y minusculas
 
       case ValidateText.phoneNumber:
         return FilteringTextInputFormatter.digitsOnly; // maneja solo numeros
-      
+
       default: // si no se da ninguno de los casos
-        return FilteringTextInputFormatter.singleLineFormatter; // maneja cualquier caracter
-    
+        return FilteringTextInputFormatter
+            .singleLineFormatter; // maneja cualquier caracter
     }
   }
 
@@ -369,48 +126,47 @@ class _InputTextValidationsState extends State<InputTextValidations> {
   validateStructure(String? value) {
     // Condicion si el campo es o no requerido
     //if(widget.isEmptyInput! && value!.isEmpty) {
-    if(value!.length == 0) {
+    if (value!.length == 0) {
       setState(() {
-        hasError = "Error"; // Establecer hasError en true si el campo está vacío
+        hasError =
+            "Error"; // Establecer hasError en true si el campo está vacío
       });
       return "El campo es requerido llenarlo";
     } else {
-      
       // rectificar el error
       setState(() {
         hasError = "Error";
       });
 
       // Uso de un switch
-      switch(widget.validateText){
-        
+      switch (widget.validateText) {
         case ValidateText.name:
-          return validateName(value)? 
-          setState(() {
-            hasError = "Correct";
-          }) : 
-          "El nombre debe tener 3 o más caracteres";
+          return validateName(value)
+              ? setState(() {
+                  hasError = "Correct";
+                })
+              : "El nombre debe tener 3 o más caracteres";
 
         case ValidateText.lastname:
-          return validateName(value)? 
-          setState(() {
-            hasError = "Correct";
-          }) : 
-          "El apellido debe tener 3 o más caracteres";
-        
+          return validateName(value)
+              ? setState(() {
+                  hasError = "Correct";
+                })
+              : "El apellido debe tener 3 o más caracteres";
+
         case ValidateText.phoneNumber:
-          return validatePhoneNumber(value)? 
-          setState(() {
-            hasError = "Correct";
-          }) : 
-          "El número de teléfono debe tener entre 10 o 15 digitos";
-        
+          return validatePhoneNumber(value)
+              ? setState(() {
+                  hasError = "Correct";
+                })
+              : "El número de teléfono debe tener entre 10 o 15 digitos";
+
         case ValidateText.email:
-          return validateEmail(value)? 
-          setState(() {
-            hasError = "Correct";
-          }) : 
-          message("email");
+          return validateEmail(value)
+              ? setState(() {
+                  hasError = "Correct";
+                })
+              : message("email");
 
         default: // si no se da ninguno de los casos, no se muestra mensaje
           return null;
@@ -423,34 +179,29 @@ class _InputTextValidationsState extends State<InputTextValidations> {
 
   // Funcion para cambiar el color del borde del formulario
   _miColor(String hasError) {
-    if (hasError == "Error"){
+    if (hasError == "Error") {
       return Colors.red;
-    
     } else if (hasError == "Correct") {
       return Colors.green;
-    
     } else if (hasError == "Base") {
       return CustomColors.colorNegro;
     }
   }
+
   // Funcion para cambiar el borde del formulario
   _miBorde(String hasError) {
-    if (hasError == "Error"){
+    if (hasError == "Error") {
       return 2.5;
-    
     } else if (hasError == "Correct") {
       return 2.5;
-    
     } else if (hasError == "Base") {
       return 1.0;
     }
   }
 }
 
-
 // ---- Clase para un input general con validación ----
 class InputPasswordValidations extends StatefulWidget {
-
   final String textoInput; // // texto del input
 
   final inputType; // tipo de teclado a mostrar
@@ -458,14 +209,20 @@ class InputPasswordValidations extends StatefulWidget {
   TextEditingController controller; // controlar cada input
   ValidateText? validateText; // Tipo de validacion a utilizar
 
-  InputPasswordValidations({required this.textoInput, required this.inputType, required this.controller, this.validateText});
+  InputPasswordValidations(
+      {required this.textoInput,
+      required this.inputType,
+      required this.controller,
+      this.validateText});
 
   @override
-  _InputPasswordValidationsState createState() => _InputPasswordValidationsState();
+  _InputPasswordValidationsState createState() =>
+      _InputPasswordValidationsState();
 }
 
 class _InputPasswordValidationsState extends State<InputPasswordValidations> {
-  String hasError = "Base"; // Variable de estado para indicar si hay un error en el formulario
+  String hasError =
+      "Base"; // Variable de estado para indicar si hay un error en el formulario
   // Variable de tipo boolean para icono de si o no mostrar contrasenia
   bool passenable = true;
 
@@ -490,17 +247,19 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
 
       // Uso de un input (Campo de texto)
       child: TextFormField(
-        obscureText: passenable, 
-        decoration: InputDecoration(/* Quita la linea que viene por 
-                                                defecto en el input "InputDecoration.collapsed" */
+        obscureText: passenable,
+
+        // Maneja el contenido del "TextFormField"
+        decoration: InputDecoration(
           hintText: widget.textoInput, // Place holder en el input
           border: InputBorder.none, // Quita la línea que viene por defecto en el TextField
-          counterText: "",
+          counterText: "", // Quita el contador de caracteres
 
           // Manejar un icono dentro del input
           suffixIcon: IconButton(
             // Agrega un icono para mostrar y otro para no mostrar contrasenia
-            icon: new Icon(passenable == true ? Icons.visibility_off : Icons.visibility),
+            icon: new Icon(
+                passenable == true ? Icons.visibility_off : Icons.visibility),
 
             /* Agrega una animación al presionar el boton y permite realizar una accion 
             agregandolo entre las {} */
@@ -519,15 +278,16 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
 
         controller: widget.controller, // maneja cada input a utilizar
         inputFormatters: [validateinputFormatters()], // Tipo de dato del input
-        validator: (String? value) { /* Valida si la estructura del input es
-                                        correcta */
+        
+        /* Valida si la estructura del input es correcta */
+        validator: (String? value) {
           return validateStructure(value!); // retorna si la estructura esta bien escrita
         },
       ),
-      
+
       //height: 35,
       //width: 1000.0,
-            
+
       margin: EdgeInsets.symmetric(
         horizontal: 0,
         vertical: 5,
@@ -538,54 +298,50 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
   // Funcion para manejar la cantidad de caracteres del input
   validateMaxLength() {
     // Uso de un switch
-    switch(widget.validateText){
+    switch (widget.validateText) {
       case ValidateText.rfc:
         return 13;
 
       default: // si no se da ninguno de los casos, no se manda una longitud
         return null;
-    
     }
   }
 
   // Funcion para manejar el tipo de caracter del input
   validateinputFormatters() {
     // Uso de un switch
-    switch(widget.validateText){
+    switch (widget.validateText) {
       case ValidateText.password:
-        return FilteringTextInputFormatter.singleLineFormatter; // maneja solo letras mayusculas y minusculas
-
+        return FilteringTextInputFormatter.singleLineFormatter;
+        
       default: // si no se da ninguno de los casos
         return FilteringTextInputFormatter.singleLineFormatter; // maneja cualquier caracter
-    
     }
   }
 
   // Funcion para manejar la estructura del contenido del input
   validateStructure(String? value) {
-    // Condicion si el campo es o no requerido 
+    // Condicion si el campo es o no requerido
     //if(widget.isEmptyInput! && value!.isEmpty) {
-    if(value!.length == 0) {
+    if (value!.length == 0) {
       setState(() {
         hasError = "Error"; // Establecer hasError en true si el campo está vacío
       });
       return "El campo es requerido llenarlo";
     } else {
-      
       // rectificar el error
       setState(() {
         hasError = "Error";
       });
 
       // Uso de un switch
-      switch(widget.validateText){
-        
+      switch (widget.validateText) {
         case ValidateText.password:
-          return validatePassword(value)? 
-          setState(() {
-            hasError = "Correct";
-          }) : 
-          "El nombre debe tener 3 o más caracteres";
+          return validatePassword(value)
+              ? setState(() {
+                  hasError = "Correct";
+                })
+              : "El nombre debe tener 3 o más caracteres";
 
         default: // si no se da ninguno de los casos, no se muestra mensaje
           return null;
@@ -598,24 +354,21 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
 
   // Funcion para cambiar el color del borde del formulario
   _miColor(String hasError) {
-    if (hasError == "Error"){
+    if (hasError == "Error") {
       return Colors.red;
-    
     } else if (hasError == "Correct") {
       return Colors.green;
-    
     } else if (hasError == "Base") {
       return CustomColors.colorNegro;
     }
   }
+
   // Funcion para cambiar el borde del formulario
   _miBorde(String hasError) {
-    if (hasError == "Error"){
+    if (hasError == "Error") {
       return 2.5;
-    
     } else if (hasError == "Correct") {
       return 2.5;
-    
     } else if (hasError == "Base") {
       return 1.0;
     }
@@ -624,32 +377,31 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
 
 // Clase para manejar el inputCode
 class InputCodeValidations extends StatefulWidget {
-
   // Parametros a manejar
   final String textoInput; // // texto del input
   final inputType; // tipo de teclado a mostrar
-  FocusNode nombreFocus; 
+  FocusNode nombreFocus;
   TextEditingController nombreController; // controlar cada input
   FocusNode cambiarFocus;
   ValidateText? validateText; // Tipo de validacion a utilizar
 
   // Utilizar los parametros como constructores
-  InputCodeValidations({
-    required this.textoInput,
-    required this.inputType,
-    required this.nombreFocus, 
-    required this.nombreController, 
-    required this.cambiarFocus,
-    this.validateText}
-  );
+  InputCodeValidations(
+      {required this.textoInput,
+      required this.inputType,
+      required this.nombreFocus,
+      required this.nombreController,
+      required this.cambiarFocus,
+      this.validateText});
 
   @override
   _InputCodeValidationsState createState() => _InputCodeValidationsState();
 }
 
 class _InputCodeValidationsState extends State<InputCodeValidations> {
-  String hasError = "Base"; // Variable de estado para indicar si hay un error en el formulario
-  
+  String hasError =
+      "Base"; // Variable de estado para indicar si hay un error en el formulario
+
   // Controlar y manipular el texto dentro de un widget de entrada de texto
   final focusControllerOne = TextEditingController();
   final focusControllerTwo = TextEditingController();
@@ -657,7 +409,7 @@ class _InputCodeValidationsState extends State<InputCodeValidations> {
   final focusControllerFour = TextEditingController();
   final focusControllerFive = TextEditingController();
   final focusControllerSix = TextEditingController();
-  
+
   // Instanciación de cada uno de los campos "FocusNode"
   late FocusNode focusNode1;
   late FocusNode focusNode2;
@@ -697,14 +449,15 @@ class _InputCodeValidationsState extends State<InputCodeValidations> {
     focusNode5 = FocusNode();
     focusNode6 = FocusNode();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
       // Permite definir el diseño de la caja de texto "BoxDecoration"
       decoration: BoxDecoration(
         color: CustomColors.colorBlanco, // Color del input
-        borderRadius: BorderRadius.circular(10.0), // Define los bordes redondeados
+        borderRadius:
+            BorderRadius.circular(10.0), // Define los bordes redondeados
         // Define el grosor y color del borde
         border: Border.all(
           color: _miColor(hasError),
@@ -712,87 +465,101 @@ class _InputCodeValidationsState extends State<InputCodeValidations> {
         ),
       ),
 
-      padding: EdgeInsets.symmetric(horizontal: 14.0, vertical: 2.0), // Espaciado entre el contenido y el borde
+      padding: EdgeInsets.symmetric(
+          horizontal: 14.0,
+          vertical: 2.0), // Espaciado entre el contenido y el borde
       //margin: EdgeInsets.symmetric(horizontal: 10.0),
 
       child: ListView(
-        children: <Widget> [
-
+        children: <Widget>[
           // Input que permite guardar, reiniciar o validar operaciones (TextFormField)
           TextFormField(
-            keyboardType: TextInputType.number, // Aparece un teclado númerico en el dispositivo movil
+            keyboardType: TextInputType
+                .number, // Aparece un teclado númerico en el dispositivo movil
 
-            inputFormatters: [LengthLimitingTextInputFormatter(1),], // Limitar cantidad caracteres
-            style: TextStyle(fontSize: 25,), // Tamanio del texto
-            
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(1),
+            ], // Limitar cantidad caracteres
+            style: TextStyle(
+              fontSize: 25,
+            ), // Tamanio del texto
+
             decoration: InputDecoration(
               hintText: widget.textoInput, // Place holder en el input
-              border: InputBorder.none, // Quita la línea que viene por defecto en el TextField
-              counterText: "", // Oculta el contador de caracteres de la propiedad "maxLength"
+              border: InputBorder
+                  .none, // Quita la línea que viene por defecto en el TextField
+              counterText:
+                  "", // Oculta el contador de caracteres de la propiedad "maxLength"
             ),
 
-            controller: widget.nombreController, /* Define el controlador de cada input para 
+            controller: widget.nombreController,
+            /* Define el controlador de cada input para 
                                                   poder manejarlos con el focusNode*/
-            maxLength: validateMaxLength(), // Cantidad de caracteres que tiene el input
+            maxLength:
+                validateMaxLength(), // Cantidad de caracteres que tiene el input
             //inputFormatters: [validateinputFormatters()], // Tipo de dato del input
-            validator: (String? value) { /* Valida si la estructura del input es
+            validator: (String? value) {
+              /* Valida si la estructura del input es
                                             correcta */
-              return validateStructure(value!); // retorna si la estructura esta bien escrita
+              return validateStructure(
+                  value!); // retorna si la estructura esta bien escrita
             },
 
             // ---- Manejo primordial del focusNode para pasar de input ----
             focusNode: widget.nombreFocus, // Uso de cada Focus
-            onChanged: (String cantidadCaracteres) { // Aplicar un evento para cambiar de input
+            onChanged: (String cantidadCaracteres) {
+              // Aplicar un evento para cambiar de input
               // Condicion para cambiar de input
               if (cantidadCaracteres.length == 1) {
-                widget.nombreFocus.unfocus(); // No acepta texto adicional en el input
-                FocusScope.of(context).requestFocus(widget.cambiarFocus); // Cambia de input
+                widget.nombreFocus
+                    .unfocus(); // No acepta texto adicional en el input
+                FocusScope.of(context)
+                    .requestFocus(widget.cambiarFocus); // Cambia de input
               }
             },
           ),
         ],
       ),
 
-    // Definir largo y alto de los campos
-    height: 60,
-    width: 50,
-    
-    // Margen de separacion entre cada campo
-    margin: EdgeInsets.symmetric(
-      horizontal: 4,
-      //vertical: 5,
-    ),
+      // Definir largo y alto de los campos
+      height: 60,
+      width: 50,
+
+      // Margen de separacion entre cada campo
+      margin: EdgeInsets.symmetric(
+        horizontal: 4,
+        //vertical: 5,
+      ),
     );
   }
+
   // Metodo aparte para ir cambiando de input
   void requestFocus(BuildContext context, FocusNode focusNode) {
     FocusScope.of(context).requestFocus(focusNode);
   }
 
-    // Funcion para manejar la cantidad de caracteres del input
+  // Funcion para manejar la cantidad de caracteres del input
   validateMaxLength() {
     // Uso de un switch
-    switch(widget.validateText){
-      
+    switch (widget.validateText) {
       case ValidateText.codeOTP:
         return 1;
 
       default: // si no se da ninguno de los casos, no se manda una longitud
         return null;
-    
     }
   }
 
   // Funcion para manejar el tipo de caracter del input
   validateinputFormatters() {
     // Uso de un switch
-    switch(widget.validateText){
+    switch (widget.validateText) {
       case ValidateText.codeOTP:
         return FilteringTextInputFormatter.digitsOnly; // maneja solo numeros
-      
+
       default: // si no se da ninguno de los casos
-        return FilteringTextInputFormatter.singleLineFormatter; // maneja cualquier caracter
-    
+        return FilteringTextInputFormatter
+            .singleLineFormatter; // maneja cualquier caracter
     }
   }
 
@@ -800,28 +567,27 @@ class _InputCodeValidationsState extends State<InputCodeValidations> {
   validateStructure(String? value) {
     // Condicion si el campo es o no requerido
     //if(widget.isEmptyInput! && value!.isEmpty) {
-    if(value!.length == 0) {
+    if (value!.length == 0) {
       setState(() {
-        hasError = "Error"; // Establecer hasError en true si el campo está vacío
+        hasError =
+            "Error"; // Establecer hasError en true si el campo está vacío
       });
       return "El campo es requerido llenarlo";
     } else {
-      
       // rectificar el error
       setState(() {
         hasError = "Error";
       });
 
       // Uso de un switch
-      switch(widget.validateText){
-        
+      switch (widget.validateText) {
         case ValidateText.codeOTP:
-          return validateCodeOTP(value)? 
-          setState(() {
-            hasError = "Correct";
-          }) : 
-          null;
-          
+          return validateCodeOTP(value)
+              ? setState(() {
+                  hasError = "Correct";
+                })
+              : null;
+
         default: // si no se da ninguno de los casos, no se muestra mensaje
           return null;
       }
@@ -830,24 +596,21 @@ class _InputCodeValidationsState extends State<InputCodeValidations> {
 
   // Funcion para cambiar el color del borde del formulario
   _miColor(String hasError) {
-    if (hasError == "Error"){
+    if (hasError == "Error") {
       return Colors.red;
-    
     } else if (hasError == "Correct") {
       return Colors.green;
-    
     } else if (hasError == "Base") {
       return CustomColors.colorNegro;
     }
   }
+
   // Funcion para cambiar el borde del formulario
   _miBorde(String hasError) {
-    if (hasError == "Error"){
+    if (hasError == "Error") {
       return 2.5;
-    
     } else if (hasError == "Correct") {
       return 2.5;
-    
     } else if (hasError == "Base") {
       return 1.0;
     }

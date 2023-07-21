@@ -23,15 +23,9 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     // Plantilla principal "Scaffold"
-    return Scaffold(
-        // Barra principal de navegación "AppBar"
-        /*appBar: AppBar(
-        backgroundColor: CustomColors
-            .colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
-      ),*/
-
-        // ---- Cuerpo o contenido de la aplicación "body" ----
-        body: SingleChildScrollView(
+    return Scaffold(       
+      // ---- Cuerpo o contenido de la aplicación "body" ----
+      body: SingleChildScrollView(
       child: Center(
         child: Padding(
           padding: EdgeInsets.all(
@@ -64,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 45.0,
               ),
-
+              /*
               // ---- Llamado Widget para un campo de texto para ingresar correo ----
               InputText(
                 textoInput: "Correo electronico",
@@ -81,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
               PasswordInput(
                 textoContrasenia: 'Contraseña',
               ),
-
+              */
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,

@@ -44,11 +44,12 @@ class _SendCodePasswordState extends State<SendCodePassword> {
                   SizedBox(
                     height: 45,
                   ),
-                  
+                  /*
                   InputText(
                     textoInput: "ejemplo@ejemplo.com",
                     inputType: TextInputType.emailAddress,
                   ),
+                  */
                   SizedBox(
                     height: 45,
                   ),

@@ -6,20 +6,6 @@ import '../colors/colors.dart';
 import '../utils/TextFormatter.dart';
 import 'enumValidate.dart';
 
-validateRFC(String rfc) {
-  // especifica la estructura que se necesita en el input "RFC"
-  String expRegular = r'^([A-Z]{3,4}(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01]))([A-Z\d]{2}(?:[A\d]))?)$';
-  // Clase para validar la expresion regular
-  return RegExp(expRegular).hasMatch(rfc);
-}
-// Funcion para validar la estructura del codigo postal
-validateZipCode(String zipCode) {
-  String expRegular = r'^[0-9]{5}(?:-[0-9]{4})?$';
-  return RegExp(expRegular).hasMatch(zipCode);
-}
-
-
-
 // Funcion para validar la estructura del nombre
 validateName(String name) {
   // especifica la estructura que se necesita en el input "RFC"

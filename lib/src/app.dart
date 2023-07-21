@@ -5,6 +5,8 @@ import 'package:app_credibanco_login/src/pages/VisualizarUsuario_page.dart';
 import 'package:app_credibanco_login/src/pages/inputValidate_page.dart';
 import 'package:flutter/material.dart';
 
+import 'assets/pop-up.dart';
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(context) {
@@ -13,8 +15,9 @@ class MyApp extends StatelessWidget {
       // widget principal
       home: Center(
         //child: LoginPage(),
-        //child: InputValidatePage(),
-        child: PasswordPage(),
+        child: InputValidatePage(),
+        //child: PasswordPage(),
+        //child: PopUpsError(),
         //child: ViewUserDataPage(),
       ),
     );

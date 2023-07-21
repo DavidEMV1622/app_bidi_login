@@ -37,7 +37,7 @@ class _chancePasswordState extends State<chancePassword> {
               subtituloUno("Por Favor ingrese su nueva contraseña"),
               SizedBox(
                 height: 45.0,
-              ),
+              ),/*
               PasswordInput(textoContrasenia: "Contraseña"),
               SizedBox(
                 height: 15.0,
@@ -46,6 +46,7 @@ class _chancePasswordState extends State<chancePassword> {
               SizedBox(
                 height: 25.0,
               ),
+              */
               BtnPrimaery(
                 textButton: "Guardar Cambios",
                 colorBox: Color.fromRGBO(255, 182, 0, 1),
