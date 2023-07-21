@@ -46,6 +46,12 @@ validatePassword(String password) {
   return RegExp(expRegular).hasMatch(password);
 }
 
+// Funcion para validar la estructura del numero de telefono
+validateCodeOTP(String codeOTP) {
+  String expRegular = r'^(?:[+0]9)?[0-9]{1,1}$';
+  return RegExp(expRegular).hasMatch(codeOTP);
+}
+
 // --------------------------------------------------------------------
 // ---------- Funciones para validar formularios ----------
 // Funcion para manejar la cantidad de caracteres del input

@@ -79,12 +79,12 @@ class InputValidatePage extends StatelessWidget {
                   // input de numero de telefono
                   InputTextValidations(
                     textoInput: "Número de telefono",
-                    inputType: TextInputType.phone,
+                    inputType: TextInputType.number,
                     controller: ctrlPhoneNumber,
                     validateText: ValidateText.phoneNumber,
                   ),
 
-                  // input de numero de password
+                  // input del password
                   InputPasswordValidations(
                     textoInput: "Password",
                     inputType: TextInputType.text,

@@ -6,6 +6,7 @@ import '../assets/fuentesText/fuentes.dart';
 import '../assets/input.dart';
 import '../assets/titulo.dart';
 import '../colors/colors.dart';
+import '../common/enumValidate.dart';
 import 'Registrar_page.dart';
 
 class PasswordPage extends StatefulWidget {
@@ -67,6 +68,10 @@ class _PasswordPageState extends State<PasswordPage> {
     focusNode6 = FocusNode();
   }
 
+  GlobalKey<FormState> _keyForm = GlobalKey<
+      FormState>(); /* Clave que se utiliza para identificar y controlar
+                                                          el estado o validacion de un formulario  */
+
   @override
   Widget build(BuildContext context) {
     // Plantilla principal "Scaffold"
@@ -82,7 +87,10 @@ class _PasswordPageState extends State<PasswordPage> {
         child: Padding(
           padding: EdgeInsets.all(
               20), // Separación entre todos los widgets y el borde del celular
-          child: Column(
+          child: Form(
+            key:
+                  _keyForm, // Define un formulario con una llave para controlarlo
+            child: Column(
             // Se acomoda el contenido en columna
 
             mainAxisAlignment:
@@ -114,6 +122,56 @@ class _PasswordPageState extends State<PasswordPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  InputCodeValidations(
+                    textoInput: "*",
+                    inputType: TextInputType.number,
+                    nombreFocus: focusNode1,
+                    nombreController: focusControllerOne,
+                    cambiarFocus: focusNode2,
+                    validateText: ValidateText.codeOTP
+                  ),
+                  InputCodeValidations(
+                    textoInput: "*",
+                    inputType: TextInputType.number,
+                    nombreFocus: focusNode2,
+                    nombreController: focusControllerTwo,
+                    cambiarFocus: focusNode3,
+                    validateText: ValidateText.codeOTP
+                  ),
+                  InputCodeValidations(
+                    textoInput: "*",
+                    inputType: TextInputType.number,
+                    nombreFocus: focusNode3,
+                    nombreController: focusControllerThree,
+                    cambiarFocus: focusNode4,
+                    validateText: ValidateText.codeOTP
+                  ),
+                  InputCodeValidations(
+                    textoInput: "*",
+                    inputType: TextInputType.number,
+                    nombreFocus: focusNode4,
+                    nombreController: focusControllerFour,
+                    cambiarFocus: focusNode5,
+                    validateText: ValidateText.codeOTP
+                  ),
+                  InputCodeValidations(
+                    textoInput: "*",
+                    inputType: TextInputType.number,
+                    nombreFocus: focusNode5,
+                    nombreController: focusControllerFive,
+                    cambiarFocus: focusNode6,
+                    validateText: ValidateText.codeOTP
+                  ),
+                  InputCodeValidations(
+                    textoInput: "*",
+                    inputType: TextInputType.number,
+                    nombreFocus: focusNode6,
+                    nombreController: focusControllerSix,
+                    cambiarFocus: focusNode6,
+                    validateText: ValidateText.codeOTP
+                  ),
+
+/*
                   InputCode(
                       texto: "*",
                       nombreFocus: focusNode1,
@@ -143,7 +201,7 @@ class _PasswordPageState extends State<PasswordPage> {
                       texto: "*",
                       nombreFocus: focusNode6,
                       nombreController: focusControllerSix,
-                      cambiarFocus: focusNode6),
+                      cambiarFocus: focusNode6), */
                 ],
               ),
 
@@ -167,14 +225,19 @@ class _PasswordPageState extends State<PasswordPage> {
                 onPressed: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => LoginPage())),
               ),
+              // boton para saber si se escribio correctamente el contenido de cada input
+              TextButton(onPressed: save, child: Text("Guardar")),
             ],
+          ),
           ),
         ),
       ),
     );
   }
-
-  void requestFocus(BuildContext context, FocusNode focusNode) {
-    FocusScope.of(context).requestFocus(focusNode);
+// funcion para saber si los inputs tienen correcto su contenido
+  save() {
+    if (_keyForm.currentState!.validate()) {
+      // si esta correcto el contenido de cada input
+    }
   }
 }
