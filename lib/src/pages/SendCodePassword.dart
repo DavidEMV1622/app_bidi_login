@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../assets/buttons.dart';
 import '../assets/input.dart';
 import '../colors/colors.dart';
+import '../common/enumValidate.dart';
 import 'Password_page.dart';
 import 'Registrar_page.dart';
 
@@ -15,13 +16,21 @@ class SendCodePassword extends StatefulWidget {
 }
 
 class _SendCodePasswordState extends State<SendCodePassword> {
+
+  TextEditingController ctrlEmail = TextEditingController();
+
+  GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
+                                                    controlar el estado o validacion de un formulario  */
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: CustomColors.colorBlanco,
-        ),
-        body: Container(
+      appBar: AppBar(
+        backgroundColor: CustomColors.colorBlanco,
+      ),
+      body: Container(
+        child: Form(// "Form" se va a trabajar con formularios
+          key: _keyForm, // Define un formulario con una llave para controlarlo
           child: ListView(
             padding: EdgeInsets.all(15),
             children: <Widget>[
@@ -44,12 +53,15 @@ class _SendCodePasswordState extends State<SendCodePassword> {
                   SizedBox(
                     height: 45,
                   ),
-                  /*
-                  InputText(
-                    textoInput: "ejemplo@ejemplo.com",
+                  
+                  // ---- Llamado Widget para un campo de texto para ingresar correo ----
+                  InputTextValidations(
+                    textoInput: "Correo electronico",
                     inputType: TextInputType.emailAddress,
+                    controller: ctrlEmail,
+                    validateText: ValidateText.email,
                   ),
-                  */
+                      
                   SizedBox(
                     height: 45,
                   ),
@@ -61,10 +73,20 @@ class _SendCodePasswordState extends State<SendCodePassword> {
                         MaterialPageRoute(
                             builder: (context) => PasswordPage())),
                   ),
+                  // boton para saber si se escribio correctamente el contenido de cada input
+                  TextButton(onPressed: save, child: Text("Guardar")),
                 ],
               )
             ],
           ),
-        ));
+        )
+        
+      )
+    );
+  }
+  // funcion para saber si los inputs tienen correcto su contenido
+  save() {
+    if (_keyForm.currentState!.validate()) {// si esta correcto el contenido de cada input
+    }
   }
 }

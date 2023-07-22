@@ -341,7 +341,7 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
               ? setState(() {
                   hasError = "Correct";
                 })
-              : "El campo debe tener una minuscula, mayuscula, caracter especial y un número";
+              : "Una minuscula, mayuscula, caracter especial y un número";
 
         default: // si no se da ninguno de los casos, no se muestra mensaje
           return null;

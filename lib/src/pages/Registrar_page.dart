@@ -5,20 +5,30 @@ import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:app_credibanco_login/src/pages/SendCodePassword.dart';
 import 'package:flutter/material.dart';
 import '../assets/fuentesText/fuentes.dart';
+import '../common/enumValidate.dart';
 import 'Password_page.dart';
 
 import '../colors/colors.dart';
 
 class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
   @override
-  createState() => _RegisterPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  // Variable para el estilo del texto
-  final TextStyle _estiloTexto = new TextStyle(fontSize: 25);
   // Variable de tipo boolean para icono de si o no mostrar contrasenia
   bool passenable = true;
+
+  // Controladores que se manejan en cada formulario
+  TextEditingController ctrlName = TextEditingController();
+  TextEditingController ctrlApellido = TextEditingController();
+  TextEditingController ctrlPhoneNumber = TextEditingController();
+  TextEditingController ctrlEmail = TextEditingController();
+  TextEditingController ctrlPassword = TextEditingController();
+  
+  GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
+                                                    controlar el estado o validacion de un formulario  */
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +41,10 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
-      body: ListView(
+      body: Container(
+        child: Form(
+          key: _keyForm, // Define un formulario con una llave para controlarlo
+          child: ListView(
           padding: EdgeInsets.symmetric(
             horizontal: 30.0,
             vertical: 25.0,
@@ -39,6 +52,47 @@ class _RegisterPageState extends State<RegisterPage> {
           children: <Widget>[
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               tituloEncabezadoUno("Registrate"),
+
+              // input de nombre
+              InputTextValidations(
+                textoInput: "Nombre",
+                inputType: TextInputType.name,
+                controller: ctrlName,
+                validateText: ValidateText.name,
+              ),
+
+              // input de apellido
+              InputTextValidations(
+                textoInput: "Apellido",
+                inputType: TextInputType.name,
+                controller: ctrlApellido,
+                validateText: ValidateText.lastname,
+              ),
+
+              // input de email
+              InputTextValidations(
+                textoInput: "Correo electronico",
+                inputType: TextInputType.emailAddress,
+                controller: ctrlEmail,
+                validateText: ValidateText.email,
+              ),
+
+              // input de numero de telefono
+              InputTextValidations(
+                textoInput: "Número de telefono",
+                inputType: TextInputType.number,
+                controller: ctrlPhoneNumber,
+                validateText: ValidateText.phoneNumber,
+              ),
+
+              // input del password
+              InputPasswordValidations(
+                textoInput: "Password",
+                inputType: TextInputType.text,
+                controller: ctrlPassword,
+                validateText: ValidateText.password,
+              ),
+
               /*
               InputText(
                 textoInput: "Nombre",
@@ -96,10 +150,16 @@ class _RegisterPageState extends State<RegisterPage> {
             BotonLink(
                 textoLink: "¿Ya tienes cuenta?, click aquí",
                 onPressed: () => Navigator.pop(context)),
-          ]),
+            
+            // boton para saber si se escribio correctamente el contenido de cada input
+            TextButton(onPressed: save, child: Text("Guardar")),
+          ]
+        ),
+      ) 
+      ),
     );
   }
-
+/*
   Widget _buttonLink(String textoLink) {
     return TextButton(
       onPressed: () {
@@ -128,5 +188,10 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
+  */
+  // funcion para saber si los inputs tienen correcto su contenido
+  save() {
+    if (_keyForm.currentState!.validate()) {// si esta correcto el contenido de cada input
+    }
   }
 }

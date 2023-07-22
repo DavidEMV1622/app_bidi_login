@@ -6,6 +6,7 @@ import '../assets/buttons.dart';
 import '../assets/fuentesText/fuentes.dart';
 import '../assets/input.dart';
 import '../colors/colors.dart';
+import '../common/enumValidate.dart';
 import 'Password_page.dart';
 import 'Registrar_page.dart';
 import 'SendCodePassword.dart';
@@ -16,9 +17,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // Variable para el estilo del texto
-  final TextStyle _estiloTexto = new TextStyle(fontSize: 25);
   //final String imageUrl ="https://elempleo.blob.core.windows.net/empresasprd/1379.gif";
+
+  TextEditingController ctrlEmail = TextEditingController();
+  TextEditingController ctrlPassword = TextEditingController();
+
+  GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
+                                                    controlar el estado o validacion de un formulario  */
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +35,10 @@ class _LoginPageState extends State<LoginPage> {
         child: Padding(
           padding: EdgeInsets.all(
               15), // Separación entre todos los widgets y el borde del celular
-          child: Column(
+          
+          child: Form(// "Form" se va a trabajar con formularios
+            key: _keyForm, // Define un formulario con una llave para controlarlo
+            child: Column(
             // Se acomoda el contenido en columna
 
             mainAxisAlignment:
@@ -58,11 +66,13 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 45.0,
               ),
-              /*
+              
               // ---- Llamado Widget para un campo de texto para ingresar correo ----
-              InputText(
+              InputTextValidations(
                 textoInput: "Correo electronico",
                 inputType: TextInputType.emailAddress,
+                controller: ctrlEmail,
+                validateText: ValidateText.email,
               ),
 
               // ---- Agregar un espacio ----
@@ -72,10 +82,13 @@ class _LoginPageState extends State<LoginPage> {
 
               // ---- Campo de texto para ingresar contrasenia ----
               //inputPassword("Contraseña"),
-              PasswordInput(
-                textoContrasenia: 'Contraseña',
+              InputPasswordValidations(
+                textoInput: "Contraseña",
+                inputType: TextInputType.text,
+                controller: ctrlPassword,
+                validateText: ValidateText.password,
               ),
-              */
+              
               // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
@@ -138,10 +151,18 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => RegisterPage())),
               ),
+              // boton para saber si se escribio correctamente el contenido de cada input
+              TextButton(onPressed: save, child: Text("Guardar")),
             ],
           ),
         ),
+        ),
       ),
     ));
+  }
+  // funcion para saber si los inputs tienen correcto su contenido
+  save() {
+    if (_keyForm.currentState!.validate()) {// si esta correcto el contenido de cada input
+    }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:app_credibanco_login/src/pages/Change_password.dart';
+import 'package:app_credibanco_login/src/pages/Editar_usuario_page.dart';
 import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:app_credibanco_login/src/pages/Password_page.dart';
 import 'package:app_credibanco_login/src/pages/VisualizarUsuario_page.dart';
@@ -15,8 +16,9 @@ class MyApp extends StatelessWidget {
       // widget principal
       home: Center(
         //child: LoginPage(),
-        child: InputValidatePage(),
+        //child: InputValidatePage(),
         //child: PasswordPage(),
+        child: UpdateUserPage(),
         //child: PopUpsError(),
         //child: ViewUserDataPage(),
       ),

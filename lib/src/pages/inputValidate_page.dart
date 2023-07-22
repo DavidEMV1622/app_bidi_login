@@ -21,74 +21,75 @@ class InputValidatePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        // Barra principal de navegación "AppBar"
-        appBar: AppBar(
-          backgroundColor: CustomColors.colorBlanco,
-          title: Text(
-            "input con validaciones",
-            style: TextStyle(color: Colors.black),
-          ),
+      // Barra principal de navegación "AppBar"
+      appBar: AppBar(
+        backgroundColor: CustomColors.colorBlanco,
+        title: Text(
+          "input con validaciones",
+          style: TextStyle(color: Colors.black),
         ),
+      ),
 
-        // ---- Cuerpo o contenido de la aplicación "body" ----
-        body: Center(
-          child: Padding(
-            padding: EdgeInsets.all(15), // Separación entre todos los widgets y el borde del celular
+      // ---- Cuerpo o contenido de la aplicación "body" ----
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.all(15), // Separación entre todos los widgets y el borde del celular
 
-            child: Form(// "Form" se va a trabajar con formularios
-              key: _keyForm, // Define un formulario con una llave para controlarlo
-              child: Column(// Se acomoda el contenido en columna
+          child: Form(// "Form" se va a trabajar con formularios
+            key: _keyForm, // Define un formulario con una llave para controlarlo
+            child: Column(// Se acomoda el contenido en columna
 
-                mainAxisAlignment: MainAxisAlignment.center, // Define la posición de los widgets
+              mainAxisAlignment: MainAxisAlignment.center, // Define la posición de los widgets
 
-                children: <Widget>[
-                  // input de nombre
-                  InputTextValidations(
-                    textoInput: "Nombre",
-                    inputType: TextInputType.name,
-                    controller: ctrlName,
-                    validateText: ValidateText.name,
-                  ),
+              children: <Widget>[
+                // input de nombre
+                InputTextValidations(
+                  textoInput: "Nombre",
+                  inputType: TextInputType.name,
+                  controller: ctrlName,
+                  validateText: ValidateText.name,
+                ),
 
-                  // input de apellido
-                  InputTextValidations(
-                    textoInput: "Apellido",
-                    inputType: TextInputType.name,
-                    controller: ctrlApellido,
-                    validateText: ValidateText.lastname,
-                  ),
+                // input de apellido
+                InputTextValidations(
+                  textoInput: "Apellido",
+                  inputType: TextInputType.name,
+                  controller: ctrlApellido,
+                  validateText: ValidateText.lastname,
+                ),
 
-                  // input de email
-                  InputTextValidations(
-                    textoInput: "Correo electronico",
-                    inputType: TextInputType.emailAddress,
-                    controller: ctrlEmail,
-                    validateText: ValidateText.email,
-                  ),
+                // input de email
+                InputTextValidations(
+                  textoInput: "Correo electronico",
+                  inputType: TextInputType.emailAddress,
+                  controller: ctrlEmail,
+                  validateText: ValidateText.email,
+                ),
 
-                  // input de numero de telefono
-                  InputTextValidations(
-                    textoInput: "Número de telefono",
-                    inputType: TextInputType.number,
-                    controller: ctrlPhoneNumber,
-                    validateText: ValidateText.phoneNumber,
-                  ),
+                // input de numero de telefono
+                InputTextValidations(
+                  textoInput: "Número de telefono",
+                  inputType: TextInputType.number,
+                  controller: ctrlPhoneNumber,
+                  validateText: ValidateText.phoneNumber,
+                ),
 
-                  // input del password
-                  InputPasswordValidations(
-                    textoInput: "Password",
-                    inputType: TextInputType.text,
-                    controller: ctrlPassword,
-                    validateText: ValidateText.password,
-                  ),
+                // input del password
+                InputPasswordValidations(
+                  textoInput: "Password",
+                  inputType: TextInputType.text,
+                  controller: ctrlPassword,
+                  validateText: ValidateText.password,
+                ),
 
-                  // boton para saber si se escribio correctamente el contenido de cada input
-                  TextButton(onPressed: save, child: Text("Guardar")),
-                ],
-              ),
+                // boton para saber si se escribio correctamente el contenido de cada input
+                TextButton(onPressed: save, child: Text("Guardar")),
+              ],
             ),
           ),
-        ));
+        ),
+      )
+    );
   }
 
   // funcion para saber si los inputs tienen correcto su contenido
