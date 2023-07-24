@@ -125,6 +125,7 @@ class _PasswordPageState extends State<PasswordPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  // Campo Uno
                   InputCodeValidations(
                     textoInput: "*",
                     inputType: TextInputType.number,
@@ -133,6 +134,7 @@ class _PasswordPageState extends State<PasswordPage> {
                     cambiarFocus: focusNode2,
                     validateText: ValidateText.codeOTP
                   ),
+                  // Campo Dos
                   InputCodeValidations(
                     textoInput: "*",
                     inputType: TextInputType.number,
@@ -142,6 +144,7 @@ class _PasswordPageState extends State<PasswordPage> {
                     cambiarFocusAnterior: focusNode1,
                     validateText: ValidateText.codeOTP
                   ),
+                  // Campo Tres
                   InputCodeValidations(
                     textoInput: "*",
                     inputType: TextInputType.number,
@@ -151,6 +154,7 @@ class _PasswordPageState extends State<PasswordPage> {
                     cambiarFocusAnterior: focusNode2,
                     validateText: ValidateText.codeOTP
                   ),
+                  // Campo Cuatro
                   InputCodeValidations(
                     textoInput: "*",
                     inputType: TextInputType.number,
@@ -160,6 +164,7 @@ class _PasswordPageState extends State<PasswordPage> {
                     cambiarFocusAnterior: focusNode3,
                     validateText: ValidateText.codeOTP
                   ),
+                  // Campo Quinto
                   InputCodeValidations(
                     textoInput: "*",
                     inputType: TextInputType.number,
@@ -169,6 +174,7 @@ class _PasswordPageState extends State<PasswordPage> {
                     cambiarFocusAnterior: focusNode4,
                     validateText: ValidateText.codeOTP
                   ),
+                  // Campo Sexto
                   InputCodeValidations(
                     textoInput: "*",
                     inputType: TextInputType.number,
@@ -253,7 +259,7 @@ class _PasswordPageState extends State<PasswordPage> {
       context: context,
       builder: (BuildContext context) {
         return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
-          iconoMostrar: Icon(Icons.verified_user_outlined), 
+          iconoMostrar: Icons.verified_user, 
           mensajePopUp: "Contraseña cambiada correctamente", 
           onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage())),
         );
@@ -267,10 +273,10 @@ class _PasswordPageState extends State<PasswordPage> {
       context: context,
       builder: (BuildContext context) {
         return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
-          iconoMostrar: Icon(Icons.error_outline), 
+          iconoMostrar: Icons.error_outline, 
           mensajePopUp: "Codigo incorrecto o expirado", 
           onPressed: () => Navigator.of(context).pop(),
-        ); // Usa la clase del popup
+        );
       },
     );
   }

@@ -28,7 +28,7 @@ class BtnPrimaery extends StatelessWidget {
       ),
       child: MaterialButton(
         minWidth: double.infinity, // largo del botonque abarque toda la pantalla
-        height: 60, // Ancho del boton
+        //height: 60, // Ancho del boton
 
         onPressed: onPressed, // Evento al presionar el boton
 

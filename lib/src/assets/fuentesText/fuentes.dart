@@ -1,3 +1,4 @@
+import 'package:app_credibanco_login/src/colors/colors.dart';
 import 'package:flutter/material.dart';
 
 // Widget del Titulo principal
@@ -23,7 +24,8 @@ Widget subtituloUno(String texto) {
     child: Text(
       texto,
       style: TextStyle(
-        fontSize: 24, 
+        fontSize: 24,
+        color: CustomColors.colorGris_1,
         //fontWeight: FontWeight.bold,
         /*fontFamily: ,*/),
       textAlign: TextAlign.center,

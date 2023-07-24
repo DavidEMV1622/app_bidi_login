@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../colors/colors.dart';
+import 'buttons.dart';
+import 'fuentesText/fuentes.dart';
 
 // Clase para mostrar 
 class PopUps extends StatelessWidget{
 
   //CREACION DE PARAMETROS / VARIABLES
-  final Icon iconoMostrar;
+  final IconData iconoMostrar;
   final String mensajePopUp;
   //final Color colorBox;
   //final BoxBorder? border;
@@ -30,13 +32,51 @@ class PopUps extends StatelessWidget{
         borderRadius: BorderRadius.circular(4.0),
         
       ),
-      // Espaciado entre el borde y el contenido
+      // Espaciado entre el fondo celeste y campo del pop-up
       padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
       
-      // Contenido del widget "BoxDecoration"
+      // Contenido del widget "BoxDecoration" fondo celeste
+      child: Center(
+        child: Padding(
+          padding: EdgeInsets.all(15),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                  color: CustomColors.colorBlanco,
+                  borderRadius: BorderRadius.circular(12.0), 
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+
+                child: Center(
+                  child: Column(
+                    children: [
+                      Icon(
+                        iconoMostrar,
+                        color: CustomColors.colorNegro,
+                        size: 150.0,
+                      ),
+                      subtituloUno(mensajePopUp),
+                      BtnPrimaery(
+                        textButton: "Aceptar",
+                        colorBox: Color.fromRGBO(255, 182, 0, 1),
+                        onPressed: onPressed,
+                      ),
+                    ],
+                  ), 
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+      /*
       child: AlertDialog(
         icon: iconoMostrar, // icono a mostrar
-        content: Text(mensajePopUp), // Contenido a mostrar en el pop-up
+        content: Text(mensajePopUp), // Contenido a mostrar
         // Acciones del boton
         actions: <Widget>[
           TextButton(
@@ -45,18 +85,7 @@ class PopUps extends StatelessWidget{
           ),
         ],
       ),
+      */
     );
-    
-    /* AlertDialog(
-      icon: iconoMostrar, // icono a mostrar
-      content: Text(mensajePopUp), // Contenido a mostrar en el pop-up
-      // Acciones del boton
-      actions: <Widget>[
-        TextButton(
-          onPressed: onPressed,
-          child: Text('Cerrar'),
-        ),
-      ],
-    ); */
   } 
 }
