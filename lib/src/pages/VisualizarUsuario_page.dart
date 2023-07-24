@@ -68,13 +68,13 @@ class _ViewUserDataPageState extends State<ViewUserDataPage> {
                         ),
 
                         // ---- Datos del usuario ----
-                        textoEtiqueta("- Nombre:", CustomColors.colorVerdeOscuro),
+                        textoEtiqueta("- Nombre:", CustomColors.colorVerdeOscuroFuerte),
                         textoCuerpo("Lucas", CustomColors.colorNegro),
-                        textoEtiqueta("- Apellido:", CustomColors.colorVerdeOscuro),
+                        textoEtiqueta("- Apellido:", CustomColors.colorVerdeOscuroFuerte),
                         textoCuerpo("Rubiano", CustomColors.colorNegro),
-                        textoEtiqueta("- Correo:", CustomColors.colorVerdeOscuro),
+                        textoEtiqueta("- Correo:", CustomColors.colorVerdeOscuroFuerte),
                         textoCuerpo("lucasR@gmail.com", CustomColors.colorNegro),
-                        textoEtiqueta("- Telefono", CustomColors.colorVerdeOscuro),
+                        textoEtiqueta("- Telefono", CustomColors.colorVerdeOscuroFuerte),
                         textoCuerpo("1234567890", CustomColors.colorNegro),
                       ]
                     ),

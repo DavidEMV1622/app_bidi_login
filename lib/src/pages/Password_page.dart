@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../assets/buttons.dart';
 import '../assets/fuentesText/fuentes.dart';
 import '../assets/input.dart';
+import '../assets/pop-up.dart';
 import '../assets/titulo.dart';
 import '../colors/colors.dart';
 import '../common/enumValidate.dart';
@@ -112,12 +113,14 @@ class _PasswordPageState extends State<PasswordPage> {
                 height: 25.0,
               ),
 
-              // ---- Campos de textos ----
-              // Obtiene 4 parametros que son:
-              // 1: dato que se muestra en el place holder
-              // 2: nombre del focus
-              // 3: nombre del controlador del propio focus
-              // 4: nombre del focus que va a cambiar
+              /* ---- Campos de textos ----
+              Obtiene 4 parametros que son:
+              1: dato que se muestra en el place holder
+              2: tipo de teclado a mostrar
+              3: nombre del focus
+              4: nombre del controlador del propio focus
+              5: nombre del focus que va a cambiar 
+              6: manejo de las validaciones del formulario */
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -136,6 +139,7 @@ class _PasswordPageState extends State<PasswordPage> {
                     nombreFocus: focusNode2,
                     nombreController: focusControllerTwo,
                     cambiarFocus: focusNode3,
+                    cambiarFocusAnterior: focusNode1,
                     validateText: ValidateText.codeOTP
                   ),
                   InputCodeValidations(
@@ -144,6 +148,7 @@ class _PasswordPageState extends State<PasswordPage> {
                     nombreFocus: focusNode3,
                     nombreController: focusControllerThree,
                     cambiarFocus: focusNode4,
+                    cambiarFocusAnterior: focusNode2,
                     validateText: ValidateText.codeOTP
                   ),
                   InputCodeValidations(
@@ -152,6 +157,7 @@ class _PasswordPageState extends State<PasswordPage> {
                     nombreFocus: focusNode4,
                     nombreController: focusControllerFour,
                     cambiarFocus: focusNode5,
+                    cambiarFocusAnterior: focusNode3,
                     validateText: ValidateText.codeOTP
                   ),
                   InputCodeValidations(
@@ -160,6 +166,7 @@ class _PasswordPageState extends State<PasswordPage> {
                     nombreFocus: focusNode5,
                     nombreController: focusControllerFive,
                     cambiarFocus: focusNode6,
+                    cambiarFocusAnterior: focusNode4,
                     validateText: ValidateText.codeOTP
                   ),
                   InputCodeValidations(
@@ -167,7 +174,7 @@ class _PasswordPageState extends State<PasswordPage> {
                     inputType: TextInputType.number,
                     nombreFocus: focusNode6,
                     nombreController: focusControllerSix,
-                    cambiarFocus: focusNode6,
+                    cambiarFocusAnterior: focusNode5,
                     validateText: ValidateText.codeOTP
                   ),
 
@@ -220,13 +227,10 @@ class _PasswordPageState extends State<PasswordPage> {
 
               // ---- Boton "Comprobar" ----
               BtnPrimaery(
-                textButton: "Iniciar secion",
+                textButton: "Guardar cambios",
                 colorBox: Color.fromRGBO(255, 182, 0, 1),
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LoginPage())),
+                onPressed: save, // funcion "save" para saber si estan correctos los inputs
               ),
-              // boton para saber si se escribio correctamente el contenido de cada input
-              TextButton(onPressed: save, child: Text("Guardar")),
             ],
           ),
           ),
@@ -236,8 +240,38 @@ class _PasswordPageState extends State<PasswordPage> {
   }
 // funcion para saber si los inputs tienen correcto su contenido
   save() {
-    if (_keyForm.currentState!.validate()) {
-      // si esta correcto el contenido de cada input
+    if (_keyForm.currentState!.validate()) { // si esta correcto todos los campos
+      _mostrarPopupCorrecto(context); // mostrar pop-up correcto
+    } else {
+      _mostrarPopupError(context); // mostrar pop-up incorrecto
     }
+  }
+
+  // Método para mostrar un pop-up con mensaje correcto
+  void _mostrarPopupCorrecto(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
+          iconoMostrar: Icon(Icons.verified_user_outlined), 
+          mensajePopUp: "Contraseña cambiada correctamente", 
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage())),
+        );
+      },
+    );
+  }
+
+  // Método para mostrar un pop-up con mensaje de error
+  void _mostrarPopupError(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
+          iconoMostrar: Icon(Icons.error_outline), 
+          mensajePopUp: "Codigo incorrecto o expirado", 
+          onPressed: () => Navigator.of(context).pop(),
+        ); // Usa la clase del popup
+      },
+    );
   }
 }

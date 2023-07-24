@@ -64,8 +64,8 @@ class _InputTextValidationsState extends State<InputTextValidations> {
 
         controller: widget.controller, // maneja cada input a utilizar
         maxLength:
-            validateMaxLength(), // Cantidad de caracteres que tiene el input
-        inputFormatters: [validateinputFormatters()], // Tipo de dato del input
+            ValidateFormulations.validateMaxLength(widget.validateText), // Cantidad de caracteres que tiene el input
+        inputFormatters: [ValidateFormulations.validateinputFormatters(widget.validateText)], // Tipo de dato del input
 
         /* Valida si la estructura del formulario es correcta */
         validator: (String? value) {
@@ -82,44 +82,6 @@ class _InputTextValidationsState extends State<InputTextValidations> {
         vertical: 5,
       ),
     );
-  }
-
-  // Funcion para manejar la cantidad de caracteres del input
-  validateMaxLength() {
-    // Uso de un switch
-    switch (widget.validateText) {
-      case ValidateText.rfc:
-        return 13;
-
-      case ValidateText.phoneNumber:
-        return 10;
-
-      case ValidateText.email:
-        return 65;
-
-      case ValidateText.zipCode:
-        return 5;
-
-      default: // si no se da ninguno de los casos, no se manda una longitud
-        return null;
-    }
-  }
-
-  // Funcion para manejar el tipo de caracter del input
-  validateinputFormatters() {
-    // Uso de un switch
-    switch (widget.validateText) {
-      case ValidateText.name:
-        return FilteringTextInputFormatter.allow(
-            RegExp(r'[a-zA-Z]+')); // maneja solo letras mayusculas y minusculas
-
-      case ValidateText.phoneNumber:
-        return FilteringTextInputFormatter.digitsOnly; // maneja solo numeros
-
-      default: // si no se da ninguno de los casos
-        return FilteringTextInputFormatter
-            .singleLineFormatter; // maneja cualquier caracter
-    }
   }
 
   // Funcion para manejar la estructura del contenido del input
@@ -277,7 +239,7 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
         ),
 
         controller: widget.controller, // maneja cada input a utilizar
-        inputFormatters: [validateinputFormatters()], // Tipo de dato del input
+        inputFormatters: [ValidateFormulations.validateinputFormatters(widget.validateText)], // Tipo de dato del input
         
         /* Valida si la estructura del input es correcta */
         validator: (String? value) {
@@ -293,30 +255,6 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
         vertical: 5,
       ),
     );
-  }
-
-  // Funcion para manejar la cantidad de caracteres del input
-  validateMaxLength() {
-    // Uso de un switch
-    switch (widget.validateText) {
-      case ValidateText.rfc:
-        return 13;
-
-      default: // si no se da ninguno de los casos, no se manda una longitud
-        return null;
-    }
-  }
-
-  // Funcion para manejar el tipo de caracter del input
-  validateinputFormatters() {
-    // Uso de un switch
-    switch (widget.validateText) {
-      case ValidateText.password:
-        return FilteringTextInputFormatter.singleLineFormatter;
-        
-      default: // si no se da ninguno de los casos
-        return FilteringTextInputFormatter.singleLineFormatter; // maneja cualquier caracter
-    }
   }
 
   // Funcion para manejar la estructura del contenido del input
@@ -382,7 +320,8 @@ class InputCodeValidations extends StatefulWidget {
   final inputType; // tipo de teclado a mostrar
   FocusNode nombreFocus;
   TextEditingController nombreController; // controlar cada input
-  FocusNode cambiarFocus;
+  FocusNode? cambiarFocus;
+  FocusNode? cambiarFocusAnterior;
   ValidateText? validateText; // Tipo de validacion a utilizar
 
   // Utilizar los parametros como constructores
@@ -391,7 +330,8 @@ class InputCodeValidations extends StatefulWidget {
       required this.inputType,
       required this.nombreFocus,
       required this.nombreController,
-      required this.cambiarFocus,
+      this.cambiarFocus,
+      this.cambiarFocusAnterior,
       this.validateText});
 
   @override
@@ -401,7 +341,7 @@ class InputCodeValidations extends StatefulWidget {
 class _InputCodeValidationsState extends State<InputCodeValidations> {
   String hasError =
       "Base"; // Variable de estado para indicar si hay un error en el formulario
-
+/*
   // Controlar y manipular el texto dentro de un widget de entrada de texto
   final focusControllerOne = TextEditingController();
   final focusControllerTwo = TextEditingController();
@@ -449,7 +389,7 @@ class _InputCodeValidationsState extends State<InputCodeValidations> {
     focusNode5 = FocusNode();
     focusNode6 = FocusNode();
   }
-
+*/
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -476,10 +416,7 @@ class _InputCodeValidationsState extends State<InputCodeValidations> {
           TextFormField(
             keyboardType: TextInputType
                 .number, // Aparece un teclado númerico en el dispositivo movil
-
-            inputFormatters: [
-              LengthLimitingTextInputFormatter(1),
-            ], // Limitar cantidad caracteres
+            
             style: TextStyle(
               fontSize: 25,
             ), // Tamanio del texto
@@ -496,8 +433,9 @@ class _InputCodeValidationsState extends State<InputCodeValidations> {
             /* Define el controlador de cada input para 
                                                   poder manejarlos con el focusNode*/
             maxLength:
-                validateMaxLength(), // Cantidad de caracteres que tiene el input
-            //inputFormatters: [validateinputFormatters()], // Tipo de dato del input
+            ValidateFormulations.validateMaxLength(widget.validateText), // Cantidad de caracteres que tiene el input
+            inputFormatters: [ValidateFormulations.validateinputFormatters(widget.validateText)], // Tipo de dato del input
+
             validator: (String? value) {
               /* Valida si la estructura del input es
                                             correcta */
@@ -515,6 +453,12 @@ class _InputCodeValidationsState extends State<InputCodeValidations> {
                     .unfocus(); // No acepta texto adicional en el input
                 FocusScope.of(context)
                     .requestFocus(widget.cambiarFocus); // Cambia de input
+              // Condicion para cambiar al anterior input
+              } else if (cantidadCaracteres.length == 0) {
+                widget.nombreFocus
+                    .unfocus(); // No acepta texto adicional en el input
+                FocusScope.of(context)
+                    .requestFocus(widget.cambiarFocusAnterior); // Cambia de input
               }
             },
           ),
@@ -536,31 +480,6 @@ class _InputCodeValidationsState extends State<InputCodeValidations> {
   // Metodo aparte para ir cambiando de input
   void requestFocus(BuildContext context, FocusNode focusNode) {
     FocusScope.of(context).requestFocus(focusNode);
-  }
-
-  // Funcion para manejar la cantidad de caracteres del input
-  validateMaxLength() {
-    // Uso de un switch
-    switch (widget.validateText) {
-      case ValidateText.codeOTP:
-        return 1;
-
-      default: // si no se da ninguno de los casos, no se manda una longitud
-        return null;
-    }
-  }
-
-  // Funcion para manejar el tipo de caracter del input
-  validateinputFormatters() {
-    // Uso de un switch
-    switch (widget.validateText) {
-      case ValidateText.codeOTP:
-        return FilteringTextInputFormatter.digitsOnly; // maneja solo numeros
-
-      default: // si no se da ninguno de los casos
-        return FilteringTextInputFormatter
-            .singleLineFormatter; // maneja cualquier caracter
-    }
   }
 
   // Funcion para manejar la estructura del contenido del input
