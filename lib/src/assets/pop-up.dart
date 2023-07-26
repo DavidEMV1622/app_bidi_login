@@ -42,7 +42,7 @@ class PopUps extends StatelessWidget{
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-
+            
             children: <Widget>[
               Container(
                 decoration: BoxDecoration(
@@ -62,7 +62,7 @@ class PopUps extends StatelessWidget{
                       subtituloUno(mensajePopUp),
                       BtnPrimaery(
                         textButton: "Aceptar",
-                        colorBox: Color.fromRGBO(255, 182, 0, 1),
+                        colorBox: CustomColors.colorAmarilloMostaza,
                         onPressed: onPressed,
                       ),
                     ],
