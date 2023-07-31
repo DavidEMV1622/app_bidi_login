@@ -68,17 +68,12 @@ class TextFieldBase extends StatelessWidget {
   validateMaxLength() {
     // Uso de un switch
     switch(validateText){
-      case ValidateText.rfc:
-        return 13;
       
       case ValidateText.phoneNumber:
         return 10;
       
       case ValidateText.email:
         return 65;
-      
-      case ValidateText.zipCode:
-        return 5;
 
       default: // si no se da ninguno de los casos, no se manda una longitud
         return null;
@@ -90,15 +85,10 @@ class TextFieldBase extends StatelessWidget {
   validateinputFormatters() {
     // Uso de un switch
     switch(validateText){
-      case ValidateText.rfc:
-        return UpperCaseTextFormatter(); // deja el texto en mayuscula y acepta cualquier caracter
-      
+
       case ValidateText.phoneNumber:
         return FilteringTextInputFormatter.digitsOnly; // maneja solo numeros
       
-      case ValidateText.zipCode:
-        return FilteringTextInputFormatter.digitsOnly; // maneja solo numeros
-
       default: // si no se da ninguno de los casos
         return FilteringTextInputFormatter.singleLineFormatter; // maneja cualquier caracter
     

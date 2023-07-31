@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
       home: Center(
         //child: LoginPage(),
         //child: InputValidatePage(),
-        child: PasswordPage(),
+        //child: PasswordPage(),
         //child: UpdateUserPage(),
-        //child: RegisterPage(),
+        child: RegisterPage(),
         //child: PopUpsError(),
         //child: ViewUserDataPage(),
       ),

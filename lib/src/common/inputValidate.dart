@@ -31,6 +31,11 @@ validatePassword(String password) {
   String expRegular = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&_.^#<>\\[\\]{}\\(\\)\\/\\\\|~`+=:,;\u0027"¡¿])[A-Za-z\\d@\$!%*?&_.^#<>\\[\\]{}\\(\\)\\/\\\\|~`+=:,;\u0027"¡¿]+\$';
   return RegExp(expRegular).hasMatch(password);
 }
+/*
+validateConfirmPassword(String confirmPassword) {
+  String expRegular = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&_.^#<>\\[\\]{}\\(\\)\\/\\\\|~`+=:,;\u0027"¡¿])[A-Za-z\\d@\$!%*?&_.^#<>\\[\\]{}\\(\\)\\/\\\\|~`+=:,;\u0027"¡¿]+\$';
+  return RegExp(expRegular).hasMatch(confirmPassword);
+}*/
 
 // Funcion para validar la estructura del numero de telefono
 validateCodeOTP(String codeOTP) {

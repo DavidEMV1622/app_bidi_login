@@ -165,17 +165,17 @@ class _InputTextValidationsState extends State<InputTextValidations> {
 // ---- Clase para un input general con validación ----
 class InputPasswordValidations extends StatefulWidget {
   final String textoInput; // // texto del input
-
   final inputType; // tipo de teclado a mostrar
-
   TextEditingController controller; // controlar cada input
   ValidateText? validateText; // Tipo de validacion a utilizar
+  TextEditingController? passwordComparar; // input a comparar
 
   InputPasswordValidations(
       {required this.textoInput,
       required this.inputType,
       required this.controller,
-      this.validateText});
+      this.validateText,
+      this.passwordComparar});
 
   @override
   _InputPasswordValidationsState createState() =>
@@ -183,8 +183,7 @@ class InputPasswordValidations extends StatefulWidget {
 }
 
 class _InputPasswordValidationsState extends State<InputPasswordValidations> {
-  String hasError =
-      "Base"; // Variable de estado para indicar si hay un error en el formulario
+  String hasError = "Base"; // Variable de estado para indicar si hay un error en el formulario
   // Variable de tipo boolean para icono de si o no mostrar contrasenia
   bool passenable = true;
 
@@ -276,10 +275,19 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
       switch (widget.validateText) {
         case ValidateText.password:
           return validatePassword(value)
-              ? setState(() {
-                  hasError = "Correct";
-                })
-              : "Una minuscula, mayuscula, caracter especial y un número";
+            ? setState(() {
+                hasError = "Correct";
+              })
+            : "Una minuscula, mayuscula, caracter especial y un número";
+
+        case ValidateText.confirmPassword:
+          //print("valor: $value passsword a comparar: ${widget.passwordComparar?.text}");
+          // Condicion para comparar si son iguales los dos formularios
+          return widget.controller.text == widget.passwordComparar?.text
+            ? setState(() {
+                hasError = "Correct";
+              })
+            : "El campo no es igual a la contraseña";
 
         default: // si no se da ninguno de los casos, no se muestra mensaje
           return null;
@@ -318,10 +326,10 @@ class InputCodeValidations extends StatefulWidget {
   // Parametros a manejar
   final String textoInput; // // texto del input
   final inputType; // tipo de teclado a mostrar
-  FocusNode nombreFocus;
+  FocusNode nombreFocus; // Nombre de cada focus
   TextEditingController nombreController; // controlar cada input
-  FocusNode? cambiarFocus;
-  FocusNode? cambiarFocusAnterior;
+  FocusNode? cambiarFocus; // Nombre del focus a cambiar 
+  FocusNode? cambiarFocusAnterior; // Nombre del focus a  retroceder
   ValidateText? validateText; // Tipo de validacion a utilizar
 
   // Utilizar los parametros como constructores
@@ -341,55 +349,7 @@ class InputCodeValidations extends StatefulWidget {
 class _InputCodeValidationsState extends State<InputCodeValidations> {
   String hasError =
       "Base"; // Variable de estado para indicar si hay un error en el formulario
-/*
-  // Controlar y manipular el texto dentro de un widget de entrada de texto
-  final focusControllerOne = TextEditingController();
-  final focusControllerTwo = TextEditingController();
-  final focusControllerThree = TextEditingController();
-  final focusControllerFour = TextEditingController();
-  final focusControllerFive = TextEditingController();
-  final focusControllerSix = TextEditingController();
 
-  // Instanciación de cada uno de los campos "FocusNode"
-  late FocusNode focusNode1;
-  late FocusNode focusNode2;
-  late FocusNode focusNode3;
-  late FocusNode focusNode4;
-  late FocusNode focusNode5;
-  late FocusNode focusNode6;
-
-  // Cerrar cada focus para no consumir recursos del equipo
-  @override
-  void dispose() {
-    super.dispose();
-    focusControllerOne.dispose();
-    focusControllerTwo.dispose();
-    focusControllerThree.dispose();
-    focusControllerFour.dispose();
-    focusControllerFive.dispose();
-    focusControllerSix.dispose();
-
-    focusNode1.dispose();
-    focusNode2.dispose();
-    focusNode3.dispose();
-    focusNode4.dispose();
-    focusNode5.dispose();
-    focusNode6.dispose();
-  }
-
-  // Creación de los Focus
-  @override
-  void initState() {
-    super.initState();
-
-    focusNode1 = FocusNode();
-    focusNode2 = FocusNode();
-    focusNode3 = FocusNode();
-    focusNode4 = FocusNode();
-    focusNode5 = FocusNode();
-    focusNode6 = FocusNode();
-  }
-*/
   @override
   Widget build(BuildContext context) {
     return Container(

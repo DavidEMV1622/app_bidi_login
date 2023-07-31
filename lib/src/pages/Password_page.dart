@@ -18,8 +18,6 @@ class PasswordPage extends StatefulWidget {
 class _PasswordPageState extends State<PasswordPage> {
   // Variable de tipo boolean para icono de si o no mostrar contrasenia
   bool passenable = true;
-  // Variable para el estilo del texto
-  final TextStyle _estiloTexto = new TextStyle(fontSize: 25);
 
   // Controlar y manipular el texto dentro de un widget de entrada de texto
   final focusControllerOne = TextEditingController();
@@ -120,7 +118,8 @@ class _PasswordPageState extends State<PasswordPage> {
               3: nombre del focus
               4: nombre del controlador del propio focus
               5: nombre del focus que va a cambiar 
-              6: manejo de las validaciones del formulario */
+              6: manejo de las validaciones del formulario 
+              7: nombre del focus que cambia al anterior */
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -141,8 +140,8 @@ class _PasswordPageState extends State<PasswordPage> {
                     nombreFocus: focusNode2,
                     nombreController: focusControllerTwo,
                     cambiarFocus: focusNode3,
+                    validateText: ValidateText.codeOTP,
                     cambiarFocusAnterior: focusNode1,
-                    validateText: ValidateText.codeOTP
                   ),
                   // Campo Tres
                   InputCodeValidations(
@@ -151,8 +150,8 @@ class _PasswordPageState extends State<PasswordPage> {
                     nombreFocus: focusNode3,
                     nombreController: focusControllerThree,
                     cambiarFocus: focusNode4,
+                    validateText: ValidateText.codeOTP,
                     cambiarFocusAnterior: focusNode2,
-                    validateText: ValidateText.codeOTP
                   ),
                   // Campo Cuatro
                   InputCodeValidations(
@@ -161,8 +160,8 @@ class _PasswordPageState extends State<PasswordPage> {
                     nombreFocus: focusNode4,
                     nombreController: focusControllerFour,
                     cambiarFocus: focusNode5,
+                    validateText: ValidateText.codeOTP,
                     cambiarFocusAnterior: focusNode3,
-                    validateText: ValidateText.codeOTP
                   ),
                   // Campo Quinto
                   InputCodeValidations(
@@ -171,8 +170,8 @@ class _PasswordPageState extends State<PasswordPage> {
                     nombreFocus: focusNode5,
                     nombreController: focusControllerFive,
                     cambiarFocus: focusNode6,
+                    validateText: ValidateText.codeOTP,
                     cambiarFocusAnterior: focusNode4,
-                    validateText: ValidateText.codeOTP
                   ),
                   // Campo Sexto
                   InputCodeValidations(
@@ -180,8 +179,8 @@ class _PasswordPageState extends State<PasswordPage> {
                     inputType: TextInputType.number,
                     nombreFocus: focusNode6,
                     nombreController: focusControllerSix,
+                    validateText: ValidateText.codeOTP,
                     cambiarFocusAnterior: focusNode5,
-                    validateText: ValidateText.codeOTP
                   ),
 
 /*

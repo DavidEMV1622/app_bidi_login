@@ -20,12 +20,16 @@ class _RegisterPageState extends State<RegisterPage> {
   // Variable de tipo boolean para icono de si o no mostrar contrasenia
   bool passenable = true;
 
+  // Variable para saber si el contenido de los controladores (ctrlConfirmPassword, ctrlPassword) son iguales
+  bool confirmPasswordTrueOrFalse = true;
+
   // Controladores que se manejan en cada formulario
   TextEditingController ctrlName = TextEditingController();
   TextEditingController ctrlApellido = TextEditingController();
   TextEditingController ctrlPhoneNumber = TextEditingController();
   TextEditingController ctrlEmail = TextEditingController();
   TextEditingController ctrlPassword = TextEditingController();
+  TextEditingController ctrlConfirmPassword = TextEditingController();
   
   GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
                                                     controlar el estado o validacion de un formulario  */
@@ -87,10 +91,18 @@ class _RegisterPageState extends State<RegisterPage> {
 
               // input del password
               InputPasswordValidations(
-                textoInput: "Password",
+                textoInput: "Contraseña",
                 inputType: TextInputType.text,
                 controller: ctrlPassword,
                 validateText: ValidateText.password,
+              ),
+
+              InputPasswordValidations(
+                textoInput: "Confirmar Contraseña",
+                inputType: TextInputType.text,
+                controller: ctrlConfirmPassword,
+                validateText: ValidateText.confirmPassword,
+                passwordComparar: ctrlPassword,
               ),
 
               /*
@@ -193,5 +205,16 @@ class _RegisterPageState extends State<RegisterPage> {
   save() {
     if (_keyForm.currentState!.validate()) {// si esta correcto el contenido de cada input
     }
+  }
+
+  void comparePasswords(bool confirmPasswordTrueOrFalse ) {
+    String password1 = ctrlPassword.text;
+    String password2 = ctrlConfirmPassword.text;
+
+    return password1 == password2
+    ? setState(() {
+        true;
+    })
+    : false;
   }
 }
