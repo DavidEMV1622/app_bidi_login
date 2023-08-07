@@ -1,11 +1,10 @@
-import 'package:app_credibanco_login/src/assets/buttons.dart';
-import 'package:app_credibanco_login/src/assets/input.dart';
-import 'package:app_credibanco_login/src/assets/titulo.dart';
+import 'package:app_credibanco_login/src/widgets/buttons.dart';
+import 'package:app_credibanco_login/src/widgets/input.dart';
 import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:app_credibanco_login/src/pages/SendCodePassword.dart';
 import 'package:flutter/material.dart';
-import '../assets/fuentesText/fuentes.dart';
 import '../common/enumValidate.dart';
+import '../utils/TextFormatter.dart';
 import 'Password_page.dart';
 
 import '../colors/colors.dart';

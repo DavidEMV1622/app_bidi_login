@@ -1,16 +1,17 @@
 import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:flutter/material.dart';
 
-import '../assets/buttons.dart';
-import '../assets/fuentesText/fuentes.dart';
-import '../assets/input.dart';
-import '../assets/pop-up.dart';
-import '../assets/titulo.dart';
+import '../utils/TextFormatter.dart';
+import '../widgets/buttons.dart';
+import '../widgets/input.dart';
+import '../widgets/pop-up.dart';
 import '../colors/colors.dart';
 import '../common/enumValidate.dart';
 import 'Registrar_page.dart';
 
 class PasswordPage extends StatefulWidget {
+  const PasswordPage({super.key});
+
   @override
   createState() => _PasswordPageState();
 }
@@ -182,38 +183,6 @@ class _PasswordPageState extends State<PasswordPage> {
                     validateText: ValidateText.codeOTP,
                     cambiarFocusAnterior: focusNode5,
                   ),
-
-/*
-                  InputCode(
-                      texto: "*",
-                      nombreFocus: focusNode1,
-                      nombreController: focusControllerOne,
-                      cambiarFocus: focusNode2),
-                  InputCode(
-                      texto: "*",
-                      nombreFocus: focusNode2,
-                      nombreController: focusControllerTwo,
-                      cambiarFocus: focusNode3),
-                  InputCode(
-                      texto: "*",
-                      nombreFocus: focusNode3,
-                      nombreController: focusControllerThree,
-                      cambiarFocus: focusNode4),
-                  InputCode(
-                      texto: "*",
-                      nombreFocus: focusNode4,
-                      nombreController: focusControllerFour,
-                      cambiarFocus: focusNode5),
-                  InputCode(
-                      texto: "*",
-                      nombreFocus: focusNode5,
-                      nombreController: focusControllerFive,
-                      cambiarFocus: focusNode6),
-                  InputCode(
-                      texto: "*",
-                      nombreFocus: focusNode6,
-                      nombreController: focusControllerSix,
-                      cambiarFocus: focusNode6), */
                 ],
               ),
 

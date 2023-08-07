@@ -1,9 +1,8 @@
 import 'package:app_credibanco_login/src/assets/pruebas.dart';
-import 'package:app_credibanco_login/src/assets/titulo.dart';
 import 'package:flutter/material.dart';
-import '../assets/buttons.dart';
-import '../assets/fuentesText/fuentes.dart';
-import '../assets/input.dart';
+import '../utils/TextFormatter.dart';
+import '../widgets/buttons.dart';
+import '../widgets/input.dart';
 import '../colors/colors.dart';
 import 'Editar_usuario_page.dart';
 import 'Password_page.dart';

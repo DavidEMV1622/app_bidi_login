@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-
 // Clase "CustomColors" para definir cada color
 class CustomColors {
   // Colores Principales
   static const Color colorVerdePantano =
-      Color.fromRGBO(0, 175, 170, 1);
-  static const Color colorAmarilloMostaza =
-      Color.fromRGBO(255, 182, 0, 1);
+      Color.fromRGBO(10, 164, 159, 1);
+  static const Color colorAmarilloMostaza = 
+    Color.fromRGBO(255, 182, 0, 1);
   static const Color colorVerdeOscuroFuerte = 
       Color.fromRGBO(20, 64, 47, 1);
   static const Color colorNegro = 
@@ -22,7 +21,7 @@ class CustomColors {
   static const Color colorGris_3 = 
       Color.fromRGBO(194, 194, 194, 1);
   static const Color colorGris_4 = 
-      Color.fromRGBO(224, 224, 224, 1);
+      Color.fromRGBO(207, 204, 211, 1);
   static const Color colorGris_5 = 
       Color.fromRGBO(239, 239, 239, 1);
   

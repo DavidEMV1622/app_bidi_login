@@ -1,9 +1,10 @@
-import 'package:app_credibanco_login/src/assets/buttons.dart';
-import 'package:app_credibanco_login/src/assets/fuentesText/fuentes.dart';
-import 'package:app_credibanco_login/src/assets/input.dart';
+import 'package:app_credibanco_login/src/widgets/buttons.dart';
+import 'package:app_credibanco_login/src/widgets/input.dart';
 import 'package:app_credibanco_login/src/colors/colors.dart';
 import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/TextFormatter.dart';
 
 class chancePassword extends StatefulWidget {
   const chancePassword({super.key});
