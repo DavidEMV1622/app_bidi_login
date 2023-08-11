@@ -1,4 +1,3 @@
-import 'package:app_credibanco_login/src/assets/pruebas.dart';
 import 'package:app_credibanco_login/src/common/enumValidate.dart';
 import 'package:flutter/material.dart';
 

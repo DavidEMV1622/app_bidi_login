@@ -71,6 +71,10 @@ class ValidateFormulations {
       case ValidateText.name:
         return FilteringTextInputFormatter.allow(
             RegExp(r'[a-zA-Z]+')); // maneja solo letras mayusculas y minusculas
+      
+      case ValidateText.lastname:
+        return FilteringTextInputFormatter.allow(
+            RegExp(r'[a-zA-Z]+')); // maneja solo letras mayusculas y minusculas
 
       case ValidateText.phoneNumber:
         return FilteringTextInputFormatter.digitsOnly; // maneja solo numeros
@@ -80,7 +84,7 @@ class ValidateFormulations {
 
       default: // si no se da ninguno de los casos
         return FilteringTextInputFormatter
-            .singleLineFormatter; // maneja cualquier caracte
+            .singleLineFormatter; // maneja cualquier caracter
     }
   }
 /*

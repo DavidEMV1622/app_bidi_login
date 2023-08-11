@@ -1,14 +1,13 @@
-import 'package:app_credibanco_login/src/assets/pruebas.dart';
-import 'package:app_credibanco_login/src/pages/SendCodePassword.dart';
 import 'package:flutter/material.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
+import '../widgets/checkBox.dart';
+import '../widgets/flutter_secure_storage.dart';
 import '../widgets/input.dart';
-import '../colors/colors.dart';
 import '../common/enumValidate.dart';
 import 'Password_page.dart';
 import 'Registrar_page.dart';
-import 'SendCodePassword.dart';
+import 'package:flutter_svg/svg.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -18,11 +17,33 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   //final String imageUrl ="https://elempleo.blob.core.windows.net/empresasprd/1379.gif";
 
+  GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
+                                                    controlar el estado o validacion de un formulario  */
+
   TextEditingController ctrlEmail = TextEditingController();
   TextEditingController ctrlPassword = TextEditingController();
 
-  GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
-                                                    controlar el estado o validacion de un formulario  */
+  // Declarar el llamado de la clase SecureStorageMethods para utilizar el metodo get en los controladores
+  final SecureStorageMethods _secureStorageMethods = SecureStorageMethods();
+
+  // Se ejecuta una vez antes de que se ejecute el StatefulWidget
+  @override
+  void initState() {
+    super.initState();
+    fetchSecureStorageData();
+  }
+
+  // Metodo para obtener datos (get)
+  Future <void> fetchSecureStorageData() async {
+    /* El keyword "await" se utiliza en el metodo "fetchSecureStorageData()" 
+    para esperar a que estos métodos asíncronos (async) se completen antes de asignar 
+    los valores recuperados u obtenidos (getUserName, getPassword) a los controladores 
+    _userNameController y _passwordController. */
+    ctrlEmail.text = await _secureStorageMethods.getEmailLogin() ?? "";
+    ctrlPassword.text = await _secureStorageMethods.getPasswordLogin() ?? "";
+    await _secureStorageMethods.setIsNotices(true); // asigna true en IsNotice
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -47,10 +68,10 @@ class _LoginPageState extends State<LoginPage> {
               /* Se usa el widget "children" que son 
                                 los hijos o cadenas de widget que se van 
                                 a unir */
-              Image.network(
-                'https://www.credibanco.com/wp-content/uploads/2022/11/logo-web-principal-credibanco.png.webp',
-                width: 800,
-                height: null,
+              
+              SvgPicture.asset( 
+                'assets/Logo_CrediBanco.svg',
+                width: 200,
               ),
 
               SizedBox(
@@ -132,23 +153,27 @@ class _LoginPageState extends State<LoginPage> {
                     MaterialPageRoute(builder: (context) => PasswordPage())),
               ),
 
-              // ---- Agregar un espacio ----
               SizedBox(
                 height: 25.0,
               ),
 
-              // ---- Texto para un link si no tienes cuenta----
-              /*
-              Align(
-                alignment: Alignment.center,
-                child: buttonLink("Olvide mi correo electronico", context),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CheckBox( // Uso de un checkBox
+                    // Mandar los controladores a utilizar oara cada formulario
+                    emailController: ctrlEmail,
+                    passwordController: ctrlPassword,
+                  ),
+                  const Text("Recuerdame"),
+                ],
               ),
-              */
-              BotonLink(
-                textoLink: "Olvide mi correo electronico",
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RegisterPage())),
+
+              SizedBox(
+                height: 25.0,
               ),
+
               // boton para saber si se escribio correctamente el contenido de cada input
               TextButton(onPressed: save, child: Text("Guardar")),
             ],

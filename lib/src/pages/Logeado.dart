@@ -1,0 +1,23 @@
+import 'package:flutter/material.dart';
+
+class LogeadoPage extends StatefulWidget {
+  const LogeadoPage({super.key});
+
+  @override
+  State<LogeadoPage> createState() => _LogeadoPageState();
+}
+
+class _LogeadoPageState extends State<LogeadoPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text("Pagina del usuario Logeado")
+        ],
+      ),
+    );
+  }
+}

@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../colors/colors.dart';
-import '../common/enumValidate.dart';
-import '../utils/TextFormatter.dart';
+import '../lib/src/colors/colors.dart';
+import 'package:app_credibanco_login/src/common/enumValidate.dart';
+import '../lib/src/utils/TextFormatter.dart';
 
 class buttonPruebas extends StatelessWidget {
   final Color colorButton;

@@ -66,6 +66,22 @@ Widget subtituloUno(String texto) {
   );
 }
 
+// Widget del Subtitulo 2
+Widget subtituloDos(String texto, double fontSizeText) {
+  return SizedBox(
+    child: Text(
+      texto,
+      style: TextStyle(
+        fontSize: fontSizeText,
+        color: CustomColors.colorVerdeOscuroFuerte,
+        fontWeight: FontWeight.bold,
+        fontFamily: "Gilroy_Bold",
+      ),
+      textAlign: TextAlign.center,
+    ),
+  );
+}
+
 // Widget del texto Etiqueta
 Widget textoEtiqueta(String texto, Color colorText) {
   return Container(
@@ -83,6 +99,21 @@ Widget textoEtiqueta(String texto, Color colorText) {
   );
 }
 
+// Widget del texto Etiqueta
+Widget textoEtiquetaTwo(String texto, double fontSizeText) {
+  return SizedBox(
+    child: Text(
+      texto,
+      style: TextStyle(
+        color: CustomColors.colorNegro,
+        fontSize: fontSizeText, 
+        fontWeight: FontWeight.bold,
+      ),
+      textAlign: TextAlign.start,
+    ),
+  );
+}
+
 // Widget del texto Cuerpo
 Widget textoCuerpo(String texto, Color colorText) {
   return Text(
@@ -94,5 +125,19 @@ Widget textoCuerpo(String texto, Color colorText) {
       //fontFamily: ,
     ),
     textAlign: TextAlign.center,
+  );
+}
+
+// Widget del texto Cuerpo
+Widget textoCuerpoTwo(String texto, double fontSizeText) {
+  return SizedBox(
+    child: Text(
+      texto,
+      style: TextStyle(
+        color: CustomColors.colorNegro,
+        fontSize: fontSizeText,
+      ),
+      textAlign: TextAlign.start,
+    ),
   );
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 // Clase "CustomColors" para definir cada color
 class CustomColors {
   // Colores Principales

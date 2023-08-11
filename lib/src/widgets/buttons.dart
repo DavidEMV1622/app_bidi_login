@@ -27,7 +27,7 @@ class BtnPrimaery extends StatelessWidget {
         borderRadius: BorderRadius.circular(10), // Borde del campo
       ),
       child: MaterialButton(
-        minWidth: double.infinity, // largo del botonque abarque toda la pantalla
+        minWidth: MediaQuery.of(context).size.width * 0.40, // largo del botonque abarque toda la pantalla
         //height: 60, // Ancho del boton
 
         onPressed: onPressed, // Evento al presionar el boton
@@ -66,7 +66,7 @@ class BotonLink extends StatelessWidget {
       // ---- Manejo del texto ----
       child: Text(
         textoLink, // Agrega el texto
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 12, // Tamaño del texto
           color: CustomColors.colorVerdePantano, // Color del texto
           decoration: TextDecoration.underline,
