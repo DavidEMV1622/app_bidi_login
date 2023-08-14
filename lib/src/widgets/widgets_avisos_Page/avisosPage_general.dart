@@ -23,7 +23,7 @@ class AvisosPageGeneral extends StatelessWidget {
       child: Center(
         child: Padding(
           // Padding de separacion entre el contenido y los bordes del celular
-          padding: const EdgeInsets.fromLTRB(24, 33, 24, 24),
+          padding: const EdgeInsets.fromLTRB(22, 10, 22, 24),
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,

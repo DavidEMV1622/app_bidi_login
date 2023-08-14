@@ -203,6 +203,7 @@ class _PasswordPageState extends State<PasswordPage> {
               BtnPrimaery(
                 textButton: "Guardar cambios",
                 colorBox: Color.fromRGBO(255, 182, 0, 1),
+                widthButton: MediaQuery.of(context).size.width,
                 onPressed: save, // funcion "save" para saber si estan correctos los inputs
               ),
             ],

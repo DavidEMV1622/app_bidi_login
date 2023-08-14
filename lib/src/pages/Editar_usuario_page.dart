@@ -85,32 +85,13 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 validateText: ValidateText.password,
               ),
 
-              /*
-              InputText(
-                textoInput: "Nombre",
-                inputType: TextInputType.name,
-              ),
-              InputText(
-                textoInput: "Apellido",
-                inputType: TextInputType.name,
-              ),
-              InputText(
-                textoInput: "Correo",
-                inputType: TextInputType.emailAddress,
-              ),
-              InputText(
-                textoInput: "Telefono",
-                inputType: TextInputType.number,
-              ),
-              PasswordInput(textoContrasenia: "Contraseña:"),
-              PasswordInput(textoContrasenia: "Confirmar contraseña:"),
-              */
               SizedBox(
                 height: 25.0,
               ),
               BtnPrimaery(
                 textButton: "Guardar",
                 colorBox: Color.fromRGBO(255, 182, 0, 1),
+                widthButton: MediaQuery.of(context).size.width,
                 onPressed: () {},
               ),
             ]),

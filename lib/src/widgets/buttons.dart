@@ -6,16 +6,21 @@ import '../pages/Registrar_page.dart';
 // ---- Clase para el boton general principal ----
 class BtnPrimaery extends StatelessWidget {
   //CREACION DE PARAMETROS / VARIABLES
+  final Icon? iconButton;
   final String textButton;
   final Color colorBox;
   final BoxBorder? border;
+  final double widthButton;
   final void Function()? onPressed;
   const BtnPrimaery(
       {super.key,
+      this.iconButton,
       required this.textButton,
       required this.colorBox,
       this.border,
-      this.onPressed});
+      required this.widthButton,
+      this.onPressed
+    });
 
   //IMPLEMENTACION DE VARIABLES
   @override
@@ -27,7 +32,7 @@ class BtnPrimaery extends StatelessWidget {
         borderRadius: BorderRadius.circular(10), // Borde del campo
       ),
       child: MaterialButton(
-        minWidth: MediaQuery.of(context).size.width * 0.40, // largo del botonque abarque toda la pantalla
+        minWidth: widthButton, // largo del botonque abarque toda la pantalla
         //height: 60, // Ancho del boton
 
         onPressed: onPressed, // Evento al presionar el boton
@@ -35,12 +40,26 @@ class BtnPrimaery extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
 
         // Agregar texto dentro del boton
-        child: Text(
-          textButton,
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            if (iconButton != null)
+              iconButton!,
+            
+            if (iconButton != null)
+              SizedBox(
+                width: 20,
+              ),
+
+            Text(
+              textButton,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
       ),
     );

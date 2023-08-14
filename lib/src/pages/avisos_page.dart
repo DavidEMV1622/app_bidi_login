@@ -1,3 +1,4 @@
+import 'package:app_credibanco_login/src/pages/Logeado.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../colors/colors.dart';
@@ -63,7 +64,7 @@ class _AvisoPageState extends State<AvisoPage> {
                     textoEtiquetaGeneral: "Más- Administración de usuarios",
                     imageGeneral: SvgPicture.asset( 
                       'assets/imagetwo.svg',
-                      width: 200,
+                      width: 170,
                     ),
                   ),
                   
@@ -82,7 +83,7 @@ class _AvisoPageState extends State<AvisoPage> {
         )
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.fromLTRB(22, 10, 22, 20),
 
         child: page == 2? Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -93,6 +94,7 @@ class _AvisoPageState extends State<AvisoPage> {
               textButton: "Omitir",
               colorBox: CustomColors.colorBlanco,
               border: Border.all(width: 2),
+              widthButton: MediaQuery.of(context).size.width * 0.40,
               onPressed: () {},
             ),
 
@@ -103,7 +105,10 @@ class _AvisoPageState extends State<AvisoPage> {
             BtnPrimaery(
               textButton: "Continuar",
               colorBox: CustomColors.colorAmarilloMostaza,
-              onPressed: () {},
+              widthButton: MediaQuery.of(context).size.width * 0.40,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => LogeadoPage()));
+              },
             ),
           ]
         ) : null,

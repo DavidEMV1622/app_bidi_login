@@ -1,13 +1,13 @@
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:app_credibanco_login/src/widgets/input.dart';
 import 'package:app_credibanco_login/src/pages/Login_page.dart';
-import 'package:app_credibanco_login/src/pages/SendCodePassword.dart';
 import 'package:flutter/material.dart';
 import '../common/enumValidate.dart';
 import '../utils/TextFormatter.dart';
 import 'Password_page.dart';
 
 import '../colors/colors.dart';
+import 'SendCodePasswords_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -130,10 +130,11 @@ class _RegisterPageState extends State<RegisterPage> {
               BtnPrimaery(
                 textButton: "Enviar codigo",
                 colorBox: Color.fromRGBO(255, 182, 0, 1),
+                widthButton: MediaQuery.of(context).size.width,
                 onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SendCodePassword())),
+                        builder: (context) => SendCodePasswordPage())),
               ),
             ]),
             SizedBox(
@@ -205,7 +206,7 @@ class _RegisterPageState extends State<RegisterPage> {
     if (_keyForm.currentState!.validate()) {// si esta correcto el contenido de cada input
     }
   }
-
+/*
   void comparePasswords(bool confirmPasswordTrueOrFalse ) {
     String password1 = ctrlPassword.text;
     String password2 = ctrlConfirmPassword.text;
@@ -216,4 +217,5 @@ class _RegisterPageState extends State<RegisterPage> {
     })
     : false;
   }
+  */
 }

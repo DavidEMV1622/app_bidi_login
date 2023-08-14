@@ -64,6 +64,7 @@ class PopUps extends StatelessWidget{
                   BtnPrimaery( // Manejo del boton
                     textButton: "Aceptar",
                     colorBox: CustomColors.colorAmarilloMostaza,
+                    widthButton: MediaQuery.of(context).size.width,
                     onPressed: onPressed,
                   ),
                 ],

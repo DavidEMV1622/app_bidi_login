@@ -120,8 +120,7 @@ Widget textoCuerpo(String texto, Color colorText) {
     texto,
     style: TextStyle(
       color: colorText,
-      fontSize: 25,
-      fontWeight: FontWeight.bold,
+      fontSize: 30,
       //fontFamily: ,
     ),
     textAlign: TextAlign.center,

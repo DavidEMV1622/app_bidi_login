@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
 import '../widgets/checkBox.dart';
-import '../widgets/flutter_secure_storage.dart';
+import '../utils/flutter_secure_storage.dart';
 import '../widgets/input.dart';
 import '../common/enumValidate.dart';
+import 'Logeado.dart';
 import 'Password_page.dart';
 import 'Registrar_page.dart';
 import 'package:flutter_svg/svg.dart';
+
+import 'avisos_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -119,8 +122,19 @@ class _LoginPageState extends State<LoginPage> {
               BtnPrimaery(
                 textButton: "Iniciar sesion",
                 colorBox: Color.fromRGBO(255, 182, 0, 1),
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RegisterPage())),
+                widthButton: MediaQuery.of(context).size.width,
+                onPressed: () async {
+                  // Se obtiene el estado de isNotice si es true o false
+                  bool? isNotices = await _secureStorageMethods.getIsNotices();
+
+                  // Si isNotices es true, se pasa a las ventanas de avisos de lo contrario pasa a la ventana Logeado
+                  if (isNotices!) {
+                    await _secureStorageMethods.setIsNotices(false);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AvisoPage()));
+                  } else {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => LogeadoPage()));
+                  }
+                }
               ),
 
               SizedBox(
@@ -137,6 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                 textButton: "Registrate",
                 colorBox: Colors.white,
                 border: Border.all(width: 2),
+                widthButton: MediaQuery.of(context).size.width,
                 onPressed: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => RegisterPage())),
               ),

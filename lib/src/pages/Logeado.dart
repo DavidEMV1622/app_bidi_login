@@ -15,7 +15,9 @@ class _LogeadoPageState extends State<LogeadoPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("Pagina del usuario Logeado")
+          Center(
+            child: Text("Pagina del usuario Logeado"),
+          )
         ],
       ),
     );

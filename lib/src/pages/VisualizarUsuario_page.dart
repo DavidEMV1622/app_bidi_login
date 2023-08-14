@@ -6,7 +6,6 @@ import '../colors/colors.dart';
 import 'Editar_usuario_page.dart';
 import 'Password_page.dart';
 import 'Registrar_page.dart';
-import 'SendCodePassword.dart';
 
 class ViewUserDataPage extends StatefulWidget {
   @override

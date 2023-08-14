@@ -1,21 +1,35 @@
 import 'package:flutter/material.dart';
-import '../utils/TextFormatter.dart';
-import '../widgets/buttons.dart';
-import '../widgets/input.dart';
-import '../colors/colors.dart';
-import '../common/enumValidate.dart';
-import 'Password_page.dart';
-import 'Registrar_page.dart';
 
-class SendCodePassword extends StatefulWidget {
-  const SendCodePassword({super.key});
+import '../../colors/colors.dart';
+import '../../common/enumValidate.dart';
+import '../../utils/TextFormatter.dart';
+import '../buttons.dart';
+import '../input.dart';
+
+class SendCodePageGeneral extends StatefulWidget {
+
+  final String tituloGeneral;
+  final String textoCuerpoGeneral;
+  final String textoFormulario;
+  final TextEditingController nombreCtrl;
+  final void Function() onPressedPantallaPasar;
+
+  const SendCodePageGeneral({
+    super.key, 
+    required this.tituloGeneral, 
+    required this.textoCuerpoGeneral, 
+    required this.textoFormulario,
+    required this.nombreCtrl,
+    required this.onPressedPantallaPasar,
+  });
+
   @override
-  State<SendCodePassword> createState() => _SendCodePasswordState();
+  State<SendCodePageGeneral> createState() => _SendCodePageGeneralState();
 }
 
-class _SendCodePasswordState extends State<SendCodePassword> {
+class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
 
-  TextEditingController ctrlEmail = TextEditingController();
+  TextEditingController nombreCtrl = TextEditingController();
 
   GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
                                                     controlar el estado o validacion de un formulario  */
@@ -25,6 +39,7 @@ class _SendCodePasswordState extends State<SendCodePassword> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: CustomColors.colorBlanco,
+        elevation: 0.0,
       ),
       body: Container(
         child: Form(// "Form" se va a trabajar con formularios
@@ -36,15 +51,12 @@ class _SendCodePasswordState extends State<SendCodePassword> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    height: 55.0,
-                  ),
-                  titulo("ENVIO DE CODIGO"),
+                  titulo(widget.tituloGeneral),
                   SizedBox(
                     height: 45,
                   ),
                   Text(
-                    "Ingrese el correo para enviar un codigo",
+                    widget.textoCuerpoGeneral,
                     style: TextStyle(fontSize: 32),
                     textAlign: TextAlign.center,
                   ),
@@ -54,22 +66,21 @@ class _SendCodePasswordState extends State<SendCodePassword> {
                   
                   // ---- Llamado Widget para un campo de texto para ingresar correo ----
                   InputTextValidations(
-                    textoInput: "Correo electronico",
+                    textoInput: widget.textoFormulario,
                     inputType: TextInputType.emailAddress,
-                    controller: ctrlEmail,
+                    controller: nombreCtrl,
                     validateText: ValidateText.email,
                   ),
                       
                   SizedBox(
                     height: 45,
                   ),
+
                   BtnPrimaery(
                     textButton: "Verificar",
-                    colorBox: Color.fromRGBO(255, 182, 0, 1),
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PasswordPage())),
+                    colorBox: CustomColors.colorAmarilloMostaza,
+                    widthButton: MediaQuery.of(context).size.width,
+                    onPressed: widget.onPressedPantallaPasar,
                   ),
                   // boton para saber si se escribio correctamente el contenido de cada input
                   TextButton(onPressed: save, child: Text("Guardar")),
