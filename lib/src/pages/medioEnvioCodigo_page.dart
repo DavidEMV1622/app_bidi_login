@@ -1,9 +1,11 @@
 import 'package:app_credibanco_login/src/colors/colors.dart';
+import 'package:app_credibanco_login/src/pages/SendCodePhoneNumber_page.dart';
 import 'package:app_credibanco_login/src/utils/TextFormatter.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/buttons.dart';
 import 'Password_page.dart';
+import 'SendCodeEmail_page.dart';
 
 class MedioEnvioCodigoPage extends StatelessWidget {
   const MedioEnvioCodigoPage({super.key});
@@ -47,7 +49,7 @@ class MedioEnvioCodigoPage extends StatelessWidget {
                   onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => PasswordPage())),
+                          builder: (context) => SendCodeEmailPage())),
                 ),
 
                 SizedBox(
@@ -66,7 +68,7 @@ class MedioEnvioCodigoPage extends StatelessWidget {
                   onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => PasswordPage())),
+                          builder: (context) => SendCodePhoneNumberPage())),
                 ),
               ],
             ),

@@ -7,7 +7,7 @@ import '../utils/TextFormatter.dart';
 import 'Password_page.dart';
 
 import '../colors/colors.dart';
-import 'SendCodePasswords_page.dart';
+import 'SendCodeEmail_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -134,7 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SendCodePasswordPage())),
+                        builder: (context) => SendCodeEmailPage())),
               ),
             ]),
             SizedBox(

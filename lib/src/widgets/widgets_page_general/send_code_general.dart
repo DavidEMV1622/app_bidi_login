@@ -65,12 +65,21 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
                   ),
                   
                   // ---- Llamado Widget para un campo de texto para ingresar correo ----
-                  InputTextValidations(
-                    textoInput: widget.textoFormulario,
-                    inputType: TextInputType.emailAddress,
-                    controller: nombreCtrl,
-                    validateText: ValidateText.email,
-                  ),
+                  if (widget.textoFormulario == "Correo electronico")
+                    InputTextValidations(
+                      textoInput: widget.textoFormulario,
+                      inputType: TextInputType.emailAddress,
+                      controller: nombreCtrl,
+                      validateText: ValidateText.email,
+                    ),
+                  
+                  if (widget.textoFormulario == "Número de Teléfono")
+                    InputTextValidations(
+                      textoInput: widget.textoFormulario,
+                      inputType: TextInputType.phone,
+                      controller: nombreCtrl,
+                      validateText: ValidateText.phoneNumber,
+                    ),
                       
                   SizedBox(
                     height: 45,

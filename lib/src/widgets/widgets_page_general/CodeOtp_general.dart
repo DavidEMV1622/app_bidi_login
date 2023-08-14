@@ -1,23 +1,27 @@
-import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/TextFormatter.dart';
-import '../widgets/buttons.dart';
-import '../widgets/input.dart';
-import '../widgets/pop-up.dart';
-import '../colors/colors.dart';
-import '../common/enumValidate.dart';
-import 'Registrar_page.dart';
+import '../../colors/colors.dart';
+import '../../common/enumValidate.dart';
+import '../../pages/Login_page.dart';
+import '../../utils/TextFormatter.dart';
+import '../buttons.dart';
+import '../input.dart';
+import '../pop-up.dart';
 
-class PasswordPage extends StatefulWidget {
+class CodeOTPPageGeneral extends StatefulWidget {
+  final String subtituloUnoGeneral;
   
-  const PasswordPage({super.key});
+  const CodeOTPPageGeneral({
+    super.key, 
+    required this.subtituloUnoGeneral
+  });
 
   @override
-  createState() => _PasswordPageState();
+  State<CodeOTPPageGeneral> createState() => _CodeOTPPageGeneralState();
 }
 
-class _PasswordPageState extends State<PasswordPage> {
+class _CodeOTPPageGeneralState extends State<CodeOTPPageGeneral> {
+
   // Variable de tipo boolean para icono de si o no mostrar contrasenia
   bool passenable = true;
 
@@ -73,9 +77,9 @@ class _PasswordPageState extends State<PasswordPage> {
       FormState>(); /* Clave que se utiliza para identificar y controlar
                                                           el estado o validacion de un formulario  */
 
+
   @override
   Widget build(BuildContext context) {
-    // Plantilla principal "Scaffold"
     return Scaffold(
       // Barra principal de navegación "AppBar"
       appBar: AppBar(
@@ -106,7 +110,7 @@ class _PasswordPageState extends State<PasswordPage> {
               ),
 
               // ---- Subtitulo ----
-              subtituloUno("Ingresé el codigo que fue enviado a su correo"),
+              subtituloUno(widget.subtituloUnoGeneral),
 
               // ---- Agregar un espacio ----
               SizedBox(

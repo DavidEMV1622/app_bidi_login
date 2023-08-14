@@ -11,6 +11,7 @@ import 'Registrar_page.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'avisos_page.dart';
+import 'medioEnvioCodigo_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -165,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
               BotonLink(
                 textoLink: "Olvide mi contraseña",
                 onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PasswordPage())),
+                    MaterialPageRoute(builder: (context) => MedioEnvioCodigoPage())),
               ),
 
               SizedBox(

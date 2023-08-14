@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/widgets_page_general/send_code_general.dart';
+import 'CodeOTPEmail_page.dart';
 import 'Password_page.dart';
 
-class SendCodePasswordPage extends StatefulWidget {
-  const SendCodePasswordPage({super.key});
+class SendCodeEmailPage extends StatefulWidget {
+  const SendCodeEmailPage({super.key});
 
   @override
-  State<SendCodePasswordPage> createState() => _SendCodePasswordPageState();
+  State<SendCodeEmailPage> createState() => _SendCodeEmailPageState();
 }
 
-class _SendCodePasswordPageState extends State<SendCodePasswordPage> {
+class _SendCodeEmailPageState extends State<SendCodeEmailPage> {
   
   TextEditingController ctrlEmail = TextEditingController();
 
@@ -23,7 +24,7 @@ class _SendCodePasswordPageState extends State<SendCodePasswordPage> {
       nombreCtrl: ctrlEmail,
       onPressedPantallaPasar: () => Navigator.push(
         context,
-        MaterialPageRoute( builder: (context) => PasswordPage())
+        MaterialPageRoute( builder: (context) => CodeOTPEmailPage())
       ),
     );
   }
