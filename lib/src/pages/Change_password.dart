@@ -6,15 +6,16 @@ import 'package:flutter/material.dart';
 
 import '../common/enumValidate.dart';
 import '../utils/TextFormatter.dart';
+import '../widgets/pop-up.dart';
 
-class chancePassword extends StatefulWidget {
-  const chancePassword({super.key});
+class ChancePasswordPage extends StatefulWidget {
+  const ChancePasswordPage({super.key});
 
   @override
-  State<chancePassword> createState() => _chancePasswordState();
+  State<ChancePasswordPage> createState() => _ChancePasswordPageState();
 }
 
-class _chancePasswordState extends State<chancePassword> {
+class _ChancePasswordPageState extends State<ChancePasswordPage> {
 
   // Variable para saber si el contenido de los controladores 
   // (ctrlConfirmPassword, ctrlPassword) son iguales
@@ -84,12 +85,8 @@ class _chancePasswordState extends State<chancePassword> {
                   textButton: "Guardar Cambios",
                   colorBox: Color.fromRGBO(255, 182, 0, 1),
                   widthButton: MediaQuery.of(context).size.width,
-                  onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginPage())),
+                  onPressed: save,
                 ),
-
-                // boton para saber si se escribio correctamente el contenido de cada input
-                TextButton(onPressed: save, child: Text("Guardar")),
               ],
             ),
           ),
@@ -100,6 +97,37 @@ class _chancePasswordState extends State<chancePassword> {
   // funcion para saber si los inputs tienen correcto su contenido
   save() {
     if (_keyForm.currentState!.validate()) {// si esta correcto el contenido de cada input
+      _mostrarPopupCorrecto(context); // mostrar pop-up correcto
+    } else {
+      _mostrarPopupError(context); // mostrar pop-up incorrecto
     }
+  }
+
+  // Método para mostrar un pop-up con mensaje correcto
+  void _mostrarPopupCorrecto(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
+          iconoMostrar: Icons.verified_user, 
+          mensajePopUp: "Contraseña cambiada correctamente", 
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage())),
+        );
+      },
+    );
+  }
+
+  // Método para mostrar un pop-up con mensaje de error
+  void _mostrarPopupError(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
+          iconoMostrar: Icons.error_outline, 
+          mensajePopUp: "Contraseñas invalidas", 
+          onPressed: () => Navigator.of(context).pop(),
+        );
+      },
+    );
   }
 }

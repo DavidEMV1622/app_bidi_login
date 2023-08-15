@@ -128,7 +128,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 25.0,
               ),
               BtnPrimaery(
-                textButton: "Enviar codigo",
+                textButton: "Guardar",
                 colorBox: Color.fromRGBO(255, 182, 0, 1),
                 widthButton: MediaQuery.of(context).size.width,
                 onPressed: () => Navigator.push(
