@@ -19,7 +19,7 @@ class _SendCodeEmailPageState extends State<SendCodeEmailPage> {
   Widget build(BuildContext context) {
     return SendCodePageGeneral(
       tituloGeneral: "ENVIO DE CODIGO",
-      textoCuerpoGeneral: "Ingrese el correo para enviar un codigo",
+      textoCuerpoGeneral: "Ingrese el correo para enviar un codigo de confirmación",
       textoFormulario: "Correo electronico",
       nombreCtrl: ctrlEmail,
       onPressedPantallaPasar: () => Navigator.push(

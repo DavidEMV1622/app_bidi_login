@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/widgets_page_general/send_code_general.dart';
+import 'CodeOTPPhoneNumber_page.dart';
 import 'Password_page.dart';
 
 class SendCodePhoneNumberPage extends StatefulWidget {
@@ -18,12 +19,12 @@ class _SendCodePhoneNumberPageState extends State<SendCodePhoneNumberPage> {
   Widget build(BuildContext context) {
     return SendCodePageGeneral(
       tituloGeneral: "ENVIO DE CODIGO",
-      textoCuerpoGeneral: "Ingrese el número de teléfono para enviar un codigo",
+      textoCuerpoGeneral: "Ingrese un número de teléfono para enviar el codigo",
       textoFormulario: "Número de Teléfono",
       nombreCtrl: ctrlPhoneNumber,
       onPressedPantallaPasar: () => Navigator.push(
         context,
-        MaterialPageRoute( builder: (context) => PasswordPage())
+        MaterialPageRoute( builder: (context) => CodeOTPPhoneNumberPage())
       ),
     );
   }

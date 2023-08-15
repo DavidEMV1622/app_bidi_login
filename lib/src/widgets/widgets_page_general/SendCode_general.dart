@@ -73,6 +73,7 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
                       validateText: ValidateText.email,
                     ),
                   
+                  // ---- Llamado Widget para un campo de texto para ingresar numero de telefono ----
                   if (widget.textoFormulario == "Número de Teléfono")
                     InputTextValidations(
                       textoInput: widget.textoFormulario,
