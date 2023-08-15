@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/widgets_page_general/send_code_general.dart';
+import '../widgets/widgets_page_general/SendCode_general.dart';
 import 'CodeOTPPhoneNumber_page.dart';
 import 'Password_page.dart';
 
