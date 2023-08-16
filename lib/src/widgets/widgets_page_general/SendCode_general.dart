@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 import '../../colors/colors.dart';
@@ -12,7 +14,7 @@ class SendCodePageGeneral extends StatefulWidget {
   final String textoCuerpoGeneral;
   final String textoFormulario;
   final TextEditingController nombreCtrl;
-  final void Function() onPressedPantallaPasar;
+  final Widget onPressedPantallaPasar;
 
   const SendCodePageGeneral({
     super.key, 
@@ -31,7 +33,7 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
 
   TextEditingController nombreCtrl = TextEditingController();
 
-  GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
+  final GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
                                                     controlar el estado o validacion de un formulario  */
 
   @override
@@ -41,26 +43,26 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
         backgroundColor: CustomColors.colorBlanco,
         elevation: 0.0,
       ),
-      body: Container(
+      body: SizedBox(
         child: Form(// "Form" se va a trabajar con formularios
           key: _keyForm, // Define un formulario con una llave para controlarlo
           child: ListView(
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             children: <Widget>[
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   titulo(widget.tituloGeneral),
-                  SizedBox(
+                  const SizedBox(
                     height: 45,
                   ),
                   Text(
                     widget.textoCuerpoGeneral,
-                    style: TextStyle(fontSize: 32),
+                    style: const TextStyle(fontSize: 32),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 45,
                   ),
                   
@@ -82,7 +84,7 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
                       validateText: ValidateText.phoneNumber,
                     ),
                       
-                  SizedBox(
+                  const SizedBox(
                     height: 45,
                   ),
 
@@ -90,10 +92,10 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
                     textButton: "Verificar",
                     colorBox: CustomColors.colorAmarilloMostaza,
                     widthButton: MediaQuery.of(context).size.width,
-                    onPressed: widget.onPressedPantallaPasar,
+                    onPressed: save,
                   ),
                   // boton para saber si se escribio correctamente el contenido de cada input
-                  TextButton(onPressed: save, child: Text("Guardar")),
+                  //TextButton(onPressed: save, child: Text("Guardar")),
                 ],
               )
             ],
@@ -106,6 +108,10 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
   // funcion para saber si los inputs tienen correcto su contenido
   save() {
     if (_keyForm.currentState!.validate()) {// si esta correcto el contenido de cada input
+      Navigator.push(
+        context,
+        MaterialPageRoute( builder: (context) => widget.onPressedPantallaPasar)
+      );
     }
   }
 }

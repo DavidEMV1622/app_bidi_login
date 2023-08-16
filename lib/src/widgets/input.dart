@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '../colors/colors.dart';
 import '../common/enumValidate.dart';
 import '../common/inputValidate.dart';
-import '../utils/TextFormatter.dart';
 
 // ---- Clase para un input general con validación ----
 class InputTextValidations extends StatefulWidget {
   final String textoInput; // // texto del input
-  final inputType; // tipo de teclado a mostrar
-  TextEditingController controller; // controlar cada input
-  ValidateText? validateText; // Tipo de validacion a utilizar
+  final TextInputType inputType; // tipo de teclado a mostrar
+  final TextEditingController controller; // controlar cada input
+  final ValidateText? validateText; // Tipo de validacion a utilizar
 
   // Uso de cada parametro asignado
-  InputTextValidations(
-      {required this.textoInput,
-      required this.inputType,
-      required this.controller,
-      this.validateText});
+  const InputTextValidations({
+    super.key,
+    required this.textoInput,
+    required this.inputType,
+    required this.controller,
+    this.validateText
+  });
 
   @override
-  _InputTextValidationsState createState() => _InputTextValidationsState();
+  State<InputTextValidations> createState() => _InputTextValidationsState();
 }
 
 class _InputTextValidationsState extends State<InputTextValidations> {
@@ -46,7 +46,15 @@ class _InputTextValidationsState extends State<InputTextValidations> {
         ),
       ),
       // Espaciado entre el borde y el contenido
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+
+      //height: 35,
+      //width: 1000.0,
+
+      margin: const EdgeInsets.symmetric(
+        horizontal: 0,
+        vertical: 5,
+      ),
       //margin: EdgeInsets.symmetric(horizontal: 10.0),
 
       // Uso de un input (Campo de texto)
@@ -73,14 +81,6 @@ class _InputTextValidationsState extends State<InputTextValidations> {
               value!); // retorna si la estructura esta bien escrita
         },
       ),
-
-      //height: 35,
-      //width: 1000.0,
-
-      margin: EdgeInsets.symmetric(
-        horizontal: 0,
-        vertical: 5,
-      ),
     );
   }
 
@@ -88,7 +88,8 @@ class _InputTextValidationsState extends State<InputTextValidations> {
   validateStructure(String? value) {
     // Condicion si el campo es o no requerido
     //if(widget.isEmptyInput! && value!.isEmpty) {
-    if (value!.length == 0) {
+    if (value!.isEmpty) {
+    //if (value!.length == 0) {
       setState(() {
         hasError =
             "Error"; // Establecer hasError en true si el campo está vacío
@@ -165,20 +166,22 @@ class _InputTextValidationsState extends State<InputTextValidations> {
 // ---- Clase para un input general con validación ----
 class InputPasswordValidations extends StatefulWidget {
   final String textoInput; // // texto del input
-  final inputType; // tipo de teclado a mostrar
-  TextEditingController controller; // controlar cada input
-  ValidateText? validateText; // Tipo de validacion a utilizar
-  TextEditingController? passwordComparar; // input a comparar
+  final TextInputType inputType; // tipo de teclado a mostrar
+  final TextEditingController controller; // controlar cada input
+  final ValidateText? validateText; // Tipo de validacion a utilizar
+  final TextEditingController? passwordComparar; // input a comparar
 
-  InputPasswordValidations(
-      {required this.textoInput,
-      required this.inputType,
-      required this.controller,
-      this.validateText,
-      this.passwordComparar});
+  const InputPasswordValidations({
+    super.key, 
+    required this.textoInput,
+    required this.inputType,
+    required this.controller,
+    this.validateText,
+    this.passwordComparar
+  });
 
   @override
-  _InputPasswordValidationsState createState() =>
+  State<InputPasswordValidations> createState() =>
       _InputPasswordValidationsState();
 }
 
@@ -203,7 +206,15 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
         ),
       ),
       // Espaciado entre el borde y el contenido
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+
+      //height: 35,
+      //width: 1000.0,
+
+      margin: const EdgeInsets.symmetric(
+        horizontal: 0,
+        vertical: 5,
+      ),
       //margin: EdgeInsets.symmetric(horizontal: 10.0),
 
       // Uso de un input (Campo de texto)
@@ -219,7 +230,7 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
           // Manejar un icono dentro del input
           suffixIcon: IconButton(
             // Agrega un icono para mostrar y otro para no mostrar contrasenia
-            icon: new Icon(
+            icon: Icon(
                 passenable == true ? Icons.visibility_off : Icons.visibility),
 
             /* Agrega una animación al presionar el boton y permite realizar una accion 
@@ -245,14 +256,6 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
           return validateStructure(value!); // retorna si la estructura esta bien escrita
         },
       ),
-
-      //height: 35,
-      //width: 1000.0,
-
-      margin: EdgeInsets.symmetric(
-        horizontal: 0,
-        vertical: 5,
-      ),
     );
   }
 
@@ -260,7 +263,8 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
   validateStructure(String? value) {
     // Condicion si el campo es o no requerido
     //if(widget.isEmptyInput! && value!.isEmpty) {
-    if (value!.length == 0) {
+    //if (value!.length == 0) {
+    if (value!.isEmpty) {
       setState(() {
         hasError = "Error"; // Establecer hasError en true si el campo está vacío
       });
@@ -325,25 +329,27 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
 class InputCodeValidations extends StatefulWidget {
   // Parametros a manejar
   final String textoInput; // // texto del input
-  final inputType; // tipo de teclado a mostrar
-  FocusNode nombreFocus; // Nombre de cada focus
-  TextEditingController nombreController; // controlar cada input
-  FocusNode? cambiarFocus; // Nombre del focus a cambiar 
-  FocusNode? cambiarFocusAnterior; // Nombre del focus a  retroceder
-  ValidateText? validateText; // Tipo de validacion a utilizar
+  final TextInputType inputType; // tipo de teclado a mostrar
+  final FocusNode nombreFocus; // Nombre de cada focus
+  final TextEditingController nombreController; // controlar cada input
+  final FocusNode? cambiarFocus; // Nombre del focus a cambiar 
+  final FocusNode? cambiarFocusAnterior; // Nombre del focus a  retroceder
+  final ValidateText? validateText; // Tipo de validacion a utilizar
 
   // Utilizar los parametros como constructores
-  InputCodeValidations(
-      {required this.textoInput,
-      required this.inputType,
-      required this.nombreFocus,
-      required this.nombreController,
-      this.cambiarFocus,
-      this.cambiarFocusAnterior,
-      this.validateText});
+  const InputCodeValidations({
+    super.key,
+    required this.textoInput,
+    required this.inputType,
+    required this.nombreFocus,
+    required this.nombreController,
+    this.cambiarFocus,
+    this.cambiarFocusAnterior,
+    this.validateText
+  });
 
   @override
-  _InputCodeValidationsState createState() => _InputCodeValidationsState();
+  State<InputCodeValidations> createState() => _InputCodeValidationsState();
 }
 
 class _InputCodeValidationsState extends State<InputCodeValidations> {
@@ -365,9 +371,19 @@ class _InputCodeValidationsState extends State<InputCodeValidations> {
         ),
       ),
 
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
           horizontal: 14.0,
-          vertical: 2.0), // Espaciado entre el contenido y el borde
+          vertical: 2.0),
+
+      // Definir largo y alto de los campos
+      height: 60,
+      width: 50,
+
+      // Margen de separacion entre cada campo
+      margin: const EdgeInsets.symmetric(
+        horizontal: 4,
+        //vertical: 5,
+      ), // Espaciado entre el contenido y el borde
       //margin: EdgeInsets.symmetric(horizontal: 10.0),
 
       child: ListView(
@@ -377,7 +393,7 @@ class _InputCodeValidationsState extends State<InputCodeValidations> {
             keyboardType: TextInputType
                 .number, // Aparece un teclado númerico en el dispositivo movil
             
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 25,
             ), // Tamanio del texto
 
@@ -414,7 +430,8 @@ class _InputCodeValidationsState extends State<InputCodeValidations> {
                 FocusScope.of(context)
                     .requestFocus(widget.cambiarFocus); // Cambia de input
               // Condicion para cambiar al anterior input
-              } else if (cantidadCaracteres.length == 0) {
+              //} else if (cantidadCaracteres.length == 0) {
+              } else if (cantidadCaracteres.isEmpty) {
                 widget.nombreFocus
                     .unfocus(); // No acepta texto adicional en el input
                 FocusScope.of(context)
@@ -423,16 +440,6 @@ class _InputCodeValidationsState extends State<InputCodeValidations> {
             },
           ),
         ],
-      ),
-
-      // Definir largo y alto de los campos
-      height: 60,
-      width: 50,
-
-      // Margen de separacion entre cada campo
-      margin: EdgeInsets.symmetric(
-        horizontal: 4,
-        //vertical: 5,
       ),
     );
   }
@@ -446,7 +453,8 @@ class _InputCodeValidationsState extends State<InputCodeValidations> {
   validateStructure(String? value) {
     // Condicion si el campo es o no requerido
     //if(widget.isEmptyInput! && value!.isEmpty) {
-    if (value!.length == 0) {
+    //if (value!.length == 0) {
+    if (value!.isEmpty) {
       setState(() {
         hasError =
             "Error"; // Establecer hasError en true si el campo está vacío

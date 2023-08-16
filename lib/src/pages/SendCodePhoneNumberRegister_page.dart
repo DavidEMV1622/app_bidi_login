@@ -1,17 +1,18 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 import '../widgets/widgets_page_general/SendCode_general.dart';
-import 'CodeOTPPhoneNumber_page.dart';
-import 'Password_page.dart';
+import 'CodeOTPPhoneNumberRegister_page.dart';
 
-class SendCodePhoneNumberPage extends StatefulWidget {
-  const SendCodePhoneNumberPage({super.key});
+class SendCodePhoneNumberRegisterPage extends StatefulWidget {
+  const SendCodePhoneNumberRegisterPage({super.key});
 
   @override
-  State<SendCodePhoneNumberPage> createState() => _SendCodePhoneNumberPageState();
+  State<SendCodePhoneNumberRegisterPage> createState() => _SendCodePhoneNumberRegisterPageState();
 }
 
-class _SendCodePhoneNumberPageState extends State<SendCodePhoneNumberPage> {
+class _SendCodePhoneNumberRegisterPageState extends State<SendCodePhoneNumberRegisterPage> {
   
   TextEditingController ctrlPhoneNumber = TextEditingController();
 
@@ -22,10 +23,7 @@ class _SendCodePhoneNumberPageState extends State<SendCodePhoneNumberPage> {
       textoCuerpoGeneral: "Ingrese un número de teléfono para enviar el codigo",
       textoFormulario: "Número de Teléfono",
       nombreCtrl: ctrlPhoneNumber,
-      onPressedPantallaPasar: () => Navigator.push(
-        context,
-        MaterialPageRoute( builder: (context) => CodeOTPPhoneNumberPage())
-      ),
+      onPressedPantallaPasar: const CodeOTPPhoneNumberRegisterPage(),
     );
   }
 }

@@ -1,17 +1,18 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 import '../widgets/widgets_page_general/SendCode_general.dart';
-import 'CodeOTPEmail_page.dart';
-import 'Password_page.dart';
+import 'CodeOTPEmailChangePassword_page.dart';
 
-class SendCodeEmailPage extends StatefulWidget {
-  const SendCodeEmailPage({super.key});
+class SendCodeEmailChangePasswordPage extends StatefulWidget {
+  const SendCodeEmailChangePasswordPage({super.key});
 
   @override
-  State<SendCodeEmailPage> createState() => _SendCodeEmailPageState();
+  State<SendCodeEmailChangePasswordPage> createState() => _SendCodeEmailChangePasswordPageState();
 }
 
-class _SendCodeEmailPageState extends State<SendCodeEmailPage> {
+class _SendCodeEmailChangePasswordPageState extends State<SendCodeEmailChangePasswordPage> {
   
   TextEditingController ctrlEmail = TextEditingController();
 
@@ -22,10 +23,7 @@ class _SendCodeEmailPageState extends State<SendCodeEmailPage> {
       textoCuerpoGeneral: "Ingrese el correo para enviar un codigo de confirmación",
       textoFormulario: "Correo electronico",
       nombreCtrl: ctrlEmail,
-      onPressedPantallaPasar: () => Navigator.push(
-        context,
-        MaterialPageRoute( builder: (context) => CodeOTPEmailPage())
-      ),
+      onPressedPantallaPasar: const CodeOTPEmailChangePasswordPage(),
     );
   }
 }

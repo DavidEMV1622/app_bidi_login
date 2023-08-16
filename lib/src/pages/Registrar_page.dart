@@ -1,13 +1,14 @@
+// ignore_for_file: file_names
+
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:app_credibanco_login/src/widgets/input.dart';
-import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:flutter/material.dart';
 import '../common/enumValidate.dart';
 import '../utils/TextFormatter.dart';
-import 'Password_page.dart';
 
 import '../colors/colors.dart';
-import 'SendCodeEmail_page.dart';
+import '../widgets/pop-up.dart';
+import 'Login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -30,7 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController ctrlPassword = TextEditingController();
   TextEditingController ctrlConfirmPassword = TextEditingController();
   
-  GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
+  final GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
                                                     controlar el estado o validacion de un formulario  */
 
   @override
@@ -44,11 +45,11 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
-      body: Container(
+      body: SizedBox(
         child: Form(
           key: _keyForm, // Define un formulario con una llave para controlarlo
           child: ListView(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: 30.0,
             vertical: 25.0,
           ),
@@ -104,118 +105,90 @@ class _RegisterPageState extends State<RegisterPage> {
                 passwordComparar: ctrlPassword,
               ),
 
-              /*
-              InputText(
-                textoInput: "Nombre",
-                inputType: TextInputType.name,
-              ),
-              InputText(
-                textoInput: "Apellido",
-                inputType: TextInputType.name,
-              ),
-              InputText(
-                textoInput: "Correo",
-                inputType: TextInputType.emailAddress,
-              ),
-              InputText(
-                textoInput: "Telefono",
-                inputType: TextInputType.number,
-              ),
-              PasswordInput(textoContrasenia: "Contraseña:"),
-              PasswordInput(textoContrasenia: "Confirmar contraseña:"),
-              */
-              SizedBox(
+              const SizedBox(
                 height: 25.0,
               ),
+
               BtnPrimaery(
                 textButton: "Guardar",
-                colorBox: Color.fromRGBO(255, 182, 0, 1),
+                colorBox: CustomColors.colorAmarilloMostaza,
                 widthButton: MediaQuery.of(context).size.width,
-                onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SendCodeEmailPage())),
+                onPressed: save,
               ),
             ]),
-            SizedBox(
+            
+            const SizedBox(
               height: 25.0,
             ),
+
             Row(children: <Widget>[
-              Expanded(
-                  child: Divider(
+              const Expanded(
+                child: Divider(
                 color: CustomColors.colorNegro,
                 thickness: 1,
               )),
               Container(
-                child: Text("O"),
-                margin: EdgeInsets.symmetric(horizontal: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 15),
+                child: const Text("O"),
               ),
-              Expanded(
-                  child: Divider(
+              const Expanded(
+                child: Divider(
                 color: CustomColors.colorNegro,
                 thickness: 1,
               )),
             ]),
-            SizedBox(
+
+            const SizedBox(
               height: 15.0,
             ),
+
             BotonLink(
                 textoLink: "¿Ya tienes cuenta?, click aquí",
-                onPressed: () => Navigator.pop(context)),
+                onPressed: () => Navigator.pop(context)
+            ),
             
             // boton para saber si se escribio correctamente el contenido de cada input
-            TextButton(onPressed: save, child: Text("Guardar")),
+            //TextButton(onPressed: save, child: Text("Guardar")),
           ]
         ),
       ) 
       ),
     );
   }
-/*
-  Widget _buttonLink(String textoLink) {
-    return TextButton(
-      onPressed: () {
-        // Condición para manejar los cambios de pantalla
-        if (textoLink == "¿Ya tienes cuenta?, click aqui") {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => LoginPage()),
-          );
-        } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => PasswordPage()),
-          );
-        }
-      },
-      style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
-              Colors.transparent) // Define el fondo transparente
-          ),
-      child: Text(
-        textoLink, // Agrega el texto
-        style: TextStyle(
-          fontSize: 18, // Tamaño del texto
-          color: CustomColors.colorVerdePantano, // Color del texto
-        ),
-      ),
-    );
-  */
   // funcion para saber si los inputs tienen correcto su contenido
   save() {
     if (_keyForm.currentState!.validate()) {// si esta correcto el contenido de cada input
+      _mostrarPopupCorrecto(context); // mostrar pop-up correcto
+    } else {
+      _mostrarPopupError(context); // mostrar pop-up incorrecto
     }
   }
-/*
-  void comparePasswords(bool confirmPasswordTrueOrFalse ) {
-    String password1 = ctrlPassword.text;
-    String password2 = ctrlConfirmPassword.text;
 
-    return password1 == password2
-    ? setState(() {
-        true;
-    })
-    : false;
+  // Método para mostrar un pop-up con mensaje correcto
+  void _mostrarPopupCorrecto(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
+          iconoMostrar: Icons.verified_user, 
+          mensajePopUp: "Te has registrado correctamente", 
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage())),
+        );
+      },
+    );
   }
-  */
+
+  // Método para mostrar un pop-up con mensaje de error
+  void _mostrarPopupError(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
+          iconoMostrar: Icons.error_outline, 
+          mensajePopUp: "No se pudo registrar", 
+          onPressed: () => Navigator.of(context).pop(),
+        );
+      },
+    );
+  }
 }

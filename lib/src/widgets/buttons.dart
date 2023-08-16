@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../colors/colors.dart';
-import '../pages/Password_page.dart';
-import '../pages/Registrar_page.dart';
 
 // ---- Clase para el boton general principal ----
 class BtnPrimaery extends StatelessWidget {
@@ -37,7 +35,7 @@ class BtnPrimaery extends StatelessWidget {
 
         onPressed: onPressed, // Evento al presionar el boton
 
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
 
         // Agregar texto dentro del boton
         child: Row(
@@ -48,13 +46,13 @@ class BtnPrimaery extends StatelessWidget {
               iconButton!,
             
             if (iconButton != null)
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
 
             Text(
               textButton,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),

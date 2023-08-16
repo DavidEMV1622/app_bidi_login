@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -7,7 +9,6 @@ class UpperCaseTextFormatter extends TextInputFormatter{
 
   @override
   TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
-    // TODO: implement formatEditUpdate
     return TextEditingValue(
       text: capitalize(newValue.text),
       selection: newValue.selection
@@ -23,12 +24,12 @@ class UpperCaseTextFormatter extends TextInputFormatter{
 
 
 
-Widget titulo(String texto_Titulo) {
+Widget titulo(String textoTitulo) {
   return Container(
-    padding: EdgeInsets.symmetric(vertical: 10),
+    padding: const EdgeInsets.symmetric(vertical: 10),
     child: Text(
-      texto_Titulo,
-      style: TextStyle(fontSize: 48),
+      textoTitulo,
+      style: const TextStyle(fontSize: 48),
       textAlign: TextAlign.center,
     ),
   );
@@ -37,10 +38,10 @@ Widget titulo(String texto_Titulo) {
 // Widget del Titulo principal
 Widget tituloEncabezadoUno(String texto) {
   return Container(
-    padding: EdgeInsets.symmetric(vertical: 10),
+    padding: const EdgeInsets.symmetric(vertical: 10),
     child: Text(
       texto,
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 48, 
         fontWeight: FontWeight.bold,
         /*fontFamily: ,*/
@@ -53,10 +54,10 @@ Widget tituloEncabezadoUno(String texto) {
 // Widget del Subtitulo 1
 Widget subtituloUno(String texto) {
   return Container(
-    padding: EdgeInsets.symmetric(vertical: 10),
+    padding: const EdgeInsets.symmetric(vertical: 10),
     child: Text(
       texto,
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 24,
         color: CustomColors.colorGris_1,
         //fontWeight: FontWeight.bold,
@@ -85,7 +86,7 @@ Widget subtituloDos(String texto, double fontSizeText) {
 // Widget del texto Etiqueta
 Widget textoEtiqueta(String texto, Color colorText) {
   return Container(
-    padding: EdgeInsets.symmetric(vertical: 10),
+    padding: const EdgeInsets.symmetric(vertical: 10),
     child: Text(
       texto,
       style: TextStyle(

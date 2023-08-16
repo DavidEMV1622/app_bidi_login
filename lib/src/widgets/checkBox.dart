@@ -1,11 +1,10 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 import '../utils/flutter_secure_storage.dart';
 
-
-
 class CheckBox extends StatefulWidget {
-  // final Future userName;
   final TextEditingController emailController;
   final TextEditingController passwordController;
   const CheckBox({

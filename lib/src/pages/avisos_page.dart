@@ -107,7 +107,7 @@ class _AvisoPageState extends State<AvisoPage> {
               colorBox: CustomColors.colorAmarilloMostaza,
               widthButton: MediaQuery.of(context).size.width * 0.40,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => LogeadoPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
               },
             ),
           ]

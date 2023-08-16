@@ -1,14 +1,21 @@
+// ignore_for_file: file_names
+
 import 'package:app_credibanco_login/src/colors/colors.dart';
-import 'package:app_credibanco_login/src/pages/SendCodePhoneNumber_page.dart';
 import 'package:app_credibanco_login/src/utils/TextFormatter.dart';
 import 'package:flutter/material.dart';
+import '../buttons.dart';
 
-import '../widgets/buttons.dart';
-import 'Password_page.dart';
-import 'SendCodeEmail_page.dart';
+class MediumSendCodePageGeneral extends StatelessWidget {
 
-class MedioEnvioCodigoPage extends StatelessWidget {
-  const MedioEnvioCodigoPage({super.key});
+  final String textoCuerpoGeneral;
+  final void Function() onPressedPantallaEmail;
+  final void Function() onPressedPantallaPassword;
+  const MediumSendCodePageGeneral({
+    super.key, 
+    required this.textoCuerpoGeneral, 
+    required this.onPressedPantallaEmail, 
+    required this.onPressedPantallaPassword
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,47 +35,41 @@ class MedioEnvioCodigoPage extends StatelessWidget {
               children: [
                 titulo("ESCOGE UN MEDIO DE CONFIRMACIÓN"),
                 
-                SizedBox(
+                const SizedBox(
                   height: 45,
                 ),
-          
-                textoCuerpo("Por medio de la opcion seleccionada, te sera enviado un codigo de confirmacion.", CustomColors.colorNegro),
+
+                textoCuerpo(textoCuerpoGeneral, CustomColors.colorNegro),
                 
-                SizedBox(
+                const SizedBox(
                   height: 45,
                 ),
                 BtnPrimaery(
-                  iconButton: Icon(
+                  iconButton: const Icon(
                     Icons.email_outlined,
                     color: CustomColors.colorNegro,
                     size: 50.0,
                   ),
                   textButton: "Correo Electronico",
-                  colorBox: Color.fromRGBO(255, 182, 0, 1),
+                  colorBox: CustomColors.colorAmarilloMostaza,
                   widthButton: MediaQuery.of(context).size.width,
-                  onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SendCodeEmailPage())),
+                  onPressed: onPressedPantallaEmail,
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
 
                 BtnPrimaery(
-                  iconButton: Icon(
+                  iconButton: const Icon(
                     Icons.sms,
                     color: CustomColors.colorNegro,
                     size: 50.0,
                   ),
                   textButton: "Teléfono Celular",
-                  colorBox: Color.fromRGBO(255, 182, 0, 1),
+                  colorBox: CustomColors.colorAmarilloMostaza,
                   widthButton: MediaQuery.of(context).size.width,
-                  onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SendCodePhoneNumberPage())),
+                  onPressed: onPressedPantallaPassword,
                 ),
               ],
             ),
