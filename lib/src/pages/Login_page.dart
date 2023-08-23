@@ -121,6 +121,13 @@ class _LoginPageState extends State<LoginPage> {
                 height: 25.0,
               ),
 
+              InputTextValidationsPrueba(
+                textoInput: "Correo electronico",
+                inputType: TextInputType.emailAddress,
+                controller: ctrlEmail,
+                validateText: ValidateText.email,
+              ),
+
               // ---- Boton "Iniciar de sesión" ----
               // boton_orange("Iniciar sesión", Color.fromRGBO(255, 182, 0, 1)),
 

@@ -22,6 +22,7 @@ class SecureStorageMethods {
   // Metodo set para asignar email
   Future setEmailLogin(String emailLogin) async {
     await storage.write(key: _keyEmailLogin, value: emailLogin);
+    
   }
   
   // Metodo set para asignar contrasenia

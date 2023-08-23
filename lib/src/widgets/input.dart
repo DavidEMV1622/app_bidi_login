@@ -26,62 +26,77 @@ class InputTextValidations extends StatefulWidget {
 class _InputTextValidationsState extends State<InputTextValidations> {
   String hasError =
       "Base"; // Variable de estado para indicar si hay un error en el formulario
+  
+  String? messageValidations; // Variable de estado para almacenar el mensaje de error de las validaciones
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // Definir el diseño de la caja de texto "BoxDecoration"
-      decoration: BoxDecoration(
-        color: CustomColors.colorBlanco, // Color del input
-        borderRadius:
-            BorderRadius.circular(4.0), // Define los bordes redondeados
-        // Define el grosor y color de borde
-        border: Border.all(
-          // Cambiar color del borde a rojo si es true
-          //color: hasError ? Colors.red : CustomColors.colorNegro,
-          color:
-              _miColor(hasError), // Llamada de la funcion para cambiar el color
-          width:
-              _miBorde(hasError), // Llamada de la funcion para cambiar el borde
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          // Definir el diseño de la caja de texto "BoxDecoration"
+          decoration: BoxDecoration(
+            color: CustomColors.colorBlanco, // Color del input
+            borderRadius:
+                BorderRadius.circular(4.0), // Define los bordes redondeados
+            // Define el grosor y color de borde
+            border: Border.all(
+              // Cambiar color del borde a rojo si es true
+              //color: hasError ? Colors.red : CustomColors.colorNegro,
+              color:
+                  _miColor(hasError), // Llamada de la funcion para cambiar el color
+              width:
+                  _miBorde(hasError), // Llamada de la funcion para cambiar el borde
+            ),
+          ),
+          // Espaciado entre el borde y el contenido
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+
+          //height: 35,
+          //width: 1000.0,
+
+          margin: const EdgeInsets.symmetric(
+            horizontal: 0,
+            vertical: 5,
+          ),
+          //margin: EdgeInsets.symmetric(horizontal: 10.0),
+          
+          // Uso de un input (Campo de texto)
+          child: TextFormField(
+            keyboardType: widget.inputType, // tipo de teclado a mostrar en el movil
+
+            // Contenido del TextFormField
+            decoration: InputDecoration(
+              hintText: widget.textoInput, // Place holder en el input
+              border: InputBorder
+                  .none, // Quita la línea que viene por defecto en el TextField
+              counterText:
+                  "", // Oculta el contador de caracteres de la propiedad "maxLength"
+            ),
+
+            controller: widget.controller, // maneja cada input a utilizar
+            maxLength:
+                ValidateFormulations.validateMaxLength(widget.validateText), // Cantidad de caracteres que tiene el input
+            inputFormatters: [ValidateFormulations.validateinputFormatters(widget.validateText)], // Tipo de dato del input
+
+            /* Valida si la estructura del formulario es correcta */
+            validator: (String? value) {
+              return validateStructure(
+                  value!); // retorna si la estructura esta bien escrita
+            },
+          ),
         ),
-      ),
-      // Espaciado entre el borde y el contenido
-      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-
-      //height: 35,
-      //width: 1000.0,
-
-      margin: const EdgeInsets.symmetric(
-        horizontal: 0,
-        vertical: 5,
-      ),
-      //margin: EdgeInsets.symmetric(horizontal: 10.0),
-
-      // Uso de un input (Campo de texto)
-      child: TextFormField(
-        keyboardType: widget.inputType, // tipo de teclado a mostrar en el movil
-
-        // Contenido del TextFormField
-        decoration: InputDecoration(
-          hintText: widget.textoInput, // Place holder en el input
-          border: InputBorder
-              .none, // Quita la línea que viene por defecto en el TextField
-          counterText:
-              "", // Oculta el contador de caracteres de la propiedad "maxLength"
+        // Mostrar el mensaje de error fuera del BoxDecoration
+        Text(
+          messageValidations ?? "", /* Muestra el mensaje si "messageValidations" no es nulo */
+          style: const TextStyle(
+            color: Colors.red,
+          ),
         ),
-
-        controller: widget.controller, // maneja cada input a utilizar
-        maxLength:
-            ValidateFormulations.validateMaxLength(widget.validateText), // Cantidad de caracteres que tiene el input
-        inputFormatters: [ValidateFormulations.validateinputFormatters(widget.validateText)], // Tipo de dato del input
-
-        /* Valida si la estructura del formulario es correcta */
-        validator: (String? value) {
-          return validateStructure(
-              value!); // retorna si la estructura esta bien escrita
-        },
-      ),
+      ],
     );
+    
   }
 
   // Funcion para manejar la estructura del contenido del input
@@ -91,45 +106,50 @@ class _InputTextValidationsState extends State<InputTextValidations> {
     if (value!.isEmpty) {
     //if (value!.length == 0) {
       setState(() {
-        hasError =
-            "Error"; // Establecer hasError en true si el campo está vacío
+        hasError = "Error"; // Establecer hasError en true si el campo está vacío
+        messageValidations = "";
       });
-      return "El campo es requerido llenarlo";
+      messageValidations = "El campo es requerido llenarlo";
     } else {
       // rectificar el error
       setState(() {
         hasError = "Error";
+        messageValidations = "";
       });
 
       // Uso de un switch
       switch (widget.validateText) {
         case ValidateText.name:
-          return validateName(value)
-              ? setState(() {
-                  hasError = "Correct";
-                })
-              : "El nombre debe tener 3 o más caracteres";
+          validateName(value)
+            ? setState(() {
+                hasError = "Correct";
+                messageValidations = "";
+              })
+            : messageValidations = "El nombre debe tener 3 o más caracteres";
 
         case ValidateText.lastname:
-          return validateName(value)
-              ? setState(() {
-                  hasError = "Correct";
-                })
-              : "El apellido debe tener 3 o más caracteres";
+          validateName(value)
+            ? setState(() {
+                hasError = "Correct";
+                messageValidations = "";
+              })
+            : messageValidations = "El apellido debe tener 3 o más caracteres";
 
         case ValidateText.phoneNumber:
-          return validatePhoneNumber(value)
-              ? setState(() {
-                  hasError = "Correct";
-                })
-              : "El número de teléfono debe tener entre 10 o 15 digitos";
+          validatePhoneNumber(value)
+            ? setState(() {
+                hasError = "Correct";
+                messageValidations = "";
+              })
+            : messageValidations = "El número de teléfono debe tener entre 10 o 15 digitos";
 
         case ValidateText.email:
-          return validateEmail(value)
-              ? setState(() {
-                  hasError = "Correct";
-                })
-              : message("email");
+          validateEmail(value)
+            ? setState(() {
+                hasError = "Correct";
+                messageValidations = "";
+              })
+            : messageValidations = "La estructura del email es incorrecta";
 
         default: // si no se da ninguno de los casos, no se muestra mensaje
           return null;
@@ -138,7 +158,7 @@ class _InputTextValidationsState extends State<InputTextValidations> {
   }
 
   // Funcion para mostrar el mismo mensaje de error
-  message(String textMessage) => "La estructura del $textMessage es incorrecta";
+  // message(String textMessage) => "La estructura del $textMessage es incorrecta";
 
   // Funcion para cambiar el color del borde del formulario
   _miColor(String hasError) {
@@ -162,6 +182,189 @@ class _InputTextValidationsState extends State<InputTextValidations> {
     }
   }
 }
+
+
+
+class InputTextValidationsPrueba extends StatefulWidget {
+  final String textoInput; // // texto del input
+  final TextInputType inputType; // tipo de teclado a mostrar
+  final TextEditingController controller; // controlar cada input
+  final ValidateText? validateText; // Tipo de validacion a utilizar
+
+  // Uso de cada parametro asignado
+  const InputTextValidationsPrueba({
+    super.key,
+    required this.textoInput,
+    required this.inputType,
+    required this.controller,
+    this.validateText
+  });
+
+  @override
+  State<InputTextValidationsPrueba> createState() => _InputTextValidationsPruebaState();
+}
+
+class _InputTextValidationsPruebaState extends State<InputTextValidationsPrueba> {
+  String hasError = "Base"; // Variable de estado para indicar si hay un error en el formulario
+  String? messageValidations; // Variable de estado para almacenar el mensaje de error de las validaciones
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          // Definir el diseño de la caja de texto "BoxDecoration"
+          decoration: BoxDecoration(
+            color: CustomColors.colorBlanco, // Color del input
+            borderRadius:
+                BorderRadius.circular(4.0), // Define los bordes redondeados
+            // Define el grosor y color de borde
+            border: Border.all(
+              // Cambiar color del borde a rojo si es true
+              //color: hasError ? Colors.red : CustomColors.colorNegro,
+              color:
+                  _miColor(hasError), // Llamada de la funcion para cambiar el color
+              width:
+                  _miBorde(hasError), // Llamada de la funcion para cambiar el borde
+            ),
+          ),
+          // Espaciado entre el borde y el contenido
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+
+          //height: 35,
+          //width: 1000.0,
+
+          margin: const EdgeInsets.symmetric(
+            horizontal: 0,
+            vertical: 5,
+          ),
+          //margin: EdgeInsets.symmetric(horizontal: 10.0),
+          
+          // Uso de un input (Campo de texto)
+          child: TextFormField(
+            keyboardType: widget.inputType, // tipo de teclado a mostrar en el movil
+
+            // Contenido del TextFormField
+            decoration: InputDecoration(
+              hintText: widget.textoInput, // Place holder en el input
+              border: InputBorder
+                  .none, // Quita la línea que viene por defecto en el TextField
+              counterText:
+                  "", // Oculta el contador de caracteres de la propiedad "maxLength"
+            ),
+
+            controller: widget.controller, // maneja cada input a utilizar
+            maxLength:
+                ValidateFormulations.validateMaxLength(widget.validateText), // Cantidad de caracteres que tiene el input
+            inputFormatters: [ValidateFormulations.validateinputFormatters(widget.validateText)], // Tipo de dato del input
+
+            /* Valida si la estructura del formulario es correcta */
+            validator: (String? value) {
+              return validateStructure(
+                  value!); // retorna si la estructura esta bien escrita
+            },
+          ),
+        ),
+        // Mostrar el mensaje de error fuera del BoxDecoration
+        Text(
+          messageValidations ?? "", /* Muestra el mensaje si "messageValidations" no es nulo */
+          style: const TextStyle(
+            color: Colors.red,
+          ),
+        ),
+      ],
+    );
+    
+  }
+
+  // Funcion para manejar la estructura del contenido del input
+  validateStructure(String? value) {
+    // Condicion si el campo es o no requerido
+    //if(widget.isEmptyInput! && value!.isEmpty) {
+    if (value!.isEmpty) {
+    //if (value!.length == 0) {
+      setState(() {
+        hasError = "Error"; // Establecer hasError en true si el campo está vacío
+        messageValidations = "";
+      });
+      messageValidations = "El campo es requerido llenarlo";
+    } else {
+      // rectificar el error
+      setState(() {
+        hasError = "Error";
+      });
+
+      // Uso de un switch
+      switch (widget.validateText) {
+        case ValidateText.name:
+          return validateName(value)
+              ? setState(() {
+                  hasError = "Correct";
+                  messageValidations = "";
+                })
+              : messageValidations = "El nombre debe tener 3 o más caracteres";
+
+        case ValidateText.lastname:
+          return validateName(value)
+              ? setState(() {
+                  hasError = "Correct";
+                  messageValidations = "";
+                })
+              : messageValidations = "El apellido debe tener 3 o más caracteres";
+
+        case ValidateText.phoneNumber:
+          return validatePhoneNumber(value)
+              ? setState(() {
+                  hasError = "Correct";
+                  messageValidations = "";
+                })
+              : "El número de teléfono debe tener entre 10 o 15 digitos";
+
+        case ValidateText.email:
+          return validateEmail(value)
+              ? setState(() {
+                  hasError = "Correct";
+                  messageValidations = "";
+                })
+              : setState(() {
+                messageValidations = "La estructura del email es incorrecta"; // Asigna el mensaje de error o null
+              });
+              //message("email");
+
+        default: // si no se da ninguno de los casos, no se muestra mensaje
+          return null;
+      }
+    }
+  }
+
+  // Funcion para mostrar el mismo mensaje de error
+  //message(String textMessage) => "La estructura del $textMessage es incorrecta";
+
+  // Funcion para cambiar el color del borde del formulario
+  _miColor(String hasError) {
+    if (hasError == "Error") {
+      return Colors.red;
+    } else if (hasError == "Correct") {
+      return Colors.green;
+    } else if (hasError == "Base") {
+      return CustomColors.colorNegro;
+    }
+  }
+
+  // Funcion para cambiar el borde del formulario
+  _miBorde(String hasError) {
+    if (hasError == "Error") {
+      return 2.5;
+    } else if (hasError == "Correct") {
+      return 2.5;
+    } else if (hasError == "Base") {
+      return 1.0;
+    }
+  }
+}
+
+
 
 // ---- Clase para un input general con validación ----
 class InputPasswordValidations extends StatefulWidget {
@@ -190,72 +393,86 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
   // Variable de tipo boolean para icono de si o no mostrar contrasenia
   bool passenable = true;
 
+  String? messageValidations;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // Definir el diseño de la caja de texto "BoxDecoration"
-      decoration: BoxDecoration(
-        color: CustomColors.colorBlanco, // Color del input
-        borderRadius: BorderRadius.circular(4.0), // Define los bordes redondeados
-        // Define el grosor y color de borde
-        border: Border.all(
-          // Cambiar color del borde a rojo si es true
-          //color: hasError ? Colors.red : CustomColors.colorNegro,
-          color: _miColor(hasError), // Llamada de la funcion para cambiar el color
-          width: _miBorde(hasError), // Llamada de la funcion para cambiar el borde
-        ),
-      ),
-      // Espaciado entre el borde y el contenido
-      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          // Definir el diseño de la caja de texto "BoxDecoration"
+          decoration: BoxDecoration(
+            color: CustomColors.colorBlanco, // Color del input
+            borderRadius: BorderRadius.circular(4.0), // Define los bordes redondeados
+            // Define el grosor y color de borde
+            border: Border.all(
+              // Cambiar color del borde a rojo si es true
+              //color: hasError ? Colors.red : CustomColors.colorNegro,
+              color: _miColor(hasError), // Llamada de la funcion para cambiar el color
+              width: _miBorde(hasError), // Llamada de la funcion para cambiar el borde
+            ),
+          ),
+          // Espaciado entre el borde y el contenido
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
 
-      //height: 35,
-      //width: 1000.0,
+          //height: 35,
+          //width: 1000.0,
 
-      margin: const EdgeInsets.symmetric(
-        horizontal: 0,
-        vertical: 5,
-      ),
-      //margin: EdgeInsets.symmetric(horizontal: 10.0),
+          margin: const EdgeInsets.symmetric(
+            horizontal: 0,
+            vertical: 5,
+          ),
+          //margin: EdgeInsets.symmetric(horizontal: 10.0),
 
-      // Uso de un input (Campo de texto)
-      child: TextFormField(
-        obscureText: passenable,
+          // Uso de un input (Campo de texto)
+          child: TextFormField(
+            obscureText: passenable,
 
-        // Maneja el contenido del "TextFormField"
-        decoration: InputDecoration(
-          hintText: widget.textoInput, // Place holder en el input
-          border: InputBorder.none, // Quita la línea que viene por defecto en el TextField
-          counterText: "", // Quita el contador de caracteres
+            // Maneja el contenido del "TextFormField"
+            decoration: InputDecoration(
+              hintText: widget.textoInput, // Place holder en el input
+              border: InputBorder.none, // Quita la línea que viene por defecto en el TextField
+              counterText: "", // Quita el contador de caracteres
 
-          // Manejar un icono dentro del input
-          suffixIcon: IconButton(
-            // Agrega un icono para mostrar y otro para no mostrar contrasenia
-            icon: Icon(
-                passenable == true ? Icons.visibility_off : Icons.visibility),
+              // Manejar un icono dentro del input
+              suffixIcon: IconButton(
+                // Agrega un icono para mostrar y otro para no mostrar contrasenia
+                icon: Icon(
+                    passenable == true ? Icons.visibility_off : Icons.visibility),
 
-            /* Agrega una animación al presionar el boton y permite realizar una accion 
-            agregandolo entre las {} */
-            onPressed: () {
-              // Permite redibujar el widget para que se muestre los cambios del icono
-              setState(() {
-                if (passenable) {
-                  passenable = false;
-                } else {
-                  passenable = true;
-                }
-              });
+                /* Agrega una animación al presionar el boton y permite realizar una accion 
+                agregandolo entre las {} */
+                onPressed: () {
+                  // Permite redibujar el widget para que se muestre los cambios del icono
+                  setState(() {
+                    if (passenable) {
+                      passenable = false;
+                    } else {
+                      passenable = true;
+                    }
+                  });
+                },
+              ),
+            ),
+
+            controller: widget.controller, // maneja cada input a utilizar
+            inputFormatters: [ValidateFormulations.validateinputFormatters(widget.validateText)], // Tipo de dato del input
+            
+            /* Valida si la estructura del input es correcta */
+            validator: (String? value) {
+              return validateStructure(value!); // retorna si la estructura esta bien escrita
             },
           ),
         ),
-
-        controller: widget.controller, // maneja cada input a utilizar
-        inputFormatters: [ValidateFormulations.validateinputFormatters(widget.validateText)], // Tipo de dato del input
-        
-        /* Valida si la estructura del input es correcta */
-        validator: (String? value) {
-          return validateStructure(value!); // retorna si la estructura esta bien escrita
-        },
-      ),
+        // Mostrar el mensaje de error fuera del BoxDecoration
+        Text(
+          messageValidations ?? "", /* Muestra el mensaje si "messageValidations" no esta vacio */
+          style: const TextStyle(
+            color: Colors.red,
+          ),
+        ),
+      ],
     );
   }
 
@@ -267,40 +484,41 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
     if (value!.isEmpty) {
       setState(() {
         hasError = "Error"; // Establecer hasError en true si el campo está vacío
+        messageValidations = "";
       });
-      return "El campo es requerido llenarlo";
+      messageValidations = "El campo es requerido llenarlo";
     } else {
       // rectificar el error
       setState(() {
         hasError = "Error";
+        messageValidations = "";
       });
 
       // Uso de un switch
       switch (widget.validateText) {
         case ValidateText.password:
-          return validatePassword(value)
+          validatePassword(value)
             ? setState(() {
                 hasError = "Correct";
+                messageValidations = "";
               })
-            : "Una minuscula, mayuscula, caracter especial y un número";
+            : messageValidations = "Una minuscula, mayuscula, caracter especial y un número";
 
         case ValidateText.confirmPassword:
           //print("valor: $value passsword a comparar: ${widget.passwordComparar?.text}");
           // Condicion para comparar si son iguales los dos formularios
-          return widget.controller.text == widget.passwordComparar?.text
+          widget.controller.text == widget.passwordComparar?.text
             ? setState(() {
                 hasError = "Correct";
+                messageValidations = "";
               })
-            : "El campo no es igual a la contraseña";
+            : messageValidations = "El campo no es igual a la contraseña";
 
         default: // si no se da ninguno de los casos, no se muestra mensaje
           return null;
       }
     }
   }
-
-  // Funcion para mostrar el mismo mensaje de error
-  message(String textMessage) => "La estructura del $textMessage es incorrecta";
 
   // Funcion para cambiar el color del borde del formulario
   _miColor(String hasError) {
