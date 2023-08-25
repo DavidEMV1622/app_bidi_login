@@ -29,11 +29,6 @@ validatePassword(String password) {
   String expRegular = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&_.^#<>\\[\\]{}\\(\\)\\/\\\\|~`+=:,;\u0027"¡¿])[A-Za-z\\d@\$!%*?&_.^#<>\\[\\]{}\\(\\)\\/\\\\|~`+=:,;\u0027"¡¿]+\$';
   return RegExp(expRegular).hasMatch(password);
 }
-/*
-validateConfirmPassword(String confirmPassword) {
-  String expRegular = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&_.^#<>\\[\\]{}\\(\\)\\/\\\\|~`+=:,;\u0027"¡¿])[A-Za-z\\d@\$!%*?&_.^#<>\\[\\]{}\\(\\)\\/\\\\|~`+=:,;\u0027"¡¿]+\$';
-  return RegExp(expRegular).hasMatch(confirmPassword);
-}*/
 
 // Funcion para validar la estructura del numero de telefono
 validateCodeOTP(String codeOTP) {
@@ -85,27 +80,4 @@ class ValidateFormulations {
             .singleLineFormatter; // maneja cualquier caracter
     }
   }
-/*
-  // Funcion para cambiar el color del borde del formulario
-  static Color? miColor(String hasError) {
-    if (hasError == "Error") {
-      return Colors.red;
-    } else if (hasError == "Correct") {
-      return Colors.green;
-    } else if (hasError == "Base") {
-      return CustomColors.colorNegro;
-    }
-  }
-
-  // Funcion para cambiar el borde del formulario
-  static double? miBorde(String hasError) {
-    if (hasError == "Error") {
-      return 2.5;
-    } else if (hasError == "Correct") {
-      return 2.5;
-    } else if (hasError == "Base") {
-      return 1.0;
-    }
-  }
-  */
 }

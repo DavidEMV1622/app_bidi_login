@@ -120,14 +120,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 25.0,
               ),
-
-              InputTextValidationsPrueba(
-                textoInput: "Correo electronico",
-                inputType: TextInputType.emailAddress,
-                controller: ctrlEmail,
-                validateText: ValidateText.email,
-              ),
-
+              
               // ---- Boton "Iniciar de sesión" ----
               // boton_orange("Iniciar sesión", Color.fromRGBO(255, 182, 0, 1)),
 
@@ -137,14 +130,15 @@ class _LoginPageState extends State<LoginPage> {
                 widthButton: MediaQuery.of(context).size.width,
                 onPressed: () async {
                   // Se obtiene el estado de isNotice si es true o false
-                  bool? isNotices = await _secureStorageMethods.getIsNotices();
+                  bool isNotices = await _secureStorageMethods.getEmailStorage(ctrlEmail.text);
 
                   // Si isNotices es true, se pasa a las ventanas de avisos de lo contrario pasa a la ventana Logeado
-                  if (isNotices!) {
+                  if (isNotices) {
                     await _secureStorageMethods.setIsNotices(false);
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
-                  } else {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
+                  } else {
+                    _secureStorageMethods.setEmailStorage(ctrlEmail.text);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
                   }
                 }
               ),
@@ -203,6 +197,7 @@ class _LoginPageState extends State<LoginPage> {
 
               // boton para saber si se escribio correctamente el contenido de cada input
               TextButton(onPressed: save, child: const Text("Guardar")),
+
             ],
           ),
         ),
