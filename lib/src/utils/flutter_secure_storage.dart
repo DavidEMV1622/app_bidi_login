@@ -10,39 +10,6 @@ class SecureStorageMethods {
 
   final String _keyIsNotices = 'isNotices';
 
-  //List<String> newListEmail = [];
-
-
-  
-
-  Future setEmailStorage(String emailLogin) async {
-    await storage.write(key: "${emailLogin}", value: emailLogin);
-  }
-
-  // Metodo get para obtener el email del usuario
-  Future <bool> getEmailStorage(String emailContentForm) async {
-    bool isFound = false;
-
-    final allStorageKeyAndValue = await storage.readAll(); /* Lee todo el contenido del almacenamiento local 
-                                                          "storage" (mapeo del storage) */
-    for (var entradaMapeo in allStorageKeyAndValue.entries) { /* Recorre el mapeo del storage usando la funcion
-                                                            "entries" para obtener el par de entradas de la clave 
-                                                            valor (key, value) */
-      print("Llave valor: ${entradaMapeo.key}, contenido de la llave: ${entradaMapeo.value}");
-
-      if (entradaMapeo.key == emailContentForm) {
-        isFound = true;
-      }
-    } 
-    return isFound;
-
-    // return almacenamiento.forEach((key, value) { 
-    //   print("Llave valor: ${key}, Valor de la llave: ${value}");
-    // });
-  }
-
-  
-  
   
   // Metodo set para asignar email
   Future setEmailLogin(String emailLogin) async {
@@ -71,6 +38,32 @@ class SecureStorageMethods {
   Future<bool?> getIsNotices() async {
     var isNoticesValue = await storage.read(key: _keyIsNotices);
     return isNoticesValue == 'true';
+  }
+
+  Future setEmailStorage(String emailLogin) async {
+    await storage.write(key: "${emailLogin}", value: emailLogin);
+  }
+
+  // Metodo get para obtener el email del usuario
+  Future <bool> getEmailStorage(String emailContentForm) async {
+    bool isFound = false;
+
+    final allStorageKeyAndValue = await storage.readAll(); /* Lee todo el contenido del almacenamiento local 
+                                                          "storage" (mapeo del storage) */
+    for (var entradaMapeo in allStorageKeyAndValue.entries) { /* Recorre el mapeo del storage usando la funcion
+                                                            "entries" para obtener el par de entradas de la clave 
+                                                            valor (key, value) */
+      print("Llave valor: ${entradaMapeo.key}, contenido de la llave: ${entradaMapeo.value}");
+
+      if (entradaMapeo.key == emailContentForm) {
+        isFound = true;
+      }
+    } 
+    return isFound;
+
+    // return almacenamiento.forEach((key, value) { 
+    //   print("Llave valor: ${key}, Valor de la llave: ${value}");
+    // });
   }
 
 }

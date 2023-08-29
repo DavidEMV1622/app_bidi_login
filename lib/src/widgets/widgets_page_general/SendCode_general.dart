@@ -67,7 +67,7 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
                   ),
                   
                   // ---- Llamado Widget para un campo de texto para ingresar correo ----
-                  if (widget.textoFormulario == "Correo electronico")
+                  if (widget.textoFormulario == "Correo electrónico")
                     InputTextValidations(
                       textoInput: widget.textoFormulario,
                       inputType: TextInputType.emailAddress,

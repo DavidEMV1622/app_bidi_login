@@ -108,7 +108,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               // ---- Campo de texto para ingresar contrasenia ----
-              //inputPassword("Contraseña"),
               InputPasswordValidations(
                 textoInput: "Contraseña",
                 inputType: TextInputType.text,
@@ -129,16 +128,20 @@ class _LoginPageState extends State<LoginPage> {
                 colorBox: CustomColors.colorAmarilloMostaza,
                 widthButton: MediaQuery.of(context).size.width,
                 onPressed: () async {
-                  // Se obtiene el estado de isNotice si es true o false
-                  bool isNotices = await _secureStorageMethods.getEmailStorage(ctrlEmail.text);
 
-                  // Si isNotices es true, se pasa a las ventanas de avisos de lo contrario pasa a la ventana Logeado
-                  if (isNotices) {
-                    await _secureStorageMethods.setIsNotices(false);
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
-                  } else {
-                    _secureStorageMethods.setEmailStorage(ctrlEmail.text);
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
+                  // si esta correcto el contenido de cada input
+                  if (_keyForm.currentState!.validate()) {
+                    // Se obtiene el estado de isNotice si es true o false
+                    bool isNotices = await _secureStorageMethods.getEmailStorage(ctrlEmail.text);
+
+                    // Si isNotices es true, se pasa a las ventanas de avisos de lo contrario pasa a la ventana Logeado
+                    if (isNotices) {
+                      await _secureStorageMethods.setIsNotices(false);
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
+                    } else {
+                      _secureStorageMethods.setEmailStorage(ctrlEmail.text);
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
+                    }
                   }
                 }
               ),

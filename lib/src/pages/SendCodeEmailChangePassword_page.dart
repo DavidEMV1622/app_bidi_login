@@ -21,7 +21,7 @@ class _SendCodeEmailChangePasswordPageState extends State<SendCodeEmailChangePas
     return SendCodePageGeneral(
       tituloGeneral: "ENVIO DE CODIGO",
       textoCuerpoGeneral: "Ingrese el correo para enviar un codigo de confirmación",
-      textoFormulario: "Correo electronico",
+      textoFormulario: "Correo electrónico",
       nombreCtrl: ctrlEmail,
       onPressedPantallaPasar: const CodeOTPEmailChangePasswordPage(),
     );
