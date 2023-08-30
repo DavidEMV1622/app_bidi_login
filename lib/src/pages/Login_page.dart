@@ -58,159 +58,146 @@ class _LoginPageState extends State<LoginPage> {
     // Plantilla principal "Scaffold"
     return Scaffold(       
       // ---- Cuerpo o contenido de la aplicación "body" ----
-      body: SingleChildScrollView(
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(
-              15), // Separación entre todos los widgets y el borde del celular
-          
-          child: Form(// "Form" se va a trabajar con formularios
-            key: _keyForm, // Define un formulario con una llave para controlarlo
-            child: Column(
-            // Se acomoda el contenido en columna
-
-            mainAxisAlignment:
-                MainAxisAlignment.center, // Define la posición de los widgets
-
-            children: <Widget>[
-              /* Se usa el widget "children" que son 
-                                los hijos o cadenas de widget que se van 
-                                a unir */
-              
-              SvgPicture.asset( 
-                'assets/Logo_CrediBanco.svg',
-                width: 200,
-              ),
-
-              const SizedBox(
-                height: 35.0,
-              ),
-
-              // ---- Titulo de "LOGIN" ----
-              tituloEncabezadoUno("Iniciar Sesión"),
-
-              // ---- Agregar un espacio entre los dos widgets (Text, Align)----
-              const SizedBox(
-                height: 45.0,
-              ),
-              
-              // ---- Llamado Widget para un campo de texto para ingresar correo ----
-              InputTextValidations(
-                textoInput: "Correo electronico",
-                inputType: TextInputType.emailAddress,
-                controller: ctrlEmail,
-                validateText: ValidateText.email,
-              ),
-
-              // ---- Agregar un espacio ----
-              const SizedBox(
-                height: 15.0,
-              ),
-
-              // ---- Campo de texto para ingresar contrasenia ----
-              InputPasswordValidations(
-                textoInput: "Contraseña",
-                inputType: TextInputType.text,
-                controller: ctrlPassword,
-                validateText: ValidateText.password,
-              ),
-              
-              // ---- Agregar un espacio ----
-              const SizedBox(
-                height: 25.0,
-              ),
-              
-              // ---- Boton "Iniciar de sesión" ----
-              // boton_orange("Iniciar sesión", Color.fromRGBO(255, 182, 0, 1)),
-
-              BtnPrimaery(
-                textButton: "Iniciar sesion",
-                colorBox: CustomColors.colorAmarilloMostaza,
-                widthButton: MediaQuery.of(context).size.width,
-                onPressed: () async {
-
-                  // si esta correcto el contenido de cada input
-                  if (_keyForm.currentState!.validate()) {
-                    // Se obtiene el estado de isNotice si es true o false
-                    bool isNotices = await _secureStorageMethods.getEmailStorage(ctrlEmail.text);
-
-                    // Si isNotices es true, se pasa a las ventanas de avisos de lo contrario pasa a la ventana Logeado
-                    if (isNotices) {
-                      await _secureStorageMethods.setIsNotices(false);
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
-                    } else {
-                      _secureStorageMethods.setEmailStorage(ctrlEmail.text);
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(
+                15), // Separación entre todos los widgets y el borde del celular
+            
+            child: Form(// "Form" se va a trabajar con formularios
+              key: _keyForm, // Define un formulario con una llave para controlarlo
+              child: Column(
+              // Se acomoda el contenido en columna
+      
+              mainAxisAlignment:
+                  MainAxisAlignment.center, // Define la posición de los widgets
+      
+              children: <Widget>[
+                /* Se usa el widget "children" que son 
+                                  los hijos o cadenas de widget que se van 
+                                  a unir */
+                
+                SvgPicture.asset( 
+                  'assets/Logo_CrediBanco.svg',
+                  width: 200,
+                ),
+      
+                const SizedBox(
+                  height: 35.0,
+                ),
+      
+                // ---- Titulo de "LOGIN" ----
+                tituloEncabezadoUno("Iniciar Sesión"),
+      
+                // ---- Agregar un espacio entre los dos widgets (Text, Align)----
+                const SizedBox(
+                  height: 45.0,
+                ),
+                
+                // ---- Llamado Widget para un campo de texto para ingresar correo ----
+                InputTextValidations(
+                  textoInput: "Correo electronico",
+                  inputType: TextInputType.emailAddress,
+                  controller: ctrlEmail,
+                  validateText: ValidateText.email,
+                ),
+      
+                // ---- Agregar un espacio ----
+                const SizedBox(
+                  height: 15.0,
+                ),
+      
+                // ---- Campo de texto para ingresar contrasenia ----
+                InputPasswordValidations(
+                  textoInput: "Contraseña",
+                  inputType: TextInputType.text,
+                  controller: ctrlPassword,
+                  validateText: ValidateText.password,
+                ),
+                
+                // ---- Agregar un espacio ----
+                const SizedBox(
+                  height: 25.0,
+                ),
+                
+                // ---- Boton "Iniciar de sesión" ----
+                BtnPrimaery(
+                  textButton: "Iniciar sesion",
+                  colorBox: CustomColors.colorAmarilloMostaza,
+                  widthButton: MediaQuery.of(context).size.width,
+                  onPressed: () async {
+      
+                    // Condicion para saber si las validaciones de cada input estan correctas
+                    if (_keyForm.currentState!.validate()) {
+                      // Se obtiene el estado de isNotice si es true o false
+                      bool isNotices = await _secureStorageMethods.getEmailStorage(ctrlEmail.text);
+      
+                      /* Si isNotices es true, se pasa a las ventanas de avisos de lo contrario pasa a la 
+                      ventana Logeado */
+                      if (isNotices) {
+                        await _secureStorageMethods.setIsNotices(false);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
+                      } else {
+                        _secureStorageMethods.setEmailStorage(ctrlEmail.text);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
+                      }
                     }
                   }
-                }
-              ),
-
-              const SizedBox(
-                height: 25.0,
-              ),
-
-              /* ------Boton "REGISTRATE"----------
-              Obtiene como parametro los siguientes puntos:
-              1) Texto que tiene el boton
-              2) Color del boton
-              3) Grosor del borde
-              4) evento para navegar entre pantallas */
-              BtnPrimaery(
-                textButton: "Registrate",
-                colorBox: CustomColors.colorBlanco,
-                border: Border.all(width: 2),
-                widthButton: MediaQuery.of(context).size.width,
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const MediumSendCodeRegisterPage())),
-              ),
-
-              // ---- Agregar un espacio ----
-              const SizedBox(
-                height: 25.0,
-              ),
-
-              // ---- Texto para un link si se le olvido la contrasenia ----
-              BotonLink(
-                textoLink: "Olvide mi contraseña",
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const MediumSendCodeChangePasswordPage())),
-              ),
-
-              const SizedBox(
-                height: 25.0,
-              ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CheckBox( // Uso de un checkBox
-                    // Mandar los controladores a utilizar oara cada formulario
-                    emailController: ctrlEmail,
-                    passwordController: ctrlPassword,
-                  ),
-                  const Text("Recuerdame"),
-                ],
-              ),
-
-              const SizedBox(
-                height: 25.0,
-              ),
-
-              // boton para saber si se escribio correctamente el contenido de cada input
-              TextButton(onPressed: save, child: const Text("Guardar")),
-
-            ],
+                ),
+      
+                const SizedBox(
+                  height: 25.0,
+                ),
+      
+                /* ------Boton "REGISTRATE"----------
+                Obtiene como parametro los siguientes puntos:
+                1) Texto que tiene el boton
+                2) Color del boton
+                3) Grosor del borde
+                4) evento para navegar entre pantallas */
+                BtnPrimaery(
+                  textButton: "Registrate",
+                  colorBox: CustomColors.colorBlanco,
+                  border: Border.all(width: 2),
+                  widthButton: MediaQuery.of(context).size.width,
+                  onPressed: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MediumSendCodeRegisterPage())),
+                ),
+      
+                // ---- Agregar un espacio ----
+                const SizedBox(
+                  height: 25.0,
+                ),
+      
+                // ---- Texto para un link si se le olvido la contrasenia ----
+                BotonLink(
+                  textoLink: "Olvide mi contraseña",
+                  onPressed: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const MediumSendCodeChangePasswordPage())),
+                ),
+      
+                const SizedBox(
+                  height: 25.0,
+                ),
+      
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CheckBox( // Uso de un checkBox
+                      // Mandar los controladores a utilizar oara cada formulario
+                      emailController: ctrlEmail,
+                      passwordController: ctrlPassword,
+                    ),
+                    const Text("Recordar datos"),
+                  ],
+                ),
+              ],
+            ),
+          ),
           ),
         ),
-        ),
       ),
-    ));
-  }
-  // funcion para saber si los inputs tienen correcto su contenido
-  save() {
-    if (_keyForm.currentState!.validate()) {// si esta correcto el contenido de cada input
-    }
+    );
   }
 }

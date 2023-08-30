@@ -25,54 +25,55 @@ class MediumSendCodePageGeneral extends StatelessWidget {
         elevation: 0.0,
       ),
 
-      body: SizedBox(
+      body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                titulo("ESCOGE UN MEDIO DE CONFIRMACIÓN"),
-                
-                const SizedBox(
-                  height: 45,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              titulo("ESCOGE UN MEDIO DE CONFIRMACIÓN"),
+              
+              const SizedBox(
+                height: 45,
+              ),
+      
+              textoCuerpo(textoCuerpoGeneral, CustomColors.colorNegro),
+              
+              const SizedBox(
+                height: 45,
+              ),
+      
+              // Boton para el correo electronico
+              BtnPrimaery(
+                iconButton: const Icon(
+                  Icons.email_outlined,
+                  color: CustomColors.colorNegro,
+                  size: 50.0,
                 ),
-
-                textoCuerpo(textoCuerpoGeneral, CustomColors.colorNegro),
-                
-                const SizedBox(
-                  height: 45,
+                textButton: "Correo Electronico",
+                colorBox: CustomColors.colorAmarilloMostaza,
+                widthButton: MediaQuery.of(context).size.width,
+                onPressed: onPressedPantallaEmail,
+              ),
+      
+              const SizedBox(
+                height: 15,
+              ),
+      
+              // Boton para el telefono celular
+              BtnPrimaery(
+                iconButton: const Icon(
+                  Icons.sms,
+                  color: CustomColors.colorNegro,
+                  size: 50.0,
                 ),
-                BtnPrimaery(
-                  iconButton: const Icon(
-                    Icons.email_outlined,
-                    color: CustomColors.colorNegro,
-                    size: 50.0,
-                  ),
-                  textButton: "Correo Electronico",
-                  colorBox: CustomColors.colorAmarilloMostaza,
-                  widthButton: MediaQuery.of(context).size.width,
-                  onPressed: onPressedPantallaEmail,
-                ),
-
-                const SizedBox(
-                  height: 15,
-                ),
-
-                BtnPrimaery(
-                  iconButton: const Icon(
-                    Icons.sms,
-                    color: CustomColors.colorNegro,
-                    size: 50.0,
-                  ),
-                  textButton: "Teléfono Celular",
-                  colorBox: CustomColors.colorAmarilloMostaza,
-                  widthButton: MediaQuery.of(context).size.width,
-                  onPressed: onPressedPantallaPassword,
-                ),
-              ],
-            ),
+                textButton: "Teléfono Celular",
+                colorBox: CustomColors.colorAmarilloMostaza,
+                widthButton: MediaQuery.of(context).size.width,
+                onPressed: onPressedPantallaPassword,
+              ),
+            ],
           ),
         ),
       ),

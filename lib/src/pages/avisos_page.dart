@@ -64,7 +64,7 @@ class _AvisoPageState extends State<AvisoPage> {
                     textoEtiquetaGeneral: "Más- Administración de usuarios",
                     imageGeneral: SvgPicture.asset( 
                       'assets/imagetwo.svg',
-                      width: 170,
+                      width: 200,
                     ),
                   ),
                   

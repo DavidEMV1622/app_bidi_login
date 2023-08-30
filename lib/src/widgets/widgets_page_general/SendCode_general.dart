@@ -43,65 +43,63 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
         backgroundColor: CustomColors.colorBlanco,
         elevation: 0.0,
       ),
-      body: SizedBox(
-        child: Form(// "Form" se va a trabajar con formularios
-          key: _keyForm, // Define un formulario con una llave para controlarlo
-          child: ListView(
-            padding: const EdgeInsets.all(15),
-            children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  titulo(widget.tituloGeneral),
-                  const SizedBox(
-                    height: 45,
+      
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Form(// "Form" se va a trabajar con formularios
+            key: _keyForm, // Define un formulario con una llave para controlarlo
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                titulo(widget.tituloGeneral),
+                const SizedBox(
+                  height: 45,
+                ),
+                Text(
+                  widget.textoCuerpoGeneral,
+                  style: const TextStyle(fontSize: 32),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 45,
+                ),
+                
+                // ---- Llamado Widget para un campo de texto para ingresar correo ----
+                if (widget.textoFormulario == "Correo electrónico")
+                  InputTextValidations(
+                    textoInput: widget.textoFormulario,
+                    inputType: TextInputType.emailAddress,
+                    controller: nombreCtrl,
+                    validateText: ValidateText.email,
                   ),
-                  Text(
-                    widget.textoCuerpoGeneral,
-                    style: const TextStyle(fontSize: 32),
-                    textAlign: TextAlign.center,
+                
+                // ---- Llamado Widget para un campo de texto para ingresar numero de telefono ----
+                if (widget.textoFormulario == "Número de Teléfono")
+                  InputTextValidations(
+                    textoInput: widget.textoFormulario,
+                    inputType: TextInputType.phone,
+                    controller: nombreCtrl,
+                    validateText: ValidateText.phoneNumber,
                   ),
-                  const SizedBox(
-                    height: 45,
-                  ),
-                  
-                  // ---- Llamado Widget para un campo de texto para ingresar correo ----
-                  if (widget.textoFormulario == "Correo electrónico")
-                    InputTextValidations(
-                      textoInput: widget.textoFormulario,
-                      inputType: TextInputType.emailAddress,
-                      controller: nombreCtrl,
-                      validateText: ValidateText.email,
-                    ),
-                  
-                  // ---- Llamado Widget para un campo de texto para ingresar numero de telefono ----
-                  if (widget.textoFormulario == "Número de Teléfono")
-                    InputTextValidations(
-                      textoInput: widget.textoFormulario,
-                      inputType: TextInputType.phone,
-                      controller: nombreCtrl,
-                      validateText: ValidateText.phoneNumber,
-                    ),
-                      
-                  const SizedBox(
-                    height: 45,
-                  ),
-
-                  BtnPrimaery(
-                    textButton: "Verificar",
-                    colorBox: CustomColors.colorAmarilloMostaza,
-                    widthButton: MediaQuery.of(context).size.width,
-                    onPressed: save,
-                  ),
-                  // boton para saber si se escribio correctamente el contenido de cada input
-                  //TextButton(onPressed: save, child: Text("Guardar")),
-                ],
-              )
-            ],
+                    
+                const SizedBox(
+                  height: 45,
+                ),
+              
+                BtnPrimaery(
+                  textButton: "Verificar",
+                  colorBox: CustomColors.colorAmarilloMostaza,
+                  widthButton: MediaQuery.of(context).size.width,
+                  onPressed: save,
+                ),
+                // boton para saber si se escribio correctamente el contenido de cada input
+                //TextButton(onPressed: save, child: Text("Guardar")),
+              ],
+            ),
           ),
-        )
-        
+        ),
       )
     );
   }

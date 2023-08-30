@@ -45,82 +45,76 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
-      body: SizedBox(
-        child: Form(
-          key: _keyForm, // Define un formulario con una llave para controlarlo
-          child: ListView(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 30.0,
-            vertical: 25.0,
-          ),
-          children: <Widget>[
-            Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              tituloEncabezadoUno("Registrate"),
-
-              // input de nombre
-              InputTextValidations(
-                textoInput: "Nombre",
-                inputType: TextInputType.name,
-                controller: ctrlName,
-                validateText: ValidateText.name,
-              ),
-
-              // input de apellido
-              InputTextValidations(
-                textoInput: "Apellido",
-                inputType: TextInputType.name,
-                controller: ctrlApellido,
-                validateText: ValidateText.lastname,
-              ),
-
-              // input de email
-              InputTextValidations(
-                textoInput: "Correo electronico",
-                inputType: TextInputType.emailAddress,
-                controller: ctrlEmail,
-                validateText: ValidateText.email,
-              ),
-
-              // input de numero de telefono
-              InputTextValidations(
-                textoInput: "Número de telefono",
-                inputType: TextInputType.number,
-                controller: ctrlPhoneNumber,
-                validateText: ValidateText.phoneNumber,
-              ),
-
-              // input del password
-              InputPasswordValidations(
-                textoInput: "Contraseña",
-                inputType: TextInputType.text,
-                controller: ctrlPassword,
-                validateText: ValidateText.password,
-              ),
-
-              InputPasswordValidations(
-                textoInput: "Confirmar Contraseña",
-                inputType: TextInputType.text,
-                controller: ctrlConfirmPassword,
-                validateText: ValidateText.confirmPassword,
-                passwordComparar: ctrlPassword,
-              ),
-
-              const SizedBox(
-                height: 25.0,
-              ),
-
-              BtnPrimaery(
-                textButton: "Guardar",
-                colorBox: CustomColors.colorAmarilloMostaza,
-                widthButton: MediaQuery.of(context).size.width,
-                onPressed: save,
-              ),
-            ]),
-            
+      body: Form(
+        key: _keyForm, // Define un formulario con una llave para controlarlo
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center, 
+          children: [
+            tituloEncabezadoUno("Registrate"),
+        
+            // input de nombre
+            InputTextValidations(
+              textoInput: "Nombre",
+              inputType: TextInputType.name,
+              controller: ctrlName,
+              validateText: ValidateText.name,
+            ),
+        
+            // input de apellido
+            InputTextValidations(
+              textoInput: "Apellido",
+              inputType: TextInputType.name,
+              controller: ctrlApellido,
+              validateText: ValidateText.lastname,
+            ),
+        
+            // input de email
+            InputTextValidations(
+              textoInput: "Correo electronico",
+              inputType: TextInputType.emailAddress,
+              controller: ctrlEmail,
+              validateText: ValidateText.email,
+            ),
+        
+            // input de numero de telefono
+            InputTextValidations(
+              textoInput: "Número de telefono",
+              inputType: TextInputType.number,
+              controller: ctrlPhoneNumber,
+              validateText: ValidateText.phoneNumber,
+            ),
+        
+            // input del password
+            InputPasswordValidations(
+              textoInput: "Contraseña",
+              inputType: TextInputType.text,
+              controller: ctrlPassword,
+              validateText: ValidateText.password,
+            ),
+        
+            InputPasswordValidations(
+              textoInput: "Confirmar Contraseña",
+              inputType: TextInputType.text,
+              controller: ctrlConfirmPassword,
+              validateText: ValidateText.confirmPassword,
+              passwordComparar: ctrlPassword,
+            ),
+        
             const SizedBox(
               height: 25.0,
             ),
+        
+            BtnPrimaery(
+              textButton: "Guardar",
+              colorBox: CustomColors.colorAmarilloMostaza,
+              widthButton: MediaQuery.of(context).size.width,
+              onPressed: save,
+            ),
 
+            const SizedBox(
+            height: 25.0,
+            ),
+          
             Row(children: <Widget>[
               const Expanded(
                 child: Divider(
@@ -137,21 +131,17 @@ class _RegisterPageState extends State<RegisterPage> {
                 thickness: 1,
               )),
             ]),
-
+          
             const SizedBox(
               height: 15.0,
             ),
-
+          
             BotonLink(
                 textoLink: "¿Ya tienes cuenta?, click aquí",
                 onPressed: () => Navigator.pop(context)
             ),
-            
-            // boton para saber si se escribio correctamente el contenido de cada input
-            //TextButton(onPressed: save, child: Text("Guardar")),
           ]
         ),
-      ) 
       ),
     );
   }

@@ -12,7 +12,7 @@ class MediumSendCodeRegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MediumSendCodePageGeneral(
-      textoCuerpoGeneral: "Por medio de la opcion seleccionada, te sera enviado un codigo de confirmacion para poder registrarte.",
+      textoCuerpoGeneral: "Por medio de la opción seleccionada, te sera enviado un codigo de confirmación para poder registrarte.",
       onPressedPantallaEmail: () => Navigator.push(
         context, MaterialPageRoute(
           builder: (context) => const SendCodeEmailRegisterPage())),
