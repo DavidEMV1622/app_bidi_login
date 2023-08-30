@@ -50,8 +50,12 @@ class _AvisoPageState extends State<AvisoPage> {
                 // Llamada de cada pantalla
                 children: [
                   AvisosPageGeneral(
-                    subtituloDosGeneral: "Bienvenido", 
-                    textoCuerpoGeneral: "Además de gestionar tus transacciones, también podrás integrar a tu equipo de trabajo.",
+                    subtituloDosGeneral: "Bienvenido",
+                    textoCuerpoGeneral: "En nuestra App además recibir los pagos de tus clientes con los distintos medios disponibles, podrás ver y gestionar las transacciones integrando a tu equipo de trabajo en el proceso.",
+                    imageGeneralTwo: SvgPicture.asset( 
+                      'assets/imageOnePointOne.svg',
+                      width: 95,
+                    ),
                     imageGeneral: SvgPicture.asset( 
                       'assets/imageOne.svg',
                       width: 400,
@@ -64,12 +68,11 @@ class _AvisoPageState extends State<AvisoPage> {
                     textoEtiquetaGeneral: "Más- Administración de usuarios",
                     imageGeneral: SvgPicture.asset( 
                       'assets/imagetwo.svg',
-                      width: 200,
+                      width: 230,
                     ),
                   ),
                   
                   AvisosPageGeneral(
-                    subtituloDosGeneral: "Bienvenido", 
                     textoCuerpoGeneral: "Podrás crear usuarios, activarlos, inactivarlos y editarlos",
                     imageGeneral: SvgPicture.asset( 
                       'assets/imageThree.svg',
