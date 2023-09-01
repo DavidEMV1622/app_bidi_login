@@ -192,6 +192,11 @@ class _LoginPageState extends State<LoginPage> {
                     const Text("Recordar datos"),
                   ],
                 ),
+
+                ButtonPrimary(
+                  textButton: "Pueba",
+                  onPressed: () => print("Button pressed"),
+                ),
               ],
             ),
           ),

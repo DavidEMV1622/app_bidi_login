@@ -64,6 +64,52 @@ class BtnPrimaery extends StatelessWidget {
   }
 }
 
+
+
+class ButtonPrimary extends StatefulWidget {
+  final String textButton;
+  final Icon? iconButton;
+  final void Function()? onPressed;
+  
+  const ButtonPrimary({
+    super.key,
+    required this.textButton,
+    this.iconButton, this.onPressed,
+  });
+
+  @override
+  State<ButtonPrimary> createState() => _ButtonPrimaryState();
+}
+
+class _ButtonPrimaryState extends State<ButtonPrimary> {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      //height: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width, // Toma todo el largo de la pantalla
+
+      child: ElevatedButton(
+        onPressed: widget.onPressed,
+        style: ButtonStyle( 
+          padding: MaterialStatePropertyAll(
+            EdgeInsets.symmetric(horizontal: 20, vertical: 20,)
+          ),
+          foregroundColor: MaterialStatePropertyAll(Colors.amber), // Define el color del texto
+          textStyle: MaterialStatePropertyAll(TextStyle(fontSize: 20)), // Manejo de tamaño, fuente, entre otras propiedades del texto
+          //minimumSize: MaterialStatePropertyAll(Size(<largo>, <alto>)), // Define el tamaño minimo del boton
+          backgroundColor: MaterialStatePropertyAll(Colors.green),
+          shape: MaterialStatePropertyAll( // Maneja la forma y el borde del boton
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          ),
+        ),
+        child: Text(widget.textButton),
+      ),
+    );
+  }
+}
+
+
+
 // ---- Clase para un boton estilo link ----
 class BotonLink extends StatelessWidget {
   //CREACION DE PARAMETROS / VARIABLES
