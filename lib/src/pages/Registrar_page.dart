@@ -45,102 +45,105 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
-      body: Form(
-        key: _keyForm, // Define un formulario con una llave para controlarlo
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, 
-          children: [
-            tituloEncabezadoUno("Registrate"),
-        
-            // input de nombre
-            InputTextValidations(
-              textoInput: "Nombre",
-              inputType: TextInputType.name,
-              controller: ctrlName,
-              validateText: ValidateText.name,
-            ),
-        
-            // input de apellido
-            InputTextValidations(
-              textoInput: "Apellido",
-              inputType: TextInputType.name,
-              controller: ctrlApellido,
-              validateText: ValidateText.lastname,
-            ),
-        
-            // input de email
-            InputTextValidations(
-              textoInput: "Correo electronico",
-              inputType: TextInputType.emailAddress,
-              controller: ctrlEmail,
-              validateText: ValidateText.email,
-            ),
-        
-            // input de numero de telefono
-            InputTextValidations(
-              textoInput: "Número de telefono",
-              inputType: TextInputType.number,
-              controller: ctrlPhoneNumber,
-              validateText: ValidateText.phoneNumber,
-            ),
-        
-            // input del password
-            InputPasswordValidations(
-              textoInput: "Contraseña",
-              inputType: TextInputType.text,
-              controller: ctrlPassword,
-              validateText: ValidateText.password,
-            ),
-        
-            InputPasswordValidations(
-              textoInput: "Confirmar Contraseña",
-              inputType: TextInputType.text,
-              controller: ctrlConfirmPassword,
-              validateText: ValidateText.confirmPassword,
-              passwordComparar: ctrlPassword,
-            ),
-        
-            const SizedBox(
-              height: 25.0,
-            ),
-        
-            BtnPrimaery(
-              textButton: "Guardar",
-              colorBox: CustomColors.colorAmarilloMostaza,
-              widthButton: MediaQuery.of(context).size.width,
-              onPressed: save,
-            ),
-
-            const SizedBox(
-            height: 25.0,
-            ),
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Form(
+          key: _keyForm, // Define un formulario con una llave para controlarlo
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center, 
+            children: [
+              tituloEncabezadoUno("Registrate"),
           
-            Row(children: <Widget>[
-              const Expanded(
-                child: Divider(
-                color: CustomColors.colorNegro,
-                thickness: 1,
-              )),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 15),
-                child: const Text("O"),
+              // input de nombre
+              InputTextValidations(
+                textoInput: "Nombre",
+                inputType: TextInputType.name,
+                controller: ctrlName,
+                validateText: ValidateText.name,
               ),
-              const Expanded(
-                child: Divider(
-                color: CustomColors.colorNegro,
-                thickness: 1,
-              )),
-            ]),
           
-            const SizedBox(
-              height: 15.0,
-            ),
+              // input de apellido
+              InputTextValidations(
+                textoInput: "Apellido",
+                inputType: TextInputType.name,
+                controller: ctrlApellido,
+                validateText: ValidateText.lastname,
+              ),
           
-            BotonLink(
-                textoLink: "¿Ya tienes cuenta?, click aquí",
-                onPressed: () => Navigator.pop(context)
-            ),
-          ]
+              // input de email
+              InputTextValidations(
+                textoInput: "Correo electronico",
+                inputType: TextInputType.emailAddress,
+                controller: ctrlEmail,
+                validateText: ValidateText.email,
+              ),
+          
+              // input de numero de telefono
+              InputTextValidations(
+                textoInput: "Número de telefono",
+                inputType: TextInputType.number,
+                controller: ctrlPhoneNumber,
+                validateText: ValidateText.phoneNumber,
+              ),
+          
+              // input del password
+              InputPasswordValidations(
+                textoInput: "Contraseña",
+                inputType: TextInputType.text,
+                controller: ctrlPassword,
+                validateText: ValidateText.password,
+              ),
+          
+              InputPasswordValidations(
+                textoInput: "Confirmar Contraseña",
+                inputType: TextInputType.text,
+                controller: ctrlConfirmPassword,
+                validateText: ValidateText.confirmPassword,
+                passwordComparar: ctrlPassword,
+              ),
+          
+              const SizedBox(
+                height: 25.0,
+              ),
+          
+              BtnPrimaery(
+                textButton: "Guardar",
+                colorBox: CustomColors.colorAmarilloMostaza,
+                widthButton: MediaQuery.of(context).size.width,
+                onPressed: save,
+              ),
+      
+              const SizedBox(
+              height: 25.0,
+              ),
+            
+              Row(children: <Widget>[
+                const Expanded(
+                  child: Divider(
+                  color: CustomColors.colorNegro,
+                  thickness: 1,
+                )),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  child: const Text("O"),
+                ),
+                const Expanded(
+                  child: Divider(
+                  color: CustomColors.colorNegro,
+                  thickness: 1,
+                )),
+              ]),
+            
+              const SizedBox(
+                height: 15.0,
+              ),
+            
+              BotonLink(
+                  textoLink: "¿Ya tienes cuenta?, click aquí",
+                  onPressed: () => Navigator.pop(context)
+              ),
+            ]
+          ),
         ),
       ),
     );
