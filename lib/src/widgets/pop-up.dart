@@ -78,3 +78,61 @@ class PopUps extends StatelessWidget{
     );
   } 
 }
+
+class DialogUtils {
+  static Future<void> showMyGeneralDialog({
+    required BuildContext context, 
+    required final IconData iconoMostrar,
+    required final String mensajePopUp, 
+    final void Function()? onPressed,}) async{
+
+    await showGeneralDialog(
+      context: context,
+      barrierLabel: "Barrier",
+      barrierDismissible: false,
+      barrierColor: const Color.fromRGBO(0, 175, 170, 0.8),
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (_, __, ___) {
+        return Center(
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            width: MediaQuery.of(context).size.width,
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Icon( // Manejo del icono
+                        iconoMostrar,
+                        color: CustomColors.colorNegro,
+                        size: 150.0,
+                      ),
+
+                      const SizedBox(
+                        height: 20,
+                      ),
+
+                      textoCuerpo(mensajePopUp, CustomColors.colorNegro), // Mensaje a mostrar
+                      
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      
+                      BtnPrimaery( // Manejo del boton
+                        textButton: "Aceptar",
+                        colorBox: CustomColors.colorAmarilloMostaza,
+                        widthButton: MediaQuery.of(context).size.width,
+                        onPressed: onPressed,
+                      ),
+                    ],
+                  ),
+                ),
+              ) 
+            ),
+          ),
+        );
+      }
+    );
+  }
+}
