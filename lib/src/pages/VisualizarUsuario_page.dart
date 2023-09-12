@@ -1,13 +1,13 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import '../utils/TextFormatter.dart';
-import '../widgets/buttons.dart';
-import '../widgets/input.dart';
 import '../colors/colors.dart';
 import 'Editar_usuario_page.dart';
-import 'Password_page.dart';
-import 'Registrar_page.dart';
 
 class ViewUserDataPage extends StatefulWidget {
+  const ViewUserDataPage({super.key});
+
   @override
   createState() => _ViewUserDataPageState();
 }
@@ -27,7 +27,7 @@ class _ViewUserDataPageState extends State<ViewUserDataPage> {
       // ---- Cuerpo o contenido de la aplicación "body" ----
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(
+          padding: const EdgeInsets.all(
               15), // Separación entre todos los widgets y el borde del celular
           child: Column(
             // Se acomoda el contenido en columna
@@ -50,36 +50,35 @@ class _ViewUserDataPageState extends State<ViewUserDataPage> {
                   ),
                 ),
                 // Espaciado entre el borde y el contenido
-                padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
-                //margin: EdgeInsets.symmetric(horizontal: 10.0),
-
-                // ---- Contenido del campo ----
-                child: Center(
-                  child: Column(
-                      children: [
-                        // ---- Icono de perfil ----
-                        Icon(
-                          Icons.account_circle_rounded,
-                          color: CustomColors.colorNegro,
-                          size: 150.0,
-                        ),
-
-                        // ---- Datos del usuario ----
-                        textoEtiqueta("- Nombre:", CustomColors.colorVerdeOscuroFuerte),
-                        textoCuerpo("Lucas", CustomColors.colorNegro),
-                        textoEtiqueta("- Apellido:", CustomColors.colorVerdeOscuroFuerte),
-                        textoCuerpo("Rubiano", CustomColors.colorNegro),
-                        textoEtiqueta("- Correo:", CustomColors.colorVerdeOscuroFuerte),
-                        textoCuerpo("lucasR@gmail.com", CustomColors.colorNegro),
-                        textoEtiqueta("- Telefono", CustomColors.colorVerdeOscuroFuerte),
-                        textoCuerpo("1234567890", CustomColors.colorNegro),
-                      ]
-                    ),
-                  ),
+                padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
                 
                 // ---- Tamaño del Campo ----
                 //height: 600,
                 width: 700.0,
+
+                // ---- Contenido del campo ----
+                child: Center(
+                  child: Column(
+                    children: [
+                      // ---- Icono de perfil ----
+                      const Icon(
+                        Icons.account_circle_rounded,
+                        color: CustomColors.colorNegro,
+                        size: 150.0,
+                      ),
+
+                      // ---- Datos del usuario ----
+                      textoEtiqueta("- Nombre:", CustomColors.colorVerdeOscuroFuerte),
+                      textoCuerpo("Lucas", CustomColors.colorNegro),
+                      textoEtiqueta("- Apellido:", CustomColors.colorVerdeOscuroFuerte),
+                      textoCuerpo("Rubiano", CustomColors.colorNegro),
+                      textoEtiqueta("- Correo:", CustomColors.colorVerdeOscuroFuerte),
+                      textoCuerpo("lucasR@gmail.com", CustomColors.colorNegro),
+                      textoEtiqueta("- Telefono", CustomColors.colorVerdeOscuroFuerte),
+                      textoCuerpo("1234567890", CustomColors.colorNegro),
+                    ]
+                  ),
+                ),
                 /*      
                 margin: EdgeInsets.symmetric(
                   horizontal: 0,
@@ -90,15 +89,15 @@ class _ViewUserDataPageState extends State<ViewUserDataPage> {
               
               // ---- Boton flotante ----
               FloatingActionButton(
-                child: Icon(
+                elevation: 10.0,
+                backgroundColor: CustomColors.colorAmarilloMostaza, 
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const UpdateUserPage())),
+                child: const Icon(
                   Icons.edit_square,
                   color: CustomColors.colorBlanco,
                   size: 30.0,
                 ),
-                elevation: 10.0,
-                backgroundColor: CustomColors.colorAmarilloMostaza, 
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => UpdateUserPage())),
               ),
 
             ],

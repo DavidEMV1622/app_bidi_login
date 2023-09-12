@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -5,12 +7,20 @@ import '../../utils/TextFormatter.dart';
 
 class AvisosPageGeneral extends StatelessWidget {
 
-  final String subtituloDosGeneral;
+  final String? subtituloDosGeneral;
   final String textoCuerpoGeneral;
   final String? textoEtiquetaGeneral;
   final SvgPicture imageGeneral;
+  final SvgPicture? imageGeneralTwo;
 
-  const AvisosPageGeneral({super.key, required this.subtituloDosGeneral, required this.textoCuerpoGeneral, this.textoEtiquetaGeneral, required this.imageGeneral});
+  const AvisosPageGeneral({
+    super.key, 
+    this.subtituloDosGeneral, 
+    required this.textoCuerpoGeneral, 
+    this.textoEtiquetaGeneral, 
+    required this.imageGeneral,
+    this.imageGeneralTwo,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +33,9 @@ class AvisosPageGeneral extends StatelessWidget {
       child: Center(
         child: Padding(
           // Padding de separacion entre el contenido y los bordes del celular
-          padding: const EdgeInsets.fromLTRB(22, 10, 22, 24),
+          padding: const EdgeInsets.fromLTRB(22, 0, 22, 24),
           child: Column(
-            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
         
             children: <Widget>[
@@ -33,12 +43,13 @@ class AvisosPageGeneral extends StatelessWidget {
               // SizedBox(
               //   height: MediaQuery.of(context).size.height * 0.04,
               // ),
-              subtituloDos(subtituloDosGeneral, 
-              MediaQuery.of(context).size.width > 1000? 34
-              : MediaQuery.of(context).size.width > 800? 30 
-              : MediaQuery.of(context).size.width > 600? 26 
-              : MediaQuery.of(context).size.width > 400? 22
-              : 18,),
+              if (subtituloDosGeneral != null)
+                subtituloDos(subtituloDosGeneral!, 
+                MediaQuery.of(context).size.width > 1000? 34
+                : MediaQuery.of(context).size.width > 800? 30 
+                : MediaQuery.of(context).size.width > 600? 26 
+                : MediaQuery.of(context).size.width > 400? 22
+                : 18,),
               
               // Separacion entre cada texto
               const SizedBox(
@@ -66,12 +77,20 @@ class AvisosPageGeneral extends StatelessWidget {
                 : 14,),
               
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.06,
+                height: MediaQuery.of(context).size.height * 0.05,
               ),
 
               // Llamado de la imagen y dejarlo centrado
               Center(
-                child: imageGeneral,
+                // child: imageGeneral,
+                child: Column(
+                  children: [
+                    if (imageGeneralTwo != null)
+                      imageGeneralTwo!,
+
+                    imageGeneral
+                  ],
+                ),
               ),
             ]
           ),

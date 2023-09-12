@@ -57,6 +57,7 @@ class CustomColors {
       Color.fromRGBO(149, 202, 183, 1);
 
   // Colores con opacidad
+  // ignore: constant_identifier_names
   static const Color tonoCeleste_2_Opacity = 
       Color.fromRGBO(0, 175, 170, 60);
 }

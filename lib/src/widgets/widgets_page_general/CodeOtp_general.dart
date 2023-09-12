@@ -1,19 +1,24 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 import '../../colors/colors.dart';
 import '../../common/enumValidate.dart';
-import '../../pages/Login_page.dart';
 import '../../utils/TextFormatter.dart';
 import '../buttons.dart';
 import '../input.dart';
-import '../pop-up.dart';
 
 class CodeOTPPageGeneral extends StatefulWidget {
+
+  final String tituloEncabezadoUnoGeneral;
   final String subtituloUnoGeneral;
+  final Widget onPressedPantallaPasar;
   
   const CodeOTPPageGeneral({
-    super.key, 
-    required this.subtituloUnoGeneral
+    super.key,
+    required this.tituloEncabezadoUnoGeneral, 
+    required this.subtituloUnoGeneral,
+    required this.onPressedPantallaPasar,
   });
 
   @override
@@ -73,7 +78,7 @@ class _CodeOTPPageGeneralState extends State<CodeOTPPageGeneral> {
     focusNode6 = FocusNode();
   }
 
-  GlobalKey<FormState> _keyForm = GlobalKey<
+  final GlobalKey<FormState> _keyForm = GlobalKey<
       FormState>(); /* Clave que se utiliza para identificar y controlar
                                                           el estado o validacion de un formulario  */
 
@@ -90,7 +95,7 @@ class _CodeOTPPageGeneralState extends State<CodeOTPPageGeneral> {
       // ---- Cuerpo o contenido de la aplicación "body" ----
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(
+          padding: const EdgeInsets.all(
               20), // Separación entre todos los widgets y el borde del celular
           child: Form(
             key:
@@ -105,7 +110,7 @@ class _CodeOTPPageGeneralState extends State<CodeOTPPageGeneral> {
               tituloEncabezadoUno("Cambiar Contraseña"),
 
               // ---- Agregar un espacio ----
-              SizedBox(
+              const SizedBox(
                 height: 25.0,
               ),
 
@@ -113,7 +118,7 @@ class _CodeOTPPageGeneralState extends State<CodeOTPPageGeneral> {
               subtituloUno(widget.subtituloUnoGeneral),
 
               // ---- Agregar un espacio ----
-              SizedBox(
+              const SizedBox(
                 height: 25.0,
               ),
 
@@ -192,22 +197,22 @@ class _CodeOTPPageGeneralState extends State<CodeOTPPageGeneral> {
               ),
 
               // ---- Agregar un espacio ----
-              SizedBox(
+              const SizedBox(
                 height: 25.0,
               ),
 
               // ---- Texto para un link si se le olvido la contrasenia ----
-              BotonLink(textoLink: "Click aquí, para reenviar codigo"),
+              const BotonLink(textoLink: "Click aquí, para reenviar codigo"),
 
               // ---- Agregar un espacio ----
-              SizedBox(
+              const SizedBox(
                 height: 25.0,
               ),
 
               // ---- Boton "Comprobar" ----
               BtnPrimaery(
                 textButton: "Guardar cambios",
-                colorBox: Color.fromRGBO(255, 182, 0, 1),
+                colorBox: CustomColors.colorAmarilloMostaza,
                 widthButton: MediaQuery.of(context).size.width,
                 onPressed: save, // funcion "save" para saber si estan correctos los inputs
               ),
@@ -221,37 +226,10 @@ class _CodeOTPPageGeneralState extends State<CodeOTPPageGeneral> {
 // funcion para saber si los inputs tienen correcto su contenido
   save() {
     if (_keyForm.currentState!.validate()) { // si esta correcto todos los campos
-      _mostrarPopupCorrecto(context); // mostrar pop-up correcto
-    } else {
-      _mostrarPopupError(context); // mostrar pop-up incorrecto
+      Navigator.push(
+        context,
+        MaterialPageRoute( builder: (context) => widget.onPressedPantallaPasar)
+      );
     }
-  }
-
-  // Método para mostrar un pop-up con mensaje correcto
-  void _mostrarPopupCorrecto(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
-          iconoMostrar: Icons.verified_user, 
-          mensajePopUp: "Contraseña cambiada correctamente", 
-          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage())),
-        );
-      },
-    );
-  }
-
-  // Método para mostrar un pop-up con mensaje de error
-  void _mostrarPopupError(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
-          iconoMostrar: Icons.error_outline, 
-          mensajePopUp: "Codigo incorrecto o expirado", 
-          onPressed: () => Navigator.of(context).pop(),
-        );
-      },
-    );
   }
 }

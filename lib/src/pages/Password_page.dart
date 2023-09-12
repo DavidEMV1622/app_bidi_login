@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +9,6 @@ import '../widgets/input.dart';
 import '../widgets/pop-up.dart';
 import '../colors/colors.dart';
 import '../common/enumValidate.dart';
-import 'Registrar_page.dart';
 
 class PasswordPage extends StatefulWidget {
   
@@ -69,8 +70,7 @@ class _PasswordPageState extends State<PasswordPage> {
     focusNode6 = FocusNode();
   }
 
-  GlobalKey<FormState> _keyForm = GlobalKey<
-      FormState>(); /* Clave que se utiliza para identificar y controlar
+  final GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y controlar
                                                           el estado o validacion de un formulario  */
 
   @override
@@ -86,7 +86,7 @@ class _PasswordPageState extends State<PasswordPage> {
       // ---- Cuerpo o contenido de la aplicación "body" ----
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(
+          padding: const EdgeInsets.all(
               20), // Separación entre todos los widgets y el borde del celular
           child: Form(
             key:
@@ -101,7 +101,7 @@ class _PasswordPageState extends State<PasswordPage> {
               tituloEncabezadoUno("Cambiar Contraseña"),
 
               // ---- Agregar un espacio ----
-              SizedBox(
+              const SizedBox(
                 height: 25.0,
               ),
 
@@ -109,7 +109,7 @@ class _PasswordPageState extends State<PasswordPage> {
               subtituloUno("Ingresé el codigo que fue enviado a su correo"),
 
               // ---- Agregar un espacio ----
-              SizedBox(
+              const SizedBox(
                 height: 25.0,
               ),
 
@@ -188,22 +188,22 @@ class _PasswordPageState extends State<PasswordPage> {
               ),
 
               // ---- Agregar un espacio ----
-              SizedBox(
+              const SizedBox(
                 height: 25.0,
               ),
 
               // ---- Texto para un link si se le olvido la contrasenia ----
-              BotonLink(textoLink: "Click aquí, para reenviar codigo"),
+              const BotonLink(textoLink: "Click aquí, para reenviar codigo"),
 
               // ---- Agregar un espacio ----
-              SizedBox(
+              const SizedBox(
                 height: 25.0,
               ),
 
               // ---- Boton "Comprobar" ----
               BtnPrimaery(
                 textButton: "Guardar cambios",
-                colorBox: Color.fromRGBO(255, 182, 0, 1),
+                colorBox: CustomColors.colorAmarilloMostaza,
                 widthButton: MediaQuery.of(context).size.width,
                 onPressed: save, // funcion "save" para saber si estan correctos los inputs
               ),
@@ -231,7 +231,7 @@ class _PasswordPageState extends State<PasswordPage> {
         return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
           iconoMostrar: Icons.verified_user, 
           mensajePopUp: "Contraseña cambiada correctamente", 
-          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage())),
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage())),
         );
       },
     );

@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
@@ -20,7 +22,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
   TextEditingController ctrlEmail = TextEditingController();
   TextEditingController ctrlPassword = TextEditingController();
   
-  GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
+  final GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
                                                     controlar el estado o validacion de un formulario  */
 
   @override
@@ -33,11 +35,11 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
-      body: Container(
+      body: SizedBox(
         child: Form(
           key: _keyForm, // Define un formulario con una llave para controlarlo
           child: ListView(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: 30.0,
             vertical: 25.0,
           ),
@@ -85,19 +87,20 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 validateText: ValidateText.password,
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 25.0,
               ),
+              
               BtnPrimaery(
                 textButton: "Guardar",
-                colorBox: Color.fromRGBO(255, 182, 0, 1),
+                colorBox: CustomColors.colorAmarilloMostaza,
                 widthButton: MediaQuery.of(context).size.width,
                 onPressed: () {},
               ),
             ]),
             
             // boton para saber si se escribio correctamente el contenido de cada input
-            TextButton(onPressed: save, child: Text("Guardar")),
+            TextButton(onPressed: save, child: const Text("Guardar")),
           ]
         ),
       ) 

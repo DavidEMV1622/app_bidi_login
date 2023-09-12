@@ -1,6 +1,8 @@
+// ignore_for_file: file_names
+
+import 'package:app_credibanco_login/src/colors/colors.dart';
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:app_credibanco_login/src/widgets/input.dart';
-import 'package:app_credibanco_login/src/colors/colors.dart';
 import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -8,14 +10,14 @@ import '../common/enumValidate.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/pop-up.dart';
 
-class ChancePasswordPage extends StatefulWidget {
-  const ChancePasswordPage({super.key});
+class ChangePasswordPage extends StatefulWidget {
+  const ChangePasswordPage({super.key});
 
   @override
-  State<ChancePasswordPage> createState() => _ChancePasswordPageState();
+  State<ChangePasswordPage> createState() => _ChangePasswordPageState();
 }
 
-class _ChancePasswordPageState extends State<ChancePasswordPage> {
+class _ChangePasswordPageState extends State<ChangePasswordPage> {
 
   // Variable para saber si el contenido de los controladores 
   // (ctrlConfirmPassword, ctrlPassword) son iguales
@@ -25,7 +27,7 @@ class _ChancePasswordPageState extends State<ChancePasswordPage> {
   TextEditingController ctrlPassword = TextEditingController();
   TextEditingController ctrlConfirmPassword = TextEditingController();
 
-  GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
+  final GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
                                                     controlar el estado o validacion de un formulario  */
 
 
@@ -33,14 +35,14 @@ class _ChancePasswordPageState extends State<ChancePasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: CustomColors.colorBlanco,
         elevation: 0.0,
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
       body: Center(
         child: Padding(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           child: Form(
             key: _keyForm,
             child: Column(
@@ -48,17 +50,17 @@ class _ChancePasswordPageState extends State<ChancePasswordPage> {
               mainAxisAlignment:
                   MainAxisAlignment.start, // Define la posición de los widgets
               children: <Widget>[
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
                 tituloEncabezadoUno("CAMBIO DE CONTRASEÑA"),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
                 
-                subtituloUno("Por Favor ingrese su nueva contraseña"),
+                subtituloUno("Por favor, ingrese su nueva contraseña"),
                 
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
                 // input del password
@@ -77,13 +79,13 @@ class _ChancePasswordPageState extends State<ChancePasswordPage> {
                   passwordComparar: ctrlPassword,
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
 
                 BtnPrimaery(
                   textButton: "Guardar Cambios",
-                  colorBox: Color.fromRGBO(255, 182, 0, 1),
+                  colorBox: CustomColors.colorAmarilloMostaza,
                   widthButton: MediaQuery.of(context).size.width,
                   onPressed: save,
                 ),
@@ -111,7 +113,7 @@ class _ChancePasswordPageState extends State<ChancePasswordPage> {
         return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
           iconoMostrar: Icons.verified_user, 
           mensajePopUp: "Contraseña cambiada correctamente", 
-          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage())),
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage())),
         );
       },
     );
