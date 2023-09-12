@@ -28,13 +28,14 @@ BM-1605 => ESCRIBIR UTP / DAVID (falta validacion)
 BM 1607 => mostrar datos del usuario / DAVID (falta validacion)
 BM 1610 => Cambio de contraseña (falta validacion)
 BM 1613 => integracion de imagenes
-.
+BM 1614 => integracion de nuevos input (REGISTER/EDITAR)
+BM-1611=> validaciones en formularios.
 --------------------------------------POR--HACER--------------------------------------------
 BM 1606 => Pagina de aterrisaje
 BM 1608 => Menu lateral 
 BM 1609 => Opcion de envio de otp 
-BM 1612 => drop bar.
-BM 1614 => integracion de nuevos input (REGISTER/EDITAR)
+
+
 
 
 
@@ -42,9 +43,8 @@ BM 1614 => integracion de nuevos input (REGISTER/EDITAR)
 
 ------------------------------En--- P--R--O..D--U--C--C--I--O--N-----------------------------
 
-BM-1611=> validaciones en formularios.
-BM-1615=> Creaci´´on de pop-ups.
-
+BM-1615=> Creacion de pop-ups.
+BM 1612 => drop bar.
 
 
 -------------------------------------- VALIDACIONES A TENER EN CUENTA --------------------------------------------
