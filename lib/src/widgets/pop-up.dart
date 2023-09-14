@@ -76,7 +76,7 @@ class PopUps extends StatelessWidget{
         ),
       ),
     );
-  } 
+  }
 }
 
 class DialogUtils {

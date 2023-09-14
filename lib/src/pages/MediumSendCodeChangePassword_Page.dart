@@ -6,7 +6,8 @@ import '../widgets/widgets_page_general/MediumSendCode_general.dart';
 import 'SendCodeEmailChangePassword_page.dart';
 
 class MediumSendCodeChangePasswordPage extends StatelessWidget {
-  const MediumSendCodeChangePasswordPage({super.key});
+  final String activeArrow;
+  const MediumSendCodeChangePasswordPage({super.key, required this.activeArrow});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +20,7 @@ class MediumSendCodeChangePasswordPage extends StatelessWidget {
       onPressedPantallaPassword: () => Navigator.push(
         context, MaterialPageRoute(
           builder: (context) => const SendCodePhoneNumberChangePasswordPage())),
+      activeArrow: activeArrow,
     );
   }
 }

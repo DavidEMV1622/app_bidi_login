@@ -1,13 +1,15 @@
 import 'package:app_credibanco_login/src/pages/Logeado.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import '../colors/colors.dart';
 import '../widgets/buttons.dart';
 import '../widgets/widgets_avisos_Page/avisosPage_general.dart';
 import '../widgets/widgets_avisos_Page/barrProgress.dart';
 
 class AvisoPage extends StatefulWidget {
-  const AvisoPage({super.key});
+  final String activeArrow;
+  const AvisoPage({super.key, required this.activeArrow});
 
   @override
   State<AvisoPage> createState() => _AvisoPageState();
@@ -24,7 +26,16 @@ class _AvisoPageState extends State<AvisoPage> {
       appBar: AppBar(
         backgroundColor: CustomColors.colorBlanco,
         elevation: 0.0,
+        leading: widget.activeArrow == "1" ? IconButton(
+          icon: Icon(Icons.arrow_back), // Personaliza flecha
+          color: Colors.black,
+          onPressed: () {
+            print("${widget.activeArrow}");
+            context.pop();
+          },
+        ) : null,
       ),
+      
 
       body: Center(
         child: Column(
@@ -110,7 +121,7 @@ class _AvisoPageState extends State<AvisoPage> {
               colorBox: CustomColors.colorAmarilloMostaza,
               widthButton: MediaQuery.of(context).size.width * 0.40,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
+                context.go("/logeadoPage");
               },
             ),
           ]

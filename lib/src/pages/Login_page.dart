@@ -2,6 +2,7 @@
 
 import 'package:app_credibanco_login/src/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
 import '../widgets/checkBox.dart';
@@ -136,10 +137,13 @@ class _LoginPageState extends State<LoginPage> {
                       ventana Logeado */
                       if (isNotices) {
                         await _secureStorageMethods.setIsNotices(false);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
+                        context.push("/logeadoPage");
+                        //Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
                       } else {
                         _secureStorageMethods.setEmailStorage(ctrlEmail.text);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
+                        context.push("/avisoPage/1"); 
+                        //Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
+                    
                       }
                     }
                   }
@@ -160,8 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                   colorBox: CustomColors.colorBlanco,
                   border: Border.all(width: 2),
                   widthButton: MediaQuery.of(context).size.width,
-                  onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const MediumSendCodeRegisterPage())),
+                  onPressed: () => context.push("/mediumSendCodeRegisterPage/1"),
                 ),
       
                 // ---- Agregar un espacio ----
@@ -172,8 +175,7 @@ class _LoginPageState extends State<LoginPage> {
                 // ---- Texto para un link si se le olvido la contrasenia ----
                 BotonLink(
                   textoLink: "Olvide mi contraseña",
-                  onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const MediumSendCodeChangePasswordPage())),
+                  onPressed: () => context.push("/mediumSendCodeChangePasswordPage/1"),
                 ),
       
                 const SizedBox(

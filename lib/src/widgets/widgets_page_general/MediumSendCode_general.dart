@@ -3,6 +3,8 @@
 import 'package:app_credibanco_login/src/colors/colors.dart';
 import 'package:app_credibanco_login/src/utils/TextFormatter.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../config/arrow_router.dart';
 import '../buttons.dart';
 
 class MediumSendCodePageGeneral extends StatelessWidget {
@@ -10,11 +12,13 @@ class MediumSendCodePageGeneral extends StatelessWidget {
   final String textoCuerpoGeneral;
   final void Function() onPressedPantallaEmail;
   final void Function() onPressedPantallaPassword;
+  final String activeArrow;
   const MediumSendCodePageGeneral({
     super.key, 
     required this.textoCuerpoGeneral, 
     required this.onPressedPantallaEmail, 
-    required this.onPressedPantallaPassword
+    required this.onPressedPantallaPassword,
+    required this.activeArrow
   });
 
   @override
@@ -23,6 +27,7 @@ class MediumSendCodePageGeneral extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: CustomColors.colorBlanco,
         elevation: 0.0,
+        leading: ArrowRouter(activeArrow: activeArrow,),
       ),
 
       body: Center(

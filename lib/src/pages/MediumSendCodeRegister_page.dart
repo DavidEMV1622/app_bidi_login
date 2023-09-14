@@ -7,7 +7,8 @@ import 'SendCodeEmailRegister_page.dart';
 import 'SendCodePhoneNumberRegister_page.dart';
 
 class MediumSendCodeRegisterPage extends StatelessWidget {
-  const MediumSendCodeRegisterPage({super.key});
+  final String activeArrow;
+  const MediumSendCodeRegisterPage({super.key, required this.activeArrow});
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +16,13 @@ class MediumSendCodeRegisterPage extends StatelessWidget {
       textoCuerpoGeneral: "Por medio de la opción seleccionada, te sera enviado un codigo de confirmación para poder registrarte.",
       onPressedPantallaEmail: () => Navigator.push(
         context, MaterialPageRoute(
-          builder: (context) => const SendCodeEmailRegisterPage())),
+          builder: (context) => const SendCodeEmailRegisterPage())
+      ),
       
       onPressedPantallaPassword: () => Navigator.push(
         context, MaterialPageRoute(
           builder: (context) => const SendCodePhoneNumberRegisterPage())),
+      activeArrow: activeArrow,
     );
   }
 }

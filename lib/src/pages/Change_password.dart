@@ -3,8 +3,8 @@
 import 'package:app_credibanco_login/src/colors/colors.dart';
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:app_credibanco_login/src/widgets/input.dart';
-import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../common/enumValidate.dart';
 import '../utils/TextFormatter.dart';
@@ -107,29 +107,21 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
 
   // Método para mostrar un pop-up con mensaje correcto
   void _mostrarPopupCorrecto(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
-          iconoMostrar: Icons.verified_user, 
-          mensajePopUp: "Contraseña cambiada correctamente", 
-          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage())),
-        );
-      },
+    DialogUtils.showMyGeneralDialog(context: context, 
+    iconoMostrar: Icons.verified_user,
+    mensajePopUp: "Contraseña cambiada correctamente",
+    onPressed: () => context.push("/loginPage"),
     );
   }
 
   // Método para mostrar un pop-up con mensaje de error
   void _mostrarPopupError(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
-          iconoMostrar: Icons.error_outline, 
-          mensajePopUp: "Contraseñas invalidas", 
-          onPressed: () => Navigator.of(context).pop(),
-        );
-      },
+    DialogUtils.showMyGeneralDialog(context: context, 
+      iconoMostrar: Icons.error_outline,
+      mensajePopUp: "Contraseñas invalidas",
+      onPressed: () {
+        context.pop();
+      }
     );
   }
 }
