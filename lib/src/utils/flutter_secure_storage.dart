@@ -55,7 +55,7 @@ class SecureStorageMethods {
                                                             "entries" para obtener el par de entradas de la clave 
                                                             valor (key, value) */
       // Imprime la llave y el valor de la llave
-      print("Llave valor: ${entradaMapeo.key}, contenido de la llave: ${entradaMapeo.value}");
+      //print("Llave valor: ${entradaMapeo.key}, contenido de la llave: ${entradaMapeo.value}");
 
       if (entradaMapeo.key == "userLogin$emailContentForm") { /* Si encontro la llave */
         isFound = true; /* Variable "isFound" a "true"  */

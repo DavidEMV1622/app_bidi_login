@@ -9,7 +9,6 @@ import '../utils/TextFormatter.dart';
 
 import '../colors/colors.dart';
 import '../widgets/pop-up.dart';
-import 'Login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});

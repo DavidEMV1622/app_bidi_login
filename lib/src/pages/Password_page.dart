@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 // // ignore_for_file: file_names
 
 // import 'package:app_credibanco_login/src/pages/Login_page.dart';

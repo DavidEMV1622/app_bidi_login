@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/widgets_page_general/SendCode_general.dart';
-import 'CodeOTPPhoneNumberRegister_page.dart';
 
 class SendCodePhoneNumberRegisterPage extends StatefulWidget {
   const SendCodePhoneNumberRegisterPage({super.key});

@@ -9,10 +9,10 @@ class ArrowRouter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: activeArrow == "1" ? IconButton(
-          icon: Icon(Icons.arrow_back), // Personaliza flecha
+          icon: const Icon(Icons.arrow_back), // Personaliza flecha
           color: Colors.black,
           onPressed: () {
-            print("${activeArrow}");
+            //print("$activeArrow");
             context.pop();
           },
         ) : null
