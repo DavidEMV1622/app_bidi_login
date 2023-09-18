@@ -6,6 +6,7 @@ import 'package:app_credibanco_login/src/widgets/input.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../config/arrow_router.dart';
 import '../common/enumValidate.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/pop-up.dart';
@@ -30,13 +31,13 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   final GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
                                                     controlar el estado o validacion de un formulario  */
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: CustomColors.colorBlanco,
         elevation: 0.0,
+        leading: const ArrowRouter(activeArrow: "1",),
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----

@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/widgets_page_general/CodeOtp_general.dart';
-import 'Registrar_page.dart';
 
 class CodeOTPPhoneNumberRegisterPage extends StatefulWidget {
   const CodeOTPPhoneNumberRegisterPage({super.key});
@@ -19,7 +18,7 @@ class _CodeOTPPhoneNumberRegisterPageState extends State<CodeOTPPhoneNumberRegis
     return const CodeOTPPageGeneral(
       tituloEncabezadoUnoGeneral: "Cambiar Contraseña",
       subtituloUnoGeneral: "Ingresé el codigo que fue enviado por sms",
-      onPressedPantallaPasar: RegisterPage(),
+      ruta: "/registerPage",
     );
   }
 }

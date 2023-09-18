@@ -1,7 +1,9 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../config/arrow_router.dart';
 import '../../colors/colors.dart';
 import '../../common/enumValidate.dart';
 import '../../utils/TextFormatter.dart';
@@ -12,13 +14,13 @@ class CodeOTPPageGeneral extends StatefulWidget {
 
   final String tituloEncabezadoUnoGeneral;
   final String subtituloUnoGeneral;
-  final Widget onPressedPantallaPasar;
+  final String ruta;
   
   const CodeOTPPageGeneral({
     super.key,
     required this.tituloEncabezadoUnoGeneral, 
     required this.subtituloUnoGeneral,
-    required this.onPressedPantallaPasar,
+    required this.ruta,
   });
 
   @override
@@ -90,6 +92,7 @@ class _CodeOTPPageGeneralState extends State<CodeOTPPageGeneral> {
       appBar: AppBar(
         backgroundColor: CustomColors
             .colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
+        leading: const ArrowRouter(activeArrow: "1",),
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
@@ -226,10 +229,7 @@ class _CodeOTPPageGeneralState extends State<CodeOTPPageGeneral> {
 // funcion para saber si los inputs tienen correcto su contenido
   save() {
     if (_keyForm.currentState!.validate()) { // si esta correcto todos los campos
-      Navigator.push(
-        context,
-        MaterialPageRoute( builder: (context) => widget.onPressedPantallaPasar)
-      );
+      context.push(widget.ruta);
     }
   }
 }

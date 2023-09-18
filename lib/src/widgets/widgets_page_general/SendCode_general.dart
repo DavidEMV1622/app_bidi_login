@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../colors/colors.dart';
 import '../../common/enumValidate.dart';
@@ -14,7 +15,7 @@ class SendCodePageGeneral extends StatefulWidget {
   final String textoCuerpoGeneral;
   final String textoFormulario;
   final TextEditingController nombreCtrl;
-  final Widget onPressedPantallaPasar;
+  final String ruta;
 
   const SendCodePageGeneral({
     super.key, 
@@ -22,7 +23,7 @@ class SendCodePageGeneral extends StatefulWidget {
     required this.textoCuerpoGeneral, 
     required this.textoFormulario,
     required this.nombreCtrl,
-    required this.onPressedPantallaPasar,
+    required this.ruta,
   });
 
   @override
@@ -106,10 +107,7 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
   // funcion para saber si los inputs tienen correcto su contenido
   save() {
     if (_keyForm.currentState!.validate()) {// si esta correcto el contenido de cada input
-      Navigator.push(
-        context,
-        MaterialPageRoute( builder: (context) => widget.onPressedPantallaPasar)
-      );
+      context.push(widget.ruta);
     }
   }
 }

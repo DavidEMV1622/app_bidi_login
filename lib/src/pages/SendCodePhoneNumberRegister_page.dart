@@ -23,7 +23,7 @@ class _SendCodePhoneNumberRegisterPageState extends State<SendCodePhoneNumberReg
       textoCuerpoGeneral: "Ingrese un número de teléfono para enviar el codigo",
       textoFormulario: "Número de Teléfono",
       nombreCtrl: ctrlPhoneNumber,
-      onPressedPantallaPasar: const CodeOTPPhoneNumberRegisterPage(),
+      ruta: "/codeOTPPhoneNumberRegister",
     );
   }
 }

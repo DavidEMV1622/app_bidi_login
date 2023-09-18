@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/widgets_page_general/SendCode_general.dart';
-import 'CodeOTPEmailChangePassword_page.dart';
 
 class SendCodeEmailChangePasswordPage extends StatefulWidget {
   const SendCodeEmailChangePasswordPage({super.key});
@@ -23,7 +22,7 @@ class _SendCodeEmailChangePasswordPageState extends State<SendCodeEmailChangePas
       textoCuerpoGeneral: "Ingrese el correo para enviar un codigo de confirmación",
       textoFormulario: "Correo electrónico",
       nombreCtrl: ctrlEmail,
-      onPressedPantallaPasar: const CodeOTPEmailChangePasswordPage(),
+      ruta: "/codeOTPEmailChangePassword",
     );
   }
 }

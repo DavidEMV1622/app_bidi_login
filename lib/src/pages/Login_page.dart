@@ -9,12 +9,7 @@ import '../widgets/checkBox.dart';
 import '../utils/flutter_secure_storage.dart';
 import '../widgets/input.dart';
 import '../common/enumValidate.dart';
-import 'Logeado.dart';
-import 'MediumSendCodeRegister_page.dart';
 import 'package:flutter_svg/svg.dart';
-
-import 'avisos_page.dart';
-import 'MediumSendCodeChangePassword_Page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -141,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                         //Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
                       } else {
                         _secureStorageMethods.setEmailStorage(ctrlEmail.text);
-                        context.push("/avisoPage/1"); 
+                        context.push("/avisoPage"); 
                         //Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
                     
                       }
@@ -164,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                   colorBox: CustomColors.colorBlanco,
                   border: Border.all(width: 2),
                   widthButton: MediaQuery.of(context).size.width,
-                  onPressed: () => context.push("/mediumSendCodeRegisterPage/1"),
+                  onPressed: () => context.push("/mediumSendCodeRegisterPage"),
                 ),
       
                 // ---- Agregar un espacio ----
@@ -175,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                 // ---- Texto para un link si se le olvido la contrasenia ----
                 BotonLink(
                   textoLink: "Olvide mi contraseña",
-                  onPressed: () => context.push("/mediumSendCodeChangePasswordPage/1"),
+                  onPressed: () => context.push("/mediumSendCodeChangePasswordPage"),
                 ),
       
                 const SizedBox(

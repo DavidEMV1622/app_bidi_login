@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/widgets_page_general/SendCode_general.dart';
-import 'CodeOTPEmailTRegister_page.dart';
 
 class SendCodeEmailRegisterPage extends StatefulWidget {
   const SendCodeEmailRegisterPage({super.key});
@@ -23,7 +22,7 @@ class _SendCodeEmailRegisterPageState extends State<SendCodeEmailRegisterPage> {
       textoCuerpoGeneral: "Ingrese el correo para enviar un codigo de confirmación",
       textoFormulario: "Correo electrónico",
       nombreCtrl: ctrlEmail,
-      onPressedPantallaPasar: const CodeOTPEmaiRegisterPage(),
+      ruta: "/codeOTPEmaiRegisterPage",
     );
   }
 }
