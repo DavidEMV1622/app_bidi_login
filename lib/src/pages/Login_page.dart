@@ -181,7 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CheckBox( // Uso de un checkBox
+                    CheckBox( // Uso de un CheckBox
                       // Mandar los controladores a utilizar oara cada formulario
                       emailController: ctrlEmail,
                       passwordController: ctrlPassword,
