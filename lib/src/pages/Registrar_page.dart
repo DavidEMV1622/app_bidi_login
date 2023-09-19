@@ -106,7 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 25.0,
               ),
           
-              BtnPrimaery(
+              ButtonPrimary(
                 textButton: "Guardar",
                 colorBox: CustomColors.colorAmarilloMostaza,
                 widthButton: MediaQuery.of(context).size.width,

@@ -96,10 +96,10 @@ class _AvisoPageState extends State<AvisoPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           
           children: [
-            BtnPrimaery(
+            ButtonPrimary(
               textButton: "Omitir",
               colorBox: CustomColors.colorBlanco,
-              border: Border.all(width: 2),
+              border: const BorderSide(color: CustomColors.colorGris_1),
               widthButton: MediaQuery.of(context).size.width * 0.40,
               onPressed: () {},
             ),
@@ -108,7 +108,7 @@ class _AvisoPageState extends State<AvisoPage> {
               width: 15,
             ),
 
-            BtnPrimaery(
+            ButtonPrimary(
               textButton: "Continuar",
               colorBox: CustomColors.colorAmarilloMostaza,
               widthButton: MediaQuery.of(context).size.width * 0.40,

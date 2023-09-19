@@ -84,7 +84,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   height: 20.0,
                 ),
 
-                BtnPrimaery(
+                ButtonPrimary(
                   textButton: "Guardar Cambios",
                   colorBox: CustomColors.colorAmarilloMostaza,
                   widthButton: MediaQuery.of(context).size.width,

@@ -67,14 +67,20 @@ class BtnPrimaery extends StatelessWidget {
 
 
 class ButtonPrimary extends StatefulWidget {
-  final String textButton;
   final Icon? iconButton;
+  final String textButton;
+  final Color colorBox;
+  final BorderSide? border;
+  final double widthButton;
   final void Function()? onPressed;
   
   const ButtonPrimary({
     super.key,
     required this.textButton,
-    this.iconButton, this.onPressed,
+    this.iconButton, this.onPressed, 
+    required this.colorBox, 
+    this.border, 
+    required this.widthButton,
   });
 
   @override
@@ -94,15 +100,39 @@ class _ButtonPrimaryState extends State<ButtonPrimary> {
           padding: const MaterialStatePropertyAll(
             EdgeInsets.symmetric(horizontal: 20, vertical: 20,)
           ),
-          foregroundColor: const MaterialStatePropertyAll(Colors.amber), // Define el color del texto
+          foregroundColor: const MaterialStatePropertyAll(CustomColors.colorNegro), // Define el color del texto
           textStyle: const MaterialStatePropertyAll(TextStyle(fontSize: 20)), // Manejo de tamaño, fuente, entre otras propiedades del texto
           //minimumSize: MaterialStatePropertyAll(Size(<largo>, <alto>)), // Define el tamaño minimo del boton
-          backgroundColor: const MaterialStatePropertyAll(Colors.green),
+          backgroundColor: MaterialStatePropertyAll(widget.colorBox),
           shape: MaterialStatePropertyAll( // Maneja la forma y el borde del boton
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10), side: widget.border ?? const BorderSide(color: Colors.transparent)),
+
           ),
+          elevation: const MaterialStatePropertyAll(0.0), // Maneja la sombra del boton
+          
         ),
-        child: Text(widget.textButton),
+
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            if (widget.iconButton != null)
+              widget.iconButton!,
+            
+            if (widget.iconButton != null)
+              const SizedBox(
+                width: 20,
+              ),
+
+            Text(
+              widget.textButton,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

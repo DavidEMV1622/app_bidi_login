@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 
                 // ---- Boton "Iniciar de sesión" ----
-                BtnPrimaery(
+                ButtonPrimary(
                   textButton: "Iniciar sesion",
                   colorBox: CustomColors.colorAmarilloMostaza,
                   widthButton: MediaQuery.of(context).size.width,
@@ -154,10 +154,10 @@ class _LoginPageState extends State<LoginPage> {
                 2) Color del boton
                 3) Grosor del borde
                 4) evento para navegar entre pantallas */
-                BtnPrimaery(
+                ButtonPrimary(
                   textButton: "Registrate",
                   colorBox: CustomColors.colorBlanco,
-                  border: Border.all(width: 2),
+                  border: const BorderSide(color: CustomColors.colorGris_1),
                   widthButton: MediaQuery.of(context).size.width,
                   onPressed: () => context.push("/mediumSendCodeRegisterPage"),
                 ),
@@ -188,11 +188,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const Text("Recordar datos"),
                   ],
-                ),
-
-                ButtonPrimary(
-                  textButton: "Pueba",
-                  onPressed: () {},
                 ),
               ],
             ),

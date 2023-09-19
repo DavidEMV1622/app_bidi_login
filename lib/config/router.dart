@@ -21,8 +21,7 @@ import '../src/pages/avisos_page.dart';
 final routes = GoRouter(
   initialLocation: '/loginPage', /* Al iniciar la aplicacion, se 
                                 ejecuta primero esta ruta */
-  /* "routes" manejo de cada subruta para que salga en el abbar un 
-  boton para regresar a la anterior pantalla */
+  /* "routes" manejo de cada subruta */
   
   routes: [
     GoRoute( // "GoRoute" permite crear cada ruta
@@ -31,7 +30,7 @@ final routes = GoRouter(
     ),
 
     GoRoute( // Ruta de la pagina de avisos
-      path: '/avisoPage/:activeArrow', // Ruta con parametro
+      path: '/avisoPage', // Ruta con parametro
       builder: (context, state) { 
         return const AvisoPage();
       }
