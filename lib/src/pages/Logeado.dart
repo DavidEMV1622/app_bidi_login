@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:app_credibanco_login/src/widgets/dropBar.dart';
 import 'package:flutter/material.dart';
 
 class LogeadoPage extends StatefulWidget {
@@ -22,6 +23,7 @@ class _LogeadoPageState extends State<LogeadoPage> {
           )
         ],
       ),
+      bottomNavigationBar: barNavigation(),
     );
   }
 }
