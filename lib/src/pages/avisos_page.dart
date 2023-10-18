@@ -96,25 +96,29 @@ class _AvisoPageState extends State<AvisoPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           
           children: [
-            ButtonPrimary(
-              textButton: "Omitir",
-              colorBox: CustomColors.colorBlanco,
-              border: const BorderSide(color: CustomColors.colorGris_1),
-              widthButton: MediaQuery.of(context).size.width * 0.40,
-              onPressed: () {},
+            Expanded(
+              child: ButtonPrimary(
+                textButton: "Omitir",
+                colorBox: CustomColors.colorBlanco,
+                border: const BorderSide(color: CustomColors.colorGris_1),
+                widthButton: MediaQuery.of(context).size.width,
+                onPressed: () {},
+              ),
             ),
 
             const SizedBox(
               width: 15,
             ),
 
-            ButtonPrimary(
-              textButton: "Continuar",
-              colorBox: CustomColors.colorAmarilloMostaza,
-              widthButton: MediaQuery.of(context).size.width * 0.40,
-              onPressed: () {
-                context.go("/logeadoPage");
-              },
+            Expanded(
+              child: ButtonPrimary(
+                textButton: "Continuar",
+                colorBox: CustomColors.colorAmarilloMostaza,
+                widthButton: MediaQuery.of(context).size.width * 0.40,
+                onPressed: () {
+                  context.go("/logeadoPage");
+                },
+              ),
             ),
           ]
         ) : null,

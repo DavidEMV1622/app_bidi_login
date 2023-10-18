@@ -97,9 +97,11 @@ class _ButtonPrimaryState extends State<ButtonPrimary> {
       child: ElevatedButton(
         onPressed: widget.onPressed,
         style: ButtonStyle( 
+
           padding: const MaterialStatePropertyAll(
             EdgeInsets.symmetric(horizontal: 20, vertical: 20,)
           ),
+
           foregroundColor: const MaterialStatePropertyAll(CustomColors.colorNegro), // Define el color del texto
           textStyle: const MaterialStatePropertyAll(TextStyle(fontSize: 20)), // Manejo de tamaño, fuente, entre otras propiedades del texto
           //minimumSize: MaterialStatePropertyAll(Size(<largo>, <alto>)), // Define el tamaño minimo del boton
