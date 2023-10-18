@@ -98,7 +98,7 @@ class _AvisoPageState extends State<AvisoPage> {
           children: [
             Expanded(
               child: ButtonPrimary(
-                textButton: "Omitir",
+                textButton: " Omitir",
                 colorBox: CustomColors.colorBlanco,
                 border: const BorderSide(color: CustomColors.colorGris_1),
                 widthButton: MediaQuery.of(context).size.width,
