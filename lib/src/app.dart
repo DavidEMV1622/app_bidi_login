@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../config/router.dart';
 
-
 // class MyApp extends StatelessWidget {
 //   const MyApp({super.key});
 
@@ -21,7 +20,6 @@ import '../config/router.dart';
 //   }
 // }
 
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -30,10 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       // widget principal
-      home: Center(
-        child: LoginPage(),
-        //child: SendCodePasswordPage(),
-      ),
+      routerConfig: routes,
     );
   }
 }

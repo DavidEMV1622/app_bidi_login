@@ -20,7 +20,8 @@ class _LogeadoPageState extends State<LogeadoPage> {
         children: [
           Center(
             child: Text("Pagina del usuario Logeado"),
-          )
+          ),
+          barNavigation(page: true),
         ],
       ),
       bottomNavigationBar: barNavigation(page: true),

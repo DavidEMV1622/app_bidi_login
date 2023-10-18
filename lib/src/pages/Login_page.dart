@@ -136,7 +136,8 @@ class _LoginPageState extends State<LoginPage> {
                         //Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
                       } else {
                         _secureStorageMethods.setEmailStorage(ctrlEmail.text);
-                        context.push("/avisoPage"); 
+                        context.push("/logeadoPage"); 
+                        //context.push("/avisoPage"); 
                         //Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
                     
                       }
