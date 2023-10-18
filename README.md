@@ -31,6 +31,8 @@ BM 1613 => integracion de imagenes
 BM 1614 => integracion de nuevos input (REGISTER/EDITAR)
 BM-1611=> validaciones en formularios.
 BM-1615=> Creacion de pop-ups.
+BM 1612 => drop bar.
+BM-1616=> Optimizar los botones.
 --------------------------------------POR--HACER--------------------------------------------
 BM 1606 => Pagina de aterrisaje
 BM 1608 => Menu lateral 
@@ -44,8 +46,8 @@ BM 1609 => Opcion de envio de otp
 
 ------------------------------En--- P--R--O..D--U--C--C--I--O--N-----------------------------
 
-BM-1616=> Optimizar los botones.
-BM 1612 => drop bar.
+BM 1617 => widget Bolsillo. 
+
 
 
 -------------------------------------- VALIDACIONES A TENER EN CUENTA --------------------------------------------
