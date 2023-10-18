@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                 
                 SvgPicture.asset( 
                   'assets/Logo_CrediBanco.svg',
-                  width: 200,
+                  width: 50,
                 ),
       
                 const SizedBox(
