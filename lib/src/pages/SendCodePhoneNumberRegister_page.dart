@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/widgets_page_general/SendCode_general.dart';
-import 'CodeOTPPhoneNumberRegister_page.dart';
 
 class SendCodePhoneNumberRegisterPage extends StatefulWidget {
   const SendCodePhoneNumberRegisterPage({super.key});
@@ -23,7 +22,7 @@ class _SendCodePhoneNumberRegisterPageState extends State<SendCodePhoneNumberReg
       textoCuerpoGeneral: "Ingrese un número de teléfono para enviar el codigo",
       textoFormulario: "Número de Teléfono",
       nombreCtrl: ctrlPhoneNumber,
-      onPressedPantallaPasar: const CodeOTPPhoneNumberRegisterPage(),
+      ruta: "/codeOTPPhoneNumberRegister",
     );
   }
 }

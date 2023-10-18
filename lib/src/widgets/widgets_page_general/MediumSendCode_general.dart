@@ -3,18 +3,20 @@
 import 'package:app_credibanco_login/src/colors/colors.dart';
 import 'package:app_credibanco_login/src/utils/TextFormatter.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../../config/arrow_router.dart';
 import '../buttons.dart';
 
 class MediumSendCodePageGeneral extends StatelessWidget {
 
   final String textoCuerpoGeneral;
-  final void Function() onPressedPantallaEmail;
-  final void Function() onPressedPantallaPassword;
+  final String rutaPantallaEmail;
+  final String rutaPantallaPassword;
   const MediumSendCodePageGeneral({
     super.key, 
     required this.textoCuerpoGeneral, 
-    required this.onPressedPantallaEmail, 
-    required this.onPressedPantallaPassword
+    required this.rutaPantallaEmail, 
+    required this.rutaPantallaPassword,
   });
 
   @override
@@ -23,6 +25,7 @@ class MediumSendCodePageGeneral extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: CustomColors.colorBlanco,
         elevation: 0.0,
+        leading: const ArrowRouter(activeArrow: "1",),
       ),
 
       body: Center(
@@ -54,7 +57,7 @@ class MediumSendCodePageGeneral extends StatelessWidget {
                 textButton: "Correo Electronico",
                 colorBox: CustomColors.colorAmarilloMostaza,
                 widthButton: MediaQuery.of(context).size.width,
-                onPressed: onPressedPantallaEmail,
+                onPressed: () => context.push(rutaPantallaEmail),
               ),
       
               const SizedBox(
@@ -71,7 +74,7 @@ class MediumSendCodePageGeneral extends StatelessWidget {
                 textButton: "Teléfono Celular",
                 colorBox: CustomColors.colorAmarilloMostaza,
                 widthButton: MediaQuery.of(context).size.width,
-                onPressed: onPressedPantallaPassword,
+                onPressed: () => context.push(rutaPantallaPassword),
               ),
             ],
           ),

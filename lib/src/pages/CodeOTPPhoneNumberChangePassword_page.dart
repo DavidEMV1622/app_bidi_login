@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/widgets_page_general/CodeOtp_general.dart';
-import 'Change_password.dart';
 
 class CodeOTPPhoneNumberChangePasswordPage extends StatefulWidget {
   const CodeOTPPhoneNumberChangePasswordPage({super.key});
@@ -19,7 +18,7 @@ class _CodeOTPPhoneNumberChangePasswordPageState extends State<CodeOTPPhoneNumbe
     return const CodeOTPPageGeneral(
       tituloEncabezadoUnoGeneral: "Cambiar Contraseña",
       subtituloUnoGeneral: "Ingresé el codigo que fue enviado por sms",
-      onPressedPantallaPasar: ChangePasswordPage(),
+      ruta: "/changePassword",
     );
   }
 }

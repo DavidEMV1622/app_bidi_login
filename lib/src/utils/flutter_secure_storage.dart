@@ -47,7 +47,7 @@ class SecureStorageMethods {
 
   // Metodo get para obtener la llave valor del email del usuario y recorrerlas llaves valor
   Future <bool> getEmailStorage(String emailContentForm) async {
-    bool isFound = false; // Variable para saber si se encontro el correo
+    bool isFound = false; // "true" encontro la llave valor, "false" se no encontro la llave valor 
 
     final allStorageKeyAndValue = await storage.readAll(); /* Lee todo el contenido del almacenamiento local 
                                                           "storage" (mapeo del storage) */
@@ -55,7 +55,7 @@ class SecureStorageMethods {
                                                             "entries" para obtener el par de entradas de la clave 
                                                             valor (key, value) */
       // Imprime la llave y el valor de la llave
-      print("Llave valor: ${entradaMapeo.key}, contenido de la llave: ${entradaMapeo.value}");
+      //print("Llave valor: ${entradaMapeo.key}, contenido de la llave: ${entradaMapeo.value}");
 
       if (entradaMapeo.key == "userLogin$emailContentForm") { /* Si encontro la llave */
         isFound = true; /* Variable "isFound" a "true"  */

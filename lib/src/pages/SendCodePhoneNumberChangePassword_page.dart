@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import '../widgets/widgets_page_general/SendCode_general.dart';
-import 'CodeOTPPhoneNumberChangePassword_page.dart';
 
 class SendCodePhoneNumberChangePasswordPage extends StatefulWidget {
   const SendCodePhoneNumberChangePasswordPage({super.key});
@@ -22,7 +21,7 @@ class _SendCodePhoneNumberChangePasswordPageState extends State<SendCodePhoneNum
       textoCuerpoGeneral: "Ingrese un número de teléfono para enviar el codigo",
       textoFormulario: "Número de Teléfono",
       nombreCtrl: ctrlPhoneNumber,
-      onPressedPantallaPasar: const CodeOTPPhoneNumberChangePasswordPage(),
+      ruta: "/codeOTPPhoneNumberChangePassword",
     );
   }
 }

@@ -1,8 +1,8 @@
 
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
+
 import '../widgets/widgets_page_general/CodeOtp_general.dart';
-import 'Change_password.dart';
 
 class CodeOTPEmailChangePasswordPage extends StatefulWidget {
   const CodeOTPEmailChangePasswordPage({super.key});
@@ -18,7 +18,7 @@ class _CodeOTPEmailChangePasswordPageState extends State<CodeOTPEmailChangePassw
     return const CodeOTPPageGeneral(
       tituloEncabezadoUnoGeneral: "Cambiar Contraseña",
       subtituloUnoGeneral: "Ingresé el codigo que fue enviado por correo",
-      onPressedPantallaPasar: ChangePasswordPage(),
+      ruta: "/changePassword",
     );
   }
 }

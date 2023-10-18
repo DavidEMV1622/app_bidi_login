@@ -2,18 +2,14 @@
 
 import 'package:app_credibanco_login/src/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
 import '../widgets/checkBox.dart';
 import '../utils/flutter_secure_storage.dart';
 import '../widgets/input.dart';
 import '../common/enumValidate.dart';
-import 'Logeado.dart';
-import 'MediumSendCodeRegister_page.dart';
 import 'package:flutter_svg/svg.dart';
-
-import 'avisos_page.dart';
-import 'MediumSendCodeChangePassword_Page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -121,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 
                 // ---- Boton "Iniciar de sesión" ----
-                BtnPrimaery(
+                ButtonPrimary(
                   textButton: "Iniciar sesion",
                   colorBox: CustomColors.colorAmarilloMostaza,
                   widthButton: MediaQuery.of(context).size.width,
@@ -136,10 +132,13 @@ class _LoginPageState extends State<LoginPage> {
                       ventana Logeado */
                       if (isNotices) {
                         await _secureStorageMethods.setIsNotices(false);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
+                        context.push("/logeadoPage");
+                        //Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
                       } else {
                         _secureStorageMethods.setEmailStorage(ctrlEmail.text);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
+                        context.push("/avisoPage"); 
+                        //Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
+                    
                       }
                     }
                   }
@@ -155,13 +154,12 @@ class _LoginPageState extends State<LoginPage> {
                 2) Color del boton
                 3) Grosor del borde
                 4) evento para navegar entre pantallas */
-                BtnPrimaery(
+                ButtonPrimary(
                   textButton: "Registrate",
                   colorBox: CustomColors.colorBlanco,
-                  border: Border.all(width: 2),
+                  border: const BorderSide(color: CustomColors.colorGris_1),
                   widthButton: MediaQuery.of(context).size.width,
-                  onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const MediumSendCodeRegisterPage())),
+                  onPressed: () => context.push("/mediumSendCodeRegisterPage"),
                 ),
       
                 // ---- Agregar un espacio ----
@@ -172,8 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                 // ---- Texto para un link si se le olvido la contrasenia ----
                 BotonLink(
                   textoLink: "Olvide mi contraseña",
-                  onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const MediumSendCodeChangePasswordPage())),
+                  onPressed: () => context.push("/mediumSendCodeChangePasswordPage"),
                 ),
       
                 const SizedBox(
@@ -184,18 +181,13 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CheckBox( // Uso de un checkBox
+                    CheckBox( // Uso de un CheckBox
                       // Mandar los controladores a utilizar oara cada formulario
                       emailController: ctrlEmail,
                       passwordController: ctrlPassword,
                     ),
                     const Text("Recordar datos"),
                   ],
-                ),
-
-                ButtonPrimary(
-                  textButton: "Pueba",
-                  onPressed: () => print("Button pressed"),
                 ),
               ],
             ),

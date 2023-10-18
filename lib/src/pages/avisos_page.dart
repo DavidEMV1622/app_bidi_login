@@ -1,13 +1,14 @@
-import 'package:app_credibanco_login/src/pages/Logeado.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import '../../config/arrow_router.dart';
 import '../colors/colors.dart';
 import '../widgets/buttons.dart';
 import '../widgets/widgets_avisos_Page/avisosPage_general.dart';
 import '../widgets/widgets_avisos_Page/barrProgress.dart';
 
 class AvisoPage extends StatefulWidget {
-  const AvisoPage({super.key});
+  const AvisoPage({super.key,});
 
   @override
   State<AvisoPage> createState() => _AvisoPageState();
@@ -24,7 +25,9 @@ class _AvisoPageState extends State<AvisoPage> {
       appBar: AppBar(
         backgroundColor: CustomColors.colorBlanco,
         elevation: 0.0,
+        leading: const ArrowRouter(activeArrow: "1",),
       ),
+      
 
       body: Center(
         child: Column(
@@ -93,10 +96,10 @@ class _AvisoPageState extends State<AvisoPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           
           children: [
-            BtnPrimaery(
+            ButtonPrimary(
               textButton: "Omitir",
               colorBox: CustomColors.colorBlanco,
-              border: Border.all(width: 2),
+              border: const BorderSide(color: CustomColors.colorGris_1),
               widthButton: MediaQuery.of(context).size.width * 0.40,
               onPressed: () {},
             ),
@@ -105,12 +108,12 @@ class _AvisoPageState extends State<AvisoPage> {
               width: 15,
             ),
 
-            BtnPrimaery(
+            ButtonPrimary(
               textButton: "Continuar",
               colorBox: CustomColors.colorAmarilloMostaza,
               widthButton: MediaQuery.of(context).size.width * 0.40,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
+                context.go("/logeadoPage");
               },
             ),
           ]
