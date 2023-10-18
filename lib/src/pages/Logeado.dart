@@ -23,7 +23,7 @@ class _LogeadoPageState extends State<LogeadoPage> {
           )
         ],
       ),
-      bottomNavigationBar: barNavigation(),
+      bottomNavigationBar: barNavigation(page: true),
     );
   }
 }

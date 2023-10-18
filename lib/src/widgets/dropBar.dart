@@ -1,3 +1,5 @@
+import 'package:app_credibanco_login/src/pages/Logeado.dart';
+import 'package:app_credibanco_login/src/pages/logeado2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
@@ -49,7 +51,9 @@ import 'package:iconify_flutter/icons/cib.dart';
 // bottomNavigationBar
 
 class barNavigation extends StatefulWidget {
-  const barNavigation({super.key});
+  final bool page;
+
+  const barNavigation({super.key, required this.page});
 
   @override
   State<barNavigation> createState() => _barNavigationState();
@@ -68,8 +72,7 @@ class _barNavigationState extends State<barNavigation> {
             height: 80,
             width: 200,
             decoration: BoxDecoration(
-                //color: Colors.white,
-                color: Colors.transparent,
+                color: Color.fromARGB(255, 255, 255, 255),
                 border: Border.all(color: Colors.black54),
                 borderRadius: BorderRadius.circular(35),
                 boxShadow: [
@@ -88,12 +91,29 @@ class _barNavigationState extends State<barNavigation> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                      onPressed: () {},
-                      icon: const Iconify(Bi.house),
-                      color: const Color(0xFF008D89), //#008D89
-                      highlightColor: const Color.fromARGB(255, 0, 0, 0),
+                      isSelected: true,
+                      icon: Iconify(
+                        Bi.house,
+                        color: widget.page == true
+                            ? Color(0xFF008D89)
+                            : Color.fromARGB(255, 7, 7, 7),
+                      ),
+                      highlightColor: Colors.transparent,
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LogeadoPage()));
+                      },
                     ),
-                    const Text("Inicio")
+                    Text(
+                      "Inicio",
+                      style: TextStyle(
+                        color: widget.page == true
+                            ? Color(0xFF008D89)
+                            : Color.fromARGB(255, 7, 7, 7),
+                      ),
+                    )
                   ],
                 ),
                 const SizedBox(
@@ -104,13 +124,30 @@ class _barNavigationState extends State<barNavigation> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     IconButton(
-                      onPressed: () {},
-                      //icon: const Iconify(Bi.wallet),
-                      icon: Icon(Icons.access_time_filled),
-                      color: const Color.fromARGB(255, 0, 0, 0), //#008D89
-                      splashColor: const Color(0xFF008D89),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LogeadoPage2()));
+                      },
+                      icon: Iconify(
+                        Bi.wallet,
+                        color: widget.page == true
+                            ? Color.fromARGB(255, 7, 7, 7)
+                            : Color(0xFF008D89),
+                      ),
+
+                      disabledColor: const Color.fromARGB(255, 0, 0, 0),
+                      //splashColor: ,
                     ),
-                    const Text("Bolisllo"),
+                    Text(
+                      "Bolisllo",
+                      style: TextStyle(
+                        color: widget.page == true
+                            ? Color.fromARGB(255, 7, 7, 7)
+                            : Color(0xFF008D89),
+                      ),
+                    ),
                   ],
                 ),
               ],
