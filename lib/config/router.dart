@@ -1,3 +1,4 @@
+import 'package:app_credibanco_login/src/pages/logeado2.dart';
 import 'package:go_router/go_router.dart';
 
 import '../src/pages/Change_password.dart';
@@ -19,22 +20,25 @@ import '../src/pages/VisualizarUsuario_page.dart';
 import '../src/pages/avisos_page.dart';
 
 final routes = GoRouter(
-  initialLocation: '/loginPage', /* Al iniciar la aplicacion, se 
-                                ejecuta primero esta ruta */
+  initialLocation: '/userPage2',
+  // initialLocation: '/loginPage', /* Al iniciar la aplicacion, se
+  //     ejecuta primero esta ruta */
   /* "routes" manejo de cada subruta */
-  
+
   routes: [
-    GoRoute( // "GoRoute" permite crear cada ruta
+    GoRoute(
+      // "GoRoute" permite crear cada ruta
       path: '/loginPage', // Plantilla para llamar las pantallas
-      builder: (context, state) => const LoginPage(), // Llamada de las pantallas a cambiar
+      builder: (context, state) =>
+          const LoginPage(), // Llamada de las pantallas a cambiar
     ),
 
-    GoRoute( // Ruta de la pagina de avisos
-      path: '/avisoPage', // Ruta con parametro
-      builder: (context, state) { 
-        return const AvisoPage();
-      }
-    ),
+    GoRoute(
+        // Ruta de la pagina de avisos
+        path: '/avisoPage', // Ruta con parametro
+        builder: (context, state) {
+          return const AvisoPage();
+        }),
 
     // Ruta de la pagina de usuario logeado
     GoRoute(
@@ -50,18 +54,16 @@ final routes = GoRouter(
 
     // Ruta de la pagina para Registrar Usuario por medio de OTP
     GoRoute(
-      path: '/mediumSendCodeRegisterPage',
-      builder: (context, state) { 
-        return const MediumSendCodeRegisterPage();
-      }
-    ),
+        path: '/mediumSendCodeRegisterPage',
+        builder: (context, state) {
+          return const MediumSendCodeRegisterPage();
+        }),
     // Ruta de la pagina para Cambiar la contraseña por medio de OTP
     GoRoute(
-      path: '/mediumSendCodeChangePasswordPage',
-      builder: (context, state) { 
-        return const MediumSendCodeChangePasswordPage();
-      }
-    ),
+        path: '/mediumSendCodeChangePasswordPage',
+        builder: (context, state) {
+          return const MediumSendCodeChangePasswordPage();
+        }),
     // Ruta de la pagina de registrar usuario
     GoRoute(
       path: '/registerPage',
@@ -97,6 +99,12 @@ final routes = GoRouter(
       path: '/userLogin',
       builder: (context, state) => const LogeadoPage(),
     ),
+    //Ruta de pagina 2 User
+    GoRoute(
+      path: '/userPage2',
+      builder: (context, state) => const LogeadoPage2(),
+    ),
+
     // Ruta de la pagina medio de envio de codigo OTP para cambiar contrasenia
     GoRoute(
       path: '/userLogin',
@@ -115,7 +123,8 @@ final routes = GoRouter(
     // Ruta de la pagina de envio de codigo otp por numero de telefono para cambiar de contraseña
     GoRoute(
       path: '/sendCodePhoneNumberChangePassword',
-      builder: (context, state) => const SendCodePhoneNumberChangePasswordPage(),
+      builder: (context, state) =>
+          const SendCodePhoneNumberChangePasswordPage(),
     ),
     // Ruta de la pagina de envio de codigo otp por correo para registrarse
     GoRoute(
@@ -128,6 +137,4 @@ final routes = GoRouter(
       builder: (context, state) => const SendCodePhoneNumberRegisterPage(),
     ),
   ],
-
 );
-
