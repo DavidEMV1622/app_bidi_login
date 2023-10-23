@@ -42,7 +42,7 @@ Widget tituloEncabezadoUno(String texto) {
     child: Text(
       texto,
       style: const TextStyle(
-        fontSize: 48, 
+        fontSize: 128, 
         fontWeight: FontWeight.bold,
         /*fontFamily: ,*/
       ),
@@ -59,9 +59,10 @@ Widget subtituloUno(String texto) {
       texto,
       style: const TextStyle(
         fontSize: 24,
-        color: CustomColors.colorGris_1,
-        //fontWeight: FontWeight.bold,
-        /*fontFamily: ,*/),
+        color: CustomColors.colorNegro,
+        fontWeight: FontWeight.bold,
+        /*fontFamily: ,*/
+      ),
       textAlign: TextAlign.center,
     ),
   );

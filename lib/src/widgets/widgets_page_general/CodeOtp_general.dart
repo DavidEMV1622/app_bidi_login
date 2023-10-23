@@ -213,7 +213,7 @@ class _CodeOTPPageGeneralState extends State<CodeOTPPageGeneral> {
               ),
 
               // ---- Boton "Comprobar" ----
-              BtnPrimaery(
+              ButtonPrimary(
                 textButton: "Guardar cambios",
                 colorBox: CustomColors.colorAmarilloMostaza,
                 widthButton: MediaQuery.of(context).size.width,

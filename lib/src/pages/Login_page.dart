@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:app_credibanco_login/src/colors/colors.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../utils/TextFormatter.dart';
@@ -62,136 +63,151 @@ class _LoginPageState extends State<LoginPage> {
             
             child: Form(// "Form" se va a trabajar con formularios
               key: _keyForm, // Define un formulario con una llave para controlarlo
-              child: Column(
-              // Se acomoda el contenido en columna
-      
-              mainAxisAlignment:
-                  MainAxisAlignment.center, // Define la posición de los widgets
-      
-              children: <Widget>[
-                /* Se usa el widget "children" que son 
-                                  los hijos o cadenas de widget que se van 
-                                  a unir */
-                
-                SvgPicture.asset( 
-                  'assets/Logo_CrediBanco.svg',
-                  width: 50,
-                ),
-      
-                const SizedBox(
-                  height: 35.0,
-                ),
-      
-                // ---- Titulo de "LOGIN" ----
-                tituloEncabezadoUno("Iniciar Sesión"),
-      
-                // ---- Agregar un espacio entre los dos widgets (Text, Align)----
-                const SizedBox(
-                  height: 45.0,
-                ),
-                
-                // ---- Llamado Widget para un campo de texto para ingresar correo ----
-                InputTextValidations(
-                  textoInput: "Correo electronico",
-                  inputType: TextInputType.emailAddress,
-                  controller: ctrlEmail,
-                  validateText: ValidateText.email,
-                ),
-      
-                // ---- Agregar un espacio ----
-                const SizedBox(
-                  height: 15.0,
-                ),
-      
-                // ---- Campo de texto para ingresar contrasenia ----
-                InputPasswordValidations(
-                  textoInput: "Contraseña",
-                  inputType: TextInputType.text,
-                  controller: ctrlPassword,
-                  validateText: ValidateText.password,
-                ),
-                
-                // ---- Agregar un espacio ----
-                const SizedBox(
-                  height: 25.0,
-                ),
-                
-                // ---- Boton "Iniciar de sesión" ----
-                ButtonPrimary(
-                  textButton: "Iniciar sesion",
-                  colorBox: CustomColors.colorAmarilloMostaza,
-                  widthButton: MediaQuery.of(context).size.width,
-                  onPressed: () async {
-      
-                    // Condicion para saber si las validaciones de cada input estan correctas
-                    if (_keyForm.currentState!.validate()) {
-                      // Se obtiene el estado de isNotice si es true o false
-                      bool isNotices = await _secureStorageMethods.getEmailStorage(ctrlEmail.text);
-      
-                      /* Si isNotices es true, se pasa a las ventanas de avisos de lo contrario pasa a la 
-                      ventana Logeado */
-                      if (isNotices) {
-                        await _secureStorageMethods.setIsNotices(false);
-                        context.push("/logeadoPage");
-                        //Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
-                      } else {
-                        _secureStorageMethods.setEmailStorage(ctrlEmail.text);
-                        context.push("/logeadoPage"); 
-                        //context.push("/avisoPage"); 
-                        //Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                mainAxisAlignment: MainAxisAlignment.center, 
                     
+                children: <Widget>[
+                    
+                  // ---- Titulo de "LOGIN" ----
+                  tituloEncabezadoUno("bidi"),
+                    
+                  // ---- Agregar un espacio entre los dos widgets (Text, Align)----
+                  const SizedBox(
+                    height: 35.0,
+                  ),
+              
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: subtituloUno("Iniciar Sesión")
+                  ),
+              
+                  const SizedBox(
+                    height: 15.0,
+                  ),
+                  
+                  // ---- Llamado Widget para un campo de texto para ingresar correo ----
+                  InputTextValidations(
+                    textoInput: "Email",
+                    inputType: TextInputType.emailAddress,
+                    controller: ctrlEmail,
+                    validateText: ValidateText.email,
+                    imageIcon: SvgPicture.asset( 
+                      'assets/icons/email.svg',
+                      width: 5,
+                    ),
+                  ),
+                    
+                  // ---- Agregar un espacio ----
+                  const SizedBox(
+                    height: 15.0,
+                  ),
+                    
+                  // ---- Campo de texto para ingresar contrasenia ----
+                  InputPasswordValidations(
+                    textoInput: "Contraseña",
+                    inputType: TextInputType.text,
+                    controller: ctrlPassword,
+                    validateText: ValidateText.password,
+                  ),
+                  
+                  // ---- Agregar un espacio ----
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+              
+                  // ---- Texto para un link si se le olvido la contrasenia ----
+                  BotonLink(
+                    textoLink: "¿Olvidaste la contraseña?",
+                    onPressed: () => context.push("/mediumSendCodeChangePasswordPage"),
+                  ),
+              
+                  const SizedBox(
+                    height: 25.0,
+                  ),
+                  
+                  /* ---- Boton "Iniciar de sesión" ----
+                  Obtiene como parametro los siguientes puntos:
+                  1) Texto que tiene el boton
+                  2) Color del boton
+                  3) Grosor del borde
+                  4) evento para navegar entre pantallas */
+                  ButtonPrimary(
+                    textButton: "Iniciar sesion",
+                    colorBox: CustomColors.colorAmarilloMostaza,
+                    widthButton: MediaQuery.of(context).size.width,
+                    onPressed: () async {
+                    
+                      // Condicion para saber si las validaciones de cada input estan correctas
+                      if (_keyForm.currentState!.validate()) {
+                        // Se obtiene el estado de isNotice si es true o false
+                        bool isNotices = await _secureStorageMethods.getEmailStorage(ctrlEmail.text);
+                    
+                        /* Si isNotices es true, se pasa a las ventanas de avisos de lo contrario pasa a la 
+                        ventana Logeado */
+                        if (isNotices) {
+                          await _secureStorageMethods.setIsNotices(false);
+                          context.push("/logeadoPage");
+                          //Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
+                        } else {
+                          _secureStorageMethods.setEmailStorage(ctrlEmail.text);
+                          context.push("/logeadoPage"); 
+                          //context.push("/avisoPage"); 
+                          //Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
+                      
+                        }
                       }
                     }
-                  }
-                ),
-      
-                const SizedBox(
-                  height: 25.0,
-                ),
-      
-                /* ------Boton "REGISTRATE"----------
-                Obtiene como parametro los siguientes puntos:
-                1) Texto que tiene el boton
-                2) Color del boton
-                3) Grosor del borde
-                4) evento para navegar entre pantallas */
-                ButtonPrimary(
-                  textButton: "Registrate",
-                  colorBox: CustomColors.colorBlanco,
-                  border: const BorderSide(color: CustomColors.colorGris_1),
-                  widthButton: MediaQuery.of(context).size.width,
-                  onPressed: () => context.push("/mediumSendCodeRegisterPage"),
-                ),
-      
-                // ---- Agregar un espacio ----
-                const SizedBox(
-                  height: 25.0,
-                ),
-      
-                // ---- Texto para un link si se le olvido la contrasenia ----
-                BotonLink(
-                  textoLink: "Olvide mi contraseña",
-                  onPressed: () => context.push("/mediumSendCodeChangePasswordPage"),
-                ),
-      
-                const SizedBox(
-                  height: 25.0,
-                ),
-      
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CheckBox( // Uso de un CheckBox
-                      // Mandar los controladores a utilizar oara cada formulario
-                      emailController: ctrlEmail,
-                      passwordController: ctrlPassword,
+                  ),
+                    
+                  const SizedBox(
+                    height: 15.0,
+                  ),
+                    
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CheckBox(
+                        emailController: ctrlEmail,
+                        passwordController: ctrlPassword,
+                      ),
+                      const Text("Recordar datos"),
+                    ],
+                  ),
+
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.12,
+                  ),
+              
+                  RichText(
+                    text: TextSpan(
+                      text: "¿Nuevo en bidi? ",
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: CustomColors.colorGris_1,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'Registrate',
+                          style: const TextStyle(
+                            fontSize: 15,
+                            color: CustomColors.colorVerdePantano,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              context.push("/mediumSendCodeRegisterPage");
+                            },
+                        ),
+                      ],
                     ),
-                    const Text("Recordar datos"),
-                  ],
-                ),
-              ],
-            ),
+                  )
+                ],
+                          ),
+              ),
           ),
           ),
         ),

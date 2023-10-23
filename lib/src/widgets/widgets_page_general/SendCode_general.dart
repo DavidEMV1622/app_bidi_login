@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../colors/colors.dart';
@@ -74,6 +75,10 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
                     inputType: TextInputType.emailAddress,
                     controller: nombreCtrl,
                     validateText: ValidateText.email,
+                    imageIcon: SvgPicture.asset( 
+                      'assets/icons/email.svg',
+                      width: 250,
+                    ),
                   ),
                 
                 // ---- Llamado Widget para un campo de texto para ingresar numero de telefono ----
@@ -83,13 +88,17 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
                     inputType: TextInputType.phone,
                     controller: nombreCtrl,
                     validateText: ValidateText.phoneNumber,
+                    imageIcon: SvgPicture.asset( 
+                      'assets/icons/email.svg',
+                      width: 250,
+                    ),
                   ),
                     
                 const SizedBox(
                   height: 45,
                 ),
               
-                BtnPrimaery(
+                ButtonPrimary(
                   textButton: "Verificar",
                   colorBox: CustomColors.colorAmarilloMostaza,
                   widthButton: MediaQuery.of(context).size.width,

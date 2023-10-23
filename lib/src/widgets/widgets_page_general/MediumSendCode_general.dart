@@ -48,10 +48,10 @@ class MediumSendCodePageGeneral extends StatelessWidget {
               ),
       
               // Boton para el correo electronico
-              BtnPrimaery(
+              ButtonPrimary(
                 iconButton: const Icon(
                   Icons.email_outlined,
-                  color: CustomColors.colorNegro,
+                  color: CustomColors.colorBlanco,
                   size: 50.0,
                 ),
                 textButton: "Correo Electronico",
@@ -65,10 +65,10 @@ class MediumSendCodePageGeneral extends StatelessWidget {
               ),
       
               // Boton para el telefono celular
-              BtnPrimaery(
+              ButtonPrimary(
                 iconButton: const Icon(
                   Icons.sms,
-                  color: CustomColors.colorNegro,
+                  color: CustomColors.colorBlanco,
                   size: 50.0,
                 ),
                 textButton: "Teléfono Celular",

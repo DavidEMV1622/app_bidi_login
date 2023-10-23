@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
 import '../widgets/input.dart';
@@ -53,6 +54,10 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 inputType: TextInputType.name,
                 controller: ctrlName,
                 validateText: ValidateText.name,
+                imageIcon: SvgPicture.asset( 
+                      'assets/icons/email.svg',
+                      width: 250,
+                    ),
               ),
 
               // input de apellido
@@ -61,6 +66,10 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 inputType: TextInputType.name,
                 controller: ctrlApellido,
                 validateText: ValidateText.lastname,
+                imageIcon: SvgPicture.asset( 
+                      'assets/icons/email.svg',
+                      width: 250,
+                    ),
               ),
 
               // input de email
@@ -69,6 +78,10 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 inputType: TextInputType.emailAddress,
                 controller: ctrlEmail,
                 validateText: ValidateText.email,
+                imageIcon: SvgPicture.asset( 
+                      'assets/icons/email.svg',
+                      width: 250,
+                    ),
               ),
 
               // input de numero de telefono
@@ -77,6 +90,10 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 inputType: TextInputType.number,
                 controller: ctrlPhoneNumber,
                 validateText: ValidateText.phoneNumber,
+                imageIcon: SvgPicture.asset( 
+                  'assets/icons/email.svg',
+                  width: 250,
+                ),
               ),
 
               // input del password

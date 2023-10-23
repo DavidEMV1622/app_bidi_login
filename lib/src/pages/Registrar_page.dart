@@ -3,6 +3,7 @@
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:app_credibanco_login/src/widgets/input.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import '../common/enumValidate.dart';
 import '../utils/TextFormatter.dart';
@@ -60,6 +61,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 inputType: TextInputType.name,
                 controller: ctrlName,
                 validateText: ValidateText.name,
+                imageIcon: SvgPicture.asset( 
+                      'assets/icons/email.svg',
+                      width: 250,
+                    ),
               ),
           
               // input de apellido
@@ -68,6 +73,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 inputType: TextInputType.name,
                 controller: ctrlApellido,
                 validateText: ValidateText.lastname,
+                imageIcon: SvgPicture.asset( 
+                      'assets/icons/email.svg',
+                      width: 250,
+                    ),
               ),
           
               // input de email
@@ -76,6 +85,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 inputType: TextInputType.emailAddress,
                 controller: ctrlEmail,
                 validateText: ValidateText.email,
+                imageIcon: SvgPicture.asset( 
+                      'assets/icons/email.svg',
+                      width: 250,
+                    ),
               ),
           
               // input de numero de telefono
@@ -84,6 +97,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 inputType: TextInputType.number,
                 controller: ctrlPhoneNumber,
                 validateText: ValidateText.phoneNumber,
+                imageIcon: SvgPicture.asset( 
+                      'assets/icons/email.svg',
+                      width: 250,
+                    ),
               ),
           
               // input del password
