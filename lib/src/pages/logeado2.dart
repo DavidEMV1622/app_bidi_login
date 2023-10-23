@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/pocket.dart';
 import '../widgets/dropBar.dart';
 
 class LogeadoPage2 extends StatefulWidget {
@@ -22,11 +21,14 @@ class _LogeadoPage2State extends State<LogeadoPage2> {
           ),
           Container(
             width: 154,
-            child: Pocket(),
+            //child: Pocket(),
           ),
         ],
       ),
-      bottomNavigationBar: barNavigation(page: false),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: barNavigation(page: false),
+      ),
     );
   }
 }
