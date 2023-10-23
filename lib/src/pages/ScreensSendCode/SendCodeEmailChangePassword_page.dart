@@ -2,16 +2,16 @@
 
 import 'package:flutter/material.dart';
 
-import '../widgets/widgets_page_general/SendCode_general.dart';
+import '../../widgets/widgets_page_general/SendCode_general.dart';
 
-class SendCodeEmailRegisterPage extends StatefulWidget {
-  const SendCodeEmailRegisterPage({super.key});
+class SendCodeEmailChangePasswordPage extends StatefulWidget {
+  const SendCodeEmailChangePasswordPage({super.key});
 
   @override
-  State<SendCodeEmailRegisterPage> createState() => _SendCodeEmailRegisterPageState();
+  State<SendCodeEmailChangePasswordPage> createState() => _SendCodeEmailChangePasswordPageState();
 }
 
-class _SendCodeEmailRegisterPageState extends State<SendCodeEmailRegisterPage> {
+class _SendCodeEmailChangePasswordPageState extends State<SendCodeEmailChangePasswordPage> {
   
   TextEditingController ctrlEmail = TextEditingController();
 
@@ -22,7 +22,7 @@ class _SendCodeEmailRegisterPageState extends State<SendCodeEmailRegisterPage> {
       textoCuerpoGeneral: "Ingrese el correo para enviar un codigo de confirmación",
       textoFormulario: "Correo electrónico",
       nombreCtrl: ctrlEmail,
-      ruta: "/codeOTPEmaiRegisterPage",
+      ruta: "/codeOTPEmailChangePassword",
     );
   }
 }
