@@ -35,8 +35,9 @@ BM 1612 => drop bar.
 BM-1616=> Optimizar los botones.
 --------------------------------------POR--HACER--------------------------------------------
 BM 1606 => Pagina de aterrisaje
-BM 1608 => Menu lateral 
-BM 1609 => Opcion de envio de otp 
+BM 1608 => Menu lateral
+BM 1609 => Opcion de envio de otp
+BM 1618 => Redisenio de vistas de pantallas
 
 
 
