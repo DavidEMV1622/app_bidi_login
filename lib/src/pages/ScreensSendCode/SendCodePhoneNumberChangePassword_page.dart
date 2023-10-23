@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import '../widgets/widgets_page_general/SendCode_general.dart';
+import '../../widgets/widgets_page_general/SendCode_general.dart';
 
 class SendCodePhoneNumberChangePasswordPage extends StatefulWidget {
   const SendCodePhoneNumberChangePasswordPage({super.key});
