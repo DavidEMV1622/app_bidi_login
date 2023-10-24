@@ -133,12 +133,12 @@ Widget textoEtiquetaTwo(String texto, double fontSizeText) {
 }
 
 // Widget del texto Cuerpo
-Widget textoCuerpo(String texto, Color colorText) {
+Widget textoCuerpo(String texto) {
   return Text(
     texto,
     style: TextStyle(
-      color: colorText,
-      fontSize: 30,
+      color: CustomColors.colorNegro,
+      fontSize: 24,
       //fontFamily: ,
     ),
     textAlign: TextAlign.center,

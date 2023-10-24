@@ -35,13 +35,13 @@ class MediumSendCodePageGeneral extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              titulo("ESCOGE UN MEDIO DE CONFIRMACIÓN"),
+              tituloEncabezadoDos("ESCOGE UN MEDIO DE CONFIRMACIÓN"),
               
               const SizedBox(
                 height: 45,
               ),
       
-              textoCuerpo(textoCuerpoGeneral, CustomColors.colorNegro),
+              textoCuerpo(textoCuerpoGeneral),
               
               const SizedBox(
                 height: 45,
@@ -49,11 +49,7 @@ class MediumSendCodePageGeneral extends StatelessWidget {
       
               // Boton para el correo electronico
               ButtonPrimary(
-                iconButton: const Icon(
-                  Icons.email_outlined,
-                  color: CustomColors.colorBlanco,
-                  size: 50.0,
-                ),
+                iconButton: Icons.email_outlined,
                 textButton: "Correo Electronico",
                 colorBox: CustomColors.colorAmarilloMostaza,
                 widthButton: MediaQuery.of(context).size.width,
@@ -66,11 +62,7 @@ class MediumSendCodePageGeneral extends StatelessWidget {
       
               // Boton para el telefono celular
               ButtonPrimary(
-                iconButton: const Icon(
-                  Icons.sms,
-                  color: CustomColors.colorBlanco,
-                  size: 50.0,
-                ),
+                iconButton: Icons.sms,
                 textButton: "Teléfono Celular",
                 colorBox: CustomColors.colorAmarilloMostaza,
                 widthButton: MediaQuery.of(context).size.width,

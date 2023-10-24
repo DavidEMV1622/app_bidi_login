@@ -67,7 +67,7 @@ class BtnPrimaery extends StatelessWidget {
 
 
 class ButtonPrimary extends StatefulWidget {
-  final Icon? iconButton;
+  final IconData? iconButton;
   final String textButton;
   final Color colorBox;
   final BorderSide? border;
@@ -118,7 +118,11 @@ class _ButtonPrimaryState extends State<ButtonPrimary> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (widget.iconButton != null)
-              widget.iconButton!,
+              Icon(
+                widget.iconButton,
+                color: CustomColors.colorBlanco,
+                size: 30.0,
+              ),
             
             if (widget.iconButton != null)
               const SizedBox(
