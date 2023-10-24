@@ -1,41 +1,36 @@
-/* import 'package:flutter/material.dart';
+import 'package:app_credibanco_login/models/pocket_model.dart';
+import 'package:flutter/material.dart';
 
-class Pocket extends StatefulWidget {
+class Poket extends StatelessWidget {
+  final Pocket item;
+  const Poket({super.key, required this.item});
 
-  
-  const Pocket({super.key});
-
-  @override
-  State<Pocket> createState() => _PocketState();
-}
-
-class _PocketState extends State<Pocket> {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(15))),
-      child: Column(
-        children: [
-          Container(
-            height: 66,
-            width: 154,
-            decoration: BoxDecoration(
-                color: Colors.cyan,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15))),
-          ),
-          SizedBox(
-            height: 66,
-            width: 154,
-            child: Column(
+    return SizedBox(
+      //height: 154,
+      child: Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15))),
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                //height: 66,
+                decoration: BoxDecoration(
+                    color: item.colorPocket,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15))),
+              ),
+            ),
+            Column(
               children: [
                 SizedBox(
                   height: 5,
                 ),
                 Text(
-                  'Comida',
+                  item.namePocket,
                   style: TextStyle(
                     fontFamily: 'Inter',
                     fontSize: 16,
@@ -45,18 +40,43 @@ class _PocketState extends State<Pocket> {
                   height: 5,
                 ),
                 Text(
-                  '1000000',
+                  item.pocketBalance,
                   style: TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 16,
-                      color: Color(0xFF878787)),
+                      color: Color.fromARGB(255, 147, 147, 147)),
                 )
               ],
-            ),
-          )
-        ],
+            )
+
+            /* Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    item.namePocket,
+                    style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    item.pocketBalance,
+                    style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 16,
+                        color: Color.fromARGB(255, 147, 147, 147)),
+                  )
+                ],
+              ),
+            ) */
+          ],
+        ),
       ),
     );
   }
 }
- */
