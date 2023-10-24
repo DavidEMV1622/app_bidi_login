@@ -75,10 +75,7 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
                     inputType: TextInputType.emailAddress,
                     controller: nombreCtrl,
                     validateText: ValidateText.email,
-                    imageIcon: SvgPicture.asset( 
-                      'assets/icons/email.svg',
-                      width: 250,
-                    ),
+                    imageIcon: 'assets/icons/email.svg',
                   ),
                 
                 // ---- Llamado Widget para un campo de texto para ingresar numero de telefono ----
@@ -88,10 +85,7 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
                     inputType: TextInputType.phone,
                     controller: nombreCtrl,
                     validateText: ValidateText.phoneNumber,
-                    imageIcon: SvgPicture.asset( 
-                      'assets/icons/email.svg',
-                      width: 250,
-                    ),
+                    imageIcon: 'assets/icons/email.svg',
                   ),
                     
                 const SizedBox(

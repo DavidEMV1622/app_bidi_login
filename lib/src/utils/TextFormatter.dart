@@ -42,7 +42,23 @@ Widget tituloEncabezadoUno(String texto) {
     child: Text(
       texto,
       style: const TextStyle(
-        fontSize: 128, 
+        fontSize: 100, 
+        fontWeight: FontWeight.bold,
+        /*fontFamily: ,*/
+      ),
+      textAlign: TextAlign.center, // Centrar un texto
+    ),
+  );
+}
+
+// Widget del Titulo principal
+Widget tituloEncabezadoDos(String texto) {
+  return Container(
+    padding: const EdgeInsets.symmetric(vertical: 10),
+    child: Text(
+      texto,
+      style: const TextStyle(
+        fontSize: 38, 
         fontWeight: FontWeight.bold,
         /*fontFamily: ,*/
       ),

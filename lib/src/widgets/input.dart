@@ -10,7 +10,7 @@ class InputTextValidations extends StatefulWidget {
   final TextInputType inputType; // tipo de teclado a mostrar
   final TextEditingController controller; // controlar cada input
   final ValidateText? validateText; // Tipo de validacion a utilizar
-  final SvgPicture imageIcon;
+  final String imageIcon;
 
   // Uso de cada parametro asignado
   const InputTextValidations({
@@ -92,7 +92,10 @@ class _InputTextValidationsState extends State<InputTextValidations> {
 
               prefixIcon: Padding(
                 padding: const EdgeInsets.only(bottom: 9,),
-                child: widget.imageIcon,
+                child: SvgPicture.asset( 
+                  widget.imageIcon,
+                  width: 5,
+                ),
               ),
             ),
 
@@ -196,6 +199,7 @@ class InputPasswordValidations extends StatefulWidget {
   final TextEditingController controller; // controlar cada input
   final ValidateText? validateText; // Tipo de validacion a utilizar
   final TextEditingController? passwordComparar; // input a comparar
+  final String imageIcon;
 
   const InputPasswordValidations({
     super.key, 
@@ -203,7 +207,8 @@ class InputPasswordValidations extends StatefulWidget {
     required this.inputType,
     required this.controller,
     this.validateText,
-    this.passwordComparar
+    this.passwordComparar,
+    required this.imageIcon,
   });
 
   @override
@@ -224,9 +229,6 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          
-          // Espaciado entre el borde y el contenido
-          //padding: const EdgeInsets.symmetric(vertical: 5.0),
 
           //height: 35,
           //width: 1000.0,
@@ -271,7 +273,15 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
                   width: 2.5,
                 ),
               ), */
-              counterText: "", // Quita el contador de caracteres
+              counterText: "",
+
+              prefixIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 9,),
+                child: SvgPicture.asset( 
+                  widget.imageIcon,
+                  width: 5,
+                ),
+              ),
               
               // Manejar un icono dentro del input
               suffixIcon: IconButton(

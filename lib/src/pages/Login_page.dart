@@ -20,7 +20,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  //final String imageUrl ="https://elempleo.blob.core.windows.net/empresasprd/1379.gif";
 
   final GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
                                                     controlar el estado o validacion de un formulario  */
@@ -94,10 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                     inputType: TextInputType.emailAddress,
                     controller: ctrlEmail,
                     validateText: ValidateText.email,
-                    imageIcon: SvgPicture.asset( 
-                      'assets/icons/email.svg',
-                      width: 5,
-                    ),
+                    imageIcon: 'assets/icons/email.svg',
                   ),
                     
                   // ---- Agregar un espacio ----
@@ -111,6 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                     inputType: TextInputType.text,
                     controller: ctrlPassword,
                     validateText: ValidateText.password,
+                    imageIcon: 'assets/icons/password.svg',
                   ),
                   
                   // ---- Agregar un espacio ----

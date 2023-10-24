@@ -54,10 +54,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 inputType: TextInputType.name,
                 controller: ctrlName,
                 validateText: ValidateText.name,
-                imageIcon: SvgPicture.asset( 
-                      'assets/icons/email.svg',
-                      width: 250,
-                    ),
+                imageIcon: 'assets/icons/name.svg',
               ),
 
               // input de apellido
@@ -66,10 +63,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 inputType: TextInputType.name,
                 controller: ctrlApellido,
                 validateText: ValidateText.lastname,
-                imageIcon: SvgPicture.asset( 
-                      'assets/icons/email.svg',
-                      width: 250,
-                    ),
+                imageIcon: 'assets/icons/name.svg',
               ),
 
               // input de email
@@ -78,10 +72,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 inputType: TextInputType.emailAddress,
                 controller: ctrlEmail,
                 validateText: ValidateText.email,
-                imageIcon: SvgPicture.asset( 
-                      'assets/icons/email.svg',
-                      width: 250,
-                    ),
+                imageIcon: 'assets/icons/email.svg',
               ),
 
               // input de numero de telefono
@@ -90,10 +81,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 inputType: TextInputType.number,
                 controller: ctrlPhoneNumber,
                 validateText: ValidateText.phoneNumber,
-                imageIcon: SvgPicture.asset( 
-                  'assets/icons/email.svg',
-                  width: 250,
-                ),
+                imageIcon: 'assets/icons/phone_number.svg',
               ),
 
               // input del password
@@ -102,6 +90,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 inputType: TextInputType.text,
                 controller: ctrlPassword,
                 validateText: ValidateText.password,
+                imageIcon: 'assets/icons/password.svg',
               ),
 
               const SizedBox(
