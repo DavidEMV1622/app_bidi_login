@@ -47,8 +47,6 @@ class _PocketListState extends State<PocketList> {
             } else {
               return GestureDetector(child: const PocketAdd());
             }
-
-       
           },
         ),
       ),
