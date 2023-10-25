@@ -1,3 +1,5 @@
+import 'package:app_credibanco_login/src/pages/Pocket/pocket_create.dart';
+import 'package:app_credibanco_login/src/pages/Pocket/pocket_edit.dart';
 import 'package:app_credibanco_login/src/pages/logeado2.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,10 +20,10 @@ import '../src/pages/ScreensSendCode/SendCodePhoneNumberChangePassword_page.dart
 import '../src/pages/ScreensSendCode/SendCodePhoneNumberRegister_page.dart';
 import '../src/pages/VisualizarUsuario_page.dart';
 import '../src/pages/avisos_page.dart';
-import '../src/pages/my_pocket.dart';
+import '../src/pages/Pocket/my_pocket.dart';
 
 final routes = GoRouter(
-  initialLocation: '/ListPocket',
+  initialLocation: '/PocketEdit',
   // initialLocation: '/loginPage', /* Al iniciar la aplicacion, se
   //     ejecuta primero esta ruta */
   /* "routes" manejo de cada subruta */
@@ -137,13 +139,17 @@ final routes = GoRouter(
       path: '/sendCodePhoneNumberRegister',
       builder: (context, state) => const SendCodePhoneNumberRegisterPage(),
     ),
-    /* GoRoute(
-      path: '/ListPockett',
-      builder: (context, state) => const MyPocket(),
-    ), */
     GoRoute(
       path: '/ListPocket',
       builder: (context, state) => const PocketList(),
+    ),
+    GoRoute(
+      path: '/PocketEdit',
+      builder: (context, state) => const PocketEdit(),
+    ),
+    GoRoute(
+      path: '/PocketCreate',
+      builder: (context, state) => const PocketCreate(),
     ),
   ],
 );

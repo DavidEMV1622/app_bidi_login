@@ -2,7 +2,7 @@ import 'package:app_credibanco_login/models/pocket_model.dart';
 import 'package:app_credibanco_login/src/widgets/pocket.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/dropBar.dart';
+import '../../widgets/dropBar.dart';
 
 class PocketList extends StatefulWidget {
   const PocketList({super.key});
