@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../config/arrow_router.dart';
 import '../../colors/colors.dart';
 import '../../common/enumValidate.dart';
 import '../../utils/TextFormatter.dart';
@@ -43,6 +44,7 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
       appBar: AppBar(
         backgroundColor: CustomColors.colorBlanco,
         elevation: 0.0,
+        leading: const ArrowRouter(activeArrow: "1",),
       ),
       
       body: Center(
@@ -54,13 +56,11 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                titulo(widget.tituloGeneral),
-                const SizedBox(
-                  height: 45,
-                ),
+                tituloEncabezadoDos(widget.tituloGeneral),
+                
                 Text(
                   widget.textoCuerpoGeneral,
-                  style: const TextStyle(fontSize: 32),
+                  style: const TextStyle(fontSize: 24),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(
@@ -74,6 +74,7 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
                     inputType: TextInputType.emailAddress,
                     controller: nombreCtrl,
                     validateText: ValidateText.email,
+                    imageIcon: 'assets/icons/email.svg',
                   ),
                 
                 // ---- Llamado Widget para un campo de texto para ingresar numero de telefono ----
@@ -83,13 +84,14 @@ class _SendCodePageGeneralState extends State<SendCodePageGeneral> {
                     inputType: TextInputType.phone,
                     controller: nombreCtrl,
                     validateText: ValidateText.phoneNumber,
+                    imageIcon: 'assets/icons/phone_number.svg',
                   ),
                     
                 const SizedBox(
                   height: 45,
                 ),
               
-                BtnPrimaery(
+                ButtonPrimary(
                   textButton: "Verificar",
                   colorBox: CustomColors.colorAmarilloMostaza,
                   widthButton: MediaQuery.of(context).size.width,

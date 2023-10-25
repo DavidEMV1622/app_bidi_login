@@ -4,6 +4,7 @@ import 'package:app_credibanco_login/src/colors/colors.dart';
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:app_credibanco_login/src/widgets/input.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../config/arrow_router.dart';
@@ -48,13 +49,12 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             key: _keyForm,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment:
-                  MainAxisAlignment.start, // Define la posición de los widgets
+              mainAxisAlignment: MainAxisAlignment.center, // Define la posición de los widgets
               children: <Widget>[
                 const SizedBox(
                   height: 20.0,
                 ),
-                tituloEncabezadoUno("CAMBIO DE CONTRASEÑA"),
+                tituloEncabezadoDos("CAMBIO DE CONTRASEÑA"),
                 const SizedBox(
                   height: 20.0,
                 ),
@@ -70,6 +70,11 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   inputType: TextInputType.text,
                   controller: ctrlPassword,
                   validateText: ValidateText.password,
+                  imageIcon: 'assets/icons/password.svg',
+                ),
+
+                const SizedBox(
+                  height: 20.0,
                 ),
 
                 InputPasswordValidations(
@@ -78,6 +83,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   controller: ctrlConfirmPassword,
                   validateText: ValidateText.confirmPassword,
                   passwordComparar: ctrlPassword,
+                  imageIcon: 'assets/icons/password.svg',
                 ),
 
                 const SizedBox(

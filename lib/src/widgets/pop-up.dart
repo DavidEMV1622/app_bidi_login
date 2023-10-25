@@ -57,7 +57,7 @@ class PopUps extends StatelessWidget{
                     height: 20,
                   ),
 
-                  textoCuerpo(mensajePopUp, CustomColors.colorNegro), // Mensaje a mostrar
+                  textoCuerpo(mensajePopUp), // Mensaje a mostrar
                   
                   const SizedBox(
                     height: 20,
@@ -113,7 +113,7 @@ class DialogUtils {
                         height: 20,
                       ),
 
-                      textoCuerpo(mensajePopUp, CustomColors.colorNegro), // Mensaje a mostrar
+                      textoCuerpo(mensajePopUp), // Mensaje a mostrar
                       
                       const SizedBox(
                         height: 20,

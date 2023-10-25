@@ -67,7 +67,7 @@ class BtnPrimaery extends StatelessWidget {
 
 
 class ButtonPrimary extends StatefulWidget {
-  final Icon? iconButton;
+  final IconData? iconButton;
   final String textButton;
   final Color colorBox;
   final BorderSide? border;
@@ -102,12 +102,11 @@ class _ButtonPrimaryState extends State<ButtonPrimary> {
             EdgeInsets.symmetric(horizontal: 20, vertical: 20,)
           ),
 
-          foregroundColor: const MaterialStatePropertyAll(CustomColors.colorNegro), // Define el color del texto
+          foregroundColor: const MaterialStatePropertyAll(CustomColors.colorBlanco), // Define el color del texto
           textStyle: const MaterialStatePropertyAll(TextStyle(fontSize: 20)), // Manejo de tamaño, fuente, entre otras propiedades del texto
-          //minimumSize: MaterialStatePropertyAll(Size(<largo>, <alto>)), // Define el tamaño minimo del boton
           backgroundColor: MaterialStatePropertyAll(widget.colorBox),
           shape: MaterialStatePropertyAll( // Maneja la forma y el borde del boton
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10), side: widget.border ?? const BorderSide(color: Colors.transparent)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(27.5), side: widget.border ?? const BorderSide(color: Colors.transparent)),
 
           ),
           elevation: const MaterialStatePropertyAll(0.0), // Maneja la sombra del boton
@@ -119,7 +118,11 @@ class _ButtonPrimaryState extends State<ButtonPrimary> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (widget.iconButton != null)
-              widget.iconButton!,
+              Icon(
+                widget.iconButton,
+                color: CustomColors.colorBlanco,
+                size: 30.0,
+              ),
             
             if (widget.iconButton != null)
               const SizedBox(
@@ -160,11 +163,11 @@ class BotonLink extends StatelessWidget {
 
       // ---- Manejo del texto ----
       child: Text(
-        textoLink, // Agrega el texto
+        textoLink,
         style: const TextStyle(
-          fontSize: 12, // Tamaño del texto
-          color: CustomColors.colorVerdePantano, // Color del texto
-          decoration: TextDecoration.underline,
+          fontSize: 15,
+          color: CustomColors.colorVerdePantano,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

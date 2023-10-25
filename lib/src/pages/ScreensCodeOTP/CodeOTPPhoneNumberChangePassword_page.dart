@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../widgets/widgets_page_general/CodeOtp_general.dart';
+import '../../widgets/widgets_page_general/CodeOtp_general.dart';
 
 class CodeOTPPhoneNumberChangePasswordPage extends StatefulWidget {
   const CodeOTPPhoneNumberChangePasswordPage({super.key});

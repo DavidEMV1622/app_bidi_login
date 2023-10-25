@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
 import '../widgets/input.dart';
@@ -53,6 +54,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 inputType: TextInputType.name,
                 controller: ctrlName,
                 validateText: ValidateText.name,
+                imageIcon: 'assets/icons/name.svg',
               ),
 
               // input de apellido
@@ -61,6 +63,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 inputType: TextInputType.name,
                 controller: ctrlApellido,
                 validateText: ValidateText.lastname,
+                imageIcon: 'assets/icons/name.svg',
               ),
 
               // input de email
@@ -69,6 +72,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 inputType: TextInputType.emailAddress,
                 controller: ctrlEmail,
                 validateText: ValidateText.email,
+                imageIcon: 'assets/icons/email.svg',
               ),
 
               // input de numero de telefono
@@ -77,6 +81,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 inputType: TextInputType.number,
                 controller: ctrlPhoneNumber,
                 validateText: ValidateText.phoneNumber,
+                imageIcon: 'assets/icons/phone_number.svg',
               ),
 
               // input del password
@@ -85,6 +90,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 inputType: TextInputType.text,
                 controller: ctrlPassword,
                 validateText: ValidateText.password,
+                imageIcon: 'assets/icons/password.svg',
               ),
 
               const SizedBox(

@@ -110,7 +110,7 @@ class _CodeOTPPageGeneralState extends State<CodeOTPPageGeneral> {
                 MainAxisAlignment.center, // Define la posición de los widgets
 
             children: <Widget>[
-              tituloEncabezadoUno("Cambiar Contraseña"),
+              tituloEncabezadoDos("Cambiar Contraseña"),
 
               // ---- Agregar un espacio ----
               const SizedBox(
@@ -213,7 +213,7 @@ class _CodeOTPPageGeneralState extends State<CodeOTPPageGeneral> {
               ),
 
               // ---- Boton "Comprobar" ----
-              BtnPrimaery(
+              ButtonPrimary(
                 textButton: "Guardar cambios",
                 colorBox: CustomColors.colorAmarilloMostaza,
                 widthButton: MediaQuery.of(context).size.width,

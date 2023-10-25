@@ -42,7 +42,23 @@ Widget tituloEncabezadoUno(String texto) {
     child: Text(
       texto,
       style: const TextStyle(
-        fontSize: 48, 
+        fontSize: 100, 
+        fontWeight: FontWeight.bold,
+        /*fontFamily: ,*/
+      ),
+      textAlign: TextAlign.center, // Centrar un texto
+    ),
+  );
+}
+
+// Widget del Titulo principal
+Widget tituloEncabezadoDos(String texto) {
+  return Container(
+    padding: const EdgeInsets.symmetric(vertical: 10),
+    child: Text(
+      texto,
+      style: const TextStyle(
+        fontSize: 38, 
         fontWeight: FontWeight.bold,
         /*fontFamily: ,*/
       ),
@@ -59,9 +75,10 @@ Widget subtituloUno(String texto) {
       texto,
       style: const TextStyle(
         fontSize: 24,
-        color: CustomColors.colorGris_1,
-        //fontWeight: FontWeight.bold,
-        /*fontFamily: ,*/),
+        color: CustomColors.colorNegro,
+        fontWeight: FontWeight.bold,
+        /*fontFamily: ,*/
+      ),
       textAlign: TextAlign.center,
     ),
   );
@@ -116,12 +133,12 @@ Widget textoEtiquetaTwo(String texto, double fontSizeText) {
 }
 
 // Widget del texto Cuerpo
-Widget textoCuerpo(String texto, Color colorText) {
+Widget textoCuerpo(String texto) {
   return Text(
     texto,
     style: TextStyle(
-      color: colorText,
-      fontSize: 30,
+      color: CustomColors.colorNegro,
+      fontSize: 24,
       //fontFamily: ,
     ),
     textAlign: TextAlign.center,

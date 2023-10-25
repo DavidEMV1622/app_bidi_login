@@ -2,7 +2,9 @@
 
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:app_credibanco_login/src/widgets/input.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import '../common/enumValidate.dart';
 import '../utils/TextFormatter.dart';
@@ -52,7 +54,17 @@ class _RegisterPageState extends State<RegisterPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center, 
             children: [
-              tituloEncabezadoUno("Registrate"),
+              tituloEncabezadoUno("bidi"),
+                
+              // ---- Agregar un espacio entre los dos widgets (Text, Align)----
+              const SizedBox(
+                height: 35.0,
+              ),
+          
+              Align(
+                alignment: Alignment.centerLeft,
+                child: subtituloUno("Registrate")
+              ),
           
               // input de nombre
               InputTextValidations(
@@ -60,6 +72,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 inputType: TextInputType.name,
                 controller: ctrlName,
                 validateText: ValidateText.name,
+                imageIcon: 'assets/icons/name.svg',
+              ),
+
+              const SizedBox(
+                height: 15.0,
               ),
           
               // input de apellido
@@ -68,6 +85,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 inputType: TextInputType.name,
                 controller: ctrlApellido,
                 validateText: ValidateText.lastname,
+                imageIcon: 'assets/icons/name.svg',
+              ),
+
+              const SizedBox(
+                height: 15.0,
               ),
           
               // input de email
@@ -76,6 +98,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 inputType: TextInputType.emailAddress,
                 controller: ctrlEmail,
                 validateText: ValidateText.email,
+                imageIcon: 'assets/icons/email.svg',
+              ),
+
+              const SizedBox(
+                height: 15.0,
               ),
           
               // input de numero de telefono
@@ -84,6 +111,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 inputType: TextInputType.number,
                 controller: ctrlPhoneNumber,
                 validateText: ValidateText.phoneNumber,
+                imageIcon: 'assets/icons/phone_number.svg',
+              ),
+
+              const SizedBox(
+                height: 15.0,
               ),
           
               // input del password
@@ -92,6 +124,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 inputType: TextInputType.text,
                 controller: ctrlPassword,
                 validateText: ValidateText.password,
+                imageIcon: 'assets/icons/password.svg',
+              ),
+
+              const SizedBox(
+                height: 15.0,
               ),
           
               InputPasswordValidations(
@@ -100,10 +137,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: ctrlConfirmPassword,
                 validateText: ValidateText.confirmPassword,
                 passwordComparar: ctrlPassword,
+                imageIcon: 'assets/icons/password.svg',
               ),
           
               const SizedBox(
-                height: 25.0,
+                height: 35.0,
               ),
           
               ButtonPrimary(
@@ -113,9 +151,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 onPressed: save,
               ),
       
-              // const SizedBox(
-              // height: 25.0,
-              // ),
+              const SizedBox(
+                height: 25.0,
+              ),
             
               Row(children: <Widget>[
                 const Expanded(
@@ -134,14 +172,33 @@ class _RegisterPageState extends State<RegisterPage> {
                 )),
               ]),
             
-              // const SizedBox(
-              //   height: 15.0,
-              // ),
-            
-              BotonLink(
-                  textoLink: "¿Ya tienes cuenta?, click aquí",
-                  onPressed: () => Navigator.pop(context)
+              const SizedBox(
+                height: 25.0,
               ),
+            
+              RichText(
+                text: TextSpan(
+                  text: "¿Ya tienes cuenta en bidi? ",
+                  style: const TextStyle(
+                    fontSize: 15,
+                    color: CustomColors.colorGris_1,
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Inicia sesión aquí',
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: CustomColors.colorVerdePantano,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          context.pop(context);
+                        },
+                    ),
+                  ],
+                ),
+              )
             ]
           ),
         ),
@@ -157,41 +214,13 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
-  // Método para mostrar un pop-up con mensaje correcto
-  // void _mostrarPopupCorrecto(BuildContext context) {
-  //   showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
-  //         iconoMostrar: Icons.verified_user, 
-  //         mensajePopUp: "Te has registrado correctamente", 
-  //         onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage())),
-  //       );
-  //     },
-  //   );
-  // }
-
   void _mostrarPopupCorrecto(BuildContext context) {
     DialogUtils.showMyGeneralDialog(context: context, 
     iconoMostrar: Icons.verified_user,
     mensajePopUp: "Te has registrado correctamente",
-    onPressed: () => context.push("/loginPage"),
+    onPressed: () => context.pushReplacement("/loginPage"),
     );
   }
-
-  // // Método para mostrar un pop-up con mensaje de error
-  // void _mostrarPopupError(BuildContext context) {
-  //   showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return PopUps( // Uso de la clase "PopUps" para mostrar el pop-up
-  //         iconoMostrar: Icons.error_outline, 
-  //         mensajePopUp: "No se pudo registrar", 
-  //         onPressed: () => Navigator.of(context).pop(),
-  //       );
-  //     },
-  //   );
-  // }
 
   // Método para mostrar un pop-up con mensaje de error
   void _mostrarPopupError(BuildContext context) {

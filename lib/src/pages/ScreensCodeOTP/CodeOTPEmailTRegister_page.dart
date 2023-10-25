@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../widgets/widgets_page_general/CodeOtp_general.dart';
+import '../../widgets/widgets_page_general/CodeOtp_general.dart';
 
 class CodeOTPEmaiRegisterPage extends StatefulWidget {
   const CodeOTPEmaiRegisterPage({super.key});

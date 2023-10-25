@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../colors/colors.dart';
 import '../common/enumValidate.dart';
 import '../common/inputValidate.dart';
@@ -9,6 +10,7 @@ class InputTextValidations extends StatefulWidget {
   final TextInputType inputType; // tipo de teclado a mostrar
   final TextEditingController controller; // controlar cada input
   final ValidateText? validateText; // Tipo de validacion a utilizar
+  final String imageIcon;
 
   // Uso de cada parametro asignado
   const InputTextValidations({
@@ -16,7 +18,8 @@ class InputTextValidations extends StatefulWidget {
     required this.textoInput,
     required this.inputType,
     required this.controller,
-    this.validateText
+    this.validateText,
+    required this.imageIcon
   });
 
   @override
@@ -26,8 +29,6 @@ class InputTextValidations extends StatefulWidget {
 class _InputTextValidationsState extends State<InputTextValidations> {
   String hasError =
       "Base"; // Variable de estado para indicar si hay un error en el formulario
-  bool isValue = false;
-  String values = "";
   String? messageValidations; // Variable de estado para almacenar el mensaje de error de las validaciones
 
   @override
@@ -38,7 +39,7 @@ class _InputTextValidationsState extends State<InputTextValidations> {
         Container(
           
           // Espaciado entre el borde y el contenido
-          padding: const EdgeInsets.symmetric(vertical: 5.0),
+          //padding: const EdgeInsets.only(top: 10.0),
 
           //height: 35,
           //width: 1000.0,
@@ -52,32 +53,32 @@ class _InputTextValidationsState extends State<InputTextValidations> {
             // Contenido del TextFormField
             decoration: InputDecoration(
               hintText: widget.textoInput, // Place holder en el input
-              enabledBorder: OutlineInputBorder( // Manejo del borde no enfocado (borde estandar)
+              /* enabledBorder: OutlineInputBorder( // Manejo del borde no enfocado (borde estandar)
                 borderRadius: BorderRadius.circular(4.0),
                 borderSide: BorderSide(
                   color: _miColor(hasError),
                   width: _miBorde(hasError),
                 ),
-              ),
-              focusedBorder: OutlineInputBorder( /* Manejo del borde enfocado (borde cambia de color al 
+              ), */
+              /* focusedBorder: OutlineInputBorder( /* Manejo del borde enfocado (borde cambia de color al 
                                                 seleccionar el input) */
                 borderRadius: BorderRadius.circular(4.0),
                 borderSide: const BorderSide(
                   color: Colors.blue,
-                  width: 2.5,
+                  //width: 2.5,
                 ),
-              ),
+              ), */
 
-              errorBorder: OutlineInputBorder( /* Manejo del borde cuando aparece un error (Al aparecer los mensajes
+              /* errorBorder: OutlineInputBorder( /* Manejo del borde cuando aparece un error (Al aparecer los mensajes
                                               de validacion, el borde cambiara de color) */
                 borderRadius: BorderRadius.circular(4.0),
                 borderSide: const BorderSide(
                   color: Colors.red,
                   width: 2.5,
                 ),
-              ),
+              ), */
 
-              focusedErrorBorder: OutlineInputBorder( /* Manejo del borde cuando hay error y enfocado (Borde
+              /* focusedErrorBorder: OutlineInputBorder( /* Manejo del borde cuando hay error y enfocado (Borde
                                                     cambia de color al seleccionar el input a la vez que aparece
                                                     los mensajes de validacion) */
                 borderRadius: BorderRadius.circular(4.0),
@@ -85,9 +86,17 @@ class _InputTextValidationsState extends State<InputTextValidations> {
                   color: Colors.red,
                   width: 2.5,
                 ),
-              ),
+              ), */
 
               counterText: "", // Oculta el contador de caracteres de la propiedad "maxLength"
+
+              prefixIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 9,),
+                child: SvgPicture.asset( 
+                  widget.imageIcon,
+                  width: 5,
+                ),
+              ),
             ),
 
             controller: widget.controller, // maneja cada input a utilizar
@@ -190,6 +199,7 @@ class InputPasswordValidations extends StatefulWidget {
   final TextEditingController controller; // controlar cada input
   final ValidateText? validateText; // Tipo de validacion a utilizar
   final TextEditingController? passwordComparar; // input a comparar
+  final String imageIcon;
 
   const InputPasswordValidations({
     super.key, 
@@ -197,7 +207,8 @@ class InputPasswordValidations extends StatefulWidget {
     required this.inputType,
     required this.controller,
     this.validateText,
-    this.passwordComparar
+    this.passwordComparar,
+    required this.imageIcon,
   });
 
   @override
@@ -218,9 +229,6 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          
-          // Espaciado entre el borde y el contenido
-          padding: const EdgeInsets.symmetric(vertical: 5.0),
 
           //height: 35,
           //width: 1000.0,
@@ -234,7 +242,7 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
             // Maneja el contenido del "TextFormField"
             decoration: InputDecoration(
               hintText: widget.textoInput, // Place holder en el input
-              enabledBorder: OutlineInputBorder( // Manejo del borde no enfocado
+              /* enabledBorder: OutlineInputBorder( // Manejo del borde no enfocado
                 borderRadius: BorderRadius.circular(4.0),
                 borderSide: BorderSide(
                   //color: CustomColors.colorGris_2,
@@ -264,9 +272,17 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
                   color: Colors.red,
                   width: 2.5,
                 ),
-              ),
-              counterText: "", // Quita el contador de caracteres
+              ), */
+              counterText: "",
 
+              prefixIcon: Padding(
+                padding: const EdgeInsets.only(bottom: 9,),
+                child: SvgPicture.asset( 
+                  widget.imageIcon,
+                  width: 5,
+                ),
+              ),
+              
               // Manejar un icono dentro del input
               suffixIcon: IconButton(
                 // Agrega un icono para mostrar y otro para no mostrar contrasenia
