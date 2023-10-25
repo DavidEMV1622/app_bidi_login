@@ -27,7 +27,7 @@ class _LogeadoPage2State extends State<LogeadoPage2> {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: barNavigation(page: false),
+        child: BarNavigation(page: false),
       ),
     );
   }

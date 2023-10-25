@@ -8,73 +8,93 @@ class Poket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      //height: 154,
+      height: 154,
       child: Card(
-        shape: RoundedRectangleBorder(
+        elevation: 10.0,
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(15))),
         child: Column(
           children: [
-            Expanded(
-              child: Container(
-                //height: 66,
-                decoration: BoxDecoration(
-                    color: item.colorPocket,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15))),
-              ),
+            Container(
+              height: 66,
+              decoration: BoxDecoration(
+                  color: item.colorPocket,
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(15),
+                      topRight: Radius.circular(15))),
             ),
             Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Text(
                   item.namePocket,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Inter',
                     fontSize: 16,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Text(
                   item.pocketBalance,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 16,
                       color: Color.fromARGB(255, 147, 147, 147)),
                 )
               ],
             )
-
-            /* Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    item.namePocket,
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    item.pocketBalance,
-                    style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 16,
-                        color: Color.fromARGB(255, 147, 147, 147)),
-                  )
-                ],
-              ),
-            ) */
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class PocketAdd extends StatefulWidget {
+  const PocketAdd({super.key});
+
+  @override
+  State<PocketAdd> createState() => _PocketAddState();
+}
+
+class _PocketAddState extends State<PocketAdd> {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 154,
+      child: Card(
+        elevation: 10.0,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15))),
+        child: Container(
+          height: 66,
+          decoration: const BoxDecoration(
+              color: Color(0XFFEFEFEF),
+              borderRadius: BorderRadius.all(Radius.circular(15))),
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.add,
+                  size: 44,
+                ),
+                Text(
+                  'Nuevo \n Bolsillo',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            ),
+          ),
         ),
       ),
     );

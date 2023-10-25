@@ -1,65 +1,20 @@
 import 'package:app_credibanco_login/src/pages/Logeado.dart';
-import 'package:app_credibanco_login/src/pages/logeado2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/bi.dart';
-import 'package:iconify_flutter/icons/cib.dart';
 
-// class BottomNavigation extends StatefulWidget {
-//   const BottomNavigation({super.key});
+import '../pages/my_pocket.dart';
 
-//   @override
-//   State<BottomNavigation> createState() => _BottomNavigationState();
-// }
-
-// class _BottomNavigationState extends State<BottomNavigation> {
-//   int _selectedIndex = 0;
-
-//   void _onItemTapped(int index) {
-//     setState(() {
-//       _selectedIndex = index;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return BottomNavigationBar(
-//       items: <BottomNavigationBarItem>[
-//         BottomNavigationBarItem(
-//             icon: SvgPicture.asset(
-//               'assets/icons/icon_home.svg',
-//               width: 10,
-//               height: 10,
-//             ),
-//             label: 'Inicio '),
-//         BottomNavigationBarItem(
-//             icon: SvgPicture.asset(
-//               'assets/icons/icon_wallet.svg',
-//               width: 10,
-//               height: 10,
-//             ),
-//             label: 'Bolsillo'),
-//       ],
-//       currentIndex: _selectedIndex,
-//       selectedItemColor: Colors.amber,
-//       onTap: _onItemTapped,
-//     );
-//   }
-// }
-
-// bottomNavigationBar
-
-class barNavigation extends StatefulWidget {
+class BarNavigation extends StatefulWidget {
   final bool page;
 
-  const barNavigation({super.key, required this.page});
+  const BarNavigation({super.key, required this.page});
 
   @override
-  State<barNavigation> createState() => _barNavigationState();
+  State<BarNavigation> createState() => _BarNavigationState();
 }
 
-class _barNavigationState extends State<barNavigation> {
+class _BarNavigationState extends State<BarNavigation> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -72,10 +27,10 @@ class _barNavigationState extends State<barNavigation> {
             height: 80,
             width: 200,
             decoration: BoxDecoration(
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: const Color.fromARGB(255, 255, 255, 255),
                 border: Border.all(color: Colors.black54),
                 borderRadius: BorderRadius.circular(35),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Color.fromARGB(25, 0, 0, 0),
                     offset: Offset(0, 3),
@@ -128,13 +83,13 @@ class _barNavigationState extends State<barNavigation> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const LogeadoPage2()));
+                                builder: (context) => const PocketList()));
                       },
                       icon: Iconify(
                         Bi.wallet,
                         color: widget.page == true
-                            ? Color.fromARGB(255, 7, 7, 7)
-                            : Color(0xFF008D89),
+                            ? const Color.fromARGB(255, 7, 7, 7)
+                            : const Color(0xFF008D89),
                       ),
 
                       disabledColor: const Color.fromARGB(255, 0, 0, 0),
@@ -144,8 +99,8 @@ class _barNavigationState extends State<barNavigation> {
                       "Bolisllo",
                       style: TextStyle(
                         color: widget.page == true
-                            ? Color.fromARGB(255, 7, 7, 7)
-                            : Color(0xFF008D89),
+                            ? const Color.fromARGB(255, 7, 7, 7)
+                            : const Color(0xFF008D89),
                       ),
                     ),
                   ],
