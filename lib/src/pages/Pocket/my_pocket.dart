@@ -1,6 +1,7 @@
 import 'package:app_credibanco_login/models/pocket_model.dart';
 import 'package:app_credibanco_login/src/widgets/pocket.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../widgets/dropBar.dart';
 
@@ -43,7 +44,14 @@ class _PocketListState extends State<PocketList> {
           itemCount: listPocket.length + 1,
           itemBuilder: (BuildContext context, int index) {
             if (index < listPocket.length) {
-              return GestureDetector(child: Poket(item: listPocket[index]));
+              return GestureDetector(
+                child: Poket(item: listPocket[index]),
+                onTap: () {
+                  context.push("/PocketEdit");
+                },
+              );
+
+              //
             } else {
               return GestureDetector(child: const PocketAdd());
             }

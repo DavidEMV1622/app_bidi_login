@@ -17,8 +17,7 @@ class BtnPrimaery extends StatelessWidget {
       required this.colorBox,
       this.border,
       required this.widthButton,
-      this.onPressed
-    });
+      this.onPressed});
 
   //IMPLEMENTACION DE VARIABLES
   @override
@@ -26,7 +25,8 @@ class BtnPrimaery extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: colorBox, // Color del campo del propio input
-        border: border, // Define si va a tener un borde o no dependiendo si se le agrega como parametro
+        border:
+            border, // Define si va a tener un borde o no dependiendo si se le agrega como parametro
         borderRadius: BorderRadius.circular(10), // Borde del campo
       ),
       child: MaterialButton(
@@ -42,18 +42,16 @@ class BtnPrimaery extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            if (iconButton != null)
-              iconButton!,
-            
+            if (iconButton != null) iconButton!,
             if (iconButton != null)
               const SizedBox(
                 width: 20,
               ),
-
             Text(
               textButton,
               style: const TextStyle(
                 fontSize: 20,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -64,8 +62,6 @@ class BtnPrimaery extends StatelessWidget {
   }
 }
 
-
-
 class ButtonPrimary extends StatefulWidget {
   final IconData? iconButton;
   final String textButton;
@@ -73,13 +69,14 @@ class ButtonPrimary extends StatefulWidget {
   final BorderSide? border;
   final double widthButton;
   final void Function()? onPressed;
-  
+
   const ButtonPrimary({
     super.key,
     required this.textButton,
-    this.iconButton, this.onPressed, 
-    required this.colorBox, 
-    this.border, 
+    this.iconButton,
+    this.onPressed,
+    required this.colorBox,
+    this.border,
     required this.widthButton,
   });
 
@@ -92,27 +89,34 @@ class _ButtonPrimaryState extends State<ButtonPrimary> {
   Widget build(BuildContext context) {
     return SizedBox(
       //height: MediaQuery.of(context).size.width,
-      width: MediaQuery.of(context).size.width, // Toma todo el largo de la pantalla
+      width: MediaQuery.of(context)
+          .size
+          .width, // Toma todo el largo de la pantalla
 
       child: ElevatedButton(
         onPressed: widget.onPressed,
-        style: ButtonStyle( 
+        style: ButtonStyle(
+          padding: const MaterialStatePropertyAll(EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 20,
+          )),
 
-          padding: const MaterialStatePropertyAll(
-            EdgeInsets.symmetric(horizontal: 20, vertical: 20,)
-          ),
-
-          foregroundColor: const MaterialStatePropertyAll(CustomColors.colorBlanco), // Define el color del texto
-          textStyle: const MaterialStatePropertyAll(TextStyle(fontSize: 20)), // Manejo de tamaño, fuente, entre otras propiedades del texto
+          foregroundColor: const MaterialStatePropertyAll(
+              CustomColors.colorBlanco), // Define el color del texto
+          textStyle: const MaterialStatePropertyAll(TextStyle(
+              fontSize:
+                  20)), // Manejo de tamaño, fuente, entre otras propiedades del texto
           backgroundColor: MaterialStatePropertyAll(widget.colorBox),
-          shape: MaterialStatePropertyAll( // Maneja la forma y el borde del boton
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(27.5), side: widget.border ?? const BorderSide(color: Colors.transparent)),
-
+          shape: MaterialStatePropertyAll(
+            // Maneja la forma y el borde del boton
+            RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(27.5),
+                side: widget.border ??
+                    const BorderSide(color: Colors.transparent)),
           ),
-          elevation: const MaterialStatePropertyAll(0.0), // Maneja la sombra del boton
-          
+          elevation:
+              const MaterialStatePropertyAll(0.0), // Maneja la sombra del boton
         ),
-
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -123,12 +127,10 @@ class _ButtonPrimaryState extends State<ButtonPrimary> {
                 color: CustomColors.colorBlanco,
                 size: 30.0,
               ),
-            
             if (widget.iconButton != null)
               const SizedBox(
                 width: 20,
               ),
-
             Text(
               widget.textButton,
               style: const TextStyle(
@@ -143,8 +145,6 @@ class _ButtonPrimaryState extends State<ButtonPrimary> {
   }
 }
 
-
-
 // ---- Clase para un boton estilo link ----
 class BotonLink extends StatelessWidget {
   //CREACION DE PARAMETROS / VARIABLES
@@ -158,7 +158,8 @@ class BotonLink extends StatelessWidget {
     return TextButton(
       onPressed: onPressed, // Evento al presionar el boton
       style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all( Colors.transparent) // Define el fondo del boton transparente (sin color)
+          backgroundColor: MaterialStateProperty.all(Colors
+              .transparent) // Define el fondo del boton transparente (sin color)
           ),
 
       // ---- Manejo del texto ----
