@@ -33,11 +33,13 @@ BM-1611=> validaciones en formularios.
 BM-1615=> Creacion de pop-ups.
 BM 1612 => drop bar.
 BM-1616=> Optimizar los botones.
+BM 1617 => widget Bolsillo y pantalla de Bolsillos.
+BM 1618 => Redisenio de vistas de pantallas 
 --------------------------------------POR--HACER--------------------------------------------
-BM 1606 => Pagina de aterrisaje
+
 BM 1608 => Menu lateral
 BM 1609 => Opcion de envio de otp
-BM 1618 => Redisenio de vistas de pantallas
+
 
 
 
@@ -47,7 +49,8 @@ BM 1618 => Redisenio de vistas de pantallas
 
 ------------------------------En--- P--R--O..D--U--C--C--I--O--N-----------------------------
 
-BM 1617 => widget Bolsillo. 
+BM 1606 => Pagina de aterrisaje
+BM 1619 => Pantalla de editar y crear bolsillos.
 
 
 
