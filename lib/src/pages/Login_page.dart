@@ -147,11 +147,11 @@ class _LoginPageState extends State<LoginPage> {
                         ventana Logeado */
                         if (isNotices) {
                           await _secureStorageMethods.setIsNotices(false);
-                          context.push("/logeadoPage");
+                          context.go("/logeadoPage");
                           //Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
                         } else {
                           _secureStorageMethods.setEmailStorage(ctrlEmail.text);
-                          context.push("/logeadoPage"); 
+                          context.go("/logeadoPage"); 
                           //context.push("/avisoPage"); 
                           //Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
                       
