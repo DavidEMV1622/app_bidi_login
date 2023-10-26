@@ -1,3 +1,6 @@
+import 'dart:js';
+
+import 'package:app_credibanco_login/models/pocket_model.dart';
 import 'package:app_credibanco_login/src/pages/Pocket/pocket_create.dart';
 import 'package:app_credibanco_login/src/pages/Pocket/pocket_edit.dart';
 import 'package:app_credibanco_login/src/pages/logeado2.dart';
@@ -145,7 +148,11 @@ final routes = GoRouter(
     ),
     GoRoute(
       path: '/PocketEdit',
-      builder: (context, state) => const PocketEdit(),
+      //builder: (context, state) => const PocketEdit(pocket: null,),
+      builder: (context, state) {
+        final pocket = state.extra as Pocket;
+        return PocketEdit(pocket: pocket);
+      },
     ),
     GoRoute(
       path: '/PocketCreate',

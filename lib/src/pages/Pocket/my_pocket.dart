@@ -3,6 +3,7 @@ import 'package:app_credibanco_login/src/widgets/pocket.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../config/arrow_router.dart';
 import '../../widgets/dropBar.dart';
 
 class PocketList extends StatefulWidget {
@@ -18,13 +19,14 @@ class _PocketListState extends State<PocketList> {
     Pocket("Beca", "400.000", Color.fromARGB(255, 244, 228, 9)),
     Pocket("Arriendo", "800.000", Color.fromARGB(255, 45, 178, 15)),
     Pocket("pc", "3.000.000", Color.fromARGB(255, 95, 234, 255)),
-    Pocket("auto", "3.000.000", Color.fromARGB(255, 95, 234, 255)),
+    Pocket("auto", "3.000.000", Color.fromARGB(255, 105, 47, 214)),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: ArrowRouter(activeArrow: "1"),
         backgroundColor: Colors.white,
         title: const Text(
           "Mis bolsillos",
@@ -44,10 +46,11 @@ class _PocketListState extends State<PocketList> {
           itemCount: listPocket.length + 1,
           itemBuilder: (BuildContext context, int index) {
             if (index < listPocket.length) {
+              final pocket = listPocket[index];
               return GestureDetector(
                 child: Poket(item: listPocket[index]),
                 onTap: () {
-                  context.push("/PocketEdit");
+                  context.push("/PocketEdit", extra: pocket);
                 },
               );
 

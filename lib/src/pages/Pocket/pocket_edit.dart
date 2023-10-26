@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/bi.dart';
 
+import '../../../config/arrow_router.dart';
+import '../../../models/pocket_model.dart';
+
 class PocketEdit extends StatefulWidget {
-  const PocketEdit({super.key});
+  final Pocket pocket;
+  const PocketEdit({super.key, required this.pocket});
 
   @override
   State<PocketEdit> createState() => _PocketEditState();
@@ -16,6 +20,7 @@ class _PocketEditState extends State<PocketEdit> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: ArrowRouter(activeArrow: "1"),
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text("Editar bolsillo", style: TextStyle(color: Colors.black)),
@@ -51,7 +56,7 @@ class _PocketEditState extends State<PocketEdit> {
                     Container(
                       height: 66,
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 95, 234, 255),
+                          color: widget.pocket.colorPocket,
                           borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(15),
                               topRight: Radius.circular(15))),
@@ -62,7 +67,7 @@ class _PocketEditState extends State<PocketEdit> {
                           height: 5,
                         ),
                         Text(
-                          "Casa",
+                          widget.pocket.namePocket,
                           style: const TextStyle(
                             fontFamily: 'Inter',
                             fontSize: 16,
@@ -72,7 +77,7 @@ class _PocketEditState extends State<PocketEdit> {
                           height: 5,
                         ),
                         Text(
-                          "10000",
+                          widget.pocket.pocketBalance,
                           style: const TextStyle(
                               fontFamily: 'Inter',
                               fontSize: 16,
