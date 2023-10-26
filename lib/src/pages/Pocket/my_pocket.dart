@@ -26,6 +26,7 @@ class _PocketListState extends State<PocketList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         leading: ArrowRouter(activeArrow: "1"),
         backgroundColor: Colors.white,
         title: const Text(
