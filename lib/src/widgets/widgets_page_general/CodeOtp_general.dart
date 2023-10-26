@@ -205,7 +205,7 @@ class _CodeOTPPageGeneralState extends State<CodeOTPPageGeneral> {
               ),
 
               // ---- Texto para un link si se le olvido la contrasenia ----
-              const BotonLink(textoLink: "Click aquí, para reenviar codigo"),
+              const BotonLink(textoLink: "Click aquí, para reenviar codigo", colorText: CustomColors.colorVerdePantano),
 
               // ---- Agregar un espacio ----
               const SizedBox(

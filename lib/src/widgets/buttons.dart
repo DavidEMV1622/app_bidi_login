@@ -149,8 +149,9 @@ class _ButtonPrimaryState extends State<ButtonPrimary> {
 class BotonLink extends StatelessWidget {
   //CREACION DE PARAMETROS / VARIABLES
   final String textoLink;
+  final Color colorText;
   final void Function()? onPressed;
-  const BotonLink({super.key, required this.textoLink, this.onPressed});
+  const BotonLink({super.key, required this.textoLink, this.onPressed, required this.colorText});
 
   //IMPLEMENTACION DE VARIABLES
   @override
@@ -165,9 +166,10 @@ class BotonLink extends StatelessWidget {
       // ---- Manejo del texto ----
       child: Text(
         textoLink,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 15,
-          color: CustomColors.colorVerdePantano,
+          //color: CustomColors.colorVerdePantano,
+          color: colorText,
           fontWeight: FontWeight.bold,
         ),
       ),

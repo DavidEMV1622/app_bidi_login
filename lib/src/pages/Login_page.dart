@@ -118,6 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                   // ---- Texto para un link si se le olvido la contrasenia ----
                   BotonLink(
                     textoLink: "¿Olvidaste la contraseña?",
+                    colorText: CustomColors.colorVerdePantano,
                     onPressed: () => context.push("/mediumSendCodeChangePasswordPage"),
                   ),
               
