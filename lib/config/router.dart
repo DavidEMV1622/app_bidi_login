@@ -21,7 +21,7 @@ import '../src/pages/avisos_page.dart';
 import '../src/pages/my_pocket.dart';
 
 final routes = GoRouter(
-  initialLocation: '/userLogin', /* Al iniciar la aplicacion, se 
+  initialLocation: '/loginPage', /* Al iniciar la aplicacion, se 
                                 ejecuta primero esta ruta */
   /* "routes" manejo de cada subruta */
 

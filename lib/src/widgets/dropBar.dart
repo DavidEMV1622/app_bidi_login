@@ -1,5 +1,6 @@
 import 'package:app_credibanco_login/src/pages/Logeado.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/bi.dart';
 
@@ -55,10 +56,7 @@ class _BarNavigationState extends State<BarNavigation> {
                       ),
                       highlightColor: Colors.transparent,
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const LogeadoPage()));
+                        context.go("/logeadoPage");
                       },
                     ),
                     Text(
@@ -80,10 +78,11 @@ class _BarNavigationState extends State<BarNavigation> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        Navigator.push(
+                        /* Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const PocketList()));
+                                builder: (context) => const PocketList())); */
+                        context.go("/ListPocket");
                       },
                       icon: Iconify(
                         Bi.wallet,

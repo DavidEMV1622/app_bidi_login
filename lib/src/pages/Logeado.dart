@@ -24,7 +24,6 @@ class _LogeadoPageState extends State<LogeadoPage> {
 
     return Scaffold(
       appBar: AppBar(
-        
         actions: [IconButton(onPressed: () {
           
         }, icon: const Icon(Icons.menu, size: 30, color: CustomColors.colorNegro))],
@@ -165,7 +164,7 @@ class _LogeadoPageState extends State<LogeadoPage> {
           )
         ],
       ),
-      bottomNavigationBar: const barNavigation(page: true),
+      bottomNavigationBar: const BarNavigation(page: true),
     );
   }
 }
