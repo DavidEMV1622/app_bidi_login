@@ -50,6 +50,7 @@ BM 1609 => Opcion de envio de otp
 ------------------------------En--- P--R--O..D--U--C--C--I--O--N-----------------------------
 
 BM 1606 => Pagina de aterrisaje
+BM 1620 => Pagina de Movimientos
 BM 1619 => Pantalla de editar y crear bolsillos.
 
 
