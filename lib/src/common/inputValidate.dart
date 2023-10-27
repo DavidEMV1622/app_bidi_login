@@ -3,6 +3,7 @@
 // Funcion para validar la estructura del rfc
 import 'package:flutter/services.dart';
 import 'enumValidate.dart';
+import 'package:http/http.dart' as http;
 
 // Funcion para validar la estructura del nombre
 validateName(String name) {
@@ -56,6 +57,23 @@ class ValidateFormulations {
       default: // si no se da ninguno de los casos, no se manda una longitud
         return null;
     }
+  }
+
+  static getTokenLogin(String user, String password){
+
+
+    Future<void> postData() async {
+    final response = await http.post(
+      Uri.parse(apiUrl),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(<String, String>{
+        'title': 'Título del post',
+        'body': 'Cuerpo del post',
+      }),
+    );
+
   }
 
   // Funcion para manejar el tipo de caracter del input
