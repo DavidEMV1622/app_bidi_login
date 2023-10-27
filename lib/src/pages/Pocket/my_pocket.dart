@@ -1,4 +1,5 @@
 import 'package:app_credibanco_login/models/pocket_model.dart';
+import 'package:app_credibanco_login/src/pages/Pocket/pocket_create.dart';
 import 'package:app_credibanco_login/src/widgets/pocket.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -27,7 +28,7 @@ class _PocketListState extends State<PocketList> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        leading: ArrowRouter(activeArrow: "1"),
+          
         backgroundColor: Colors.white,
         title: const Text(
           "Mis bolsillos",
@@ -57,7 +58,12 @@ class _PocketListState extends State<PocketList> {
 
               //
             } else {
-              return GestureDetector(child: const PocketAdd());
+              return GestureDetector(
+                child: const PocketAdd(),
+                onTap: () {
+                  context.push("/PocketCreate");
+                },
+              );
             }
           },
         ),
