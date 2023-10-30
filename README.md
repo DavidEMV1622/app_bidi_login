@@ -40,6 +40,7 @@ BM 1618 => Redisenio de vistas de pantallas
 BM 1608 => Menu lateral
 BM 1609 => Opcion de envio de otp
 
+BM 1621 => Consumo del Rest
 
 
 
