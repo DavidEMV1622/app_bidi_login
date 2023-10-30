@@ -1,10 +1,7 @@
-import 'package:app_credibanco_login/src/pages/Logeado.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/bi.dart';
-
-import '../pages/Pocket/my_pocket.dart';
 
 class BarNavigation extends StatefulWidget {
   final bool page;

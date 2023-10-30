@@ -23,6 +23,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
   TextEditingController ctrlEmail = TextEditingController();
   TextEditingController ctrlPassword = TextEditingController();
   
+  
   final GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
                                                     controlar el estado o validacion de un formulario  */
 
