@@ -3,12 +3,12 @@ import 'package:app_credibanco_login/src/widgets/dropBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:iconify_flutter/icons/bi.dart';
 
+import '../../models/movimientos_model.dart';
 import '../colors/colors.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
+import '../widgets/movimientos_card.dart';
 
 class LogeadoPage extends StatefulWidget {
   const LogeadoPage({super.key});
@@ -22,6 +22,13 @@ class _LogeadoPageState extends State<LogeadoPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     String simboloDolar = "\$";
+
+    List<Movimiento> listMovimientos = [
+      Movimiento(1, "David Méndez", 500000, "13/12/2023", true),
+      Movimiento(2, "Jesus Borda", 1000000, "10/10/2023", false),
+      Movimiento(3, "Juan Carlos", 30000, "11/11/2023", false),
+      Movimiento(4, "Laura Alarccon", 50000, "09/07/2023", true),
+    ];
 
     return Scaffold(
       appBar: AppBar(
@@ -146,22 +153,37 @@ class _LogeadoPageState extends State<LogeadoPage> {
             ),
           ),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: textoEtiquetaTwo("Movimientos", 16),
-              ),
+          Padding(
+            padding: const EdgeInsets.only(left: 23, right: 23, top: 43, bottom: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: textoEtiquetaTwo("Movimientos", 16),
+                ),
+          
+                BotonLink(
+                  textoLink: "Ver Todos",
+                  colorText: CustomColors.colorGris_1,
+                  onPressed: () {
+                    context.push("/Movimientos");
+                  },
+                ),
+              ],
+            ),
+          ),
 
-              BotonLink(
-                textoLink: "Ver Todos",
-                colorText: CustomColors.colorGris_1,
-                onPressed: () {
-                  context.push("/Movimientos");
-                },
-              ),
-            ],
+          Container(
+            height: size.height * 0.3,
+            width: size.width,
+            margin: const EdgeInsets.symmetric(horizontal: 23),
+            child: ListView.builder(
+              itemCount: listMovimientos.length,
+              itemBuilder: (context, index) {
+                return MovimientosCard(movimientosList: listMovimientos[index],);
+              }, 
+            ),
           )
         ],
       ),

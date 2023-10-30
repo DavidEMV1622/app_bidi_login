@@ -18,10 +18,10 @@ class _MovimientoPageState extends State<MovimientoPage> {
   Widget build(BuildContext context) {
 
     List<Movimiento> listMovimientos = [
-      Movimiento(1, "David Méndez", 500000, "13/12/2023"),
-      Movimiento(2, "Jesus Borda", 1000000, "10/10/2023"),
-      Movimiento(3, "Juan Carlos", 30000, "11/11/2023"),
-      Movimiento(4, "Laura Alarccon", 50000, "09/07/2023"),
+      Movimiento(1, "David Méndez", 500000, "13/12/2023", true),
+      Movimiento(2, "Jesus Borda", 1000000, "10/10/2023", false),
+      Movimiento(3, "Juan Carlos", 30000, "11/11/2023", false),
+      Movimiento(4, "Laura Alarccon", 50000, "09/07/2023", true),
     ];
 
     return Scaffold(
@@ -32,10 +32,15 @@ class _MovimientoPageState extends State<MovimientoPage> {
         leading: const ArrowRouter(activeArrow: "1",),
       ),
 
-      body: ListView(children: [
-        MovimientosCard(),
-        MovimientosCard(),
-      ],)
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 34),
+        child: ListView.builder(
+          itemCount: listMovimientos.length,
+          itemBuilder: (context, index) {
+            return MovimientosCard(movimientosList: listMovimientos[index],);
+          },
+        ),
+      )
     );
   }
 }
