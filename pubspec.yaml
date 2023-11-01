@@ -12,7 +12,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  
+
   flutter_colorpicker: ^1.0.3
+  http: ^1.1.0
+  
   flutter_secure_storage: ^8.0.0
   flutter_svg: null
   go_router: ^10.1.2
@@ -23,6 +27,8 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+
+  http: ^1.1.0
 
 flutter:
 

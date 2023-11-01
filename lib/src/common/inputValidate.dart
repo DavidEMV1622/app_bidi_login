@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 // ---------- Menipular cada estructura de validación ----------
 // Funcion para validar la estructura del rfc
+
 import 'package:flutter/services.dart';
 import 'enumValidate.dart';
 

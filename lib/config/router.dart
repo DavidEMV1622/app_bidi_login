@@ -23,6 +23,7 @@ import '../src/pages/ScreensSendCode/SendCodePhoneNumberChangePassword_page.dart
 import '../src/pages/ScreensSendCode/SendCodePhoneNumberRegister_page.dart';
 import '../src/pages/VisualizarUsuario_page.dart';
 import '../src/pages/avisos_page.dart';
+import '../src/pages/movimientos_page.dart';
 import '../src/pages/Pocket/my_pocket.dart';
 
 final routes = GoRouter(
@@ -145,6 +146,11 @@ final routes = GoRouter(
     GoRoute(
       path: '/ListPocket',
       builder: (context, state) => const PocketList(),
+    ),
+
+    GoRoute(
+      path: '/Movimientos',
+      builder: (context, state) => const MovimientoPage(),
     ),
     /* GoRoute(
       path: '/ListPocket', //=> const PocketList

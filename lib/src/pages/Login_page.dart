@@ -145,35 +145,36 @@ class _LoginPageState extends State<LoginPage> {
 
                             /* Si isNotices es true, se pasa a las ventanas de avisos de lo contrario pasa a la 
                         ventana Logeado */
-                            if (isNotices) {
-                              await _secureStorageMethods.setIsNotices(false);
-                              context.push("/logeadoPage");
-                              //Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
-                            } else {
-                              _secureStorageMethods
-                                  .setEmailStorage(ctrlEmail.text);
-                              context.push("/logeadoPage");
-                              //context.push("/avisoPage");
-                              //Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
-                            }
-                          }
-                        }),
-
-                    const SizedBox(
-                      height: 15.0,
-                    ),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        CheckBox(
-                          emailController: ctrlEmail,
-                          passwordController: ctrlPassword,
-                        ),
-                        const Text("Recordar datos"),
-                      ],
-                    ),
+                        if (isNotices) {
+                          await _secureStorageMethods.setIsNotices(false);
+                          context.go("/logeadoPage");
+                          //Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
+                        } else {
+                          _secureStorageMethods.setEmailStorage(ctrlEmail.text);
+                          context.go("/logeadoPage"); 
+                          //context.push("/avisoPage"); 
+                          //Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
+                      
+                        }
+                      }
+                    }
+                  ),
+                    
+                  const SizedBox(
+                    height: 15.0,
+                  ),
+                    
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CheckBox(
+                        emailController: ctrlEmail,
+                        passwordController: ctrlPassword,
+                      ),
+                      const Text("Recordar datos"),
+                    ],
+                  ),
 
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.12,

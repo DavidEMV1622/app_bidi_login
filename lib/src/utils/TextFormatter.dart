@@ -158,3 +158,17 @@ Widget textoCuerpoTwo(String texto, double fontSizeText) {
     ),
   );
 }
+
+// Widget del texto Cuerpo
+Widget textColorSize(String texto, double fontSizeText, Color colorText) {
+  return SizedBox(
+    child: Text(
+      texto,
+      style: TextStyle(
+        color: colorText,
+        fontSize: fontSizeText,
+      ),
+      textAlign: TextAlign.start,
+    ),
+  );
+}
