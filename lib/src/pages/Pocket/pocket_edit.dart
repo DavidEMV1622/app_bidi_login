@@ -1,5 +1,4 @@
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
-import 'package:app_credibanco_login/src/widgets/pocket.dart';
 import 'package:flutter/material.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/bi.dart';
@@ -77,7 +76,7 @@ class _PocketEditState extends State<PocketEdit> {
                           height: 5,
                         ),
                         Text(
-                          widget.pocket.pocketBalance,
+                          widget.pocket.pocketBalance.toString(),
                           style: const TextStyle(
                               fontFamily: 'Inter',
                               fontSize: 16,

@@ -39,7 +39,7 @@ class Poket extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  item.pocketBalance,
+                  item.pocketBalance.toString(),
                   style: const TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 16,

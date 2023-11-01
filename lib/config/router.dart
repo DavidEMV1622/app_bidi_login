@@ -146,6 +146,13 @@ final routes = GoRouter(
       path: '/ListPocket',
       builder: (context, state) => const PocketList(),
     ),
+    /* GoRoute(
+      path: '/ListPocket', //=> const PocketList
+      builder: (context, state) {
+        final pocket = state.extra as Pocket;
+        return }) ;*/
+      
+    
     GoRoute(
       path: '/PocketEdit',
       //builder: (context, state) => const PocketEdit(pocket: null,),

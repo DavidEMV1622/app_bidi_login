@@ -1,9 +1,14 @@
+import 'package:app_credibanco_login/models/pocket_model.dart';
+import 'package:app_credibanco_login/src/pages/Pocket/my_pocket.dart';
 import 'package:flutter/material.dart';
-
+import 'package:app_credibanco_login/src/widgets/buttons.dart';
+import 'package:go_router/go_router.dart';
 import '../../../config/arrow_router.dart';
 import '../../common/enumValidate.dart';
 import '../../widgets/input.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+
+import 'list_pocket.dart';
 
 class PocketCreate extends StatefulWidget {
   const PocketCreate({super.key});
@@ -16,6 +21,7 @@ class _PocketCreateState extends State<PocketCreate> {
   Color selectedColor = Color(0xFFC2C2C2);
   TextEditingController ctrlPocket = TextEditingController();
   TextEditingController ctrlName = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,24 +65,27 @@ class _PocketCreateState extends State<PocketCreate> {
                                     return AlertDialog(
                                       title: const Text('Selecciona un color'),
                                       content: SingleChildScrollView(
-                                        child: ColorPicker(
-                                          pickerColor: selectedColor,
-                                          onColorChanged: (Color color) {
-                                            setState(() {
-                                              selectedColor = color;
-                                            });
-                                          },
-                                          enableAlpha: false,
-                                          pickerAreaHeightPercent: 0.8,
-                                          displayThumbColor: true,
-                                          pickerAreaBorderRadius:
-                                              const BorderRadius.only(
-                                            topLeft: const Radius.circular(2.0),
-                                            topRight:
-                                                const Radius.circular(2.0),
-                                          ),
-                                        ),
-                                      ),
+                                          child: BlockPicker(
+                                              pickerColor: selectedColor,
+                                              availableColors: [
+                                                Colors.green,
+                                                Colors.orange,
+                                                Colors.blue,
+                                                Colors.yellow,
+                                                Colors.cyanAccent.shade400,
+                                                Colors.purple,
+                                                Colors.pink,
+                                                Colors.red,
+                                                Colors.deepOrange,
+                                                Colors.teal,
+                                                Colors.indigoAccent,
+                                                Colors.amber,
+                                              ],
+                                              onColorChanged: (Color color) {
+                                                setState(() {
+                                                  selectedColor = color;
+                                                });
+                                              })),
                                       actions: <Widget>[
                                         TextButton(
                                           child: const Text('Aceptar'),
@@ -135,6 +144,32 @@ class _PocketCreateState extends State<PocketCreate> {
           ),
         ],
       ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(21),
+        child: BtnPrimaery(
+          textButton: "Guardar.",
+          colorBox: Color.fromRGBO(255, 202, 44, 1),
+          widthButton: 2,
+          onPressed: () {
+            addNewPocket();
+           
+          },
+        ),
+      ),
     );
+  }
+
+  void addNewPocket() {
+    String name = ctrlName.text;
+    double pocketBalance = double.parse(ctrlPocket.text);
+
+    Pocket newPocket = Pocket(name, pocketBalance, selectedColor);
+    listPocket.add(newPocket);
+
+    ctrlName.clear();
+    ctrlPocket.clear();
+    context.pushReplacement('/ListPocket', extra: context); //context,
+
+    
   }
 }

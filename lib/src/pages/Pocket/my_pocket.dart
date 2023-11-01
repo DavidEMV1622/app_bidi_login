@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../config/arrow_router.dart';
 import '../../widgets/dropBar.dart';
+import 'list_pocket.dart';
 
 class PocketList extends StatefulWidget {
   const PocketList({super.key});
@@ -14,21 +15,13 @@ class PocketList extends StatefulWidget {
 }
 
 class _PocketListState extends State<PocketList> {
-  List<Pocket> listPocket = [
-    Pocket("Carro", "600.000", const Color.fromARGB(255, 147, 147, 147)),
-    Pocket("Casa", "200.000", Color.fromARGB(255, 229, 10, 10)),
-    Pocket("Beca", "400.000", Color.fromARGB(255, 244, 228, 9)),
-    Pocket("Arriendo", "800.000", Color.fromARGB(255, 45, 178, 15)),
-    Pocket("pc", "3.000.000", Color.fromARGB(255, 95, 234, 255)),
-    Pocket("auto", "3.000.000", Color.fromARGB(255, 105, 47, 214)),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-          
         backgroundColor: Colors.white,
         title: const Text(
           "Mis bolsillos",
