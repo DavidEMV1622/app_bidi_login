@@ -1,5 +1,4 @@
 import 'package:app_credibanco_login/models/pocket_model.dart';
-import 'package:app_credibanco_login/src/pages/Pocket/my_pocket.dart';
 import 'package:flutter/material.dart';
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:go_router/go_router.dart';
@@ -152,7 +151,6 @@ class _PocketCreateState extends State<PocketCreate> {
           widthButton: 2,
           onPressed: () {
             addNewPocket();
-           
           },
         ),
       ),
@@ -169,7 +167,5 @@ class _PocketCreateState extends State<PocketCreate> {
     ctrlName.clear();
     ctrlPocket.clear();
     context.pushReplacement('/ListPocket', extra: context); //context,
-
-    
   }
 }
