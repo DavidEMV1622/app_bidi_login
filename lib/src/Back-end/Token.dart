@@ -3,7 +3,7 @@ import 'dart:convert';
  
  getTokenLogin(String user, String password){
     
-    final String apiUrl = 'http://ec2-3-101-148-204.us-west-1.compute.amazonaws.com:8080/user/auth';
+    const String apiUrl = "http://localhost:8080/user/auth";
 
     Future<void> postData() async {
     final response = await http.post(
