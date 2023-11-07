@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
  
- getTokenLogin(String user, String password){
+getTokenLogin(String user, String password){
     
     final String apiUrl = 'http://ec2-3-101-148-204.us-west-1.compute.amazonaws.com:8080/user/auth';
 
@@ -27,4 +27,4 @@ import 'dart:convert';
     }
 
   }
- }
+}
