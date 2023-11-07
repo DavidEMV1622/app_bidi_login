@@ -1,20 +1,31 @@
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/bi.dart';
-
+import 'list_pocket.dart';
 import '../../../config/arrow_router.dart';
 import '../../../models/pocket_model.dart';
 
 class PocketEdit extends StatefulWidget {
   final Pocket pocket;
-  const PocketEdit({super.key, required this.pocket});
+  // final int? index;
+  const PocketEdit({
+    super.key,
+    required this.pocket,
+    /*required this.index*/
+  });
 
   @override
   State<PocketEdit> createState() => _PocketEditState();
 }
 
 class _PocketEditState extends State<PocketEdit> {
+  //late final GoRouterState state;
+  /*   PocketEdit(this.state)
+  final parameters = state.path;
+ */
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,9 +37,14 @@ class _PocketEditState extends State<PocketEdit> {
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Iconify(
-              Bi.trash_fill,
-              color: Color.fromARGB(255, 7, 7, 7),
+            child: IconButton(
+              icon: Iconify(
+                Bi.trash_fill,
+                color: Color.fromARGB(255, 7, 7, 7),
+              ),
+              onPressed: () {
+                // eliminarPocket(index);
+              },
             ),
           ),
         ],
@@ -120,4 +136,10 @@ class _PocketEditState extends State<PocketEdit> {
       ),
     );
   }
+
+  /* void eliminarPocket(int index) {
+    setState(() {
+      listPocket.removeAt(widget.pocket);
+    });
+  } */
 }

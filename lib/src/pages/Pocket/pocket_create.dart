@@ -66,7 +66,7 @@ class _PocketCreateState extends State<PocketCreate> {
                                           child: BlockPicker(
                                               pickerColor: selectedColor,
                                               availableColors: [
-                                                Colors.green,
+                                                const Color.fromRGBO(76, 175, 80, 1),
                                                 Colors.orange,
                                                 Colors.blue,
                                                 Colors.yellow,
@@ -162,7 +162,7 @@ class _PocketCreateState extends State<PocketCreate> {
 
     Pocket newPocket = Pocket(name, pocketBalance, selectedColor);
     listPocket.add(newPocket);
-
+    
     ctrlName.clear();
     ctrlPocket.clear();
     context.pushReplacement('/ListPocket', extra: context); //context,

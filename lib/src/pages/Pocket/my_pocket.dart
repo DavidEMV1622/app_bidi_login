@@ -15,8 +15,6 @@ class PocketList extends StatefulWidget {
 }
 
 class _PocketListState extends State<PocketList> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,11 +40,19 @@ class _PocketListState extends State<PocketList> {
           itemBuilder: (BuildContext context, int index) {
             if (index < listPocket.length) {
               final pocket = listPocket[index];
+              void navigateToDestination(BuildContext context) {
+                GoRouter.of(context).go('/PocketEdit', extra: pocket);
+              }
+
               return GestureDetector(
                 child: Poket(item: listPocket[index]),
                 onTap: () {
-                  context.push("/PocketEdit", extra: pocket);
+                  context.push(
+                    "/PocketEdit",
+                    extra: pocket,
+                  );
                 },
+                // onTap: () => navigateToDestination(context),
               );
 
               //

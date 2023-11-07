@@ -8,5 +8,5 @@ List<Pocket> listPocket = [
   Pocket("Arriendo", 800000, Color.fromARGB(255, 45, 178, 15)),
   Pocket("pc", 3000000, Color.fromARGB(255, 95, 234, 255)),
   Pocket("auto", 3000000, Color.fromARGB(255, 105, 47, 214)),
-  Pocket("auto", 3000000, Color.fromARGB(255, 105, 47, 214)),
+    Pocket("auto", 3000000, Color.fromARGB(255, 105, 47, 214)),
 ];

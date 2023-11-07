@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:app_credibanco_login/models/pocket_model.dart';
 import 'package:app_credibanco_login/src/pages/Pocket/pocket_create.dart';
 import 'package:app_credibanco_login/src/pages/Pocket/pocket_edit.dart';
@@ -27,7 +25,7 @@ import '../src/pages/movimientos_page.dart';
 import '../src/pages/Pocket/my_pocket.dart';
 
 final routes = GoRouter(
-  initialLocation: '/loginPage',
+  initialLocation: '/ListPocket',
   /* Al iniciar la aplicacion, se 
                                 ejecuta primero esta ruta */
   /* "routes" manejo de cada subruta */
@@ -143,25 +141,22 @@ final routes = GoRouter(
       path: '/sendCodePhoneNumberRegister',
       builder: (context, state) => const SendCodePhoneNumberRegisterPage(),
     ),
+
     GoRoute(
       path: '/ListPocket',
       builder: (context, state) => const PocketList(),
     ),
 
-    GoRoute(
-      path: '/Movimientos',
-      builder: (context, state) => const MovimientoPage(),
-    ),
     /* GoRoute(
-      path: '/ListPocket', //=> const PocketList
-      builder: (context, state) {
-        final pocket = state.extra as Pocket;
-        return }) ;*/
-      
-    
+      path: '/ListPocket/:id1',
+      builder: (context, state) =>  PocketList(
+        id1: state.pathParameters['id1'],
+      ),
+    ),
+ */
+
     GoRoute(
       path: '/PocketEdit',
-      //builder: (context, state) => const PocketEdit(pocket: null,),
       builder: (context, state) {
         final pocket = state.extra as Pocket;
         return PocketEdit(pocket: pocket);
