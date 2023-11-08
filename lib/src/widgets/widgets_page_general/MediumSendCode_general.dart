@@ -28,48 +28,49 @@ class MediumSendCodePageGeneral extends StatelessWidget {
         leading: const ArrowRouter(activeArrow: "1",),
       ),
 
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              tituloEncabezadoDos("ESCOGE UN MEDIO DE CONFIRMACIÓN"),
-              
-              const SizedBox(
-                height: 45,
-              ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: ListView(
+          children: [
+
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.10,
+            ),
+            
+            tituloEncabezadoDos("ESCOGE UN MEDIO DE CONFIRMACIÓN"),
+            
+            const SizedBox(
+              height: 45,
+            ),
       
-              textoCuerpo(textoCuerpoGeneral),
-              
-              const SizedBox(
-                height: 45,
-              ),
+            textoCuerpo(textoCuerpoGeneral),
+            
+            const SizedBox(
+              height: 45,
+            ),
       
-              // Boton para el correo electronico
-              ButtonPrimary(
-                iconButton: Icons.email_outlined,
-                textButton: "Correo Electronico",
-                colorBox: CustomColors.colorAmarilloMostaza,
-                widthButton: MediaQuery.of(context).size.width,
-                onPressed: () => context.push(rutaPantallaEmail),
-              ),
+            // Boton para el correo electronico
+            ButtonPrimary(
+              iconButton: Icons.email_outlined,
+              textButton: "Correo Electronico",
+              colorBox: CustomColors.colorAmarilloMostaza,
+              widthButton: MediaQuery.of(context).size.width,
+              onPressed: () => context.push(rutaPantallaEmail),
+            ),
       
-              const SizedBox(
-                height: 15,
-              ),
+            const SizedBox(
+              height: 15,
+            ),
       
-              // Boton para el telefono celular
-              ButtonPrimary(
-                iconButton: Icons.sms,
-                textButton: "Teléfono Celular",
-                colorBox: CustomColors.colorAmarilloMostaza,
-                widthButton: MediaQuery.of(context).size.width,
-                onPressed: () => context.push(rutaPantallaPassword),
-              ),
-            ],
-          ),
+            // Boton para el telefono celular
+            ButtonPrimary(
+              iconButton: Icons.sms,
+              textButton: "Teléfono Celular",
+              colorBox: CustomColors.colorAmarilloMostaza,
+              widthButton: MediaQuery.of(context).size.width,
+              onPressed: () => context.push(rutaPantallaPassword),
+            ),
+          ],
         ),
       ),
     );

@@ -16,9 +16,9 @@ class _CodeOTPEmaiRegisterPageState extends State<CodeOTPEmaiRegisterPage> {
   @override
   Widget build(BuildContext context) {
     return const CodeOTPPageGeneral(
-      tituloEncabezadoUnoGeneral: "Cambiar Contraseña",
+      tituloEncabezadoUnoGeneral: "Registrarse",
       subtituloUnoGeneral: "Ingresé el codigo que fue enviado por correo",
-      ruta: "/registerPage",
+      ruta: "/loginPage",
     );
   }
 }

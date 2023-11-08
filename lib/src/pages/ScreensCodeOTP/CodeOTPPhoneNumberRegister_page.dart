@@ -16,9 +16,9 @@ class _CodeOTPPhoneNumberRegisterPageState extends State<CodeOTPPhoneNumberRegis
   @override
   Widget build(BuildContext context) {
     return const CodeOTPPageGeneral(
-      tituloEncabezadoUnoGeneral: "Cambiar Contraseña",
+      tituloEncabezadoUnoGeneral: "Registrarse",
       subtituloUnoGeneral: "Ingresé el codigo que fue enviado por sms",
-      ruta: "/registerPage",
+      ruta: "/loginPage",
     );
   }
 }

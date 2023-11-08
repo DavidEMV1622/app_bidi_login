@@ -110,7 +110,7 @@ class _CodeOTPPageGeneralState extends State<CodeOTPPageGeneral> {
                 MainAxisAlignment.center, // Define la posición de los widgets
 
             children: <Widget>[
-              tituloEncabezadoDos("Cambiar Contraseña"),
+              tituloEncabezadoDos(widget.tituloEncabezadoUnoGeneral),
 
               // ---- Agregar un espacio ----
               const SizedBox(

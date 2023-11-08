@@ -17,8 +17,8 @@ class _CodeOTPEmailChangePasswordPageState extends State<CodeOTPEmailChangePassw
   Widget build(BuildContext context) {
     return const CodeOTPPageGeneral(
       tituloEncabezadoUnoGeneral: "Cambiar Contraseña",
-      subtituloUnoGeneral: "Ingresé el codigo que fue enviado por correo",
-      ruta: "/changePassword",
+      subtituloUnoGeneral: "Ingresé el codigo que fue enviado por numero de telefono",
+      ruta: "/loginPage",
     );
   }
 }

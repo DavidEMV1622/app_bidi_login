@@ -6,6 +6,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import '../../config/arrow_router.dart';
 import '../common/enumValidate.dart';
 import '../utils/TextFormatter.dart';
 
@@ -44,6 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
       appBar: AppBar(
         backgroundColor: CustomColors
             .colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
+        leading: const ArrowRouter(activeArrow: "1",),
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
@@ -51,8 +53,7 @@ class _RegisterPageState extends State<RegisterPage> {
         padding: const EdgeInsets.all(15.0),
         child: Form(
           key: _keyForm, // Define un formulario con una llave para controlarlo
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, 
+          child: ListView(
             children: [
               tituloEncabezadoUno("bidi"),
                 
@@ -143,18 +144,7 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(
                 height: 35.0,
               ),
-          
-              ButtonPrimary(
-                textButton: "Guardar",
-                colorBox: CustomColors.colorAmarilloMostaza,
-                widthButton: MediaQuery.of(context).size.width,
-                onPressed: save,
-              ),
-      
-              const SizedBox(
-                height: 25.0,
-              ),
-            
+
               Row(children: <Widget>[
                 const Expanded(
                   child: Divider(
@@ -171,12 +161,19 @@ class _RegisterPageState extends State<RegisterPage> {
                   thickness: 1,
                 )),
               ]),
-            
+
               const SizedBox(
-                height: 25.0,
+                height: 35.0,
+              ),
+          
+              ButtonPrimary(
+                textButton: "Guardar",
+                colorBox: CustomColors.colorAmarilloMostaza,
+                widthButton: MediaQuery.of(context).size.width,
+                onPressed: save,
               ),
             
-              RichText(
+              /* RichText(
                 text: TextSpan(
                   text: "¿Ya tienes cuenta en bidi? ",
                   style: const TextStyle(
@@ -198,7 +195,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
-              )
+              ) */
             ]
           ),
         ),
@@ -218,7 +215,8 @@ class _RegisterPageState extends State<RegisterPage> {
     DialogUtils.showMyGeneralDialog(context: context, 
     iconoMostrar: Icons.verified_user,
     mensajePopUp: "Te has registrado correctamente",
-    onPressed: () => context.pushReplacement("/loginPage"),
+    //onPressed: () => context.pushReplacement("/loginPage"),
+    onPressed: () => context.push("/mediumSendCodeRegisterPage"),
     );
   }
 

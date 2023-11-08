@@ -4,7 +4,6 @@ import 'package:app_credibanco_login/src/colors/colors.dart';
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:app_credibanco_login/src/widgets/input.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../config/arrow_router.dart';
@@ -47,14 +46,14 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
           padding: const EdgeInsets.all(15),
           child: Form(
             key: _keyForm,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center, // Define la posición de los widgets
+            child: ListView(
               children: <Widget>[
-                const SizedBox(
-                  height: 20.0,
+
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.12,
                 ),
-                tituloEncabezadoDos("CAMBIO DE CONTRASEÑA"),
+
+                tituloEncabezadoDos("Cambio de Contraseña"),
                 const SizedBox(
                   height: 20.0,
                 ),

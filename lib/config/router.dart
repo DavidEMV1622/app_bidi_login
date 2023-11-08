@@ -53,23 +53,53 @@ final routes = GoRouter(
       builder: (context, state) => const ChangePasswordPage(),
     ),
 
-    // Ruta de la pagina para Registrar Usuario por medio de OTP
-    GoRoute(
-        path: '/mediumSendCodeRegisterPage',
-        builder: (context, state) {
-          return const MediumSendCodeRegisterPage();
-        }),
-    // Ruta de la pagina para Cambiar la contraseña por medio de OTP
-    GoRoute(
-        path: '/mediumSendCodeChangePasswordPage',
-        builder: (context, state) {
-          return const MediumSendCodeChangePasswordPage();
-        }),
     // Ruta de la pagina de registrar usuario
     GoRoute(
       path: '/registerPage',
       builder: (context, state) => const RegisterPage(),
     ),
+
+    // ***************** Medios de envio OTP page *****************
+    // Ruta de la pagina para Registrar Usuario por medio de OTP
+    GoRoute(
+        path: '/mediumSendCodeRegisterPage',
+        builder: (context, state) {
+          return const MediumSendCodeRegisterPage();
+    }),
+    // Ruta de la pagina para Cambiar la contraseña por medio de OTP
+    GoRoute(
+        path: '/mediumSendCodeChangePasswordPage',
+        builder: (context, state) {
+          return const MediumSendCodeChangePasswordPage();
+    }),
+    // *************************************************************
+
+
+    // ************************ Enviar codigo de OTP page ************************
+    // Ruta de la pagina de envio de codigo otp por email para cambiar de contraseña
+    GoRoute(
+      path: '/sendCodeEmailChangePassword',
+      builder: (context, state) => const SendCodeEmailChangePasswordPage(),
+    ),
+    // Ruta de la pagina de envio de codigo otp por numero de telefono para cambiar de contraseña
+    GoRoute(
+      path: '/sendCodePhoneNumberChangePassword',
+      builder: (context, state) =>
+          const SendCodePhoneNumberChangePasswordPage(),
+    ),
+    // Ruta de la pagina de envio de codigo otp por correo para registrarse
+    GoRoute(
+      path: '/sendCodeEmailRegister',
+      builder: (context, state) => const SendCodeEmailRegisterPage(),
+    ),
+    // Ruta de la pagina de envio de codigo otp por numero de telefono para registrarse
+    GoRoute(
+      path: '/sendCodePhoneNumberRegister',
+      builder: (context, state) => const SendCodePhoneNumberRegisterPage(),
+    ),
+    // *******************************************************************
+
+    // ********************* Ingresar OTP Page **********************
     // Ruta de la pagina de codigo otp para registrar usuario por email
     GoRoute(
       path: '/codeOTPEmaiRegisterPage',
@@ -90,6 +120,8 @@ final routes = GoRouter(
       path: '/codeOTPPhoneNumberRegister',
       builder: (context, state) => const CodeOTPPhoneNumberRegisterPage(),
     ),
+    // *************************************************************
+
     // Ruta de la pagina de editar usuario
     GoRoute(
       path: '/updateUser',
@@ -116,27 +148,8 @@ final routes = GoRouter(
       path: '/viewUserData',
       builder: (context, state) => const ViewUserDataPage(),
     ),
-    // Ruta de la pagina de envio de codigo otp por email para cambiar de contraseña
-    GoRoute(
-      path: '/sendCodeEmailChangePassword',
-      builder: (context, state) => const SendCodeEmailChangePasswordPage(),
-    ),
-    // Ruta de la pagina de envio de codigo otp por numero de telefono para cambiar de contraseña
-    GoRoute(
-      path: '/sendCodePhoneNumberChangePassword',
-      builder: (context, state) =>
-          const SendCodePhoneNumberChangePasswordPage(),
-    ),
-    // Ruta de la pagina de envio de codigo otp por correo para registrarse
-    GoRoute(
-      path: '/sendCodeEmailRegister',
-      builder: (context, state) => const SendCodeEmailRegisterPage(),
-    ),
-    // Ruta de la pagina de envio de codigo otp por numero de telefono para registrarse
-    GoRoute(
-      path: '/sendCodePhoneNumberRegister',
-      builder: (context, state) => const SendCodePhoneNumberRegisterPage(),
-    ),
+
+    
     /* GoRoute(
       path: '/ListPockett',
       builder: (context, state) => const MyPocket(),

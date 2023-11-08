@@ -197,7 +197,8 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              context.push("/mediumSendCodeRegisterPage");
+                              //context.push("/mediumSendCodeRegisterPage");
+                              context.push("/registerPage");
                             },
                         ),
                       ],

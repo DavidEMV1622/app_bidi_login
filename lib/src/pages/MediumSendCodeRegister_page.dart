@@ -11,8 +11,8 @@ class MediumSendCodeRegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MediumSendCodePageGeneral(
       textoCuerpoGeneral: "Por medio de la opción seleccionada, te sera enviado un codigo de confirmación para poder registrarte.",
-      rutaPantallaEmail: "/sendCodeEmailRegister",
-      rutaPantallaPassword: "/sendCodePhoneNumberRegister",
+      rutaPantallaEmail: "/codeOTPEmaiRegisterPage",
+      rutaPantallaPassword: "/codeOTPPhoneNumberRegister",
     );
   }
 }
