@@ -205,10 +205,11 @@ class _RegisterPageState extends State<RegisterPage> {
   // funcion para saber si los inputs tienen correcto su contenido
   save() {
     if (_keyForm.currentState!.validate()) {// si esta correcto el contenido de cada input
-      _mostrarPopupCorrecto(context); // mostrar pop-up correcto
-    } else {
+      context.push("/mediumSendCodeRegisterPage");
+      //_mostrarPopupCorrecto(context); // mostrar pop-up correcto
+    } /* else {
       _mostrarPopupError(context); // mostrar pop-up incorrecto
-    }
+    } */
   }
 
   void _mostrarPopupCorrecto(BuildContext context) {
