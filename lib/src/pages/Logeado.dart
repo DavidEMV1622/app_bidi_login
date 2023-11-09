@@ -3,8 +3,6 @@ import 'package:app_credibanco_login/src/widgets/dropBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:iconify_flutter/icons/bi.dart';
 
 import '../colors/colors.dart';
 import '../utils/TextFormatter.dart';

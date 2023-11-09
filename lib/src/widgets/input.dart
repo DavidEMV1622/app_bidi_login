@@ -36,80 +36,68 @@ class _InputTextValidationsState extends State<InputTextValidations> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          
-          // Espaciado entre el borde y el contenido
-          //padding: const EdgeInsets.only(top: 10.0),
+        TextFormField(
+          keyboardType: widget.inputType, // tipo de teclado a mostrar en el movil
 
-          //height: 35,
-          //width: 1000.0,
+          // Contenido del TextFormField
+          decoration: InputDecoration(
+            hintText: widget.textoInput, // Place holder en el input
+            /* enabledBorder: OutlineInputBorder( // Manejo del borde no enfocado (borde estandar)
+              borderRadius: BorderRadius.circular(4.0),
+              borderSide: BorderSide(
+                color: _miColor(hasError),
+                width: _miBorde(hasError),
+              ),
+            ), */
+            /* focusedBorder: OutlineInputBorder( /* Manejo del borde enfocado (borde cambia de color al 
+                                              seleccionar el input) */
+              borderRadius: BorderRadius.circular(4.0),
+              borderSide: const BorderSide(
+                color: Colors.blue,
+                //width: 2.5,
+              ),
+            ), */
 
-          //margin: EdgeInsets.symmetric(horizontal: 10.0),
-          
-          // Uso de un input (Campo de texto)
-          child: TextFormField(
-            keyboardType: widget.inputType, // tipo de teclado a mostrar en el movil
+            /* errorBorder: OutlineInputBorder( /* Manejo del borde cuando aparece un error (Al aparecer los mensajes
+                                            de validacion, el borde cambiara de color) */
+              borderRadius: BorderRadius.circular(4.0),
+              borderSide: const BorderSide(
+                color: Colors.red,
+                width: 2.5,
+              ),
+            ), */
 
-            // Contenido del TextFormField
-            decoration: InputDecoration(
-              hintText: widget.textoInput, // Place holder en el input
-              /* enabledBorder: OutlineInputBorder( // Manejo del borde no enfocado (borde estandar)
-                borderRadius: BorderRadius.circular(4.0),
-                borderSide: BorderSide(
-                  color: _miColor(hasError),
-                  width: _miBorde(hasError),
-                ),
-              ), */
-              /* focusedBorder: OutlineInputBorder( /* Manejo del borde enfocado (borde cambia de color al 
-                                                seleccionar el input) */
-                borderRadius: BorderRadius.circular(4.0),
-                borderSide: const BorderSide(
-                  color: Colors.blue,
-                  //width: 2.5,
-                ),
-              ), */
+            /* focusedErrorBorder: OutlineInputBorder( /* Manejo del borde cuando hay error y enfocado (Borde
+                                                  cambia de color al seleccionar el input a la vez que aparece
+                                                  los mensajes de validacion) */
+              borderRadius: BorderRadius.circular(4.0),
+              borderSide: const BorderSide(
+                color: Colors.red,
+                width: 2.5,
+              ),
+            ), */
 
-              /* errorBorder: OutlineInputBorder( /* Manejo del borde cuando aparece un error (Al aparecer los mensajes
-                                              de validacion, el borde cambiara de color) */
-                borderRadius: BorderRadius.circular(4.0),
-                borderSide: const BorderSide(
-                  color: Colors.red,
-                  width: 2.5,
-                ),
-              ), */
+            counterText: "", // Oculta el contador de caracteres de la propiedad "maxLength"
 
-              /* focusedErrorBorder: OutlineInputBorder( /* Manejo del borde cuando hay error y enfocado (Borde
-                                                    cambia de color al seleccionar el input a la vez que aparece
-                                                    los mensajes de validacion) */
-                borderRadius: BorderRadius.circular(4.0),
-                borderSide: const BorderSide(
-                  color: Colors.red,
-                  width: 2.5,
-                ),
-              ), */
-
-              counterText: "", // Oculta el contador de caracteres de la propiedad "maxLength"
-
-              prefixIcon: Padding(
-                padding: const EdgeInsets.only(bottom: 9,),
-                child: SvgPicture.asset( 
-                  widget.imageIcon,
-                  width: 5,
-                ),
+            prefixIcon: Padding(
+              padding: const EdgeInsets.only(bottom: 9,),
+              child: SvgPicture.asset( 
+                widget.imageIcon,
+                width: 5,
               ),
             ),
-
-            controller: widget.controller, // maneja cada input a utilizar
-            maxLength:
-                ValidateFormulations.validateMaxLength(widget.validateText), // Cantidad de caracteres que tiene el input
-            inputFormatters: [ValidateFormulations.validateinputFormatters(widget.validateText)], // Tipo de dato del input
-
-            /* Valida si la estructura del formulario es correcta */
-            validator: (String? value) {
-              return validateStructure(
-                  value!); // retorna si la estructura esta bien escrita
-            },
           ),
+
+          controller: widget.controller, // maneja cada input a utilizar
+          maxLength:
+              ValidateFormulations.validateMaxLength(widget.validateText), // Cantidad de caracteres que tiene el input
+          inputFormatters: [ValidateFormulations.validateinputFormatters(widget.validateText)], // Tipo de dato del input
+
+          /* Valida si la estructura del formulario es correcta */
+          validator: (String? value) {
+            return validateStructure(
+                value!); // retorna si la estructura esta bien escrita
+          },
         ),
       ],
     );
@@ -168,28 +156,6 @@ class _InputTextValidationsState extends State<InputTextValidations> {
       }
     }
   }
-  
-  // Funcion para cambiar el color del borde del formulario
-  _miColor(String hasError) {
-    if (hasError == "Error") {
-      return Colors.red;
-    } else if (hasError == "Correct") {
-      return Colors.green;
-    } else if (hasError == "Base") {
-      return CustomColors.colorNegro;
-    }
-  }
-
-  // Funcion para cambiar el borde del formulario
-  _miBorde(String hasError) {
-    if (hasError == "Error") {
-      return 2.5;
-    } else if (hasError == "Correct") {
-      return 2.5;
-    } else if (hasError == "Base") {
-      return 1.0;
-    }
-  }
 }
 
 // ---- Clase para un input general con validación ----
@@ -228,90 +194,81 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
+        TextFormField(
+          obscureText: passenable,
 
-          //height: 35,
-          //width: 1000.0,
-
-          //margin: EdgeInsets.symmetric(horizontal: 10.0),
-
-          // Uso de un input (Campo de texto)
-          child: TextFormField(
-            obscureText: passenable,
-
-            // Maneja el contenido del "TextFormField"
-            decoration: InputDecoration(
-              hintText: widget.textoInput, // Place holder en el input
-              /* enabledBorder: OutlineInputBorder( // Manejo del borde no enfocado
-                borderRadius: BorderRadius.circular(4.0),
-                borderSide: BorderSide(
-                  //color: CustomColors.colorGris_2,
-                  color: _miColor(hasError),
-                  width: _miBorde(hasError),
-                ),
+          // Maneja el contenido del "TextFormField"
+          decoration: InputDecoration(
+            hintText: widget.textoInput, // Place holder en el input
+            /* enabledBorder: OutlineInputBorder( // Manejo del borde no enfocado
+              borderRadius: BorderRadius.circular(4.0),
+              borderSide: BorderSide(
+                //color: CustomColors.colorGris_2,
+                color: _miColor(hasError),
+                width: _miBorde(hasError),
               ),
-              focusedBorder: OutlineInputBorder( // Manejo del borde enfocado
-                borderRadius: BorderRadius.circular(4.0),
-                borderSide: const BorderSide(
-                  color: Colors.blue,
-                  width: 2.5,
-                ),
-              ),
-
-              errorBorder: OutlineInputBorder( // Manejo del borde cuando aparece un error
-                borderRadius: BorderRadius.circular(4.0),
-                borderSide: const BorderSide(
-                  color: Colors.red,
-                  width: 2.5,
-                ),
-              ),
-
-              focusedErrorBorder: OutlineInputBorder( // Manejo del borde cuando hay error y enfocado
-                borderRadius: BorderRadius.circular(4.0),
-                borderSide: const BorderSide(
-                  color: Colors.red,
-                  width: 2.5,
-                ),
-              ), */
-              counterText: "",
-
-              prefixIcon: Padding(
-                padding: const EdgeInsets.only(bottom: 9,),
-                child: SvgPicture.asset( 
-                  widget.imageIcon,
-                  width: 5,
-                ),
-              ),
-              
-              // Manejar un icono dentro del input
-              suffixIcon: IconButton(
-                // Agrega un icono para mostrar y otro para no mostrar contrasenia
-                icon: Icon(
-                    passenable == true ? Icons.visibility_off : Icons.visibility),
-
-                /* Agrega una animación al presionar el boton y permite realizar una accion 
-                agregandolo entre las {} */
-                onPressed: () {
-                  // Permite redibujar el widget para que se muestre los cambios del icono
-                  setState(() {
-                    if (passenable) {
-                      passenable = false;
-                    } else {
-                      passenable = true;
-                    }
-                  });
-                },
+            ),
+            focusedBorder: OutlineInputBorder( // Manejo del borde enfocado
+              borderRadius: BorderRadius.circular(4.0),
+              borderSide: const BorderSide(
+                color: Colors.blue,
+                width: 2.5,
               ),
             ),
 
-            controller: widget.controller, // maneja cada input a utilizar
-            inputFormatters: [ValidateFormulations.validateinputFormatters(widget.validateText)], // Tipo de dato del input
+            errorBorder: OutlineInputBorder( // Manejo del borde cuando aparece un error
+              borderRadius: BorderRadius.circular(4.0),
+              borderSide: const BorderSide(
+                color: Colors.red,
+                width: 2.5,
+              ),
+            ),
+
+            focusedErrorBorder: OutlineInputBorder( // Manejo del borde cuando hay error y enfocado
+              borderRadius: BorderRadius.circular(4.0),
+              borderSide: const BorderSide(
+                color: Colors.red,
+                width: 2.5,
+              ),
+            ), */
+            counterText: "",
+
+            prefixIcon: Padding(
+              padding: const EdgeInsets.only(bottom: 9,),
+              child: SvgPicture.asset( 
+                widget.imageIcon,
+                width: 5,
+              ),
+            ),
             
-            /* Valida si la estructura del input es correcta */
-            validator: (String? value) {
-              return validateStructure(value!); // retorna si la estructura esta bien escrita
-            },
+            // Manejar un icono dentro del input
+            suffixIcon: IconButton(
+              // Agrega un icono para mostrar y otro para no mostrar contrasenia
+              icon: Icon(
+                  passenable == true ? Icons.visibility_off : Icons.visibility),
+
+              /* Agrega una animación al presionar el boton y permite realizar una accion 
+              agregandolo entre las {} */
+              onPressed: () {
+                // Permite redibujar el widget para que se muestre los cambios del icono
+                setState(() {
+                  if (passenable) {
+                    passenable = false;
+                  } else {
+                    passenable = true;
+                  }
+                });
+              },
+            ),
           ),
+
+          controller: widget.controller, // maneja cada input a utilizar
+          inputFormatters: [ValidateFormulations.validateinputFormatters(widget.validateText)], // Tipo de dato del input
+          
+          /* Valida si la estructura del input es correcta */
+          validator: (String? value) {
+            return validateStructure(value!); // retorna si la estructura esta bien escrita
+          },
         ),
       ],
     );
@@ -354,28 +311,6 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
         default: // si no se da ninguno de los casos, no se muestra mensaje
           return null;
       }
-    }
-  }
-
-  // Funcion para cambiar el color del borde del formulario
-  _miColor(String hasError) {
-    if (hasError == "Error") {
-      return Colors.red;
-    } else if (hasError == "Correct") {
-      return Colors.green;
-    } else if (hasError == "Base") {
-      return CustomColors.colorNegro;
-    }
-  }
-
-  // Funcion para cambiar el borde del formulario
-  _miBorde(String hasError) {
-    if (hasError == "Error") {
-      return 2.5;
-    } else if (hasError == "Correct") {
-      return 2.5;
-    } else if (hasError == "Base") {
-      return 1.0;
     }
   }
 }

@@ -1,10 +1,8 @@
-import 'package:app_credibanco_login/src/pages/Logeado.dart';
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/bi.dart';
-
-import '../pages/my_pocket.dart';
 
 class BarNavigation extends StatefulWidget {
   final bool page;
@@ -51,8 +49,8 @@ class _BarNavigationState extends State<BarNavigation> {
                       icon: Iconify(
                         Bi.house,
                         color: widget.page == true
-                            ? Color(0xFF008D89)
-                            : Color.fromARGB(255, 7, 7, 7),
+                            ? const Color(0xFF008D89)
+                            : const Color.fromARGB(255, 7, 7, 7),
                       ),
                       highlightColor: Colors.transparent,
                       onPressed: () {
@@ -63,8 +61,8 @@ class _BarNavigationState extends State<BarNavigation> {
                       "Inicio",
                       style: TextStyle(
                         color: widget.page == true
-                            ? Color(0xFF008D89)
-                            : Color.fromARGB(255, 7, 7, 7),
+                            ? const Color(0xFF008D89)
+                            : const Color.fromARGB(255, 7, 7, 7),
                       ),
                     )
                   ],

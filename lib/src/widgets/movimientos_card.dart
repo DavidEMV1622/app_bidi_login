@@ -38,7 +38,7 @@ class MovimientosCard extends StatelessWidget {
                       ),
                       
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
       
                     textoEtiquetaTwo("500.000", 16),
                   ]),

@@ -136,7 +136,7 @@ Widget textoEtiquetaTwo(String texto, double fontSizeText) {
 Widget textoCuerpo(String texto) {
   return Text(
     texto,
-    style: TextStyle(
+    style: const TextStyle(
       color: CustomColors.colorNegro,
       fontSize: 24,
       //fontFamily: ,

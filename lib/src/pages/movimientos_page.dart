@@ -32,7 +32,7 @@ class _MovimientoPageState extends State<MovimientoPage> {
         leading: const ArrowRouter(activeArrow: "1",),
       ),
 
-      body: ListView(children: [
+      body: ListView(children: const [
         MovimientosCard(),
         MovimientosCard(),
       ],)

@@ -74,7 +74,6 @@ final routes = GoRouter(
     }),
     // *************************************************************
 
-
     // ************************ Enviar codigo de OTP page ************************
     // Ruta de la pagina de envio de codigo otp por email para cambiar de contraseña
     GoRoute(

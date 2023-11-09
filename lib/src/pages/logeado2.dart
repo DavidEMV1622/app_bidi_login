@@ -16,7 +16,7 @@ class _LogeadoPage2State extends State<LogeadoPage2> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Center(
+         const  Center(
             child: Text("Pagina del two Logeado"),
           ),
           Container(
@@ -25,8 +25,8 @@ class _LogeadoPage2State extends State<LogeadoPage2> {
           ),
         ],
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
+      bottomNavigationBar: const Padding(
+        padding: EdgeInsets.all(8.0),
         child: BarNavigation(page: false),
       ),
     );

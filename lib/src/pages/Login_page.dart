@@ -4,13 +4,13 @@ import 'package:app_credibanco_login/src/colors/colors.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../Back-end/Dto/Token.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
 import '../widgets/checkBox.dart';
 import '../utils/flutter_secure_storage.dart';
 import '../widgets/input.dart';
 import '../common/enumValidate.dart';
-import 'package:flutter_svg/svg.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -47,7 +47,6 @@ class _LoginPageState extends State<LoginPage> {
     ctrlPassword.text = await _secureStorageMethods.getPasswordLogin() ?? "";
     await _secureStorageMethods.setIsNotices(true); // asigna true en IsNotice
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -203,11 +202,24 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ],
                     ),
-                  )
+                  ),
+
+                  ElevatedButton(
+                    onPressed: () async {
+                      print("Boton presionado");
+                      try {
+                        final response = await pruebaAccesoToken(User(username: "adminbidi@yopmail.com", password: "Colombia.4"));
+                        print(response.data);
+                      } catch (e) {
+                        print(e);
+                      }
+                    },
+                    child: const Text('Enviar POST'),
+                  ),
                 ],
                           ),
               ),
-          ),
+            ),
           ),
         ),
       ),
