@@ -41,14 +41,14 @@ class _PocketListState extends State<PocketList> {
             if (index < listPocket.length) {
               final pocket = listPocket[index];
               void navigateToDestination(BuildContext context) {
-                GoRouter.of(context).go('/PocketEdit', extra: pocket);
+                GoRouter.of(context).go('/PocketEdit/:id', extra: pocket);
               }
 
               return GestureDetector(
                 child: Poket(item: listPocket[index]),
                 onTap: () {
                   context.push(
-                    "/PocketEdit",
+                    "/PocketEdit/:id",
                     extra: pocket,
                   );
                 },

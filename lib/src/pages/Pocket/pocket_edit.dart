@@ -9,10 +9,12 @@ import '../../../models/pocket_model.dart';
 
 class PocketEdit extends StatefulWidget {
   final Pocket pocket;
+  final String id;
   // final int? index;
   const PocketEdit({
     super.key,
     required this.pocket,
+    required this.id,
     /*required this.index*/
   });
 
