@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:app_credibanco_login/models/pocket_model.dart';
 import 'package:flutter/material.dart';
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
@@ -17,6 +19,7 @@ class PocketCreate extends StatefulWidget {
 
 class _PocketCreateState extends State<PocketCreate> {
   Color selectedColor = Color(0xFFC2C2C2);
+  int idPocket=Random(int) ;
   TextEditingController ctrlPocket = TextEditingController();
   TextEditingController ctrlName = TextEditingController();
 
@@ -158,7 +161,7 @@ class _PocketCreateState extends State<PocketCreate> {
   }
 
   void addNewPocket() {
-    //late int id_pocket;
+     late int id_pocket ;
     String name = ctrlName.text;
     double pocketBalance = double.parse(ctrlPocket.text);
 
@@ -166,6 +169,8 @@ class _PocketCreateState extends State<PocketCreate> {
       name,
       pocketBalance,
       selectedColor,
+      id_pocket,
+      
     );
     listPocket.add(newPocket);
 

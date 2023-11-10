@@ -1,15 +1,15 @@
+import 'package:app_credibanco_login/src/pages/Pocket/list_pocket.dart';
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/bi.dart';
-import 'list_pocket.dart';
 import '../../../config/arrow_router.dart';
 import '../../../models/pocket_model.dart';
 
 class PocketEdit extends StatefulWidget {
   final Pocket pocket;
   final String id;
+  //final int id;
   // final int? index;
   const PocketEdit({
     super.key,
@@ -139,9 +139,9 @@ class _PocketEditState extends State<PocketEdit> {
     );
   }
 
-  /* void eliminarPocket(int index) {
+  void eliminarPocket(int index) {
     setState(() {
-      listPocket.removeAt(widget.pocket);
+      listPocket.removeAt(widget.pocket.hashCode);
     });
-  } */
+  }
 }

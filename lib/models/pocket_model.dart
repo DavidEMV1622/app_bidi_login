@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class Pocket {
-  //int? idPocket;
-  String namePocket;
-  double pocketBalance;
-  Color colorPocket;
+  late int? idPocket = null;
+  late String namePocket;
+  late double pocketBalance;
+  late Color colorPocket;
 
   Pocket(
     this.namePocket,
     this.pocketBalance,
     this.colorPocket,
-    /* this.idPocket*/
+     this.idPocket
   );
 
 //  int get IdPocket => idPocket!;
