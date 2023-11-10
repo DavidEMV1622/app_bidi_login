@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 
 
@@ -30,21 +32,21 @@ Future<Response> pruebaAccesoToken(User user) async {
   const String userAuthUrl = "http://localhost:8080/user/auth/";
 
   try {
-
-    dio.options.headers["Access-Control-Allow-Origin"] = "*";
-    dio.options.headers["Access-Control-Allow-Credentials"] = true;
-    dio.options.headers["Access-Control-Allow-Headers"] =
-        "Origin,Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,locale";
-    dio.options.headers["Access-Control-Allow-Methods"] =
-        "GET, HEAD, POST, OPTIONS";
     final response = await dio.post(
       userAuthUrl,
       data: user.toJson(),
     );
+    
+    //print(response.data);
+    
+    final token = response.data["access_token"];
+    print(token);
 
-    print(response.data);
+    print("");
+    print("**********************************************************");
 
     return response;
+
   } on DioException catch (e) {
     print("Error: $e");
     // Maneja el error de manera adecuada según tus necesidades.
