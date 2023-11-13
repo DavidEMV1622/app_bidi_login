@@ -1,3 +1,5 @@
+import 'package:app_credibanco_login/src/common/enumValidate.dart';
+import 'package:app_credibanco_login/src/common/inputValidate.dart';
 import 'package:app_credibanco_login/src/pages/Pocket/list_pocket.dart';
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:flutter/material.dart';
@@ -114,23 +116,58 @@ class _PocketEditState extends State<PocketEdit> {
               top: 19,
             ),
             child: TextFormField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "Nombre del bolsillo"),
+              keyboardType: TextInputType.name,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "Nombre del bolsillo",
+                hintText: "Nombre ",
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
+                filled: true,
+                fillColor: Color(0XFFEFEFEF),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent),
+                ),
+                labelStyle: TextStyle(color: Colors.black, fontSize: 25),
+              ),
+              inputFormatters: [
+                ValidateFormulations.validateinputFormatters(ValidateText.name)
+              ],
             ),
           ),
           Padding(
             padding:
                 const EdgeInsets.only(left: 23, right: 23, top: 19, bottom: 19),
             child: TextFormField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), hintText: "Cantidad a guardar"),
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Cantidad',
+                  hintText: "Cantidad a guardar",
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
+                  filled: true,
+                  fillColor: Color(0XFFEFEFEF),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+                  labelStyle: TextStyle(color: Colors.black, fontSize: 25)),
+              inputFormatters: [
+                ValidateFormulations.validateinputFormatters(
+                    ValidateText.phoneNumber)
+              ],
             ),
           )
         ],
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(21),
+      bottomNavigationBar: const Padding(
+        padding: EdgeInsets.all(21),
         child: BtnPrimaery(
             textButton: "textButton",
             colorBox: Color.fromRGBO(255, 202, 44, 1),

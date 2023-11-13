@@ -19,7 +19,7 @@ class PocketCreate extends StatefulWidget {
 
 class _PocketCreateState extends State<PocketCreate> {
   Color selectedColor = Color(0xFFC2C2C2);
-  int idPocket=Random(int) ;
+  // int idPocket=Random(int) ;
   TextEditingController ctrlPocket = TextEditingController();
   TextEditingController ctrlName = TextEditingController();
 
@@ -161,18 +161,18 @@ class _PocketCreateState extends State<PocketCreate> {
   }
 
   void addNewPocket() {
-     late int id_pocket ;
+    late int id_pocket;
     String name = ctrlName.text;
     double pocketBalance = double.parse(ctrlPocket.text);
 
-    Pocket newPocket = Pocket(
+    /*  Pocket newPocket = Pocket(
       name,
       pocketBalance,
       selectedColor,
-      id_pocket,
+     // id_pocket,
       
-    );
-    listPocket.add(newPocket);
+    );*/
+    // listPocket.add(newPocket);
 
     ctrlName.clear();
     ctrlPocket.clear();
