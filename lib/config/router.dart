@@ -25,7 +25,7 @@ import '../src/pages/movimientos_page.dart';
 import '../src/pages/Pocket/my_pocket.dart';
 
 final routes = GoRouter(
-  initialLocation: '/logeadoPage',
+  initialLocation: '/loginPage',
   /* Al iniciar la aplicacion, se 
                                 ejecuta primero esta ruta */
   /* "routes" manejo de cada subruta */
@@ -145,6 +145,11 @@ final routes = GoRouter(
     GoRoute(
       path: '/ListPocket',
       builder: (context, state) => const PocketList(),
+    ),
+
+    GoRoute(
+      path: '/Movimientos',
+      builder: (context, state) => const MovimientoPage(),
     ),
 
     /* GoRoute(
