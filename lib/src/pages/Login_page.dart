@@ -168,9 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () async {
                       print("Boton presionado");
                       try {
-                        /* Condicion para saber si las validaciones de cada input estan correctas
-                        y si los datos del response son correctos */
-                        //if (_keyForm.currentState!.validate() || response.statusCode == 200) {
+                        // Condicion para saber si las validaciones de cada input estan correctas
                         if (_keyForm.currentState!.validate()) {
                           //final response = await pruebaAccesoToken(User(username: "adminbidi@yopmail.com", password: "Colombia.4"));
                           final response = await pruebaAccesoToken(User(username: ctrlEmail.text, password: ctrlPassword.text));
