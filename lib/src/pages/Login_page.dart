@@ -1,9 +1,11 @@
 // ignore_for_file: file_names
 
 import 'package:app_credibanco_login/src/colors/colors.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import '../Back-end/Dto/Token.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
@@ -11,6 +13,7 @@ import '../widgets/checkBox.dart';
 import '../utils/flutter_secure_storage.dart';
 import '../widgets/input.dart';
 import '../common/enumValidate.dart';
+import '../widgets/pop-up.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -45,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
     _userNameController y _passwordController. */
     ctrlEmail.text = await _secureStorageMethods.getEmailLogin() ?? "";
     ctrlPassword.text = await _secureStorageMethods.getPasswordLogin() ?? "";
-    await _secureStorageMethods.setIsNotices(true); // asigna true en IsNotice
+    //await _secureStorageMethods.setIsNotices(true); // asigna true en IsNotice
   }
 
   @override
@@ -131,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                   2) Color del boton
                   3) Grosor del borde
                   4) evento para navegar entre pantallas */
-                  ButtonPrimary(
+                  /* ButtonPrimary(
                     textButton: "Iniciar sesion",
                     colorBox: CustomColors.colorAmarilloMostaza,
                     widthButton: MediaQuery.of(context).size.width,
@@ -150,11 +153,59 @@ class _LoginPageState extends State<LoginPage> {
                           //Navigator.push(context, MaterialPageRoute(builder: (context) => const LogeadoPage()));
                         } else {
                           _secureStorageMethods.setEmailStorage(ctrlEmail.text);
-                          context.go("/logeadoPage"); 
+                          context.go("/avisoPage"); 
                           //context.push("/avisoPage"); 
                           //Navigator.push(context, MaterialPageRoute(builder: (context) => const AvisoPage()));
                       
                         }
+                      }
+                    }
+                  ), */
+                  ButtonPrimary(
+                    textButton: "Iniciar sesion - prueba Post",
+                    colorBox: CustomColors.colorAmarilloMostaza,
+                    widthButton: MediaQuery.of(context).size.width,
+                    onPressed: () async {
+                      print("Boton presionado");
+                      try {
+                        /* Condicion para saber si las validaciones de cada input estan correctas
+                        y si los datos del response son correctos */
+                        //if (_keyForm.currentState!.validate() || response.statusCode == 200) {
+                        if (_keyForm.currentState!.validate()) {
+                          //final response = await pruebaAccesoToken(User(username: "adminbidi@yopmail.com", password: "Colombia.4"));
+                          final response = await pruebaAccesoToken(User(username: ctrlEmail.text, password: ctrlPassword.text));
+                          String token = response.data["access_token"]; // Obtiene el token del response
+                          print("");
+                          //print(token);
+
+                          // ****************** Guardar Token en Provider ******************
+                          context.read<TokenProvider>().guardarToken(token); // Se llama al metodo
+                          //String tokenaparte = context.watch<TokenProvider>().myToken;
+                          String tokenaparte = Provider.of<TokenProvider>(context, listen: false).myToken; 
+                          print("Imprimiendo token de prueba del provider: $tokenaparte");
+                          //****************************************************************
+
+
+                          // Se obtiene el estado de isStorage si es true (encontro la key) o false (no encontro la key)
+                          bool isStorage = await _secureStorageMethods.getEmailStorage(ctrlEmail.text);
+                      
+                          /* isStorage es true, se pasa a la pantalla de logeado de lo contrario pasa a las
+                          ventanas de avisos */
+                          if (isStorage) {
+                            context.go("/logeadoPage");
+                          } else {
+                            _secureStorageMethods.setEmailStorage(ctrlEmail.text);
+                            context.go("/avisoPage");
+                        
+                          }
+                        }
+                      } //catch (e) {
+                        on DioException catch (e) {
+                        if (e.response?.statusCode == 401) {
+                          print("Error 401");
+                          mostrarPopupError;
+                        }
+                        print(e);
                       }
                     }
                   ),
@@ -206,23 +257,29 @@ class _LoginPageState extends State<LoginPage> {
 
                   ElevatedButton(
                     onPressed: () async {
-                      print("Boton presionado");
-                      try {
-                        final response = await pruebaAccesoToken(User(username: "adminbidi@yopmail.com", password: "Colombia.4"));
-                        print(response.data);
-                      } catch (e) {
-                        print(e);
-                      }
+                      print("Boton (Obtener token) presionado");
+                      String tokenaparte = Provider.of<TokenProvider>(context, listen: false).myToken;
+                      print("isToken: $tokenaparte");
                     },
-                    child: const Text('Enviar POST'),
+                    child: const Text('Obtener token'),
                   ),
                 ],
-                          ),
+                ),
               ),
             ),
           ),
         ),
       ),
+    );
+  }
+  // Método para mostrar un pop-up con mensaje de error
+  mostrarPopupError(BuildContext context) {
+    DialogUtils.showMyGeneralDialog(context: context, 
+      iconoMostrar: Icons.error_outline,
+      mensajePopUp: "Credenciales",
+      onPressed: () {
+        context.pop();
+      }
     );
   }
 }

@@ -48,7 +48,7 @@ class SecureStorageMethods {
   // Metodo get para obtener la llave valor del email del usuario y recorrerlas llaves valor
   Future <bool> getEmailStorage(String emailContentForm) async {
 
-    /* Se utiliza la funcion "read" para que lea uno por uno las "key" para buscar el email en el "storage" */
+    /* Se utiliza la funcion "read" para que lea uno por uno las "key" para buscar el email */
     return await storage.read(key: "userLogin$emailContentForm") != null ? true : false;
   }
 }

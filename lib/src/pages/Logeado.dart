@@ -3,10 +3,12 @@ import 'package:app_credibanco_login/src/widgets/dropBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:provider/provider.dart';
+import '../Back-end/Dto/Token.dart';
 import '../colors/colors.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
+import '../widgets/pop-up.dart';
 
 class LogeadoPage extends StatefulWidget {
   const LogeadoPage({super.key});
@@ -16,10 +18,11 @@ class LogeadoPage extends StatefulWidget {
 }
 
 class _LogeadoPageState extends State<LogeadoPage> {
+
   @override
   Widget build(BuildContext context) {
+    
     final size = MediaQuery.of(context).size;
-    String simboloDolar = "\$";
 
     return Scaffold(
       appBar: AppBar(
@@ -37,7 +40,11 @@ class _LogeadoPageState extends State<LogeadoPage> {
             width: 10,
           ),
 
-          textoEtiquetaTwo("Hola, David", 20)
+          textoEtiquetaTwo("Hola, ${GetDataToken().getPreferredUsername(context)}", 20),
+
+          ElevatedButton(onPressed: () {
+            mostrarPopupAdvertencia(context);
+          }, child: Text("data"))
         ]),
         backgroundColor: CustomColors.colorVerdePantano,
         elevation: 0.0,
@@ -60,7 +67,7 @@ class _LogeadoPageState extends State<LogeadoPage> {
                     height: 28,
                   ),
 
-                  Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end, children: [textoEtiquetaTwo(simboloDolar, 30), textoEtiquetaTwo("500.000", 40)],),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end, children: [textoEtiquetaTwo("\$", 30), textoEtiquetaTwo("500.000", 40)],),
                   
                   textoEtiquetaTwo("Disponible", 15),
 
@@ -164,6 +171,18 @@ class _LogeadoPageState extends State<LogeadoPage> {
         ],
       ),
       bottomNavigationBar: const BarNavigation(page: true),
+    );
+  }
+
+
+  mostrarPopupAdvertencia(BuildContext context) {
+    DialogUtils.showMyGeneralDialog(context: context, 
+      iconoMostrar: Icons.details_rounded,
+      mensajePopUp: "¿Deseas cerrar sesión?",
+      onPressed: () {
+        context.read<TokenProvider>().guardarToken("");
+        context.pushReplacement("/loginPage");
+      }
     );
   }
 }

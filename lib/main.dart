@@ -1,5 +1,7 @@
+import 'package:app_credibanco_login/src/Back-end/Dto/Token.dart';
 import 'package:app_credibanco_login/src/app.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 // Importaciones manuales
 //import 'src/app.dart';
@@ -8,8 +10,13 @@ import 'package:flutter/material.dart';
 
 void main() {
 
-  runApp(const MyApp());
-
+  runApp(MultiProvider(
+    providers: [
+      /* ChangeNotifierProvider(create: (_) => myDropdown[0]), */ // Proporciona la primera instancia
+      ChangeNotifierProvider(create: (_) => TokenProvider()),
+    ],
+    child: const MyApp(),
+  ));
 }
 /* 
 import 'dart:convert';

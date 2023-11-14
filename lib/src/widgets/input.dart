@@ -292,13 +292,13 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
 
       // Uso de un switch
       switch (widget.validateText) {
-        case ValidateText.password:
+        /* case ValidateText.password:
           return validatePassword(value)
             ? setState(() {
                 hasError = "Correct";
               })
             : "Una minuscula, mayuscula, caracter especial y un número";
-
+ */
         case ValidateText.confirmPassword:
           //print("valor: $value passsword a comparar: ${widget.passwordComparar?.text}");
           // Condicion para comparar si son iguales los dos formularios
