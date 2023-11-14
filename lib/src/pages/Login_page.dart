@@ -167,20 +167,25 @@ class _LoginPageState extends State<LoginPage> {
                     widthButton: MediaQuery.of(context).size.width,
                     onPressed: () async {
                       print("Boton presionado");
-                      try {
                         // Condicion para saber si las validaciones de cada input estan correctas
-                        if (_keyForm.currentState!.validate()) {
+                        //if (_keyForm.currentState!.validate()) {
+                          if (_keyForm.currentState!.validate()) {
                           //final response = await pruebaAccesoToken(User(username: "adminbidi@yopmail.com", password: "Colombia.4"));
-                          final response = await pruebaAccesoToken(User(username: ctrlEmail.text, password: ctrlPassword.text));
-                          String token = response.data["access_token"]; // Obtiene el token del response
-                          print("");
+                          final response = await pruebaAccesoToken( ctrlEmail.text, ctrlPassword.text);
+                          if(response== 401){
+                             mostrarPopupError(context);
+                          } else {
+
+                            // HACER QUE EL TOKEN SE GUARDE EN Token.dart 
+//                          String token = response.data["access_token"]; // Obtiene el token del response
+  //                        print("");
                           //print(token);
 
                           // ****************** Guardar Token en Provider ******************
-                          context.read<TokenProvider>().guardarToken(token); // Se llama al metodo
-                          //String tokenaparte = context.watch<TokenProvider>().myToken;
-                          String tokenaparte = Provider.of<TokenProvider>(context, listen: false).myToken; 
-                          print("Imprimiendo token de prueba del provider: $tokenaparte");
+  //                        context.read<TokenProvider>().guardarToken(token); // Se llama al metodo
+//                          //String tokenaparte = context.watch<TokenProvider>().myToken;
+    //                      String tokenaparte = Provider.of<TokenProvider>(context, listen: false).myToken; 
+      //                    print("Imprimiendo token de prueba del provider: $tokenaparte");
                           //****************************************************************
 
 
@@ -196,15 +201,9 @@ class _LoginPageState extends State<LoginPage> {
                             context.go("/avisoPage");
                         
                           }
+                          }
                         }
-                      } //catch (e) {
-                        on DioException catch (e) {
-                        if (e.response?.statusCode == 401) {
-                          print("Error 401");
-                          mostrarPopupError;
-                        }
-                        print(e);
-                      }
+                        
                     }
                   ),
                     

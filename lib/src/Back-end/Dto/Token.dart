@@ -31,18 +31,18 @@ class User {
 
 // Metodo Post para obtener el Token
 // "Future<Response>" devuelve el objeto que representa la respuesta de la API
-Future<Response> pruebaAccesoToken(User user) async {
+Future<int> pruebaAccesoToken(String user, String email) async {
   final dio = Dio();
 
-  //const String userAuthUrl = "http://localhost:8080/user/auth/"; // URL Web
+  const String userAuthUrl = "http://localhost:8080/user/auth/"; // URL Web
 
-  const String userAuthUrl = "http://10.0.2.2:8080/user/auth/"; // URL android
+  //const String userAuthUrl = "http://10.0.2.2:8080/user/auth/"; // URL android
   
   try {
     // Realizando peticion post del "User" (objeto) y enviandolo al servidor en formato JSON
     final response = await dio.post(
       userAuthUrl,
-      data: user.toJson(),
+      //////////data: user.toJson(),
     );
     
     final token = response.data["access_token"]; /* En la variable se define el tipo 
@@ -68,18 +68,10 @@ Future<Response> pruebaAccesoToken(User user) async {
     print("*****************************************************");
     print("");
  
-    return response; // Retorna la respuesta de la petición http
+    return response.statusCode!; // Retorna la respuesta de la petición http
 
   } on DioException catch (e) { // Excepciones para manejar los errores
-    /* if (e.response?.statusCode == 401) {
-      print("Error 401");
-      //mostrarPopupError;
-      mostrarPopupError;
-    } */
-    if (e.response?.statusCode != 200) {
-      print("Hubo problemas en la api con error: ${e.response?.statusCode}");
-    }
-    throw Exception("Error al realizar la solicitud: $e");
+    return e.response!.statusCode!;
   }
 }
 
