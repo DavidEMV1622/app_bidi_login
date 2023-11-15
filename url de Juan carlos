@@ -1,0 +1,9 @@
+https://github.com/lalarcon19/pocket-api 	 	 
+
+
+
+se posiciona en la carpeta "target" del proyecto y actualiza el maven si se han hecho cambios en el api: mvn clean package -DskipTests
+
+ruta del proyecto en local: cd Desktop/proyectos/users/target/
+
+Codigo para ejecutar proyecto: java -jar users-1.0.0-RELEASE.jar -DskipTests
