@@ -6,7 +6,7 @@ import 'package:jwt_decode/jwt_decode.dart';
 import 'package:provider/provider.dart';
 
 // "User" representacion de los datos a manejar en la API (DTO) 
-class User {
+/* class User {
   String username;
   String password;
 
@@ -27,22 +27,29 @@ class User {
       "password": password,
     };
   }
-}
+} */
 
 // Metodo Post para obtener el Token
-// "Future<Response>" devuelve el objeto que representa la respuesta de la API
-Future<int> pruebaAccesoToken(String user, String email) async {
+// "Future<int>" devuelve la respuesta en codigo http de la API
+Future<int> pruebaAccesoToken(String email, String password, BuildContext context) async {
   final dio = Dio();
 
-  const String userAuthUrl = "http://localhost:8080/user/auth/"; // URL Web
+  Map<String, dynamic> toJson() {
+    return {
+      "username": email,
+      "password": password,
+    };
+  }
 
-  //const String userAuthUrl = "http://10.0.2.2:8080/user/auth/"; // URL android
+  //const String userAuthUrl = "http://localhost:8080/user/auth/"; // URL Web
+
+  const String userAuthUrl = "http://10.0.2.2:8080/user/auth/"; // URL android
   
   try {
     // Realizando peticion post del "User" (objeto) y enviandolo al servidor en formato JSON
     final response = await dio.post(
       userAuthUrl,
-      //////////data: user.toJson(),
+      data: toJson()
     );
     
     final token = response.data["access_token"]; /* En la variable se define el tipo 
@@ -67,6 +74,8 @@ Future<int> pruebaAccesoToken(String user, String email) async {
     print("******************************************************");
     print("*****************************************************");
     print("");
+
+    context.read<TokenProvider>().guardarToken(decodedToken); // metodo para guardar el token desencriptado en el provider
  
     return response.statusCode!; // Retorna la respuesta de la petición http
 
@@ -77,34 +86,19 @@ Future<int> pruebaAccesoToken(String user, String email) async {
 
 class TokenProvider with ChangeNotifier {
   
-  String token = "";
+  Map<String, dynamic> isDecodedToken = <String, dynamic>{};
 
-  String get myToken => this.token;
+  Map<String, dynamic> get myTokenDecoded => this.isDecodedToken;
 
 
-  void guardarToken(String tokenText) {
-    this.token = tokenText;
+  void guardarToken(Map<String, dynamic> token) {
+    this.isDecodedToken = token;
     notifyListeners();
   }
-}
 
 
-// Clase para obtener cada uno de los datos del token
-class GetDataToken {
-
-  // Metodo para obtener el nombre de usuario
-  String getPreferredUsername(BuildContext context) {
-    String obtenerToken = Provider.of<TokenProvider>(context, listen: false).myToken;
-    Map<String, dynamic> decodedToken = Jwt.parseJwt(obtenerToken);
-    return decodedToken["preferred_username"];
+  // Metodo para obtener el "nombre de usuario"
+  String getPreferredUsername() {
+    return myTokenDecoded["preferred_username"];
   }
 }
-/* void mostrarPopupError(BuildContext context) {
-  DialogUtils.showMyGeneralDialog(context: context, 
-    iconoMostrar: Icons.error_outline,
-    mensajePopUp: "Credenciales Invalidas",
-    onPressed: () {
-      context.pop();
-    }
-  );
-} */

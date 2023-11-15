@@ -40,7 +40,7 @@ class _LogeadoPageState extends State<LogeadoPage> {
             width: 10,
           ),
 
-          textoEtiquetaTwo("Hola, ${GetDataToken().getPreferredUsername(context)}", 20),
+          textoEtiquetaTwo("Hola, ${context.read<TokenProvider>().getPreferredUsername()}", 20),
 
           ElevatedButton(onPressed: () {
             mostrarPopupAdvertencia(context);
@@ -180,7 +180,7 @@ class _LogeadoPageState extends State<LogeadoPage> {
       iconoMostrar: Icons.details_rounded,
       mensajePopUp: "¿Deseas cerrar sesión?",
       onPressed: () {
-        context.read<TokenProvider>().guardarToken("");
+        context.read<TokenProvider>().guardarToken(<String, dynamic>{});
         context.pushReplacement("/loginPage");
       }
     );

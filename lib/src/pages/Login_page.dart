@@ -166,29 +166,16 @@ class _LoginPageState extends State<LoginPage> {
                     colorBox: CustomColors.colorAmarilloMostaza,
                     widthButton: MediaQuery.of(context).size.width,
                     onPressed: () async {
-                      print("Boton presionado");
-                        // Condicion para saber si las validaciones de cada input estan correctas
-                        //if (_keyForm.currentState!.validate()) {
-                          if (_keyForm.currentState!.validate()) {
-                          //final response = await pruebaAccesoToken(User(username: "adminbidi@yopmail.com", password: "Colombia.4"));
-                          final response = await pruebaAccesoToken( ctrlEmail.text, ctrlPassword.text);
-                          if(response== 401){
-                             mostrarPopupError(context);
-                          } else {
 
-                            // HACER QUE EL TOKEN SE GUARDE EN Token.dart 
-//                          String token = response.data["access_token"]; // Obtiene el token del response
-  //                        print("");
-                          //print(token);
+                      // Condicion para saber si las validaciones de cada input estan correctas
+                      //if (_keyForm.currentState!.validate()) {
+                      if (_keyForm.currentState!.validate()) {
+                        //final response = await pruebaAccesoToken(User(username: "adminbidi@yopmail.com", password: "Colombia.4"));
+                        final response = await pruebaAccesoToken(ctrlEmail.text, ctrlPassword.text, context);
 
-                          // ****************** Guardar Token en Provider ******************
-  //                        context.read<TokenProvider>().guardarToken(token); // Se llama al metodo
-//                          //String tokenaparte = context.watch<TokenProvider>().myToken;
-    //                      String tokenaparte = Provider.of<TokenProvider>(context, listen: false).myToken; 
-      //                    print("Imprimiendo token de prueba del provider: $tokenaparte");
-                          //****************************************************************
-
-
+                        if(response == 401){
+                          mostrarPopupError(context);
+                        } else {
                           // Se obtiene el estado de isStorage si es true (encontro la key) o false (no encontro la key)
                           bool isStorage = await _secureStorageMethods.getEmailStorage(ctrlEmail.text);
                       
@@ -196,14 +183,13 @@ class _LoginPageState extends State<LoginPage> {
                           ventanas de avisos */
                           if (isStorage) {
                             context.go("/logeadoPage");
+                            
                           } else {
                             _secureStorageMethods.setEmailStorage(ctrlEmail.text);
                             context.go("/avisoPage");
-                        
-                          }
                           }
                         }
-                        
+                      }
                     }
                   ),
                     
@@ -251,17 +237,7 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
-
-                  ElevatedButton(
-                    onPressed: () async {
-                      print("Boton (Obtener token) presionado");
-                      String tokenaparte = Provider.of<TokenProvider>(context, listen: false).myToken;
-                      print("isToken: $tokenaparte");
-                    },
-                    child: const Text('Obtener token'),
-                  ),
-                ],
-                ),
+                ],),
               ),
             ),
           ),
@@ -273,7 +249,7 @@ class _LoginPageState extends State<LoginPage> {
   mostrarPopupError(BuildContext context) {
     DialogUtils.showMyGeneralDialog(context: context, 
       iconoMostrar: Icons.error_outline,
-      mensajePopUp: "Credenciales",
+      mensajePopUp: "Credenciales Invalidas",
       onPressed: () {
         context.pop();
       }
