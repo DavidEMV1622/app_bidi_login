@@ -98,6 +98,7 @@ class DialogUtils {
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             width: MediaQuery.of(context).size.width,
             child: Card(
+              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: SingleChildScrollView(

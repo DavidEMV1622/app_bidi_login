@@ -1,12 +1,11 @@
 // ignore_for_file: file_names
 
 import 'package:app_credibanco_login/src/colors/colors.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 import '../Back-end/Dto/Token.dart';
+import '../Back-end/Dto/User/create_user.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
 import '../widgets/checkBox.dart';
@@ -173,8 +172,12 @@ class _LoginPageState extends State<LoginPage> {
                         //final response = await pruebaAccesoToken(User(username: "adminbidi@yopmail.com", password: "Colombia.4"));
                         final response = await pruebaAccesoToken(ctrlEmail.text, ctrlPassword.text, context);
 
-                        if(response == 401){
-                          mostrarPopupError(context);
+                        if(response == 400){
+                          mostrarPopupError(context, "Se a desactivado el usuario, crear uno nuevo");
+                        }
+
+                        else if(response == 401){
+                          mostrarPopupError(context, "Credenciales Invalidas");
                         } else {
                           // Se obtiene el estado de isStorage si es true (encontro la key) o false (no encontro la key)
                           bool isStorage = await _secureStorageMethods.getEmailStorage(ctrlEmail.text);
@@ -237,6 +240,21 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
+
+                  ElevatedButton(
+                    onPressed: () async{
+                      final response = await createUser(
+                        username: "Davidbidi111", 
+                        firstName: "David", 
+                        lastName: "Méndez", 
+                        email: "david@bidi11.com", 
+                        cel: 1212121212, 
+                        password: "Colombia.7"
+                      );
+                      print("valor del response: $response");
+                    }, 
+                    child: Text("Prueba post crear usuario")
+                  )
                 ],),
               ),
             ),
@@ -246,10 +264,10 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
   // Método para mostrar un pop-up con mensaje de error
-  mostrarPopupError(BuildContext context) {
+  mostrarPopupError(BuildContext context, String mensajePopUp) {
     DialogUtils.showMyGeneralDialog(context: context, 
       iconoMostrar: Icons.error_outline,
-      mensajePopUp: "Credenciales Invalidas",
+      mensajePopUp: mensajePopUp,
       onPressed: () {
         context.pop();
       }

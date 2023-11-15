@@ -41,9 +41,9 @@ Future<int> pruebaAccesoToken(String email, String password, BuildContext contex
     };
   }
 
-  //const String userAuthUrl = "http://localhost:8080/user/auth/"; // URL Web
+  const String userAuthUrl = "http://localhost:8080/user/auth/"; // URL Web
 
-  const String userAuthUrl = "http://10.0.2.2:8080/user/auth/"; // URL android
+  //const String userAuthUrl = "http://10.0.2.2:8080/user/auth/"; // URL android
   
   try {
     // Realizando peticion post del "User" (objeto) y enviandolo al servidor en formato JSON
