@@ -11,11 +11,7 @@ Future<int> createUser({
   final dio = Dio();
 
   Map<String, dynamic> toJson() {
-    return 
-    /* {"username": email,
-      "password": password,}; */
-    
-    {
+    return {
       "username": username,
       "firstName": firstName,
       "lastName": lastName,
@@ -32,24 +28,8 @@ Future<int> createUser({
       ]
     };
   }
-/* {
-      "username": username,
-      "firstName": firstName,
-      "lastName": lastName,
-      "email": email,
-      "enabled": true,
-      "attributes": {
-            "cel": cel
-      },
-      "credentials": [
-        {
-          "type": "password",
-          "value": password
-        }
-      ]
-    }; */
+
   const String userCreateUrl = "http://localhost:8080/user/create/"; // URL Web
-  //const String userCreateUrl = "http://localhost:8080/user/auth/";
 
   //const String userAuthUrl = "http://10.0.2.2:8080/user/create/"; // URL android
   

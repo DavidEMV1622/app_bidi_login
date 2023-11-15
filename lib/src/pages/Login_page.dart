@@ -247,9 +247,9 @@ class _LoginPageState extends State<LoginPage> {
                         username: "Davidbidi111", 
                         firstName: "David", 
                         lastName: "Méndez", 
-                        email: "david@bidi11.com", 
+                        email: "david@bidi111.com", 
                         cel: 1212121212, 
-                        password: "Colombia.7"
+                        password: "Colombia.8"
                       );
                       print("valor del response: $response");
                     }, 

@@ -5,6 +5,7 @@ import 'package:app_credibanco_login/src/widgets/input.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../config/arrow_router.dart';
+import '../Back-end/Dto/User/create_user.dart';
 import '../common/enumValidate.dart';
 import '../utils/TextFormatter.dart';
 
@@ -25,6 +26,7 @@ class _RegisterPageState extends State<RegisterPage> {
   bool confirmPasswordTrueOrFalse = true;
 
   // Controladores que se manejan en cada formulario
+  TextEditingController ctrlUserProfile = TextEditingController();
   TextEditingController ctrlName = TextEditingController();
   TextEditingController ctrlApellido = TextEditingController();
   TextEditingController ctrlPhoneNumber = TextEditingController();
@@ -63,6 +65,19 @@ class _RegisterPageState extends State<RegisterPage> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: subtituloUno("Registrate")
+              ),
+
+              // input de nombre
+              InputTextValidations(
+                textoInput: "Perfil de usuario",
+                inputType: TextInputType.name,
+                controller: ctrlUserProfile,
+                validateText: ValidateText.name,
+                imageIcon: 'assets/icons/user_profile.svg',
+              ),
+
+              const SizedBox(
+                height: 15.0,
               ),
           
               // input de nombre
@@ -201,9 +216,17 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
   // funcion para saber si los inputs tienen correcto su contenido
-  save() {
+  save() async {
     if (_keyForm.currentState!.validate()) {// si esta correcto el contenido de cada input
-      context.push("/mediumSendCodeRegisterPage");
+      //context.push("/mediumSendCodeRegisterPage");
+      final response = await createUser(
+        username: ctrlUserProfile.text, 
+        firstName: ctrlName.text, 
+        lastName: ctrlApellido.text, 
+        email: ctrlEmail.text, 
+        cel: 121212121212121, 
+        password: ctrlPassword.text
+      );
       //_mostrarPopupCorrecto(context); // mostrar pop-up correcto
     } /* else {
       _mostrarPopupError(context); // mostrar pop-up incorrecto

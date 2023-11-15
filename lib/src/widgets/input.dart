@@ -84,6 +84,7 @@ class _InputTextValidationsState extends State<InputTextValidations> {
               child: SvgPicture.asset( 
                 widget.imageIcon,
                 width: 5,
+                color: Color.fromRGBO(0, 141, 137, 1),
               ),
             ),
           ),
