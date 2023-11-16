@@ -41,9 +41,9 @@ Future<int> pruebaAccesoToken(String email, String password, BuildContext contex
     };
   }
 
-  const String userAuthUrl = "http://localhost:8080/user/auth/"; // URL Web
+  //const String userAuthUrl = "http://localhost:8080/user/auth/"; // URL Web
 
-  //const String userAuthUrl = "http://10.0.2.2:8080/user/auth/"; // URL android
+  const String userAuthUrl = "http://10.0.2.2:8080/user/auth/"; // URL android
   
   try {
     // Realizando peticion post del "User" (objeto) y enviandolo al servidor en formato JSON
@@ -75,7 +75,7 @@ Future<int> pruebaAccesoToken(String email, String password, BuildContext contex
     print("*****************************************************");
     print("");
 
-    context.read<TokenProvider>().guardarToken(decodedToken); // metodo para guardar el token desencriptado en el provider
+    context.read<TokenProvider>().guardarDecodedToken(decodedToken); // metodo para guardar el token desencriptado en el provider
  
     return response.statusCode!; // Retorna la respuesta de la petición http
 
@@ -91,11 +91,16 @@ class TokenProvider with ChangeNotifier {
   Map<String, dynamic> get myTokenDecoded => this.isDecodedToken;
 
 
-  void guardarToken(Map<String, dynamic> token) {
+  void guardarDecodedToken(Map<String, dynamic> token) {
     this.isDecodedToken = token;
     notifyListeners();
   }
 
+
+  // Metodo para obtener el "sub" del usuario (id)
+  String getSubUsernameID() {
+    return myTokenDecoded["sub"];
+  }
 
   // Metodo para obtener el "nombre de usuario"
   String getPreferredUsername() {

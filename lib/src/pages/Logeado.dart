@@ -180,7 +180,7 @@ class _LogeadoPageState extends State<LogeadoPage> {
       iconoMostrar: Icons.details_rounded,
       mensajePopUp: "¿Deseas cerrar sesión?",
       onPressed: () {
-        context.read<TokenProvider>().guardarToken(<String, dynamic>{});
+        context.read<TokenProvider>().guardarDecodedToken(<String, dynamic>{});
         context.pushReplacement("/loginPage");
       }
     );

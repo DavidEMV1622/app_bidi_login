@@ -72,7 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 textoInput: "Perfil de usuario",
                 inputType: TextInputType.name,
                 controller: ctrlUserProfile,
-                validateText: ValidateText.name,
+                validateText: ValidateText.password,
                 imageIcon: 'assets/icons/user_profile.svg',
               ),
 
@@ -219,19 +219,31 @@ class _RegisterPageState extends State<RegisterPage> {
   save() async {
     if (_keyForm.currentState!.validate()) {// si esta correcto el contenido de cada input
       //context.push("/mediumSendCodeRegisterPage");
+      final int phoneNumber = int.parse(ctrlPhoneNumber.text);
+
       final response = await createUser(
         username: ctrlUserProfile.text, 
         firstName: ctrlName.text, 
         lastName: ctrlApellido.text, 
         email: ctrlEmail.text, 
-        cel: 121212121212121, 
+        cel: phoneNumber, 
         password: ctrlPassword.text
       );
+
+      if (response == 201) {
+        print("Se creo el usuario");
+        _mostrarPopupCorrecto(context);
+      
+      } else if (response == 409) {
+        print("El usuario ya existe con esos datos");
+        _mostrarPopupError(context);
+      }
       //_mostrarPopupCorrecto(context); // mostrar pop-up correcto
     } /* else {
       _mostrarPopupError(context); // mostrar pop-up incorrecto
     } */
   }
+
 
   void _mostrarPopupCorrecto(BuildContext context) {
     DialogUtils.showMyGeneralDialog(context: context, 
@@ -242,7 +254,6 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  // Método para mostrar un pop-up con mensaje de error
   void _mostrarPopupError(BuildContext context) {
     DialogUtils.showMyGeneralDialog(context: context, 
       iconoMostrar: Icons.error_outline,

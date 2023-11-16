@@ -29,9 +29,9 @@ Future<int> createUser({
     };
   }
 
-  const String userCreateUrl = "http://localhost:8080/user/create/"; // URL Web
+  //const String userCreateUrl = "http://localhost:8080/user/create/"; // URL Web
 
-  //const String userAuthUrl = "http://10.0.2.2:8080/user/create/"; // URL android
+  const String userCreateUrl = "http://10.0.2.2:8080/user/create/"; // URL android
   
   try {
     final response = await dio.post(
@@ -46,8 +46,8 @@ Future<int> createUser({
       })
     );
     
-    final token = response.data;
-    print(token);
+    final valueResponse = response.data;
+    print(valueResponse);
 
     return response.statusCode!; // Retorna la respuesta de la petición http
 
