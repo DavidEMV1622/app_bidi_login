@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../Back-end/Dto/Token.dart';
+import '../Back-end/Dto/User/update_user.dart';
 import '../colors/colors.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
@@ -167,7 +168,29 @@ class _LogeadoPageState extends State<LogeadoPage> {
                 },
               ),
             ],
-          )
+          ),
+          ElevatedButton(onPressed: () {
+            context.push("/updateUser");
+          }, child: Text("Editar usuario")),
+
+          ElevatedButton(onPressed: () async {
+             final response = await updateUser(
+              username: "davidbidi2", 
+              firstName: "david", 
+              lastName: "mendez", 
+              email: "david@bidi2.com", 
+              context: context,
+            );
+            print("respuesta: $response");
+            
+          }, child: Text("Editar prueba")),
+
+          const SizedBox(
+            height: 45,
+          ),
+
+          ElevatedButton(onPressed: () {
+          }, child: Text("Editar password")),
         ],
       ),
       bottomNavigationBar: const BarNavigation(page: true),

@@ -22,7 +22,10 @@ Future<int> updateUser({
     };
   }
 
+  String token = context.read<TokenProvider>().isToken;
   String subToken = context.read<TokenProvider>().getSubUsernameID();
+
+  print("$subToken");
 
   String userUpdatedUrl = "http://localhost:8080/user/create/$subToken"; // URL Web
 
@@ -33,9 +36,8 @@ Future<int> updateUser({
       userUpdatedUrl,
       data: toJson(),
       options: Options(
-      headers: {
-        'Authorization': "Bearer",
-      })
+        headers: {'Authorization': "Bearer $token",}
+      )
     );
     
     final valueResponse = response.data;
