@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../colors/colors.dart';
 import '../utils/TextFormatter.dart';
@@ -125,6 +126,74 @@ class DialogUtils {
                         colorBox: CustomColors.colorAmarilloMostaza,
                         widthButton: MediaQuery.of(context).size.width,
                         onPressed: onPressed,
+                      ),
+                    ],
+                  ),
+                ),
+              ) 
+            ),
+          ),
+        );
+      }
+    );
+  }
+}
+
+
+class DialogChangePassword {
+  static Future<void> showMyGeneralDialog({
+    required BuildContext context,
+    final void Function()? onPressed,}) async{
+
+    await showGeneralDialog(
+      context: context,
+      barrierLabel: "Barrier",
+      barrierDismissible: false,
+      barrierColor: const Color.fromRGBO(0, 175, 170, 0.8),
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (_, __, ___) {
+        return Center(
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            width: MediaQuery.of(context).size.width,
+            child: Card(
+              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+
+                      const SizedBox(
+                        height: 20,
+                      ),
+
+                      textoCuerpo("mensajePopUp"), // Mensaje a mostrar
+                      
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      
+                      Row(
+                        children: [
+                          BtnPrimaery( // Manejo del boton
+                            textButton: "Cancelar",
+                            colorBox: CustomColors.colorBlanco,
+                            widthButton: MediaQuery.of(context).size.width,
+                            onPressed: () {
+                              context.pop();
+                            },
+                          ),
+                          
+                          BtnPrimaery( // Manejo del boton
+                            textButton: "Aceptar",
+                            colorBox: CustomColors.colorAmarilloMostaza,
+                            widthButton: MediaQuery.of(context).size.width,
+                            onPressed: () {
+                              print("presionando boton (Aceptar)");
+                            },
+                          ),
+                        ],
                       ),
                     ],
                   ),
