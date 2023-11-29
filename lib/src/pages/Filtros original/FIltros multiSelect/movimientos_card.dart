@@ -1,10 +1,5 @@
-import 'package:app_credibanco_login/models/movimientos_model.dart';
-import 'package:app_credibanco_login/src/common/inputValidate.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../colors/colors.dart';
-import '../utils/TextFormatter.dart';
+import 'movimiento_model.dart';
 
 class MovimientosCard extends StatelessWidget {
   final Movimiento movimientosList;
@@ -32,32 +27,25 @@ class MovimientosCard extends StatelessWidget {
               children: [
                 SizedBox(
                   child: Row(children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 31,
-                      backgroundColor: CustomColors.colorGris_5,
-                      child: movimientosList.isTrue == true ?
-                      SvgPicture.asset( 
-                        "assets/icons/send.svg",
-                        width: 25,
-                        color: CustomColors.colorAmarilloMostaza,
-                      ) : 
-                      SvgPicture.asset( 
-                        "assets/icons/receive.svg",
-                        width: 25,
-                        color: CustomColors.colorVerdePantano,
-                      ),
+                      backgroundColor: Colors.black54,
+                      child: Icon(
+                        Icons.south_east_rounded,
+                        size: 25,
+                      )
                       
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
       
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        
-                        textoEtiquetaTwo(movimientosList.name, 16),
 
-                        textColorSize(movimientosList.id.toString(), 16, CustomColors.colorGris_1),
+                        Text(movimientosList.name, style: TextStyle(fontSize: 16)),
+
+                        Text(movimientosList.id.toString(), style: const TextStyle(fontSize: 16)),
                       ],
                     ),
                   ]),
@@ -68,10 +56,10 @@ class MovimientosCard extends StatelessWidget {
                   children: [
                     
                     Row(children: [
-                      //textoEtiquetaTwo("\$", 16), textoEtiquetaTwo(movimientosList.valor.toString(), 16)],
-                      textoEtiquetaTwo("\$", 16), textoEtiquetaTwo(formatNumber(movimientosList.valor), 16)],
-                    ),
-                    textColorSize(movimientosList.fecha, 16, CustomColors.colorGris_1),
+                      const Text("\$", style: TextStyle(fontSize: 16)),
+                      Text(movimientosList.valor.toString(), style: const TextStyle(fontSize: 16)),
+                    ]),
+                    Text(movimientosList.fecha, style: const TextStyle(fontSize: 16)),
                   ],
                 ),
               ]

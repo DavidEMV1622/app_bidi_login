@@ -37,6 +37,18 @@ validateCodeOTP(String codeOTP) {
   return RegExp(expRegular).hasMatch(codeOTP);
 }
 
+// Funcion para definir el formato de los puntos decimales en los numeros
+String formatNumber(int number) {
+  String parts = number.toString(); // divide parte entera y parte decimal
+  RegExp expRegular = RegExp(r'\B(?=(\d{3})+(?!\d))'); // expresion regular para buscar grupo de tres valores
+
+  parts = parts.replaceAll(expRegular, '.'); // Agrega entre los grupos de tres valores enteros (parts[0])
+                                             //un "."
+  //print(parts);
+
+  return parts;
+}
+
 // --------------------------------------------------------------------
 // ---------- Clase para validar formularios ----------
 class ValidateFormulations {

@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../models/movimientos_model.dart';
 import '../colors/colors.dart';
+import '../common/inputValidate.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
 import '../widgets/movimientos_card.dart';
@@ -77,7 +78,11 @@ class _LogeadoPageState extends State<LogeadoPage> {
                     height: 28,
                   ),
 
-                  Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.end, children: [textoEtiquetaTwo(simboloDolar, 30), textoEtiquetaTwo("500.000", 40)],),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center, 
+                    crossAxisAlignment: CrossAxisAlignment.end, 
+                    children: [textoEtiquetaTwo(simboloDolar, 30), textoEtiquetaTwo(formatNumber(500000), 40)],
+                  ),
                   
                   textoEtiquetaTwo("Disponible", 15),
 

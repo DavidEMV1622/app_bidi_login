@@ -1,37 +1,32 @@
 name: app_credibanco_login
 description: A new Flutter project.
 
-publish_to: 'none' 
+publish_to: 'none'
 
 version: 1.0.0+1
 
 environment:
   sdk: '>=3.0.5 <4.0.0'
 
-
 dependencies:
-  flutter_svg: null
-  flutter:
-    
-    sdk: flutter
-  
-
-
-  http: ^1.1.0
   cupertino_icons: ^1.0.2
+  flutter:
+    sdk: flutter
   flutter_secure_storage: ^8.0.0
+  flutter_svg: null
   go_router: ^10.1.2
+  http: ^1.1.0
   iconify_flutter: ^0.0.5
+  provider: ^6.1.1
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
 
   flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
   http: ^1.1.0
 
 flutter:
-
 
   uses-material-design: true
 
@@ -41,13 +36,10 @@ flutter:
     - assets/icons/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
@@ -67,4 +59,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-

@@ -21,15 +21,15 @@ class _MovimientoPageState extends State<MovimientoPage> {
       Movimiento(1, "David Méndez", 500000, "13/12/2023", true),
       Movimiento(2, "Jesus Borda", 1000000, "10/10/2023", false),
       Movimiento(3, "Juan Carlos", 30000, "11/11/2023", false),
-      Movimiento(4, "Laura Alarccon", 50000, "09/07/2023", true),
+      Movimiento(4, "Laura Alarcon", 50000, "09/07/2023", true),
       Movimiento(5, "David Méndez", 500000, "13/12/2023", true),
       Movimiento(6, "Jesus Borda", 1000000, "10/10/2023", false),
       Movimiento(7, "Juan Carlos", 30000, "11/11/2023", false),
-      Movimiento(8, "Laura Alarccon", 50000, "09/07/2023", true),
+      Movimiento(8, "Laura Alarcon", 50000, "09/07/2023", true),
       Movimiento(9, "David Méndez", 500000, "13/12/2023", true),
       Movimiento(10, "Jesus Borda", 1000000, "10/10/2023", false),
       Movimiento(11, "Juan Carlos", 30000, "11/11/2023", false),
-      Movimiento(12, "Laura Alarccon", 50000, "09/07/2023", true),
+      Movimiento(12, "Laura Alarcon", 50000, "09/07/2023", true),
     ];
 
     return Scaffold(

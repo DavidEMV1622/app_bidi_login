@@ -1,7 +1,7 @@
 class Movimiento {
   late int id;
   late String name;
-  late double valor;
+  late int valor;
   late String fecha;
   late bool isTrue;
   
