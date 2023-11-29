@@ -92,7 +92,7 @@ class _CodeOTPPageGeneralState extends State<CodeOTPPageGeneral> {
       appBar: AppBar(
         backgroundColor: CustomColors
             .colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
-        leading: const ArrowRouter(activeArrow: "1",),
+        leading: const ArrowRouter(),
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----

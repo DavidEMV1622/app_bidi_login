@@ -12,12 +12,12 @@ class PocketList extends StatefulWidget {
 
 class _PocketListState extends State<PocketList> {
   List<Pocket> listPocket = [
-    Pocket("Carro", "600.000", const Color.fromARGB(255, 147, 147, 147)),
-    Pocket("Casa", "200.000", Color.fromARGB(255, 229, 10, 10)),
-    Pocket("Beca", "400.000", Color.fromARGB(255, 244, 228, 9)),
-    Pocket("Arriendo", "800.000", Color.fromARGB(255, 45, 178, 15)),
-    Pocket("pc", "3.000.000", Color.fromARGB(255, 95, 234, 255)),
-    Pocket("auto", "3.000.000", Color.fromARGB(255, 95, 234, 255)),
+    Pocket("Carro", "600.000", const Color.fromRGBO(147, 147, 147, 1)),
+    Pocket("Casa", "200.000", const Color.fromARGB(255, 229, 10, 10)),
+    Pocket("Beca", "400.000", const Color.fromARGB(255, 244, 228, 9)),
+    Pocket("Arriendo", "800.000", const Color.fromARGB(255, 45, 178, 15)),
+    Pocket("pc", "3.000.000", const Color.fromARGB(255, 95, 234, 255)),
+    Pocket("auto", "3.000.000", const Color.fromARGB(255, 95, 234, 255)),
   ];
 
   @override

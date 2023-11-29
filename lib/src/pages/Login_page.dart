@@ -1,11 +1,11 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, use_build_context_synchronously
 
 import 'package:app_credibanco_login/src/colors/colors.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../Back-end/Dto/Token.dart';
-import '../Back-end/Dto/User/create_user.dart';
+import '../Back-end/Dto/User/get_user.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
 import '../widgets/checkBox.dart';
@@ -170,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                       //if (_keyForm.currentState!.validate()) {
                       if (_keyForm.currentState!.validate()) {
                         //final response = await pruebaAccesoToken(User(username: "adminbidi@yopmail.com", password: "Colombia.4"));
-                        final response = await pruebaAccesoToken(ctrlEmail.text, ctrlPassword.text, context);
+                        final response = await tokenUser(ctrlEmail.text, ctrlPassword.text, context);
 
                         if(response == 400){
                           mostrarPopupError(context, "Se a desactivado el usuario, crear uno nuevo");
@@ -178,18 +178,20 @@ class _LoginPageState extends State<LoginPage> {
 
                         else if(response == 401){
                           mostrarPopupError(context, "Credenciales Invalidas");
+
                         } else {
+                          //await getUser(context: context); // Cuando se logre logearse, se actualiza los datos del usuario antes de cambiar de pantalla
                           // Se obtiene el estado de isStorage si es true (encontro la key) o false (no encontro la key)
                           bool isStorage = await _secureStorageMethods.getEmailStorage(ctrlEmail.text);
                       
                           /* isStorage es true, se pasa a la pantalla de logeado de lo contrario pasa a las
                           ventanas de avisos */
                           if (isStorage) {
-                            context.go("/logeadoPage");
+                            context.pushReplacement("/logeadoPage");
                             
                           } else {
                             _secureStorageMethods.setEmailStorage(ctrlEmail.text);
-                            context.go("/avisoPage");
+                            context.pushReplacement("/avisoPage");
                           }
                         }
                       }
@@ -241,7 +243,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
 
-                  ElevatedButton(
+                  /* ElevatedButton(
                     onPressed: () async{
                       final response = await createUser(
                         username: "Davidbidi111", 
@@ -254,7 +256,7 @@ class _LoginPageState extends State<LoginPage> {
                       print("valor del response: $response");
                     }, 
                     child: Text("Prueba post crear usuario")
-                  )
+                  ) */
                 ],),
               ),
             ),

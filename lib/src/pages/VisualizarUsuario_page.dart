@@ -1,6 +1,9 @@
 // ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import '../../config/arrow_router.dart';
+import '../Back-end/Dto/User/get_user.dart';
 import '../utils/TextFormatter.dart';
 import '../colors/colors.dart';
 import 'Editar_usuario_page.dart';
@@ -22,27 +25,23 @@ class _ViewUserDataPageState extends State<ViewUserDataPage> {
       appBar: AppBar(
         backgroundColor: CustomColors
             .colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
+        leading: const ArrowRouter(),
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(
-              15), // Separación entre todos los widgets y el borde del celular
-          child: Column(
-            // Se acomoda el contenido en columna
-
-            mainAxisAlignment:
-                MainAxisAlignment.center, // Define la posición de los widgets
-
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: ListView(
             children: <Widget>[
               
               Container(
+                margin: const EdgeInsets.symmetric(horizontal: 13, vertical: 27),
                 // Permite definir el diseño de la caja de texto "BoxDecoration"
                 decoration: BoxDecoration(
                   color: CustomColors.colorGris_4, // Color del input
                   borderRadius:
-                      BorderRadius.circular(12.0), // Define los bordes redondeados
+                      BorderRadius.circular(33.0), // Define los bordes redondeados
                   border: Border.all(
                     // Define el grosor y color de borde
                     color: CustomColors.colorGris_3,
@@ -50,12 +49,11 @@ class _ViewUserDataPageState extends State<ViewUserDataPage> {
                   ),
                 ),
                 // Espaciado entre el borde y el contenido
-                padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
                 
                 // ---- Tamaño del Campo ----
-                //height: 600,
                 width: 700.0,
-
+        
                 // ---- Contenido del campo ----
                 child: Center(
                   child: Column(
@@ -66,40 +64,40 @@ class _ViewUserDataPageState extends State<ViewUserDataPage> {
                         color: CustomColors.colorNegro,
                         size: 150.0,
                       ),
-
+        
                       // ---- Datos del usuario ----
+                      textoEtiqueta("- Perfil de usuario:", CustomColors.colorVerdeOscuroFuerte),
+                      textoCuerpo(context.watch<GetUserProvider>().userName),
                       textoEtiqueta("- Nombre:", CustomColors.colorVerdeOscuroFuerte),
-                      textoCuerpo("Lucas"),
+                      textoCuerpo(context.watch<GetUserProvider>().firstName),
                       textoEtiqueta("- Apellido:", CustomColors.colorVerdeOscuroFuerte),
-                      textoCuerpo("Rubiano",),
+                      textoCuerpo(context.watch<GetUserProvider>().lastName),
                       textoEtiqueta("- Correo:", CustomColors.colorVerdeOscuroFuerte),
-                      textoCuerpo("lucasR@gmail.com"),
+                      textoCuerpo(context.watch<GetUserProvider>().email),
                       textoEtiqueta("- Telefono", CustomColors.colorVerdeOscuroFuerte),
                       textoCuerpo("1234567890",),
                     ]
                   ),
                 ),
-                /*      
-                margin: EdgeInsets.symmetric(
-                  horizontal: 0,
-                  vertical: 0,
-                ),
-                */
               ),
               
               // ---- Boton flotante ----
-              FloatingActionButton(
-                elevation: 10.0,
-                backgroundColor: CustomColors.colorAmarilloMostaza, 
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const UpdateUserPage())),
-                child: const Icon(
-                  Icons.edit_square,
-                  color: CustomColors.colorBlanco,
-                  size: 30.0,
+              Align(
+                alignment: Alignment.centerRight,
+                child: FloatingActionButton(
+                  elevation: 10.0,
+                  backgroundColor: CustomColors.colorAmarilloMostaza, 
+                  onPressed: () => context.push("/updateUser"),
+                  child: const Icon(
+                    Icons.edit_square,
+                    color: CustomColors.colorBlanco,
+                    size: 30.0,
+                  ),
                 ),
               ),
-
+              const SizedBox(
+                height: 30.0,
+              ),
             ],
           ),
         ),

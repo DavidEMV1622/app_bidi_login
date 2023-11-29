@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, use_build_context_synchronously
 
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:app_credibanco_login/src/widgets/input.dart';
@@ -45,7 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
       appBar: AppBar(
         backgroundColor: CustomColors
             .colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
-        leading: const ArrowRouter(activeArrow: "1",),
+        leading: const ArrowRouter(),
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
@@ -67,7 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: subtituloUno("Registrate")
               ),
 
-              // input de nombre
+              // input de perfil de usuario
               InputTextValidations(
                 textoInput: "Perfil de usuario",
                 inputType: TextInputType.name,

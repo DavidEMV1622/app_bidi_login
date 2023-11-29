@@ -4,32 +4,26 @@ import 'package:provider/provider.dart';
 
 import '../Token.dart';
 
-Future<int> updateUser({
-  required String username, 
-  required String firstName, 
-  required String lastName, 
-  required String email,
+Future<int> updatePassword({
+  required String password,
   required BuildContext context
 }) async {
   final dio = Dio();
 
   Map<String, dynamic> toJson() {
     return {
-      "email": email,
-      "username": username,
-      "firstName": firstName,
-      "lastName": lastName
+      "type":"password",
+      "temporary":false,
+      "value":password,
     };
   }
 
   String token = context.read<TokenProvider>().isToken;
   String subToken = context.read<TokenProvider>().getSubUsernameID();
 
-  print(subToken);
+  //String userUpdatedUrl = "http://localhost:8080/user/update/pw/$subToken"; // URL Web
 
-  //String userUpdatedUrl = "http://localhost:8080/user/update/$subToken"; // URL Web
-
-  String userUpdatedUrl = "http://10.0.2.2:8080/user/update/$subToken"; // URL android
+  String userUpdatedUrl = "http://10.0.2.2:8080/user/update/pw/$subToken"; // URL android
   
   try {
     final response = await dio.put(
@@ -39,7 +33,7 @@ Future<int> updateUser({
         headers: {'Authorization': "Bearer $token",}
       )
     );
-    
+
     return response.statusCode!; // Retorna la respuesta de la petición http
 
   } on DioException catch (e) { // Excepciones para manejar los errores

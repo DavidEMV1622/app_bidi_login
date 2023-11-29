@@ -1,4 +1,5 @@
 import 'package:app_credibanco_login/src/Back-end/Dto/Token.dart';
+import 'package:app_credibanco_login/src/Back-end/Dto/User/get_user.dart';
 import 'package:app_credibanco_login/src/app.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,7 @@ void main() {
     providers: [
       /* ChangeNotifierProvider(create: (_) => myDropdown[0]), */ // Proporciona la primera instancia
       ChangeNotifierProvider(create: (_) => TokenProvider()),
+      ChangeNotifierProvider(create: (_) => GetUserProvider()),
     ],
     child: const MyApp(),
   ));

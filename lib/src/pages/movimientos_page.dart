@@ -29,7 +29,7 @@ class _MovimientoPageState extends State<MovimientoPage> {
         title: textoEtiquetaTwo("Movimientos", 24),
         centerTitle: true,
         backgroundColor: CustomColors.colorBlanco,
-        leading: const ArrowRouter(activeArrow: "1",),
+        leading: const ArrowRouter(),
       ),
 
       body: ListView(children: const [

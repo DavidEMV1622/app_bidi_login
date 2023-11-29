@@ -25,7 +25,7 @@ class MediumSendCodePageGeneral extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: CustomColors.colorBlanco,
         elevation: 0.0,
-        leading: const ArrowRouter(activeArrow: "1",),
+        leading: const ArrowRouter(),
       ),
 
       body: Padding(

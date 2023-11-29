@@ -85,13 +85,13 @@ Widget subtituloUno(String texto) {
 }
 
 // Widget del Subtitulo 2
-Widget subtituloDos(String texto, double fontSizeText) {
+Widget subtituloDos(String texto, double fontSizeText, Color colorText) {
   return SizedBox(
     child: Text(
       texto,
       style: TextStyle(
         fontSize: fontSizeText,
-        color: CustomColors.colorVerdeOscuroFuerte,
+        color: colorText,
         fontWeight: FontWeight.bold,
         fontFamily: "Gilroy_Bold",
       ),

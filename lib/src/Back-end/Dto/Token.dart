@@ -1,39 +1,15 @@
-// ignore: unused_import
-import 'dart:convert';
+// ignore_for_file: file_names, use_build_context_synchronously
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:provider/provider.dart';
 
-// "User" representacion de los datos a manejar en la API (DTO) 
-/* class User {
-  String username;
-  String password;
-
-  User({required this.username, required this.password});
-
-  // Metodo para revertir el formato json a objeto User
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      username: json["username"],
-      password: json["password"],
-    );
-  }
-
-  // Metodo para convertir el objeto User a formato json
-  Map<String, dynamic> toJson() {
-    return {
-      "username": username,
-      "password": password,
-    };
-  }
-} */
-
 // Metodo Post para obtener el Token
 // "Future<int>" devuelve la respuesta en codigo http de la API
-Future<int> pruebaAccesoToken(String email, String password, BuildContext context) async {
+Future<int> tokenUser(String email, String password, BuildContext context) async {
   final dio = Dio();
 
+  // Metodo para pasar la informacion en formato JSON
   Map<String, dynamic> toJson() {
     return {
       "username": email,
@@ -41,9 +17,9 @@ Future<int> pruebaAccesoToken(String email, String password, BuildContext contex
     };
   }
 
-  const String userAuthUrl = "http://localhost:8080/user/auth/"; // URL Web
+  //const String userAuthUrl = "http://localhost:8080/user/auth/"; // URL Web
 
-  //const String userAuthUrl = "http://10.0.2.2:8080/user/auth/"; // URL android
+  const String userAuthUrl = "http://10.0.2.2:8080/user/auth/"; // URL android
   
   try {
     // Realizando peticion post del "User" (objeto) y enviandolo al servidor en formato JSON
@@ -63,14 +39,12 @@ Future<int> pruebaAccesoToken(String email, String password, BuildContext contex
     print("*******************************************************");
     print("********************************************************");
     Map<String, dynamic> decodedToken = Jwt.parseJwt(token);
-    print(decodedToken);
+    print(decodedToken); // Token desencriptado
     print("");
     String decodedEmail = decodedToken["email"];
-    print(decodedEmail);
+    print(decodedEmail); // Mostrar segun la respuesta "decodedToken" el email
     print("");
-    DateTime? expiryDate = Jwt.getExpiryDate(token);
-    print(expiryDate);
-    print(response.statusCode);
+    print(response.statusCode); // Numero de la respuestaa http
     print("******************************************************");
     print("*****************************************************");
     print("");
@@ -93,24 +67,21 @@ class TokenProvider with ChangeNotifier {
   String get myToken => this.isToken;
   Map<String, dynamic> get myTokenDecoded => this.isDecodedToken;
 
+  // Guardar Token en provider
   void guardarToken(String token) {
     this.isToken = token;
+    print("Token provider: $token");
     notifyListeners();
   }
 
+  // Guardar Token desencriptado en provider
   void guardarDecodedToken(Map<String, dynamic> tokenDecoded) {
     this.isDecodedToken = tokenDecoded;
     notifyListeners();
   }
 
-
-  // Metodo para obtener el "sub" del usuario (id)
+  // Metodo para obtener el "sub" del usuario en el token (id)
   String getSubUsernameID() {
     return myTokenDecoded["sub"];
-  }
-
-  // Metodo para obtener el "nombre de usuario"
-  String getPreferredUsername() {
-    return myTokenDecoded["preferred_username"];
   }
 }

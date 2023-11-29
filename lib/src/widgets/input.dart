@@ -7,6 +7,7 @@ import '../common/inputValidate.dart';
 // ---- Clase para un input general con validación ----
 class InputTextValidations extends StatefulWidget {
   final String textoInput; // texto del input
+  final bool? enabledInput; // Habilitar o desabilitar input
   final TextInputType inputType; // tipo de teclado a mostrar
   final TextEditingController controller; // controlar cada input
   final ValidateText? validateText; // Tipo de validacion a utilizar
@@ -16,6 +17,7 @@ class InputTextValidations extends StatefulWidget {
   const InputTextValidations({
     super.key,
     required this.textoInput,
+    this.enabledInput,
     required this.inputType,
     required this.controller,
     this.validateText,
@@ -42,6 +44,7 @@ class _InputTextValidationsState extends State<InputTextValidations> {
           // Contenido del TextFormField
           decoration: InputDecoration(
             hintText: widget.textoInput, // Place holder en el input
+            enabled: widget.enabledInput ?? true,
             /* enabledBorder: OutlineInputBorder( // Manejo del borde no enfocado (borde estandar)
               borderRadius: BorderRadius.circular(4.0),
               borderSide: BorderSide(
@@ -84,7 +87,7 @@ class _InputTextValidationsState extends State<InputTextValidations> {
               child: SvgPicture.asset( 
                 widget.imageIcon,
                 width: 5,
-                color: Color.fromRGBO(0, 141, 137, 1),
+                color: const Color.fromRGBO(0, 141, 137, 1),
               ),
             ),
           ),
@@ -161,7 +164,8 @@ class _InputTextValidationsState extends State<InputTextValidations> {
 
 // ---- Clase para un input general con validación ----
 class InputPasswordValidations extends StatefulWidget {
-  final String textoInput; // // texto del input
+  final String textoInput; // texto del input
+  final bool? enabledInput; // Habilitar o desabilitar input
   final TextInputType inputType; // tipo de teclado a mostrar
   final TextEditingController controller; // controlar cada input
   final ValidateText? validateText; // Tipo de validacion a utilizar
@@ -171,6 +175,7 @@ class InputPasswordValidations extends StatefulWidget {
   const InputPasswordValidations({
     super.key, 
     required this.textoInput,
+    this.enabledInput,
     required this.inputType,
     required this.controller,
     this.validateText,
@@ -196,6 +201,7 @@ class _InputPasswordValidationsState extends State<InputPasswordValidations> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextFormField(
+          enabled: widget.enabledInput ?? true,
           obscureText: passenable,
 
           // Maneja el contenido del "TextFormField"

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../colors/colors.dart';
 import '../../utils/TextFormatter.dart';
 
 class AvisosPageGeneral extends StatelessWidget {
@@ -49,7 +50,7 @@ class AvisosPageGeneral extends StatelessWidget {
                 : MediaQuery.of(context).size.width > 800? 30 
                 : MediaQuery.of(context).size.width > 600? 26 
                 : MediaQuery.of(context).size.width > 400? 22
-                : 18,),
+                : 18, CustomColors.colorVerdeOscuroFuerte),
               
               // Separacion entre cada texto
               const SizedBox(

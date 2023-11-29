@@ -35,12 +35,11 @@ BM 1612 => drop bar.
 BM-1616=> Optimizar los botones.
 BM 1617 => widget Bolsillo y pantalla de Bolsillos.
 BM 1618 => Redisenio de vistas de pantallas 
+BM 1621 => Consumo del Rest de users
 --------------------------------------POR--HACER--------------------------------------------
 
 BM 1608 => Menu lateral
 BM 1609 => Opcion de envio de otp
-
-BM 1621 => Consumo del Rest
 
 
 

@@ -1,11 +1,14 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, use_build_context_synchronously
 
 import 'package:app_credibanco_login/src/Back-end/Dto/User/update_user.dart';
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:app_credibanco_login/src/widgets/input.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import '../../config/arrow_router.dart';
+import '../Back-end/Dto/User/get_user.dart';
 import '../common/enumValidate.dart';
 import '../utils/TextFormatter.dart';
 
@@ -19,6 +22,22 @@ class UpdateUserPage extends StatefulWidget {
 }
 
 class _UpdateUserPageState extends State<UpdateUserPage> {
+
+  @override
+  void initState() {
+    super.initState();
+    fetchProviderData();
+  }
+
+  // Metodo para actualizar los valores en cada input
+  Future <void> fetchProviderData() async {
+    //await getUser(context: context);
+    ctrlUserProfile.text = context.read<GetUserProvider>().userName;
+    ctrlName.text = context.read<GetUserProvider>().firstName;
+    ctrlApellido.text = context.read<GetUserProvider>().lastName;
+    ctrlEmail.text = context.read<GetUserProvider>().email;
+  }
+
   // Variable de tipo boolean para icono de si o no mostrar contrasenia
   bool passenable = true;
 
@@ -42,7 +61,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
       appBar: AppBar(
         backgroundColor: CustomColors
             .colorBlanco, // Color del AppBar por medio de la clase "CustomColors"
-        leading: const ArrowRouter(activeArrow: "1",),
+        leading: const ArrowRouter(),
       ),
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
@@ -64,9 +83,10 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 child: subtituloUno("Editar Usuario")
               ),
 
-              // input de nombre
+              // input de perfil del usuario
               InputTextValidations(
                 textoInput: "Perfil de usuario",
+                enabledInput: false,
                 inputType: TextInputType.name,
                 controller: ctrlUserProfile,
                 validateText: ValidateText.password,
@@ -106,6 +126,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
               // input de email
               InputTextValidations(
                 textoInput: "Correo electronico",
+                enabledInput: false,
                 inputType: TextInputType.emailAddress,
                 controller: ctrlEmail,
                 validateText: ValidateText.email,
@@ -113,7 +134,27 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
               ),
           
               const SizedBox(
-                height: 35.0,
+                height: 15.0,
+              ),
+
+              Align(
+                alignment: Alignment.centerRight,
+                child: FloatingActionButton(
+                  elevation: 10.0,
+                  backgroundColor: CustomColors.colorAmarilloMostaza, 
+                  onPressed: () {
+                    DialogChangePassword.showMyGeneralDialog(context: context);
+                  },
+                  child: SvgPicture.asset( 
+                    "assets/icons/password.svg",
+                    width: 25,
+                    color: CustomColors.colorBlanco,
+                  ),
+                ),
+              ),
+
+              const SizedBox(
+                height: 15.0,
               ),
 
               Row(children: <Widget>[
@@ -161,18 +202,15 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
         context: context,
       );
 
-      if (response == 201) {
+      if (response == 200) {
         print("Se edito el usuario");
         _mostrarPopupCorrecto(context);
       
-      } else if (response == 409) {
-        print("El usuario ya existe con esos datos");
+      } else {
+        print("El usuario no se pudo editar");
         _mostrarPopupError(context);
       }
-      //_mostrarPopupCorrecto(context); // mostrar pop-up correcto
-    } /* else {
-      _mostrarPopupError(context); // mostrar pop-up incorrecto
-    } */
+    }
   }
 
 
@@ -181,7 +219,10 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
     iconoMostrar: Icons.verified_user,
     mensajePopUp: "Se ha editado tus datos correctamente",
     //onPressed: () => context.pushReplacement("/loginPage"),
-    onPressed: () => context.pushReplacement("/userLogin"),
+    onPressed: () async{
+      await getUser(context: context);
+      context.go("/userLogin");
+    },
     );
   }
 
