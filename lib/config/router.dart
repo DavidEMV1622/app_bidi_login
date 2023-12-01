@@ -2,6 +2,7 @@ import 'package:app_credibanco_login/src/pages/logeado2.dart';
 import 'package:go_router/go_router.dart';
 
 import '../src/pages/Change_password.dart';
+import '../src/pages/Filtros original/Filtro_screens/filtro_screen.dart';
 import '../src/pages/ScreensCodeOTP/CodeOTPEmailChangePassword_page.dart';
 import '../src/pages/ScreensCodeOTP/CodeOTPEmailTRegister_page.dart';
 import '../src/pages/ScreensCodeOTP/CodeOTPPhoneNumberChangePassword_page.dart';
@@ -28,6 +29,13 @@ final routes = GoRouter(
 
   routes: [
     GoRoute(
+      path: '/filtroScreen',
+      builder: (context, state) =>
+          const FiltroScreen(),
+    ),
+
+
+    GoRoute(
       // "GoRoute" permite crear cada ruta
       path: '/loginPage', // Plantilla para llamar las pantallas
       builder: (context, state) =>
@@ -36,7 +44,7 @@ final routes = GoRouter(
 
     GoRoute(
         // Ruta de la pagina de avisos
-        path: '/avisoPage', // Ruta con parametro
+        path: '/avisoPage',
         builder: (context, state) {
           return const AvisoPage();
         }),

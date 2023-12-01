@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class DropDown with ChangeNotifier {
 
-  List<String> _listMediosPago = [];
+  final List<String> _listMediosPago = [];
 
-  List<String> _listMediosPagoSeleccionado = [];
+  final List<String> _listMediosPagoSeleccionado = [];
 
 
   List<String> get listMediosPago => _listMediosPago;
@@ -73,23 +72,3 @@ class DropDown with ChangeNotifier {
   DropDown(listMediosPago: ["Nequi", "Bancolombia", "Banco Bogota", "Visa"], listMediosPagoSeleccionado: []),
   DropDown(listMediosPago: ['Efectivo', 'Tarjeta', 'Transferencia'], listMediosPagoSeleccionado: []),
 ]; */ */
-
-
-class FormData {
-  List<String> mediosPago = [];
-  List<String> mediosPagoSeleccionados = [];
-}
-
-class FormDataProvider with ChangeNotifier {
-  List<FormData> formDatas = [];
-
-  void addForm() {
-    formDatas.add(FormData());
-    notifyListeners();
-  }
-
-  void removeForm(int index) {
-    formDatas.removeAt(index);
-    notifyListeners();
-  }
-}

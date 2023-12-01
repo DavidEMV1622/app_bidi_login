@@ -1,5 +1,3 @@
-import 'package:app_credibanco_login/src/pages/Logeado.dart';
-import 'package:app_credibanco_login/src/pages/Login_page.dart';
 import 'package:flutter/material.dart';
 
 import '../config/router.dart';

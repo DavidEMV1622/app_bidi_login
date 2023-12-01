@@ -1,5 +1,6 @@
 import 'package:app_credibanco_login/src/colors/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../config/arrow_router.dart';
 import '../../models/movimientos_model.dart';
@@ -40,14 +41,32 @@ class _MovimientoPageState extends State<MovimientoPage> {
         leading: const ArrowRouter(activeArrow: "1",),
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 34),
-        child: ListView.builder(
-          itemCount: listMovimientos.length,
-          itemBuilder: (context, index) {
-            return MovimientosCard(movimientosList: listMovimientos[index],);
-          },
-        ),
+      body: ListView(
+        children: [
+
+          ElevatedButton(onPressed: () {
+            context.push("/filtroScreen");
+          }, child: const Text("Boton de filtros")),
+
+          const SizedBox(
+            height: 20,
+          ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Container(
+              color: Colors.amber,
+              height: 500,
+              width: MediaQuery.of(context).size.width,
+              child: ListView.builder(
+                itemCount: listMovimientos.length,
+                itemBuilder: (context, index) {
+                  return MovimientosCard(movimientosList: listMovimientos[index],);
+                },
+              ),
+            ),
+          ),
+        ],
       )
     );
   }
