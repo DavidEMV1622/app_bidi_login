@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class DropDown with ChangeNotifier {
+/* class DropDown with ChangeNotifier {
 
   final List<String> _listMediosPago = [];
 
@@ -31,10 +31,47 @@ class DropDown with ChangeNotifier {
     _listMediosPagoSeleccionado.remove(value);
     notifyListeners();
   }
+} */
 
+
+
+class DropDown with ChangeNotifier {
+
+  final List<String> _listMediosPago = [];
+
+  final List<String> _listMediosPagoSeleccionado = [];
+
+
+  List<String> get listMediosPago => _listMediosPago;
+  List<String> get listMediosPagoSeleccionado => _listMediosPagoSeleccionado;
+
+
+  void setAddAlllistMediosPago(List<String> value) {
+    _listMediosPago.addAll(value);
+    notifyListeners();
+  }
+
+  void clearlistMediosPago() {
+    _listMediosPago.clear();
+    notifyListeners();
+  }
+
+
+  void setListMediosPagoSeleccionado(String value) {
+    _listMediosPagoSeleccionado.add(value);
+    notifyListeners();
+  }
+
+  void setAddAllListMediosPagoSeleccionado(List<String> value) {
+    _listMediosPagoSeleccionado.addAll(value);
+    notifyListeners();
+  }
+
+  void removelistMediosPagoSeleccionado(String value) {
+    _listMediosPagoSeleccionado.remove(value);
+    notifyListeners();
+  }
 }
-
-
 
 
 
