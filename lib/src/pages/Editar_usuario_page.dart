@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, use_build_context_synchronously
 
 import 'package:app_credibanco_login/src/Back-end/Dto/User/update_user.dart';
+import 'package:app_credibanco_login/src/Back-end/Dto/User/user_DTO.dart';
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:app_credibanco_login/src/widgets/input.dart';
 import 'package:flutter/material.dart';
@@ -31,11 +32,11 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
 
   // Metodo para actualizar los valores en cada input
   Future <void> fetchProviderData() async {
-    //await getUser(context: context);
-    ctrlUserProfile.text = context.read<GetUserProvider>().userName;
-    ctrlName.text = context.read<GetUserProvider>().firstName;
-    ctrlApellido.text = context.read<GetUserProvider>().lastName;
-    ctrlEmail.text = context.read<GetUserProvider>().email;
+    //await getUserDTO(context: context);
+    ctrlUserProfile.text = context.read<User>().getUserName!;
+    ctrlName.text = context.read<User>().getFirstName!;
+    ctrlApellido.text = context.read<User>().getLastName!;
+    ctrlEmail.text = context.read<User>().getEmail!;
   }
 
   // Variable de tipo boolean para icono de si o no mostrar contrasenia
@@ -194,7 +195,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
   save() async {
     if (_keyForm.currentState!.validate()) {
 
-      final response = await updateUser(
+      final response = await updateUserDTO(
         username: ctrlUserProfile.text, 
         firstName: ctrlName.text, 
         lastName: ctrlApellido.text, 

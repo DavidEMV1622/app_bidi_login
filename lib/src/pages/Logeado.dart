@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../Back-end/Dto/Token.dart';
 import '../Back-end/Dto/User/get_user.dart';
+import '../Back-end/Dto/User/user_DTO.dart';
 import '../colors/colors.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
@@ -27,7 +28,8 @@ class _LogeadoPageState extends State<LogeadoPage> {
   }
 
   Future <void> fetchProviderData() async {
-    await getUser(context: context);
+    //await getUser(context: context);
+    await getUserDTO(context: context);
   }
 
   @override
@@ -53,7 +55,9 @@ class _LogeadoPageState extends State<LogeadoPage> {
               width: 10,
             ),
     
-            textoEtiquetaTwo("Hola, ${context.watch<GetUserProvider>().firstName}", 20),
+            //textoEtiquetaTwo("Hola, ${context.watch<GetUserProvider>().firstName}", 20),
+            //textoEtiquetaTwo("Hola, ${User().getFirstName}", 20),
+            textoEtiquetaTwo("Hola, ${context.watch<User>().firstName}", 20),
     
             ElevatedButton(onPressed: () {
               mostrarPopupAdvertencia(context);
@@ -188,7 +192,7 @@ class _LogeadoPageState extends State<LogeadoPage> {
     
             ElevatedButton(
               onPressed: () async{
-                final response = await getUser(context: context);
+                final response = await getUserDTO(context: context);
                 
                 if (response == 200) {
                   print("Informacion Obtenida");

@@ -40,9 +40,9 @@ Future<int> updateUser({
       )
     );
     
-    return response.statusCode!; // Retorna la respuesta de la petición http
+    return response.statusCode!;
 
-  } on DioException catch (e) { // Excepciones para manejar los errores
+  } on DioException catch (e) {
     return e.response!.statusCode!;
   }
 }

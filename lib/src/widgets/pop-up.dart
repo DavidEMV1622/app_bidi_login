@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:app_credibanco_login/src/Back-end/Dto/User/user_DTO.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -254,7 +255,7 @@ class DialogChangePassword {
                                       });
                                       
                                       if (_keyForm.currentState!.validate()) {
-                                        final response = await updatePassword(
+                                        final response = await updatePasswordDTO(
                                           password: ctrlPassword.text,
                                           context: context,
                                         );

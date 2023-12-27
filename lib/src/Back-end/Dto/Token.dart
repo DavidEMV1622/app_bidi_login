@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 // Metodo Post para obtener el Token
 // "Future<int>" devuelve la respuesta en codigo http de la API
 Future<int> tokenUser(String email, String password, BuildContext context) async {
-  final dio = Dio();
+  final dio = Dio(); // instanciación para utilizar las funciones
 
   // Metodo para pasar la informacion en formato JSON
   Map<String, dynamic> toJson() {
@@ -30,8 +30,8 @@ Future<int> tokenUser(String email, String password, BuildContext context) async
     
     final token = response.data["access_token"]; /* En la variable se define el tipo 
                                                 de respuesta a mostrar, en este caso
-                                                se especifica que en la respuesta solo
-                                                me muestre el token*/
+                                                se especifica que en la respuesta que arroja postman
+                                                solo  me muestre el token*/
     print("Token: $token"); // imprime el token
 
     print("");

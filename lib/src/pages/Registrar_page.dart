@@ -1,5 +1,6 @@
 // ignore_for_file: file_names, use_build_context_synchronously
 
+import 'package:app_credibanco_login/src/Back-end/Dto/User/user_DTO.dart';
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
 import 'package:app_credibanco_login/src/widgets/input.dart';
 import 'package:flutter/material.dart';
@@ -221,7 +222,7 @@ class _RegisterPageState extends State<RegisterPage> {
       //context.push("/mediumSendCodeRegisterPage");
       final int phoneNumber = int.parse(ctrlPhoneNumber.text);
 
-      final response = await createUser(
+      final response = await createUserDTO(
         username: ctrlUserProfile.text, 
         firstName: ctrlName.text, 
         lastName: ctrlApellido.text, 

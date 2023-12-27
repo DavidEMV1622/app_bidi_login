@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../config/arrow_router.dart';
 import '../Back-end/Dto/User/get_user.dart';
+import '../Back-end/Dto/User/user_DTO.dart';
 import '../utils/TextFormatter.dart';
 import '../colors/colors.dart';
 import 'Editar_usuario_page.dart';
@@ -67,13 +68,13 @@ class _ViewUserDataPageState extends State<ViewUserDataPage> {
         
                       // ---- Datos del usuario ----
                       textoEtiqueta("- Perfil de usuario:", CustomColors.colorVerdeOscuroFuerte),
-                      textoCuerpo(context.watch<GetUserProvider>().userName),
+                      textoCuerpo(context.watch<User>().getUserName!),
                       textoEtiqueta("- Nombre:", CustomColors.colorVerdeOscuroFuerte),
-                      textoCuerpo(context.watch<GetUserProvider>().firstName),
+                      textoCuerpo(context.watch<User>().getFirstName!),
                       textoEtiqueta("- Apellido:", CustomColors.colorVerdeOscuroFuerte),
-                      textoCuerpo(context.watch<GetUserProvider>().lastName),
+                      textoCuerpo(context.watch<User>().getLastName!),
                       textoEtiqueta("- Correo:", CustomColors.colorVerdeOscuroFuerte),
-                      textoCuerpo(context.watch<GetUserProvider>().email),
+                      textoCuerpo(context.watch<User>().getEmail!),
                       textoEtiqueta("- Telefono", CustomColors.colorVerdeOscuroFuerte),
                       textoCuerpo("1234567890",),
                     ]

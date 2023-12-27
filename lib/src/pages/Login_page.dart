@@ -1,11 +1,10 @@
 // ignore_for_file: file_names, use_build_context_synchronously
 
+import 'package:app_credibanco_login/src/Back-end/Dto/User/user_DTO.dart';
 import 'package:app_credibanco_login/src/colors/colors.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../Back-end/Dto/Token.dart';
-import '../Back-end/Dto/User/get_user.dart';
 import '../utils/TextFormatter.dart';
 import '../widgets/buttons.dart';
 import '../widgets/checkBox.dart';
@@ -170,7 +169,9 @@ class _LoginPageState extends State<LoginPage> {
                       //if (_keyForm.currentState!.validate()) {
                       if (_keyForm.currentState!.validate()) {
                         //final response = await pruebaAccesoToken(User(username: "adminbidi@yopmail.com", password: "Colombia.4"));
-                        final response = await tokenUser(ctrlEmail.text, ctrlPassword.text, context);
+                        //final response = await tokenUser(ctrlEmail.text, ctrlPassword.text, context);
+
+                        final response = await tokenUserDTO(ctrlEmail.text, ctrlPassword.text, context);
 
                         if(response == 400){
                           mostrarPopupError(context, "Se a desactivado el usuario, crear uno nuevo");
