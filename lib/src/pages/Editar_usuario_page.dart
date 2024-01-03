@@ -1,5 +1,8 @@
 // ignore_for_file: file_names, use_build_context_synchronously
 
+
+import 'dart:io';
+
 import 'package:app_credibanco_login/src/Back-end/Dto/User/update_user.dart';
 import 'package:app_credibanco_login/src/Back-end/Dto/User/user_DTO.dart';
 import 'package:app_credibanco_login/src/widgets/buttons.dart';
@@ -7,6 +10,7 @@ import 'package:app_credibanco_login/src/widgets/input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import '../../config/arrow_router.dart';
 import '../Back-end/Dto/User/get_user.dart';
@@ -54,6 +58,9 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
   final GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
                                                     controlar el estado o validacion de un formulario  */
 
+  File? imageFile;
+  final ImagePicker _picker = ImagePicker();
+
   @override
   Widget build(BuildContext context) {
     // Plantilla principal "Scaffold"
@@ -67,16 +74,19 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
 
       // ---- Cuerpo o contenido de la aplicación "body" ----
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Form(
           key: _keyForm, // Define un formulario con una llave para controlarlo
           child: ListView(
             children: [
-              tituloEncabezadoUno("bidi"),
-                
-              // ---- Agregar un espacio entre los dos widgets (Text, Align)----
               const SizedBox(
-                height: 35.0,
+                height: 15.0,
+              ),
+              
+              Center(child: imageUser()),
+
+              const SizedBox(
+                height: 15.0,
               ),
           
               Align(
@@ -145,7 +155,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                   backgroundColor: CustomColors.colorAmarilloMostaza, 
                   onPressed: () {
                     DialogChangePassword.showMyGeneralDialog(context: context);
-                  },
+                  },  
                   child: SvgPicture.asset( 
                     "assets/icons/password.svg",
                     width: 25,
@@ -154,7 +164,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 ),
               ),
 
-              const SizedBox(
+              /* const SizedBox(
                 height: 15.0,
               ),
 
@@ -173,7 +183,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                   color: CustomColors.colorNegro,
                   thickness: 1,
                 )),
-              ]),
+              ]), */
 
               const SizedBox(
                 height: 35.0,
@@ -184,6 +194,10 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 colorBox: CustomColors.colorAmarilloMostaza,
                 widthButton: MediaQuery.of(context).size.width,
                 onPressed: save,
+              ),
+
+              const SizedBox(
+                height: 20.0,
               ),
             ]
           ),
@@ -235,5 +249,89 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
         context.pop();
       }
     );
+  }
+
+  Widget imageUser() {
+    return Stack(
+      children: [
+        CircleAvatar(
+          radius: 80,
+          backgroundImage: imageFile != null
+            ? FileImage(File(imageFile!.path))
+            : const AssetImage("assets/icons/user_avatar.png"),
+        ),
+        Positioned(
+          bottom: 20,
+          right: 20,
+          child: InkWell( /* "InkWell" permite hacer que cualquier widget 
+                          al presionar se realice una accion con la 
+                          propiedad "onTap" */
+            onTap: () {
+              showModalBottomSheet( /* Se muestra el popUp en el Botton del celular */
+                context: context, builder: ((builder) => popUpChargeImage())
+              );
+            },
+            child: const Icon(
+              Icons.edit_document,
+              size: 40,
+              color: Color.fromRGBO(0, 141, 137, 1)
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget popUpChargeImage() {
+    return Container(
+      height: 100,
+      width: MediaQuery.of(context).size.width,
+      margin: const EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 20,
+      ),
+      child: Column(
+        children: [
+          const Text("Cargar foto del dispositivo"),
+
+          const SizedBox(
+            height: 15,
+          ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              OutlinedButton.icon(
+                onPressed: () {
+                  takePhoto(ImageSource.camera);
+                },
+                icon: const Icon(Icons.camera_alt),
+                label: const Text("Cámara"),
+              ),
+
+              const SizedBox(width: 15),
+
+              OutlinedButton.icon(
+                onPressed: () {
+                  takePhoto(ImageSource.gallery);
+                },
+                icon: const Icon(Icons.image_rounded),
+                label: const Text("Galería"),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  void takePhoto(ImageSource source) async {
+    final pickedFile = await _picker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      setState(() {
+        imageFile = File(pickedFile.path);
+      });
+    }
   }
 }
