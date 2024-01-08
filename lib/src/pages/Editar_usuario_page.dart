@@ -58,9 +58,9 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
   final GlobalKey<FormState> _keyForm = GlobalKey<FormState>(); /* Clave que se utiliza para identificar y 
                                                     controlar el estado o validacion de un formulario  */
 
-  File? imageFile;
-  final ImagePicker _picker = ImagePicker();
-
+  File? imageFile; // Variable para almacenar la imagen
+  final ImagePicker _picker = ImagePicker(); /* Instanciacion para utilizar las funciones
+                                              de la libreria "image_picker" */
   @override
   Widget build(BuildContext context) {
     // Plantilla principal "Scaffold"
@@ -205,6 +205,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
       ),
     );
   }
+
   // funcion para saber si los inputs tienen correcto su contenido
   save() async {
     if (_keyForm.currentState!.validate()) {
@@ -251,14 +252,23 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
     );
   }
 
+  // Metodo para verificar si la imagen del "imageUser" a sido cambiada
+  ImageProvider<Object>? isImage() {
+    if (imageFile == null) {
+      return const AssetImage("assets/icons/user_avatar.png");
+    } else {
+      return FileImage(File(imageFile!.path));
+    }
+  }
+
+  // Metodo del diseño del CircleAvatar
   Widget imageUser() {
     return Stack(
       children: [
         CircleAvatar(
           radius: 80,
-          backgroundImage: imageFile != null
-            ? FileImage(File(imageFile!.path))
-            : const AssetImage("assets/icons/user_avatar.png"),
+          backgroundColor: CustomColors.colorAmarilloMostaza,
+          backgroundImage: isImage(),
         ),
         Positioned(
           bottom: 20,
@@ -267,14 +277,14 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                           al presionar se realice una accion con la 
                           propiedad "onTap" */
             onTap: () {
-              showModalBottomSheet( /* Se muestra el popUp en el Botton del celular */
+              showModalBottomSheet( /* Se muestra el popUp en la parte inferior del celular */
                 context: context, builder: ((builder) => popUpChargeImage())
               );
             },
             child: const Icon(
               Icons.edit_document,
               size: 40,
-              color: Color.fromRGBO(0, 141, 137, 1)
+              color: CustomColors.colorVerdePantano,
             ),
           ),
         ),
@@ -282,6 +292,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
     );
   }
 
+  // Metodo para preparar la seleccion de la imagen (camara o galeria)
   Widget popUpChargeImage() {
     return Container(
       height: 100,
@@ -292,7 +303,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
       ),
       child: Column(
         children: [
-          const Text("Cargar foto del dispositivo"),
+          const Text("Cargar Imagen"),
 
           const SizedBox(
             height: 15,
@@ -325,13 +336,20 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
     );
   }
 
-  void takePhoto(ImageSource source) async {
-    final pickedFile = await _picker.pickImage(source: source);
+  // Metodo para guardar los cambios de la imagen (camara o galeria)
+  void takePhoto(ImageSource source) async { /* "ImageSource" se define el medio de 
+                                             como obtener la imagen (camara linea 317
+                                             o galeria linea 327) */
+    /* Se guarda la imagen por medio de dicha libreria */
+    final pickedFile = await _picker.pickImage(source: source); 
 
-    if (pickedFile != null) {
-      setState(() {
+    setState(() {
+      if (pickedFile != null) {
+        /* Guarda y actualiza los cambios de la imagen obtenida */
         imageFile = File(pickedFile.path);
-      });
-    }
+      } else {
+        print("Imagen no seleccionada");
+      }
+    }); 
   }
 }
